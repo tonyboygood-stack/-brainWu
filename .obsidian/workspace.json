@@ -174,11 +174,13 @@
       "daily-notes:開啟今天的每日筆記": false,
       "templates:插入模板": false,
       "command-palette:開啟命令面板": false,
-      "bases:建立新的 base": false
+      "bases:建立新的 base": false,
+      "obsidian-git:Open Git source control": false
     }
   },
   "active": "3edf64242ccc4452",
   "lastOpenFiles": [
+    "100_Todo/projects/2026-東湖診所開設專案.md",
     "400_Atlas/Maps/中醫舌診 MOC.md",
     "500_Inbox/Things這是什麼.md",
     "000_Agent/skills/tcm-assistant-workspace/iteration-2/eval-tcm-case/with_skill/outputs/response.md",
