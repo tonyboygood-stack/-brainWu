@@ -23,9 +23,12 @@
 
 | 任務                           | 對應資料夾                                        |
 | :----------------------------- | :------------------------------------------------ |
+| **任何東西第一步先丟這**       | `500_Inbox/inbox.md`                              |
 | 寫草稿（長文、部落格文章）     | `100_Todo/drafts/articles/`                       |
-| 正在進行的專案計畫             | `100_Todo/projects/`                              |
+| 日常任務與代辦彙整             | `100_Todo/`                                       |
 | 完成或封存的東西               | `100_Todo/archive/`                               |
+| 專案總覽與任務追蹤             | `600_Projects/專案名稱/index.md`                  |
+| 完成的專案封存                 | `600_Projects/archive/`                           |
 | 學我的寫作風格                 | `200_Reference/writing-samples/articles/`         |
 | 找我過去的好作品               | `200_Reference/past-work/`                        |
 | 找我常用的模板 / SOP           | `200_Reference/templates/`                        |
@@ -38,7 +41,20 @@
 | 待解問題筆記                   | `400_Atlas/Questions/`                            |
 | 書、文章、課程來源             | `400_Atlas/Sources/`                              |
 | 中醫病案                       | `400_Atlas/Case/`                                 |
-| 原始靈感捕捉（未整理）         | `500_Inbox/`                                      |
+
+### Inbox 分類規則（整理時的判斷邏輯）
+
+| 丟進來的內容 | 判斷依據 | 整理到哪裡 |
+| :----------- | :------- | :--------- |
+| `- [ ] 任務` | 有勾選框 | `100_Todo/` |
+| `- [ ] 任務 #專案名` | 任務 + hashtag | `100_Todo/` + 同步 `600_Projects/專案/index.md` |
+| 想寫一篇文章 | 創作靈感 | `100_Todo/drafts/articles/` |
+| 中醫知識內容 | 可建卡 | `400_Atlas/Notes/` |
+| 疑問、待深究 | 有問號 | `400_Atlas/Questions/` |
+| 問診 / 病案 | 臨床記錄 | `400_Atlas/Case/` |
+| 書、文章、課程 | 來源 | `400_Atlas/Sources/` |
+| 心情、生活感想 | 非知識非任務 | `300_Journal/` |
+| 診所 SOP / 模板 | 流程參考 | `200_Reference/templates/` |
 
 > 當我要你「寫一篇文章」時：**先翻 `200_Reference/writing-samples/articles/` 找 2-3 個我過去的範例學語氣**，再開始寫。不要憑空想像我的風格。
 
