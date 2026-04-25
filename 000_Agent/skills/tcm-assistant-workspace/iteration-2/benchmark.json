@@ -1,0 +1,132 @@
+{
+  "metadata": {
+    "skill_name": "tcm-assistant",
+    "skill_path": "C:/Users/user/.claude/skills/tcm-assistant",
+    "executor_model": "claude-sonnet-4-6",
+    "timestamp": "2026-04-23T00:00:00Z",
+    "evals_run": ["tcm-case", "tcm-wiki"],
+    "runs_per_configuration": 1
+  },
+  "runs": [
+    {
+      "eval_id": 1,
+      "eval_name": "tcm-case",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "time_seconds": 36.3,
+        "tokens": 17690,
+        "tool_calls": 2,
+        "errors": 0
+      },
+      "expectations": [
+        {"text": "主訴區塊完整", "passed": true, "evidence": "## 主訴 with all symptom details"},
+        {"text": "診斷含肝血不足、肝陽上亢", "passed": true, "evidence": "## 診斷 with both diagnoses"},
+        {"text": "處方保留所有藥名劑量", "passed": true, "evidence": "All 11 herbs with dosages and special notes"},
+        {"text": "追蹤重點區塊", "passed": true, "evidence": "## 追蹤重點 with 6 items"},
+        {"text": "疑問思考區塊", "passed": true, "evidence": "## 疑問思考 with 4 questions"},
+        {"text": "結尾確認問句", "passed": true, "evidence": "這樣的整理有沒有需要補充或調整的地方？"}
+      ]
+    },
+    {
+      "eval_id": 1,
+      "eval_name": "tcm-case",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.833,
+        "passed": 5,
+        "failed": 1,
+        "total": 6,
+        "time_seconds": 41.8,
+        "tokens": 15598,
+        "tool_calls": 2,
+        "errors": 0
+      },
+      "expectations": [
+        {"text": "主訴區塊完整", "passed": true, "evidence": "二、主訴 present"},
+        {"text": "診斷含肝血不足、肝陽上亢", "passed": true, "evidence": "四、診斷 with both diagnoses"},
+        {"text": "處方保留所有藥名劑量", "passed": true, "evidence": "Full herb table"},
+        {"text": "追蹤重點區塊", "passed": true, "evidence": "七、追蹤重點"},
+        {"text": "疑問思考區塊", "passed": true, "evidence": "八、臨床思考與疑問"},
+        {"text": "結尾確認問句", "passed": false, "evidence": "Ends with 整理者：Claude（無技能模式）— no closing question"}
+      ]
+    },
+    {
+      "eval_id": 2,
+      "eval_name": "tcm-wiki",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 1,
+        "total": 6,
+        "time_seconds": 42.5,
+        "tokens": 18202,
+        "tool_calls": 4,
+        "errors": 0
+      },
+      "expectations": [
+        {"text": "條目名稱衛氣", "passed": true, "evidence": "# 衛氣"},
+        {"text": "摘要區塊", "passed": true, "evidence": "**摘要** 2-sentence summary"},
+        {"text": "正文分節含功能和運行", "passed": true, "evidence": "3 sections covering all content"},
+        {"text": "相關概念列表", "passed": true, "evidence": "5 related concepts"},
+        {"text": "標籤列表 3-6個", "passed": true, "evidence": "6 tags"},
+        {"text": "結尾條目確認問句", "passed": true, "evidence": "這個條目的名稱和標籤有沒有更適合的版本？ ← FIXED"}
+      ]
+    },
+    {
+      "eval_id": 2,
+      "eval_name": "tcm-wiki",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.833,
+        "passed": 5,
+        "failed": 1,
+        "total": 6,
+        "time_seconds": 32.2,
+        "tokens": 15217,
+        "tool_calls": 2,
+        "errors": 0
+      },
+      "expectations": [
+        {"text": "條目名稱衛氣", "passed": true, "evidence": "# 衛氣"},
+        {"text": "摘要區塊", "passed": true, "evidence": "## 摘要"},
+        {"text": "正文分節含功能和運行", "passed": true, "evidence": "Sections cover 主要功能 and 運行規律"},
+        {"text": "相關概念列表", "passed": true, "evidence": "6 related concepts"},
+        {"text": "標籤列表 3-6個", "passed": true, "evidence": "9 tags (slightly over but fine)"},
+        {"text": "結尾條目確認問句", "passed": false, "evidence": "No closing question"}
+      ]
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {"mean": 1.0, "stddev": 0.0, "min": 1.0, "max": 1.0},
+      "time_seconds": {"mean": 39.4, "stddev": 3.1, "min": 36.3, "max": 42.5},
+      "tokens": {"mean": 17946, "stddev": 256, "min": 17690, "max": 18202}
+    },
+    "without_skill": {
+      "pass_rate": {"mean": 0.833, "stddev": 0.0, "min": 0.833, "max": 0.833},
+      "time_seconds": {"mean": 37.0, "stddev": 4.8, "min": 32.2, "max": 41.8},
+      "tokens": {"mean": 15408, "stddev": 191, "min": 15217, "max": 15598}
+    },
+    "delta": {
+      "pass_rate": "+0.167",
+      "time_seconds": "+2.4",
+      "tokens": "+2538"
+    }
+  },
+  "notes": [
+    "tcm-wiki 結尾問句已從 iteration 1 的 83% 修復至 100%（把問句內嵌進模板）",
+    "tcm-case 維持 100% 不變",
+    "without_skill 兩者均 83%（缺結尾問句，此為技能差異化的核心指標）",
+    "iteration 2 的 with_skill 速度比 iteration 1 更快（39s vs 65s），因技能模板更明確，模型不需要額外推斷",
+    "Token 使用差距縮小（+2538 vs iteration 1 的 +6591），技能效率提升"
+  ]
+}

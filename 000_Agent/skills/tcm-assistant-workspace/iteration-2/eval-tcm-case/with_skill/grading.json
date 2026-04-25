@@ -1,0 +1,11 @@
+{
+  "expectations": [
+    {"text": "主訴區塊完整，保留右側太陽穴、月經週期等描述", "passed": true, "evidence": "## 主訴 present with all details including right temple and menstrual aggravation"},
+    {"text": "診斷區塊含肝血不足和肝陽上亢", "passed": true, "evidence": "## 診斷 with 肝血不足，肝陽上亢 and pathomechanism explanation"},
+    {"text": "處方保留所有藥名劑量（天麻15g、鉤藤12g後下等）", "passed": true, "evidence": "All 11 herbs listed with dosages and special notes (後下/先煎)"},
+    {"text": "追蹤重點區塊", "passed": true, "evidence": "## 追蹤重點 with 6 monitoring items including warning signs"},
+    {"text": "疑問思考區塊", "passed": true, "evidence": "## 疑問思考 with 4 clinical reflection questions"},
+    {"text": "結尾確認問句", "passed": true, "evidence": "Ends with '這樣的整理有沒有需要補充或調整的地方？'"}
+  ],
+  "summary": {"passed": 6, "failed": 0, "total": 6, "pass_rate": 1.0}
+}

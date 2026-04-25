@@ -1,0 +1,11 @@
+{
+  "expectations": [
+    {"text": "輸出包含「主訴」區塊，且保留右側太陽穴、月經週期等描述", "passed": true, "evidence": "File contains '## 主訴' section with right temple, menstrual cycle details preserved"},
+    {"text": "輸出包含「診斷」區塊，提及肝血不足和肝陽上亢", "passed": true, "evidence": "File contains '## 診斷' with both 肝血不足 and 肝陽上亢"},
+    {"text": "處方區塊保留所有藥名和劑量（天麻15g、鉤藤12g等）", "passed": true, "evidence": "Table contains 天麻 15 g, 鉤藤 12 g, 石決明 30 g with 後下/先煎 notes"},
+    {"text": "輸出包含「追蹤重點」區塊", "passed": true, "evidence": "File contains '## 追蹤重點' with 5 follow-up items"},
+    {"text": "輸出包含「疑問思考」區塊", "passed": true, "evidence": "File contains '## 疑問思考' with 4 clinical reflection questions"},
+    {"text": "最後有詢問使用者是否需要補充或調整的句子", "passed": true, "evidence": "Ends with '這樣的整理有沒有需要補充或調整的地方？'"}
+  ],
+  "summary": {"passed": 6, "failed": 0, "total": 6, "pass_rate": 1.0}
+}

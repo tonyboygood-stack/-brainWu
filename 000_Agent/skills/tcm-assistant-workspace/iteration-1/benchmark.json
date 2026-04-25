@@ -1,0 +1,178 @@
+{
+  "metadata": {
+    "skill_name": "tcm-assistant",
+    "skill_path": "C:/Users/user/.claude/skills/tcm-assistant",
+    "executor_model": "claude-sonnet-4-6",
+    "timestamp": "2026-04-22T00:00:00Z",
+    "evals_run": ["tcm-case", "tcm-wiki", "daily-reflection"],
+    "runs_per_configuration": 1
+  },
+  "runs": [
+    {
+      "eval_id": 1,
+      "eval_name": "tcm-case",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "time_seconds": 67.3,
+        "tokens": 20081,
+        "tool_calls": 5,
+        "errors": 0
+      },
+      "expectations": [
+        {"text": "輸出包含「主訴」區塊，且保留右側太陽穴、月經週期等描述", "passed": true, "evidence": "主訴 section present with all relevant details"},
+        {"text": "輸出包含「診斷」區塊，提及肝血不足和肝陽上亢", "passed": true, "evidence": "診斷 section present"},
+        {"text": "處方區塊保留所有藥名和劑量", "passed": true, "evidence": "Full herb table with dosages preserved"},
+        {"text": "輸出包含「追蹤重點」區塊", "passed": true, "evidence": "追蹤重點 section with 5 items"},
+        {"text": "輸出包含「疑問思考」區塊", "passed": true, "evidence": "疑問思考 section with 4 items"},
+        {"text": "最後有詢問是否補充的句子", "passed": true, "evidence": "Ends with 這樣的整理有沒有需要補充或調整的地方？"}
+      ]
+    },
+    {
+      "eval_id": 1,
+      "eval_name": "tcm-case",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.833,
+        "passed": 5,
+        "failed": 1,
+        "total": 6,
+        "time_seconds": 41.6,
+        "tokens": 15547,
+        "tool_calls": 2,
+        "errors": 0
+      },
+      "expectations": [
+        {"text": "輸出包含「主訴」區塊", "passed": true, "evidence": "一、主訴 present"},
+        {"text": "輸出包含「診斷」區塊", "passed": true, "evidence": "二、診斷 present"},
+        {"text": "處方區塊保留所有藥名和劑量", "passed": true, "evidence": "Full herb table present"},
+        {"text": "輸出包含「追蹤重點」區塊", "passed": true, "evidence": "四、追蹤重點 present"},
+        {"text": "輸出包含「疑問思考」區塊", "passed": true, "evidence": "六、疑問與思考 present"},
+        {"text": "最後有詢問是否補充的句子", "passed": false, "evidence": "No closing question — ends with bullet list of clinical notes"}
+      ]
+    },
+    {
+      "eval_id": 2,
+      "eval_name": "tcm-wiki",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.833,
+        "passed": 5,
+        "failed": 1,
+        "total": 6,
+        "time_seconds": 73.8,
+        "tokens": 23543,
+        "tool_calls": 6,
+        "errors": 0
+      },
+      "expectations": [
+        {"text": "條目名稱「衛氣」", "passed": true, "evidence": "# 衛氣 as title"},
+        {"text": "摘要區塊", "passed": true, "evidence": "**摘要** paragraph with 3 sentences"},
+        {"text": "正文分節包含功能、運行", "passed": true, "evidence": "4 sections including 主要功能 and 運行規律"},
+        {"text": "相關概念列表", "passed": true, "evidence": "5 related concept entries"},
+        {"text": "標籤列表 3-6 個", "passed": true, "evidence": "6 tags"},
+        {"text": "最後詢問條目名稱/分類", "passed": false, "evidence": "No closing question — ends after 標籤"}
+      ]
+    },
+    {
+      "eval_id": 2,
+      "eval_name": "tcm-wiki",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.833,
+        "passed": 5,
+        "failed": 1,
+        "total": 6,
+        "time_seconds": 37.9,
+        "tokens": 15393,
+        "tool_calls": 2,
+        "errors": 0
+      },
+      "expectations": [
+        {"text": "條目名稱「衛氣」", "passed": true, "evidence": "# 衛氣 as title"},
+        {"text": "摘要區塊", "passed": true, "evidence": "## 摘要 section"},
+        {"text": "正文分節包含功能、運行", "passed": true, "evidence": "Sections cover 功能 and 運行規律"},
+        {"text": "相關概念列表", "passed": true, "evidence": "6 related concept entries"},
+        {"text": "標籤列表 3-6 個", "passed": true, "evidence": "8 tags (slightly over but fine)"},
+        {"text": "最後詢問條目名稱/分類", "passed": false, "evidence": "No closing question"}
+      ]
+    },
+    {
+      "eval_id": 3,
+      "eval_name": "daily-reflection",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": 55.3,
+        "tokens": 22426,
+        "tool_calls": 10,
+        "errors": 0
+      },
+      "expectations": [
+        {"text": "含「今日輸入整理」標題", "passed": true, "evidence": "## 今日輸入整理（2026-04-22）"},
+        {"text": "含「學習」類別", "passed": true, "evidence": "**學習 / 觀察** category present"},
+        {"text": "四件事都提及", "passed": true, "evidence": "交泰丸, 心跳, 論文, 辨證 all present"},
+        {"text": "詢問是否補充", "passed": true, "evidence": "這樣有沒有遺漏什麼？還有什麼想補充的嗎？"},
+        {"text": "沒有跳到反思問題", "passed": true, "evidence": "No reflection questions — correctly stopped at Step 1"}
+      ]
+    },
+    {
+      "eval_id": 3,
+      "eval_name": "daily-reflection",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.6,
+        "passed": 3,
+        "failed": 2,
+        "total": 5,
+        "time_seconds": 32.1,
+        "tokens": 15339,
+        "tool_calls": 3,
+        "errors": 0
+      },
+      "expectations": [
+        {"text": "含「今日輸入整理」標題", "passed": false, "evidence": "Has '今日整理' not '今日輸入整理'"},
+        {"text": "含「學習」類別", "passed": true, "evidence": "Content covers learning/observation framing"},
+        {"text": "四件事都提及", "passed": true, "evidence": "All four events present"},
+        {"text": "詢問是否補充", "passed": true, "evidence": "還有什麼想補充的嗎？"},
+        {"text": "沒有跳到反思問題", "passed": false, "evidence": "Has '幾個值得深入想想的問題' section with 3 reflection questions — jumped ahead prematurely"}
+      ]
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {"mean": 0.944, "stddev": 0.089, "min": 0.833, "max": 1.0},
+      "time_seconds": {"mean": 65.5, "stddev": 9.4, "min": 55.3, "max": 73.8},
+      "tokens": {"mean": 22017, "stddev": 1748, "min": 20081, "max": 23543}
+    },
+    "without_skill": {
+      "pass_rate": {"mean": 0.755, "stddev": 0.109, "min": 0.6, "max": 0.833},
+      "time_seconds": {"mean": 37.2, "stddev": 4.8, "min": 32.1, "max": 41.6},
+      "tokens": {"mean": 15426, "stddev": 102, "min": 15339, "max": 15547}
+    },
+    "delta": {
+      "pass_rate": "+0.189",
+      "time_seconds": "+28.3",
+      "tokens": "+6591"
+    }
+  },
+  "notes": [
+    "tcm-case: skill adds clear value — structured 5-block output + closing question (100% vs 83%)",
+    "tcm-wiki: both with/without skill failed the closing question assertion — skill instruction needs strengthening",
+    "daily-reflection: biggest differentiation — skill correctly holds at Step 1 (100% vs 60%); without_skill jumped to reflection questions prematurely",
+    "Skill uses ~43% more tokens and ~76% more time — expected due to reading SKILL.md",
+    "tcm-wiki closing question is the primary issue to fix in iteration 2"
+  ]
+}

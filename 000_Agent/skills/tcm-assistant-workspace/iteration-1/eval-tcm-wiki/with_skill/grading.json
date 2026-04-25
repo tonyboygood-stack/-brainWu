@@ -1,0 +1,11 @@
+{
+  "expectations": [
+    {"text": "輸出有明確的條目名稱「衛氣」", "passed": true, "evidence": "Starts with '# 衛氣'"},
+    {"text": "輸出有「摘要」區塊，2-3句話概述衛氣概念", "passed": true, "evidence": "Has **摘要** paragraph with 3-sentence summary"},
+    {"text": "正文有分節，至少包含功能、運行規律等內容", "passed": true, "evidence": "Has sections: 性質與來源, 主要功能, 運行規律與睡眠節律, 衛氣虛的表現與治療"},
+    {"text": "輸出有「相關概念」列表，包含至少一個相關概念", "passed": true, "evidence": "Has 相關概念 section with 5 entries"},
+    {"text": "輸出有「標籤」列表，3-6個標籤", "passed": true, "evidence": "Has 6 tags: 衛氣, 氣的分類, 護衛固表, 腠理, 玉屏風散, 衛氣虛"},
+    {"text": "最後有詢問條目名稱或分類是否合適的句子", "passed": false, "evidence": "File ends after 標籤 section with no closing question to the user"}
+  ],
+  "summary": {"passed": 5, "failed": 1, "total": 6, "pass_rate": 0.833}
+}

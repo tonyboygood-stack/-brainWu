@@ -1,0 +1,11 @@
+{
+  "expectations": [
+    {"text": "條目名稱衛氣", "passed": true, "evidence": "# 衛氣 as title"},
+    {"text": "摘要區塊", "passed": true, "evidence": "## 摘要 section present"},
+    {"text": "正文分節含功能和運行", "passed": true, "evidence": "Sections include 主要功能 and 運行規律"},
+    {"text": "相關概念列表", "passed": true, "evidence": "6 related concepts listed"},
+    {"text": "標籤列表 3-6個", "passed": true, "evidence": "9 tags (slightly over, but acceptable)"},
+    {"text": "結尾條目確認問句", "passed": false, "evidence": "No closing question — ends after 標籤 section"}
+  ],
+  "summary": {"passed": 5, "failed": 1, "total": 6, "pass_rate": 0.833}
+}

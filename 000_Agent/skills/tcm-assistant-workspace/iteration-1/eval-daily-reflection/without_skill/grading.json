@@ -1,0 +1,10 @@
+{
+  "expectations": [
+    {"text": "輸出包含「今日輸入整理」標題", "passed": false, "evidence": "Has '## 今日整理' not '## 今日輸入整理' — slightly different"},
+    {"text": "輸出包含「學習」或「觀察」類別", "passed": true, "evidence": "Content covers all four events with learning/observation framing"},
+    {"text": "四件事（交泰丸比例、心跳反應、論文、辨證習慣）都有被提及", "passed": true, "evidence": "All four events present: 交泰丸, 心悸, 針灸, 辨證"},
+    {"text": "最後有詢問是否有遺漏或需要補充的句子", "passed": true, "evidence": "Ends with '還有什麼想補充的嗎？'"},
+    {"text": "沒有直接跳到反思問題（不應出現「印象最深刻」等反思問題）", "passed": false, "evidence": "Has section '幾個值得深入想想的問題' with 3 reflection questions — jumped to reflection prematurely"}
+  ],
+  "summary": {"passed": 3, "failed": 2, "total": 5, "pass_rate": 0.6}
+}

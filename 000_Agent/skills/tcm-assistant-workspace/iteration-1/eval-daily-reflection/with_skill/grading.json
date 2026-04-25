@@ -1,0 +1,10 @@
+{
+  "expectations": [
+    {"text": "輸出包含「今日輸入整理」標題", "passed": true, "evidence": "Starts with '## 今日輸入整理（2026-04-22）'"},
+    {"text": "輸出包含「學習」或「觀察」類別", "passed": true, "evidence": "Has **學習 / 觀察** category"},
+    {"text": "四件事（交泰丸比例、心跳反應、論文、辨證習慣）都有被提及", "passed": true, "evidence": "All four: 交泰丸 ratio, 心跳 response, 論文 meta-analysis, 辨證 anchoring bias"},
+    {"text": "最後有詢問是否有遺漏或需要補充的句子", "passed": true, "evidence": "Ends with '這樣有沒有遺漏什麼？還有什麼想補充的嗎？'"},
+    {"text": "沒有直接跳到反思問題（不應出現「印象最深刻」等反思問題）", "passed": true, "evidence": "No reflection questions present — correctly stopped at Step 1"}
+  ],
+  "summary": {"passed": 5, "failed": 0, "total": 5, "pass_rate": 1.0}
+}

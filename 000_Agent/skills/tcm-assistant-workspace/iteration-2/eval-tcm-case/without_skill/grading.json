@@ -1,0 +1,11 @@
+{
+  "expectations": [
+    {"text": "主訴區塊完整", "passed": true, "evidence": "二、主訴 present with chief complaint"},
+    {"text": "診斷區塊含肝血不足和肝陽上亢", "passed": true, "evidence": "四、診斷 with both diagnoses and 辨證分析"},
+    {"text": "處方保留所有藥名劑量", "passed": true, "evidence": "Table with all 11 herbs, dosages, special instructions"},
+    {"text": "追蹤重點區塊", "passed": true, "evidence": "七、追蹤重點 with 5 items"},
+    {"text": "疑問思考區塊", "passed": true, "evidence": "八、臨床思考與疑問 with 4 items"},
+    {"text": "結尾確認問句", "passed": false, "evidence": "Ends with '*整理者：Claude（無技能模式）*' — no closing question"}
+  ],
+  "summary": {"passed": 5, "failed": 1, "total": 6, "pass_rate": 0.833}
+}

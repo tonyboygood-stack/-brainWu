@@ -1,0 +1,11 @@
+{
+  "expectations": [
+    {"text": "條目名稱衛氣", "passed": true, "evidence": "# 衛氣 as title"},
+    {"text": "摘要區塊", "passed": true, "evidence": "**摘要** with 2-sentence summary"},
+    {"text": "正文分節含功能和運行", "passed": true, "evidence": "Sections: 性質與循行, 三大功能, 衛氣虛的臨床表現與治療"},
+    {"text": "相關概念列表", "passed": true, "evidence": "5 related concepts with one-line descriptions"},
+    {"text": "標籤列表 3-6個", "passed": true, "evidence": "6 tags: 衛氣, 氣的分類, 固表止汗, 玉屏風散, 衛氣虛, 營衛學說"},
+    {"text": "結尾條目確認問句", "passed": true, "evidence": "Ends with '這個條目的名稱和標籤有沒有更適合的版本？' ← FIXED from iteration 1"}
+  ],
+  "summary": {"passed": 6, "failed": 0, "total": 6, "pass_rate": 1.0}
+}
