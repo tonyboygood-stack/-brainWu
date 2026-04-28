@@ -11,14 +11,14 @@
             "id": "ae965177660f78c0",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "split-diff-view",
               "state": {
-                "file": "400_Atlas/Notes/喉嚨沙啞_中醫診斷用藥思路.md",
-                "mode": "source",
-                "source": false
+                "aFile": ".obsidian/workspace.json",
+                "bFile": ".obsidian/workspace.json",
+                "aRef": ""
               },
-              "icon": "lucide-file",
-              "title": "喉嚨沙啞_中醫診斷用藥思路"
+              "icon": "diff",
+              "title": "Diff: workspace.json  (Working Tree)"
             }
           }
         ]
@@ -161,13 +161,23 @@
               "icon": "lucide-list",
               "title": "大綱"
             }
+          },
+          {
+            "id": "d733d08a611651f8",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
+            }
           }
-        ]
+        ],
+        "currentTab": 5
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -181,8 +191,12 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "ae965177660f78c0",
+  "active": "d733d08a611651f8",
   "lastOpenFiles": [
+    "100_Todo/projects/~$26-04-25_租賃補充條款.docx",
+    "300_Journal/2026-04/2026-04-27.md",
+    "100_Todo/2026-W18_本週代辦.md",
+    "400_Atlas/Notes/喉嚨沙啞_中醫診斷用藥思路.md",
     "500_Inbox/未命名.base",
     "500_Inbox/2026-04-26.md",
     "未命名.canvas",
