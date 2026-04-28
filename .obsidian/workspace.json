@@ -13,12 +13,12 @@
             "state": {
               "type": "split-diff-view",
               "state": {
-                "aFile": ".obsidian/workspace.json",
-                "bFile": ".obsidian/workspace.json",
+                "aFile": "200_Reference/vision.md",
+                "bFile": "200_Reference/vision.md",
                 "aRef": ""
               },
               "icon": "diff",
-              "title": "Diff: workspace.json  (Working Tree)"
+              "title": "Diff: vision  (Working Tree)"
             }
           }
         ]
@@ -191,8 +191,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "d733d08a611651f8",
+  "active": "ae965177660f78c0",
   "lastOpenFiles": [
+    "000_Agent/skills/journal/SKILL.md",
+    "200_Reference/vision.md",
     "100_Todo/projects/~$26-04-25_租賃補充條款.docx",
     "300_Journal/2026-04/2026-04-27.md",
     "100_Todo/2026-W18_本週代辦.md",
