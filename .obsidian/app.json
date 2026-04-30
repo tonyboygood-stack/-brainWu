@@ -4,5 +4,6 @@
   "newFileFolderPath": "500_Inbox",
   "useMarkdownLinks": false,
   "strictLineBreaks": false,
-  "showFrontmatter": true
+  "showFrontmatter": true,
+  "alwaysUpdateLinks": true
 }
