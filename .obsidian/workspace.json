@@ -11,10 +11,14 @@
             "id": "8343d826eaab27d8",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "400_Atlas/Notes/我的舌診觀察步驟.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "新分頁"
+              "title": "我的舌診觀察步驟"
             }
           }
         ]
@@ -187,9 +191,14 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "c6643e0934e82954",
+  "active": "8343d826eaab27d8",
   "lastOpenFiles": [
+    "000_Agent/memory/MEMORY.md",
+    "400_Atlas/Notes/我的舌診觀察步驟.md",
+    "200_Reference/templates/知識卡片模板.md",
+    "500_Inbox/Things.md",
     "400_Atlas/Notes/衝(沖)脈第一條路線(引腎助脾).md",
+    "400_Atlas/Notes/2026-04-30_衝脈第一條路線(引腎助脾).md",
     "400_Atlas/Notes/2026-04-25_衝脈的特殊舌診--隱樑.md",
     "400_Atlas/Notes/喉嚨沙啞_中醫診斷用藥思路.md",
     "400_Atlas/Sources/沖脈第一條.md",
@@ -210,16 +219,11 @@
     "500_Inbox/幽門(KI-21).md",
     "500_Inbox/肓俞(KI-16).md",
     "400_Atlas/Sources/地標穴().md",
-    "500_Inbox/地標穴.md",
     "500_Inbox/未命名 2.base",
     "500_Inbox/未命名 3.base",
     "400_Atlas/Assets/Pasted image 20260429201317.png",
-    "500_Inbox/奇經八脈管理基因層面，也處理影響基因層面的因子(環境病因).md",
-    "500_Inbox/奇經八脈的適應症.md",
     "500_Inbox/未命名 1.base",
     "500_Inbox/未命名.base",
-    "README.md",
-    "CLAUDE.md",
     "未命名.canvas",
     "400_Atlas/Assets/Pasted image 20260429200618.png",
     "100_Todo/projects/~$26-04-25_租賃補充條款.docx"
