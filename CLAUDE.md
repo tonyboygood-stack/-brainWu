@@ -87,11 +87,32 @@
 
 ---
 
+## Git 工作流規則
+
+> Obsidian Git 自動推送到 `main`，所有 Claude session 也必須在 `main` 上工作，確保兩端同步。
+
+**Session 開始時必做：**
+```
+git fetch origin
+git checkout main
+git pull origin main
+```
+
+- **永遠在 `main` 分支工作**，不要建立 feature branch
+- 每次動檔案前先 `git pull origin main`，確保拿到最新的 Obsidian 變更
+- Commit 完直接 `git push origin main`
+
+---
+
 ## 我的 NEVER / ALWAYS 清單
 
 > 這一區會隨我糾正你的次數慢慢長出來。一開始是空的。
 
-（尚無規則）
+**NEVER**
+- 不要在讀取現有 Obsidian 筆記之前就憑舊版本或記憶製作知識卡（錯誤做法：只讀 git 當前分支 → 正確做法：先 fetch origin/main 確認最新版本 → 原因：Obsidian Git 推到 main，Claude session 分支可能落後）
+
+**ALWAYS**
+- 開始整理或製作筆記前，先 `git fetch origin` 並確認 `origin/main` 上有無更新的版本
 
 ---
 
