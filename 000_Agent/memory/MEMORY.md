@@ -10,19 +10,30 @@
 
 ## 用戶偏好
 
-（還是空的，等你跟 AI 合作幾次後自然會長出來）
+- 知識卡片顯示 collection 選項時，**保留中文說明**讓老吳更好理解
 
 ---
 
 ## Feedback（AI 學到的原則）
 
-（還是空的）
+- 錯誤做法：collection 用自由文字（如 `奇經八脈`、`臨床思路`）→ 正確做法：只能從以下 5 種標準選項擇一 → 原因：這是 Obsidian 知識庫的統一分類架構
+
+**知識卡片 collection 標準選項（只能選這五個）：**
+
+| 選項 | 中文說明 |
+| ---- | -------- |
+| `[[Things]]` | 這是什麼？概念、框架、工具 |
+| `[[Statements]]` | 我怎麼想？觀點、洞察、原則 |
+| `[[Questions]]` | 我好奇什麼？待探索的問題 |
+| `[[Quotes]]` | 別人怎麼說？引言 |
+| `[[People]]` | 這個人是誰？人物筆記 |
 
 ---
 
 ## 踩坑筆記
 
-（還是空的）
+- **分支不同步**：Obsidian Git 推到 `main`，Claude session 預設建 `claude/xxx` 分支 → 已透過 `.claude/settings.json` SessionStart hook 解決，session 開始自動切回 `main`
+- **製作知識卡前必須先 fetch origin/main**：避免用舊版本覆蓋最新內容
 
 ---
 
