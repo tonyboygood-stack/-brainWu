@@ -15,7 +15,7 @@
               "state": {
                 "file": "400_Atlas/Case/2026-05-02_謝錦珠_講話沙啞口乾.md",
                 "mode": "source",
-                "source": false
+                "source": true
               },
               "icon": "lucide-file",
               "title": "2026-05-02_謝錦珠_講話沙啞口乾"
@@ -49,7 +49,7 @@
         "state": {
           "type": "search",
           "state": {
-            "query": "",
+            "query": "source",
             "matchingCase": false,
             "explainSearch": false,
             "collapseAll": false,
@@ -100,7 +100,7 @@
         }
       }
     ],
-    "currentTab": 0
+    "currentTab": 1
   },
   "right": {
     "id": "7ca8a8fbe7dd721a",
@@ -114,9 +114,9 @@
           "state": {
             "file": "400_Atlas/Case/2026-05-02_謝錦珠_講話沙啞口乾.md",
             "collapseAll": false,
-            "extraContext": false,
+            "extraContext": true,
             "sortOrder": "alphabetical",
-            "showSearch": false,
+            "showSearch": true,
             "searchQuery": "",
             "backlinkCollapsed": true,
             "unlinkedCollapsed": true
@@ -147,15 +147,25 @@
           "state": {
             "file": "400_Atlas/Case/2026-05-02_謝錦珠_講話沙啞口乾.md",
             "followCursor": false,
-            "showSearch": false,
+            "showSearch": true,
             "searchQuery": ""
           },
           "icon": "lucide-list",
           "title": "大綱"
         }
+      },
+      {
+        "id": "ea16888624946708",
+        "type": "leaf",
+        "state": {
+          "type": "git-view",
+          "state": {},
+          "icon": "git-pull-request",
+          "title": "Source Control"
+        }
       }
     ],
-    "currentTab": 0
+    "currentTab": 3
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -171,6 +181,9 @@
   },
   "active": "fd95693563bd49ca",
   "lastOpenFiles": [
+    "400_Atlas/Case/2026-05-02_謝錦珠_講話沙啞口乾.md",
+    "500_Inbox/未命名 4.base",
+    "400_Atlas/Assets/IMG_0693.jpeg",
     "400_Atlas/Case/2026-05-02_張麗玲_長期耳鳴.md",
     "400_Atlas/Questions/衝脈、任脈治療子宮肌瘤對策.md",
     "400_Atlas/Questions/耳鳴的病生理重新思考——陽虛水濕夾肝火.md",
@@ -188,8 +201,6 @@
     "/400_Atlas/Case",
     "/400_Atlas",
     "400_Atlas/Case/2026-05-02_阿蘭阿姨_肝鬱脾虛胃不降.md",
-    "400_Atlas/Case/2026-05-02_謝錦珠_講話沙啞口乾.md",
-    "400_Atlas/Assets/IMG_0693.jpeg",
     "README.md",
     "未命名.canvas",
     "200_Reference/templates/知識卡片模板.md",
@@ -207,8 +218,6 @@
     "100_Todo",
     "300_Journal/2026-04/2026-04-30.md",
     "300_Journal/2026-04/2026-04-25.md",
-    "300_Journal/2026-04/2026-04-23.md",
-    "300_Journal/2026-04",
     "400_Atlas/Assets/Pasted image 20260429200618.png",
     "400_Atlas/Assets/Pasted image 20260429201317.png"
   ]
