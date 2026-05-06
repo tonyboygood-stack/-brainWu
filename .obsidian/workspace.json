@@ -177,8 +177,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -194,6 +193,7 @@
   },
   "active": "26f74fa718c0e837",
   "lastOpenFiles": [
+    "300_Journal/2026-05/2026-05-04.md",
     "400_Atlas/Notes/我的舌診觀察步驟.md",
     "400_Atlas/Sources/未命名未命名.md",
     "400_Atlas/Notes/未命名.md",
@@ -220,7 +220,6 @@
     "500_Inbox/陰交(CV-7).md",
     "400_Atlas/Sources/PathologyOutlines.md",
     "400_Atlas/Questions/滋陰消斑湯.md",
-    "400_Atlas/Sources/婦科方藥臨證心得十五講.md",
     "400_Atlas/Assets/衝脈第一條.png",
     "400_Atlas/Assets/任脈路徑.png",
     "500_Inbox/未命名 4.base",
