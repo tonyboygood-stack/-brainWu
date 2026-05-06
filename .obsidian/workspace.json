@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "600_Projects/東湖診所開業計畫/index.md",
+                "file": "400_Atlas/Notes/2026-05-06_慢性脫水與結構化水.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "index"
+              "title": "2026-05-06_慢性脫水與結構化水"
             }
           }
         ]
@@ -191,8 +191,18 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "c6643e0934e82954",
+  "active": "d733d08a611651f8",
   "lastOpenFiles": [
+    "300_Journal/2026-05/2026-05-06.md",
+    "400_Atlas/Notes/2026-05-04_經筋治療與情緒釋放.md",
+    "400_Atlas/Notes/2026-05-04_經筋治療後的醫囑.md",
+    "400_Atlas/Notes/2026-05-04_經筋治療成功的四個資源點.md",
+    "400_Atlas/Notes/2026-05-04_經筋治療_同名經互用策略.md",
+    "400_Atlas/Notes/2026-05-02_被看見是療癒的開始.md",
+    "400_Atlas/Notes/2026-04-30_衝脈第一條路線(引腎助脾).md",
+    "400_Atlas/Notes/2026-04-25_衝脈的特殊舌診--隱樑.md",
+    "600_Projects/東湖診所開業計畫/index.md",
+    "400_Atlas/Notes/2026-05-06_慢性脫水與結構化水.md",
     "600_Projects/東湖診所開業計畫/財務/index.md",
     "600_Projects/東湖診所開業計畫/財務/2026-05_月報.md",
     "600_Projects/東湖診所開業計畫/財務",
@@ -202,15 +212,8 @@
     "400_Atlas/Notes/我的舌診觀察步驟.md",
     "400_Atlas/Sources/未命名未命名.md",
     "400_Atlas/Notes/未命名.md",
-    "400_Atlas/Notes/2026-05-04_經筋治療_同名經互用策略.md",
     "400_Atlas/Sources/2019-09-09古典針灸線上研討會.md",
-    "400_Atlas/Notes/2026-05-04_經筋治療成功的四個資源點.md",
-    "400_Atlas/Notes/2026-05-04_經筋治療後的醫囑.md",
-    "400_Atlas/Notes/2026-05-04_經筋治療與情緒釋放.md",
-    "400_Atlas/Notes/2026-04-30_衝脈第一條路線(引腎助脾).md",
     "400_Atlas/Notes/衝(沖)脈第一條路線(引腎助脾).md",
-    "400_Atlas/Notes/2026-05-02_被看見是療癒的開始.md",
-    "400_Atlas/Notes/2026-04-25_衝脈的特殊舌診--隱樑.md",
     "400_Atlas/Questions/數值改善但症狀加重的臨床意義.md",
     "400_Atlas/Sources/任脈治療.md",
     "400_Atlas/Sources/2026_傅士豪_疼痛科學徒手工作坊.md",
@@ -218,9 +221,6 @@
     "600_Projects/個人財務/index.md",
     "600_Projects/個人財務/2026-05_月報.md",
     "600_Projects/個人財務",
-    "400_Atlas/Case/2026-05-04_徐浤清_失智手抖尿頻.md",
-    "400_Atlas/Case/2026-05-04_丁立夫_疲勞眠差.md",
-    "500_Inbox/四滿(KI-14).md",
     "400_Atlas/Assets/衝脈第一條.png",
     "400_Atlas/Assets/任脈路徑.png",
     "500_Inbox/未命名 4.base",
