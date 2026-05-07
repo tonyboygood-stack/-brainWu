@@ -111,13 +111,21 @@ git pull origin main
 **NEVER**
 - 不要在讀取現有 Obsidian 筆記之前就憑舊版本或記憶製作知識卡（錯誤做法：只讀 git 當前分支 → 正確做法：先 fetch origin/main 確認最新版本 → 原因：Obsidian Git 推到 main，Claude session 分支可能落後）
 - 不要直接建立新知識卡，沒有先確認 `400_Atlas/Notes/` 是否已有重疊內容
+- collection 不可用短格式（`[[Things]]`、`[[Statements]]`）→ 必須用完整格式（見下方 ALWAYS）
 
 **ALWAYS**
 - 開始整理或製作筆記前，先 `git fetch origin` 並確認 `origin/main` 上有無更新的版本
-- **建立新知識卡前的標準流程：**
+- **建立新知識卡前的標準流程（note-capture skill）：**
   1. 掃描 `400_Atlas/Notes/` 找主題相關的既有卡片（用關鍵詞 grep）
-  2. 若有重疊：列出重疊卡片，說明重疊程度，詢問「要更新舊卡 / 建新卡並連結 / 合併」
-  3. 若無重疊：直接建立新卡
+  2. 若有重疊：列出重疊卡片，詢問「更新舊卡 / 建新卡並連結 / 合併」
+  3. 確認 `400_Atlas/Maps/` 有無對應 MOC；無則提議新建
+  4. 建卡後：更新對應 MOC 加入連結，並做雙向 related
+- **collection 只能用以下完整格式（五選一）：**
+  - `[[Things這是什麼]]` — 概念、框架、工具
+  - `[[Statements我怎麼想]]` — 觀點、洞察、原則
+  - `[[Questions我好奇什麼]]` — 待探索的問題
+  - `[[Quotes別人怎麼說]]` — 引言
+  - `[[People這個人是誰]]` — 人物筆記
 
 ---
 
