@@ -110,9 +110,14 @@ git pull origin main
 
 **NEVER**
 - 不要在讀取現有 Obsidian 筆記之前就憑舊版本或記憶製作知識卡（錯誤做法：只讀 git 當前分支 → 正確做法：先 fetch origin/main 確認最新版本 → 原因：Obsidian Git 推到 main，Claude session 分支可能落後）
+- 不要直接建立新知識卡，沒有先確認 `400_Atlas/Notes/` 是否已有重疊內容
 
 **ALWAYS**
 - 開始整理或製作筆記前，先 `git fetch origin` 並確認 `origin/main` 上有無更新的版本
+- **建立新知識卡前的標準流程：**
+  1. 掃描 `400_Atlas/Notes/` 找主題相關的既有卡片（用關鍵詞 grep）
+  2. 若有重疊：列出重疊卡片，說明重疊程度，詢問「要更新舊卡 / 建新卡並連結 / 合併」
+  3. 若無重疊：直接建立新卡
 
 ---
 
