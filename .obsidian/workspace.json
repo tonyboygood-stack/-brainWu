@@ -4,53 +4,24 @@
     "type": "split",
     "children": [
       {
-        "id": "e60158038820e181",
+        "id": "22fd47a800aa8211",
         "type": "tabs",
         "children": [
           {
-            "id": "ae965177660f78c0",
-            "type": "leaf",
-            "state": {
-              "type": "split-diff-view",
-              "state": {
-                "aFile": "200_Reference/vision.md",
-                "bFile": "200_Reference/vision.md",
-                "aRef": ""
-              },
-              "icon": "diff",
-              "title": "Diff: vision  (Working Tree)"
-            }
-          },
-          {
-            "id": "c85b2360818466b5",
+            "id": "26f74fa718c0e837",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "400_Atlas/Notes/衝(沖)脈第一條路線.md",
+                "file": "400_Atlas/Notes/2026-05-06_慢性脫水與結構化水.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "衝(沖)脈第一條路線"
-            }
-          },
-          {
-            "id": "474b1e69effbdf9b",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "500_Inbox/地標穴.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "地標穴"
+              "title": "2026-05-06_慢性脫水與結構化水"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -107,8 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "a65f4839c4f1ffdc",
@@ -207,8 +177,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -222,34 +191,49 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "c85b2360818466b5",
+  "active": "d733d08a611651f8",
   "lastOpenFiles": [
-    "500_Inbox/地標穴.md",
-    "400_Atlas/Notes/衝(沖)脈第一條路線.md",
+    "300_Journal/2026-05/2026-05-06.md",
+    "400_Atlas/Notes/2026-05-04_經筋治療與情緒釋放.md",
+    "400_Atlas/Notes/2026-05-04_經筋治療後的醫囑.md",
+    "400_Atlas/Notes/2026-05-04_經筋治療成功的四個資源點.md",
+    "400_Atlas/Notes/2026-05-04_經筋治療_同名經互用策略.md",
+    "400_Atlas/Notes/2026-05-02_被看見是療癒的開始.md",
+    "400_Atlas/Notes/2026-04-30_衝脈第一條路線(引腎助脾).md",
+    "400_Atlas/Notes/2026-04-25_衝脈的特殊舌診--隱樑.md",
+    "600_Projects/東湖診所開業計畫/index.md",
+    "400_Atlas/Notes/2026-05-06_慢性脫水與結構化水.md",
+    "600_Projects/東湖診所開業計畫/財務/index.md",
+    "600_Projects/東湖診所開業計畫/財務/2026-05_月報.md",
+    "600_Projects/東湖診所開業計畫/財務",
+    "400_Atlas/Questions/衝脈、任脈治療子宮肌瘤對策.md",
+    "100_Todo/2026-W20_本週代辦.md",
+    "300_Journal/2026-05/2026-05-04.md",
+    "400_Atlas/Notes/我的舌診觀察步驟.md",
+    "400_Atlas/Sources/未命名未命名.md",
+    "400_Atlas/Notes/未命名.md",
+    "400_Atlas/Sources/2019-09-09古典針灸線上研討會.md",
+    "400_Atlas/Notes/衝(沖)脈第一條路線(引腎助脾).md",
+    "400_Atlas/Questions/數值改善但症狀加重的臨床意義.md",
+    "400_Atlas/Sources/任脈治療.md",
+    "400_Atlas/Sources/2026_傅士豪_疼痛科學徒手工作坊.md",
+    "600_Projects/個人財務/資產.md",
+    "600_Projects/個人財務/index.md",
+    "600_Projects/個人財務/2026-05_月報.md",
+    "600_Projects/個人財務",
+    "400_Atlas/Assets/衝脈第一條.png",
+    "400_Atlas/Assets/任脈路徑.png",
+    "500_Inbox/未命名 4.base",
+    "400_Atlas/Assets/IMG_0693.jpeg",
+    "300_Journal/2026-05",
+    "000_Agent/skills/good-morning",
     "500_Inbox/未命名 2.base",
     "500_Inbox/未命名 3.base",
     "400_Atlas/Assets/Pasted image 20260429201317.png",
-    "500_Inbox/奇經八脈管理基因層面，也處理影響基因層面的因子(環境病因).md",
-    "500_Inbox/奇經八脈的適應症.md",
-    "400_Atlas/Notes/2026-04-25_衝脈的特殊舌診--隱樑.md",
     "500_Inbox/未命名 1.base",
     "500_Inbox/未命名.base",
-    "README.md",
-    "CLAUDE.md",
     "未命名.canvas",
     "400_Atlas/Assets/Pasted image 20260429200618.png",
-    "500_Inbox/2026-04-29.md",
-    "000_Agent/skills/journal/SKILL.md",
-    "200_Reference/vision.md",
-    "100_Todo/projects/~$26-04-25_租賃補充條款.docx",
-    "300_Journal/2026-04/2026-04-27.md",
-    "100_Todo/2026-W18_本週代辦.md",
-    "400_Atlas/Notes/喉嚨沙啞_中醫診斷用藥思路.md",
-    "500_Inbox/2026-04-26.md",
-    "100_Todo/projects/2026-東湖診所開設專案.md",
-    "400_Atlas/Maps/中醫舌診 MOC.md",
-    "500_Inbox/Things這是什麼.md",
-    "000_Agent/skills/tcm-assistant-workspace/iteration-2/eval-tcm-case/with_skill/outputs/response.md",
-    "400_Atlas/Maps/奇經八脈 MOC.md"
+    "100_Todo/projects/~$26-04-25_租賃補充條款.docx"
   ]
 }
