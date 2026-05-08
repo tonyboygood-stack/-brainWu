@@ -11,14 +11,10 @@
             "id": "26f74fa718c0e837",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "300_Journal/2026-05/2026-05-07.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "2026-05-07"
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "關聯圖檢視"
             }
           }
         ]
@@ -193,8 +189,11 @@
   },
   "active": "26f74fa718c0e837",
   "lastOpenFiles": [
-    "400_Atlas/Notes/2026-05-07_現代人的誤下——中焦陽傷的現代病因.md",
+    "400_Atlas/Case/2026-05-02_丁莉齡_子宮肌瘤復發.md",
+    "400_Atlas/Questions/衝脈、任脈治療子宮肌瘤對策.md",
+    "400_Atlas/Questions/古典針灸對治耳鳴的思路.md",
     "300_Journal/2026-05/2026-05-07.md",
+    "400_Atlas/Notes/2026-05-07_現代人的誤下——中焦陽傷的現代病因.md",
     "400_Atlas/Sources/高級針灸技術手冊.md",
     "400_Atlas/Notes/2026-05-07_寒濕水飲下注關節——脈象動態追蹤與用藥轉折.md",
     "000_Agent/skills/note-capture/SKILL.md",
@@ -216,10 +215,7 @@
     "600_Projects/東湖診所開業計畫/財務/index.md",
     "600_Projects/東湖診所開業計畫/財務/2026-05_月報.md",
     "600_Projects/東湖診所開業計畫/財務",
-    "400_Atlas/Questions/衝脈、任脈治療子宮肌瘤對策.md",
     "100_Todo/2026-W20_本週代辦.md",
-    "300_Journal/2026-05/2026-05-04.md",
-    "400_Atlas/Notes/我的舌診觀察步驟.md",
     "600_Projects/個人財務",
     "400_Atlas/Assets/衝脈第一條.png",
     "400_Atlas/Assets/任脈路徑.png",
