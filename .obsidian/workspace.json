@@ -70,8 +70,7 @@
               "title": "書籤"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -188,8 +187,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "3edf64242ccc4452",
+  "active": "c6643e0934e82954",
   "lastOpenFiles": [
+    "000_Agent/skills/good-morning/skill.md",
+    "400_Atlas/Maps/學習佇列 MOC.md",
     "500_Inbox/未命名 5.base",
     "未命名 1.canvas",
     "400_Atlas/Case/2026-05-02_丁莉齡_子宮肌瘤復發.md",
@@ -216,7 +217,6 @@
     "400_Atlas/Notes/2026-04-25_衝脈的特殊舌診--隱樑.md",
     "600_Projects/東湖診所開業計畫/index.md",
     "600_Projects/東湖診所開業計畫/財務/index.md",
-    "600_Projects/東湖診所開業計畫/財務/2026-05_月報.md",
     "600_Projects/東湖診所開業計畫/財務",
     "600_Projects/個人財務",
     "400_Atlas/Assets/衝脈第一條.png",
@@ -231,7 +231,6 @@
     "500_Inbox/未命名 1.base",
     "500_Inbox/未命名.base",
     "未命名.canvas",
-    "400_Atlas/Assets/Pasted image 20260429200618.png",
-    "100_Todo/projects/~$26-04-25_租賃補充條款.docx"
+    "400_Atlas/Assets/Pasted image 20260429200618.png"
   ]
 }
