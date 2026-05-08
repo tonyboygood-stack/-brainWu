@@ -4,17 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "22fd47a800aa8211",
+        "id": "69b1c340c01fc0df",
         "type": "tabs",
         "children": [
           {
-            "id": "26f74fa718c0e837",
+            "id": "ffc5ec218baf6070",
             "type": "leaf",
             "state": {
-              "type": "graph",
+              "type": "empty",
               "state": {},
-              "icon": "lucide-git-fork",
-              "title": "關聯圖檢視"
+              "icon": "lucide-file",
+              "title": "新分頁"
             }
           }
         ]
@@ -70,7 +70,8 @@
               "title": "書籤"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -187,8 +188,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "26f74fa718c0e837",
+  "active": "3edf64242ccc4452",
   "lastOpenFiles": [
+    "500_Inbox/未命名 5.base",
+    "未命名 1.canvas",
     "400_Atlas/Case/2026-05-02_丁莉齡_子宮肌瘤復發.md",
     "400_Atlas/Questions/衝脈、任脈治療子宮肌瘤對策.md",
     "400_Atlas/Questions/古典針灸對治耳鳴的思路.md",
@@ -215,7 +218,6 @@
     "600_Projects/東湖診所開業計畫/財務/index.md",
     "600_Projects/東湖診所開業計畫/財務/2026-05_月報.md",
     "600_Projects/東湖診所開業計畫/財務",
-    "100_Todo/2026-W20_本週代辦.md",
     "600_Projects/個人財務",
     "400_Atlas/Assets/衝脈第一條.png",
     "400_Atlas/Assets/任脈路徑.png",
