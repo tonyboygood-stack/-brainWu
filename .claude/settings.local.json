@@ -1,7 +1,21 @@
 {
   "permissions": {
     "allow": [
-      "WebSearch"
+      "WebSearch",
+      "Bash(claude.exe --version)",
+      "Bash(npx claude *)",
+      "Bash(where claude *)",
+      "Bash(cmd /c \"claude --version\")",
+      "Bash(cmd /c \"where claude\")",
+      "Bash(powershell -Command \"claude --version\")",
+      "Bash(powershell -Command \"Get-ChildItem -Path 'C:\\\\Users\\\\user\\\\AppData\\\\Local\\\\claude-cli-nodejs' -Recurse -Filter 'claude.exe' -ErrorAction SilentlyContinue | Select-Object FullName; Get-ChildItem -Path 'C:\\\\Users\\\\user\\\\AppData\\\\Local\\\\Claude' -Filter '*.exe' -ErrorAction SilentlyContinue | Select-Object Name, FullName\")",
+      "Bash(powershell -Command \"Get-ChildItem -Path 'C:\\\\Users\\\\user\\\\AppData\\\\Local\\\\claude-cli-nodejs' -ErrorAction SilentlyContinue | Select-Object Name\")",
+      "Bash(powershell -Command \"Get-ChildItem -Path 'C:\\\\Users\\\\user\\\\AppData\\\\Local\\\\Claude' -ErrorAction SilentlyContinue | Select-Object Name\")",
+      "Bash(powershell -Command \"Get-ChildItem -Path 'C:\\\\Users\\\\user\\\\AppData\\\\Local\\\\Claude-3p' -Recurse -Filter '*.exe' -ErrorAction SilentlyContinue | Select-Object FullName | head -10; Get-ChildItem -Path 'C:\\\\Program Files\\\\Claude' -ErrorAction SilentlyContinue | Select-Object Name\")",
+      "Bash(powershell -Command \"Get-ChildItem -Path 'C:\\\\Users\\\\user\\\\AppData\\\\Local\\\\Claude Nest-3p' -Recurse -Filter 'claude*.exe' -ErrorAction SilentlyContinue | Select-Object FullName\")",
+      "Bash(powershell -Command \"Get-ChildItem 'C:\\\\Users\\\\user\\\\AppData\\\\Local\\\\Claude Nest-3p' | Select-Object Name\")",
+      "Bash(cmd /c \"where /r C:\\\\Users\\\\user\\\\AppData claude.exe 2>nul\")",
+      "Bash(cmd /c \"where /r C:\\\\Program Files claude.exe 2>nul\")"
     ]
   }
 }
