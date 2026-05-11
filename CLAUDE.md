@@ -89,23 +89,23 @@
 
 ## Git 工作流規則
 
-> Obsidian Git 自動推送到 `main`。Claude session 在 `main` 上 commit，但代理系統會擋住直接推送 `origin/main`，必須透過 GitHub MCP 工具合併。
+> Obsidian Git 會自動定時推送本地 `main` 到 `origin/main`，Claude 不需要 push。
 
 **Session 開始時必做：**
 ```
 git fetch origin
-git checkout main
 git pull origin main
 ```
 
-**每次 commit 後必做（三步）：**
-1. `git push origin main:<session-branch>`（推到 session feature branch，如 `claude/good-morning-xxx`）
-2. 用 `mcp__github__create_pull_request` 建 PR（head: session branch → base: main）；若 PR 已存在則跳過
-3. 用 `mcp__github__merge_pull_request` 合併，然後 `git pull origin main` 同步本地
+**每次修改後只需：**
+```
+git add <files>
+git commit -m "..."
+```
 
-> repo owner: `tonyboygood-stack`，repo name: `-brainWu`
+> Obsidian Git 會處理後續推送，不需要 push、建 PR、或合併。
 
-- **永遠在 `main` 分支工作**，不要自己建立 feature branch
+- **永遠在 `main` 分支工作**
 - 每次動檔案前先 `git pull origin main`，確保拿到最新的 Obsidian 變更
 
 ---
