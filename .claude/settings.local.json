@@ -15,7 +15,9 @@
       "Bash(powershell -Command \"Get-ChildItem -Path 'C:\\\\Users\\\\user\\\\AppData\\\\Local\\\\Claude Nest-3p' -Recurse -Filter 'claude*.exe' -ErrorAction SilentlyContinue | Select-Object FullName\")",
       "Bash(powershell -Command \"Get-ChildItem 'C:\\\\Users\\\\user\\\\AppData\\\\Local\\\\Claude Nest-3p' | Select-Object Name\")",
       "Bash(cmd /c \"where /r C:\\\\Users\\\\user\\\\AppData claude.exe 2>nul\")",
-      "Bash(cmd /c \"where /r C:\\\\Program Files claude.exe 2>nul\")"
+      "Bash(cmd /c \"where /r C:\\\\Program Files claude.exe 2>nul\")",
+      "Bash(gh pr *)",
+      "Bash(env)"
     ]
   }
 }
