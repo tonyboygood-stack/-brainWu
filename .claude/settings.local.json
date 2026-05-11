@@ -22,7 +22,9 @@
       "Bash(git pull *)",
       "Bash(cat \"C:/Users/user/AppData/Roaming/GitHub CLI/hosts.yml\" 2>/dev/null || echo \"檔案不存在\")",
       "Bash(git config *)",
-      "Bash(gh auth *)"
+      "Bash(gh auth *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)"
     ]
   }
 }
