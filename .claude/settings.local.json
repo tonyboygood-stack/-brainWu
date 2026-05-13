@@ -33,7 +33,9 @@
       "Bash(git rm *)",
       "Bash(Get-Content \"C:\\\\Users\\\\user\\\\Documents\\\\GitHub\\\\-\\\\400_Atlas\\\\Sources\\\\稅務法規講座.md\")",
       "Bash(Measure-Object -Line)",
-      "Bash(wc -l \"/mnt/c/Users/user/Documents/GitHub/-/400_Atlas/Sources/稅務法規講座.md\")"
+      "Bash(wc -l \"/mnt/c/Users/user/Documents/GitHub/-/400_Atlas/Sources/稅務法規講座.md\")",
+      "Bash(powershell.exe -Command \"\\(Get-Content 'C:\\\\Users\\\\user\\\\Documents\\\\GitHub\\\\-\\\\400_Atlas\\\\Sources\\\\稅務法規講座.md' | Measure-Object -Line\\).Lines\")",
+      "Bash(powershell.exe -Command \"python3 -c \\\\\"import sys; content = open\\('C:/Users/user/Documents/GitHub/-/400_Atlas/Sources/稅務法規講座.md', encoding='utf-8'\\).read\\(\\); print\\(len\\(content\\)\\); print\\(content[:200]\\)\\\\\"\")"
     ]
   }
 }
