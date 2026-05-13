@@ -30,7 +30,10 @@
       "Bash(git mv *)",
       "Bash(git commit *)",
       "Bash(git fetch *)",
-      "Bash(git rm *)"
+      "Bash(git rm *)",
+      "Bash(Get-Content \"C:\\\\Users\\\\user\\\\Documents\\\\GitHub\\\\-\\\\400_Atlas\\\\Sources\\\\稅務法規講座.md\")",
+      "Bash(Measure-Object -Line)",
+      "Bash(wc -l \"/mnt/c/Users/user/Documents/GitHub/-/400_Atlas/Sources/稅務法規講座.md\")"
     ]
   }
 }
