@@ -122,7 +122,7 @@ says 建議：「XXX」
 這樣可以嗎？確認後我就存起來。（也可以說「修改：...」讓我調整）
 ```
 
-### 第六步：存檔 + 更新 MOC
+### 第六步：存檔 + 更新 MOC + 同步臨床成長
 
 **存檔規則：**
 - collection 為 `[Questions]` → 存入 `400_Atlas/Questions/`
@@ -134,6 +134,14 @@ says 建議：「XXX」
 ```markdown
 - [[YYYY-MM-DD_筆記標題]]
 ```
+
+**同步臨床成長記錄（若 clinical_insight 非空）：**
+若使用者有填寫 `clinical_insight`，將以下一行附加至 `400_Atlas/Notes/臨床成長記錄.md` 對應的月份區塊：
+```
+YYYY-MM-DD｜{clinical_insight 內容}｜[[筆記檔名（不含副檔名）]]
+```
+- 若該月份區塊（`## YYYY-MM`）不存在，先新增該區塊再附加
+- 若 `clinical_insight` 為空或使用者選擇跳過，不寫入
 
 ---
 
