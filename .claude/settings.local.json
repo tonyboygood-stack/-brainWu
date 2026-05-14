@@ -35,7 +35,14 @@
       "Bash(Measure-Object -Line)",
       "Bash(wc -l \"/mnt/c/Users/user/Documents/GitHub/-/400_Atlas/Sources/稅務法規講座.md\")",
       "Bash(powershell.exe -Command \"\\(Get-Content 'C:\\\\Users\\\\user\\\\Documents\\\\GitHub\\\\-\\\\400_Atlas\\\\Sources\\\\稅務法規講座.md' | Measure-Object -Line\\).Lines\")",
-      "Bash(powershell.exe -Command \"python3 -c \\\\\"import sys; content = open\\('C:/Users/user/Documents/GitHub/-/400_Atlas/Sources/稅務法規講座.md', encoding='utf-8'\\).read\\(\\); print\\(len\\(content\\)\\); print\\(content[:200]\\)\\\\\"\")"
+      "Bash(powershell.exe -Command \"python3 -c \\\\\"import sys; content = open\\('C:/Users/user/Documents/GitHub/-/400_Atlas/Sources/稅務法規講座.md', encoding='utf-8'\\).read\\(\\); print\\(len\\(content\\)\\); print\\(content[:200]\\)\\\\\"\")",
+      "mcp__Claude_in_Chrome__tabs_context_mcp",
+      "mcp__Claude_in_Chrome__navigate",
+      "mcp__Claude_in_Chrome__read_page",
+      "mcp__Claude_in_Chrome__get_page_text",
+      "mcp__Claude_in_Chrome__find",
+      "mcp__Claude_in_Chrome__form_input",
+      "mcp__Claude_in_Chrome__javascript_tool"
     ]
   }
 }
