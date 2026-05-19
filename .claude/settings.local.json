@@ -52,7 +52,9 @@
       "Bash(powershell -Command \"[Console]::OutputEncoding = [System.Text.Encoding]::UTF8; Get-ChildItem 'G:\\\\我的雲端硬碟\\\\我的AI同步資料夾\\\\receipts\\\\' | Select-Object -First 5 | Format-Table Name\")",
       "Bash(Remove-Item \"C:\\\\Users\\\\user\\\\Documents\\\\GitHub\\\\-\\\\000_Agent\\\\tmp_copy_receipts.ps1\" -Force)",
       "Bash(Remove-Item \"C:\\\\Users\\\\user\\\\Documents\\\\GitHub\\\\-\\\\000_Agent\\\\copy2.ps1\" -Force)",
-      "mcp__scheduled-tasks__create_scheduled_task"
+      "mcp__scheduled-tasks__create_scheduled_task",
+      "Bash(grep -rl \"沉脈\" 400_Atlas/Notes/)",
+      "Bash(grep -rl \"沉脈\" 400_Atlas/Maps/)"
     ]
   }
 }
