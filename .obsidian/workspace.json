@@ -8,20 +8,6 @@
         "type": "tabs",
         "children": [
           {
-            "id": "ffc5ec218baf6070",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "400_Atlas/Maps/脈診 MOC.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "脈診 MOC"
-            }
-          },
-          {
             "id": "98c28bdbf2e79ac2",
             "type": "leaf",
             "state": {
@@ -201,9 +187,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "ffc5ec218baf6070",
+  "active": "98c28bdbf2e79ac2",
   "lastOpenFiles": [
     "400_Atlas/Notes/乾針_肩膀前側痛_喙突外側觸發點.md",
+    "400_Atlas/Maps/脈診 MOC.md",
     "400_Atlas/Case/2026-05-20_蔡如茜_心悸恐慌水飲.md",
     "400_Atlas/Case/2026-05-20_林香杉_面紅熱類酒糟.md",
     "400_Atlas/Notes/2026-05-19_沉濡弱：陽虛收斂無力與骨節痛（痛風）.md",
@@ -242,7 +229,6 @@
     "600_Projects/報稅2026/receipts/20260516_224235.jpg",
     "000_Agent/copy2.ps1",
     "000_Agent/tmp_copy_receipts.ps1",
-    "200_Reference/templates/報稅收據整理規則.md",
     "600_Projects/東湖診所開業計畫/receipts",
     "600_Projects/報稅2026/receipts",
     "600_Projects/報稅2026",
