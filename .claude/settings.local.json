@@ -56,7 +56,11 @@
       "Bash(grep -rl \"沉脈\" 400_Atlas/Notes/)",
       "Bash(grep -rl \"沉脈\" 400_Atlas/Maps/)",
       "Skill(good-morning)",
-      "Skill(good-morning:*)"
+      "Skill(good-morning:*)",
+      "Skill(case-image-sort)",
+      "Skill(case-image-sort:*)",
+      "Bash(Get-ChildItem \"G:/我的雲端硬碟/我的AI同步資料夾/病例圖片/\" -Recurse)",
+      "Bash(Select-Object Name, Length, LastWriteTime)"
     ]
   }
 }
