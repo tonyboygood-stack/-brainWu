@@ -54,7 +54,9 @@
       "Bash(Remove-Item \"C:\\\\Users\\\\user\\\\Documents\\\\GitHub\\\\-\\\\000_Agent\\\\copy2.ps1\" -Force)",
       "mcp__scheduled-tasks__create_scheduled_task",
       "Bash(grep -rl \"沉脈\" 400_Atlas/Notes/)",
-      "Bash(grep -rl \"沉脈\" 400_Atlas/Maps/)"
+      "Bash(grep -rl \"沉脈\" 400_Atlas/Maps/)",
+      "Skill(good-morning)",
+      "Skill(good-morning:*)"
     ]
   }
 }
