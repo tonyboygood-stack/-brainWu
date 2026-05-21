@@ -60,7 +60,12 @@
       "Skill(case-image-sort)",
       "Skill(case-image-sort:*)",
       "Bash(Get-ChildItem \"G:/我的雲端硬碟/我的AI同步資料夾/病例圖片/\" -Recurse)",
-      "Bash(Select-Object Name, Length, LastWriteTime)"
+      "Bash(Select-Object Name, Length, LastWriteTime)",
+      "Bash(python3 -c ' *)",
+      "Bash(python -c \"from PIL import Image; print\\('PIL ok'\\)\")",
+      "Bash(python3 -c \"from PIL import Image; print\\('PIL ok'\\)\")",
+      "Skill(note-capture)",
+      "Skill(note-capture:*)"
     ]
   }
 }
