@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "400_Atlas/Notes/臨床成長記錄.md",
+                "file": "400_Atlas/Sources/2026_傅士豪_疼痛科學徒手工作坊.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "臨床成長記錄"
+              "title": "2026_傅士豪_疼痛科學徒手工作坊"
             }
           }
         ]
@@ -78,8 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "a65f4839c4f1ffdc",
@@ -195,6 +194,7 @@
   },
   "active": "98c28bdbf2e79ac2",
   "lastOpenFiles": [
+    "400_Atlas/Notes/臨床成長記錄.md",
     "400_Atlas/Notes/2026-05-24_關節重製術_關節微小錯位與肌肉保護機制.md",
     "400_Atlas/Notes/2026-05-24_小青龍湯_浮弦緊脈的辨治框架.md",
     "400_Atlas/Notes/臨床成長記錄.md.tmp.47560.776b663ed56b",
@@ -229,7 +229,6 @@
     "400_Atlas/Case/2026-05-04_丁立夫_疲勞眠差.md",
     "400_Atlas/Case/2026-05-02_張麗玲_長期耳鳴.md",
     "400_Atlas/Case/2026-05-20_蔡如茜_心悸恐慌水飲.md",
-    "400_Atlas/Notes/水飲邪的評估.md",
     "400_Atlas/Case/2026-05-02_張麗玲_長期耳鳴.md.tmp.24140.44ba2203a41b",
     "400_Atlas/Case/attachments/2026-05-21_廖秋華_舌面.png",
     "400_Atlas/Case/attachments/2026-05-21_張麗玲_舌象.jpg",
