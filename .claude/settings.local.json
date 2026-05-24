@@ -65,7 +65,8 @@
       "Bash(python -c \"from PIL import Image; print\\('PIL ok'\\)\")",
       "Bash(python3 -c \"from PIL import Image; print\\('PIL ok'\\)\")",
       "Skill(note-capture)",
-      "Skill(note-capture:*)"
+      "Skill(note-capture:*)",
+      "Bash(dir \"C:\\\\Users\\\\user\\\\Documents\\\\GitHub\\\\-\\\\100_Todo\\\\\" /b)"
     ]
   }
 }
