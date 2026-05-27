@@ -67,7 +67,8 @@
       "Skill(note-capture)",
       "Skill(note-capture:*)",
       "Bash(dir \"C:\\\\Users\\\\user\\\\Documents\\\\GitHub\\\\-\\\\100_Todo\\\\\" /b)",
-      "WebFetch(domain:www.firapy.com.tw)"
+      "WebFetch(domain:www.firapy.com.tw)",
+      "WebFetch(domain:shunkang.tw)"
     ]
   }
 }
