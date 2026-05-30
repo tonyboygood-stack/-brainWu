@@ -70,7 +70,8 @@
       "WebFetch(domain:www.firapy.com.tw)",
       "WebFetch(domain:shunkang.tw)",
       "WebFetch(domain:www.derleetai.com.tw)",
-      "mcp__firecrawl__firecrawl_scrape"
+      "mcp__firecrawl__firecrawl_scrape",
+      "Bash(cd /c/Users/user/Documents/GitHub/-/ && grep -rl \"status: 追蹤中\" 400_Atlas/Case/ 2>/dev/null)"
     ]
   }
 }
