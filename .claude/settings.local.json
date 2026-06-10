@@ -71,7 +71,9 @@
       "WebFetch(domain:shunkang.tw)",
       "WebFetch(domain:www.derleetai.com.tw)",
       "mcp__firecrawl__firecrawl_scrape",
-      "Bash(cd /c/Users/user/Documents/GitHub/-/ && grep -rl \"status: 追蹤中\" 400_Atlas/Case/ 2>/dev/null)"
+      "Bash(cd /c/Users/user/Documents/GitHub/-/ && grep -rl \"status: 追蹤中\" 400_Atlas/Case/ 2>/dev/null)",
+      "Bash(grep -rn \"臨床成長記錄\\\\|臨床思考\\\\|臨床連結\\\\|觸發案例\" 000_Agent/memory/*.md)",
+      "Bash(grep -rln \"臨床成長記錄\" .claude/skills/*/*.md \"C:/Users/user/.claude/skills\"/*/*.md)"
     ]
   }
 }
