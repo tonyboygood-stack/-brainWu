@@ -178,8 +178,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -193,8 +192,9 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "98c28bdbf2e79ac2",
+  "active": "d733d08a611651f8",
   "lastOpenFiles": [
+    "400_Atlas/Notes/2026-06-25_表閉鬱熱_防風通聖散與荊芥大黃思路.md",
     "400_Atlas/Notes/2026-06-25_柴胡配大黃_雙向排濁開闔法.md",
     "400_Atlas/Notes/2026-06-25_柴胡配大黃_雙向排濁開闔法.md.tmp.13744.f2d73fb6484c",
     "400_Atlas/Notes/2026-06-25_凹字脈_風藥升陽開表法.md",
@@ -232,7 +232,6 @@
     "500_Inbox/通谷（KI-20）.md",
     "500_Inbox/陰交(CV-7).md",
     "500_Inbox/陰都(KI-19）.md",
-    "600_Projects/東湖診所開業計畫/醫療服務/我希望提供的醫療服務.md",
     "400_Atlas/Assets/Pasted image 20260616143740.png",
     "400_Atlas/Assets/Pasted image 20260609104654.png",
     "400_Atlas/Assets/Pasted image 20260609104405.png",
