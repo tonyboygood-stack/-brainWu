@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "400_Atlas/Maps/臨床新思路 MOC.md",
+                "file": "400_Atlas/Maps/氣血津液病理 MOC.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "臨床新思路 MOC"
+              "title": "氣血津液病理 MOC"
             }
           }
         ]
@@ -192,8 +192,11 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "c6643e0934e82954",
+  "active": "98c28bdbf2e79ac2",
   "lastOpenFiles": [
+    "400_Atlas/Notes/2026-07-05_瓜蔞薤白_振奮心陽與肺痰熱累心模型.md",
+    "400_Atlas/Maps/病理模型 MOC.md",
+    "400_Atlas/Maps/臨床新思路 MOC.md",
     "400_Atlas/Notes/2026-06-25_凹字脈_風藥升陽開表法.md.tmp.41760.755514ffc3e0",
     "400_Atlas/Notes/2026-07-05_川芎_行血中氣與風藥助循環修復.md",
     "400_Atlas/Notes/臨床成長記錄.md.tmp.41760.580017861bb0",
@@ -215,7 +218,6 @@
     "400_Atlas/Notes/2026-07-02_決明子_降膽助肝火下降滋水涵木.md",
     "400_Atlas/Notes/2026-07-02_左關關下變粗_肝經濕熱脈象與龍膽用藥.md",
     "400_Atlas/Notes/2026-07-02_白酒配伍原則_滋陰陰中求陽與溫陽風險.md",
-    "400_Atlas/Maps/臨床新思路 MOC.md",
     "400_Atlas/Notes/2026-07-02_白酒虎杖_一升一降護肝膽.md",
     "400_Atlas/Notes/2026-07-02_陰虛水腫_濁陰降而不化的矛盾辨治.md",
     "400_Atlas/Notes/2026-07-01_兩尺細精虧_男女補腎藥組與更年期用藥.md",
@@ -226,10 +228,8 @@
     "400_Atlas/Notes/2026-07-01_搖八髎法_衛教操作.md",
     "400_Atlas/Maps/飲食療癒 MOC.md",
     "400_Atlas/Notes/2026-06-30_左尺沉取腎陰_腎陰是臟腑陰質的根源.md",
-    "400_Atlas/Questions/2026-06-27_升降開闔多尺度應用_腎病開闔辨治待探索.md",
     "400_Atlas/Notes/2026-06-27_酒制與醋制_一開一闔炮製原理與香附丸驗方.md.tmp.13744.c1421c5666ca",
     "400_Atlas/Notes/2026-06-25_柴胡配大黃_雙向排濁開闔法.md.tmp.13744.f2d73fb6484c",
-    "400_Atlas/Notes/2026-06-25_凹字脈_風藥升陽開表法.md.tmp.13744.1c7602e7673b",
     "400_Atlas/Assets/Pasted image 20260620012734.png",
     "400_Atlas/Assets/Pasted image 20260620012624.png",
     "400_Atlas/Assets/Pasted image 20260616143740.png",
