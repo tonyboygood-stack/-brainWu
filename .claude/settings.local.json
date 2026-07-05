@@ -77,7 +77,8 @@
       "Bash(claude --version)",
       "Bash(npx @anthropic-ai/claude-code --version)",
       "Bash(npm view *)",
-      "Bash(xargs grep -l \"status: 追蹤中\")"
+      "Bash(xargs grep -l \"status: 追蹤中\")",
+      "Bash(python3 -c \"import datetime; print\\(datetime.date\\(2026,7,5\\).strftime\\('%A'\\)\\)\")"
     ]
   }
 }
