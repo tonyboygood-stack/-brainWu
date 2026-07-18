@@ -50,6 +50,7 @@
 | `- [ ] 任務 #專案名` | 任務 + hashtag | `100_Todo/` + 同步 `600_Projects/專案/index.md` |
 | 想寫一篇文章 | 創作靈感 | `100_Todo/drafts/articles/` |
 | 中醫知識內容 | 可建卡 | `400_Atlas/Notes/` |
+| 讀書時丟的內容片段 | 讀書中，未說「整理」| 先原樣存 `500_Inbox/inbox.md` 的「讀書筆記暫存」區塊，不追問、不建卡，等說「整理今天讀書筆記」才觸發 note-capture skill 拆分建卡 |
 | 疑問、待深究 | 有問號 | `400_Atlas/Questions/` |
 | 問診 / 病案 | 臨床記錄 | `400_Atlas/Case/` |
 | 書、文章、課程 | 來源 | `400_Atlas/Sources/` |
