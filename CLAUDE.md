@@ -36,11 +36,12 @@
 | 每日反思 / session log         | `000_Agent/memory/daily/YYYY-MM-DD.md`            |
 | 每月日誌                       | `300_Journal/YYYY-MM/`                            |
 | 我自己建的工作流（Skill）      | `000_Agent/skills/`（已 symlink 至 `~/.claude/skills`） |
-| 知識卡片（筆記）               | `400_Atlas/Notes/`                                |
+| 知識卡片（筆記，我的觀點）     | `400_Atlas/Notes/`                                |
 | MOC 索引                       | `400_Atlas/Maps/`                                 |
 | 待解問題筆記                   | `400_Atlas/Questions/`                            |
-| 書、文章、課程來源             | `400_Atlas/Sources/`                              |
+| 書、文章、課程來源（精選單篇） | `400_Atlas/Sources/`                              |
 | 中醫病案                       | `400_Atlas/Case/`                                 |
+| 古籍/教材原文（大量、未讀）    | `400_Atlas/Library/raw/`（史料）→ 整理進 `400_Atlas/Library/wiki/`（見 library-ingest skill，不逐一確認的自動整理） |
 
 ### Inbox 分類規則（整理時的判斷邏輯）
 
