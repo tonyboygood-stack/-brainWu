@@ -79,7 +79,11 @@
       "Bash(npm view *)",
       "Bash(xargs grep -l \"status: 追蹤中\")",
       "Bash(python3 -c \"import datetime; print\\(datetime.date\\(2026,7,5\\).strftime\\('%A'\\)\\)\")",
-      "Bash(git log *)"
+      "Bash(git log *)",
+      "WebFetch(domain:www.youtube.com)",
+      "Bash(py --version)",
+      "Bash(python \"C:\\\\Users\\\\user\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-user-Documents-GitHub--\\\\18aae72a-d229-46d9-ad78-8ae8243a9c37\\\\scratchpad\\\\extract_desc.py\")",
+      "mcp__firecrawl__firecrawl_search"
     ]
   }
 }
