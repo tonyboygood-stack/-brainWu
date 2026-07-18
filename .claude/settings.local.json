@@ -83,7 +83,8 @@
       "WebFetch(domain:www.youtube.com)",
       "Bash(py --version)",
       "Bash(python \"C:\\\\Users\\\\user\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-user-Documents-GitHub--\\\\18aae72a-d229-46d9-ad78-8ae8243a9c37\\\\scratchpad\\\\extract_desc.py\")",
-      "mcp__firecrawl__firecrawl_search"
+      "mcp__firecrawl__firecrawl_search",
+      "WebFetch(domain:github.com)"
     ]
   }
 }
