@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "400_Atlas/Library/wiki/病機病理/肺癰.md",
+                "file": "400_Atlas/Library/wiki/index.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "肺癰"
+              "title": "index"
             }
           }
         ]
@@ -192,8 +192,12 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "c6643e0934e82954",
+  "active": "98c28bdbf2e79ac2",
   "lastOpenFiles": [
+    "400_Atlas/Library/log.md",
+    "400_Atlas/Library/raw/趙紹琴臨證400法.md",
+    "400_Atlas/Library/raw/未命名.md",
+    "400_Atlas/Library/wiki/病機病理/肺癰.md",
     "400_Atlas/Notes/2026-07-19_羌活與獨活_升散部位辨異與傷胃陰對治.md",
     "400_Atlas/Library/wiki/典籍/臨證400法.md",
     "400_Atlas/Library/wiki/方劑/肺癰四期方_甘寒育陰活血通絡.md",
@@ -206,17 +210,14 @@
     "400_Atlas/Library/wiki/方劑/肺癰四期方_甘寒育陰活血通絡.md.tmp.9764.c1ac2ee59c9e",
     "400_Atlas/Library/wiki/方劑/肺癰一期方_辛涼清解肅降化痰.md.tmp.9764.8b48d6d21486",
     "400_Atlas/Library/wiki/典籍/臨證400法.md.tmp.9764.d770eb54170b",
-    "400_Atlas/Library/raw/未命名.md",
     "400_Atlas/Library/wiki/醫家/趙紹琴.md",
     "400_Atlas/Library/log.md.tmp.9764.2031335338dd",
     "400_Atlas/Library/wiki/方劑/肺癰三期方_清化痰熱活血化瘀.md.tmp.9764.839c3889c61f",
-    "400_Atlas/Library/wiki/病機病理/肺癰.md",
     "400_Atlas/Library/wiki/index.md",
     "000_Agent/skills/library-ingest/SKILL.md.tmp.9764.1a6d163015e6",
     "400_Atlas/Library/wiki/診斷評估",
     "400_Atlas/Library/wiki/解剖生理",
     "400_Atlas/Library/wiki/穴位經絡",
-    "400_Atlas/Library/log.md",
     "400_Atlas/Notes/2026-07-05_肺開闔與冷熱環境_順應溫度調節的治療與衛教.md",
     "000_Agent/skills/library-ingest/SKILL.md",
     "400_Atlas/Notes/2026-07-16_以脈測症_脈證合參.md",
@@ -229,7 +230,6 @@
     "100_Todo/2026-W29_本週代辦.md",
     "400_Atlas/Notes/2026-07-13_白虎門右降的病生理.md",
     "400_Atlas/Notes/2026-07-11_左寸右尺心腎代償_命門火衰與虛陽上浮的上熱下寒病理.md",
-    "400_Atlas/Notes/2026-07-11_右寸左尺金水相生_肺闔經三焦通道與相關病理.md",
     "400_Atlas/Assets/Pasted image 20260620012734.png",
     "400_Atlas/Assets/Pasted image 20260620012624.png",
     "400_Atlas/Assets/Pasted image 20260616143740.png",
