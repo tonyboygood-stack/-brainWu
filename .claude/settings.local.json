@@ -87,7 +87,12 @@
       "WebFetch(domain:github.com)",
       "Bash(git -c core.quotepath=false status)",
       "Bash(git -c core.quotepath=false ls-files 400_Atlas/Library/wiki/)",
-      "Bash(git -c core.quotepath=false status -s)"
+      "Bash(git -c core.quotepath=false status -s)",
+      "Bash(python -c ' *)",
+      "Bash(python -)",
+      "Bash(PYTHONIOENCODING=utf-8 python -)",
+      "Bash(python build_herbs.py)",
+      "Bash(PYTHONIOENCODING=utf-8 python generate.py)"
     ]
   }
 }
