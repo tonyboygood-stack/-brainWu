@@ -93,7 +93,8 @@
       "Bash(PYTHONIOENCODING=utf-8 python -)",
       "Bash(python build_herbs.py)",
       "Bash(PYTHONIOENCODING=utf-8 python generate.py)",
-      "Bash(python update_herbs.py)"
+      "Bash(python update_herbs.py)",
+      "Bash(git -c core.quotepath=false log --diff-filter=A --name-only bd6df52..0dede48 -- 400_Atlas/Library)"
     ]
   }
 }
