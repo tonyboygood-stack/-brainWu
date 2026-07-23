@@ -58,6 +58,7 @@ related:
 created: YYYY-MM-DD
 says: "核心觀點一句話"
 clinical_insight: "這張卡對我的臨床幫助或啟發"
+when_to_use: "未來什麼情況/看到什麼症狀脈象時會想到用這張卡"
 ---
 
 內文
@@ -143,15 +144,26 @@ says 建議：「XXX」
 這樣可以嗎？或說「改成：...」讓我調整。
 ```
 
-### 第四・五步：詢問臨床啟發（clinical_insight）
-每張卡建立前必問：
+### 第四・五步：詢問臨床啟發與使用時機（clinical_insight / when_to_use）
+
+**collection 為 `[[Things]]` 或 `[[Statements]]`：兩題都問**
 ```
 這張卡對你的臨床有什麼幫助或啟發？
 （可以是一句話，或說「跳過」留空）
 ```
-- 使用者回覆內容 → 填入 `clinical_insight` 欄位
-- 使用者說「跳過」→ 欄位留空字串 `""`
-- 這個欄位會讓知識卡從「知道」變成「有用」，請每次都問，不要省略
+```
+未來什麼情況、看到什麼症狀脈象時，你會想到用這張卡？
+（可以是一句話，或說「跳過」留空）
+```
+- 使用者回覆內容 → 分別填入 `clinical_insight` / `when_to_use` 欄位
+- 使用者說「跳過」→ 對應欄位留空字串 `""`
+- 這兩個欄位會讓知識卡從「知道」變成「有用、找得回來」，請每次都問，不要省略
+
+**collection 為 `[[Questions]]` 或 `[[People]]`：只問 clinical_insight，不問 when_to_use**（問題還沒解決或人物筆記通常談不上「使用時機」，`when_to_use` 留空字串 `""`）
+
+**collection 為 `[[Quotes]]`：兩題都問**（引言也可能有適用場景）
+
+- `when_to_use` **不**同步寫入 `臨床成長記錄.md`，只存在筆記本身的 frontmatter 裡
 
 ### 第五步：顯示完整草稿，最終確認
 顯示完整 frontmatter + 內文，詢問：
