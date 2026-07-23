@@ -94,7 +94,8 @@
       "Bash(python build_herbs.py)",
       "Bash(PYTHONIOENCODING=utf-8 python generate.py)",
       "Bash(python update_herbs.py)",
-      "Bash(git -c core.quotepath=false log --diff-filter=A --name-only bd6df52..0dede48 -- 400_Atlas/Library)"
+      "Bash(git -c core.quotepath=false log --diff-filter=A --name-only bd6df52..0dede48 -- 400_Atlas/Library)",
+      "Bash(python3 -c \"import datetime; d=datetime.date\\(2026,7,23\\); print\\(d.isocalendar\\(\\)\\)\")"
     ]
   }
 }
