@@ -96,7 +96,10 @@
       "Bash(python update_herbs.py)",
       "Bash(git -c core.quotepath=false log --diff-filter=A --name-only bd6df52..0dede48 -- 400_Atlas/Library)",
       "Bash(python3 -c \"import datetime; d=datetime.date\\(2026,7,23\\); print\\(d.isocalendar\\(\\)\\)\")",
-      "Bash(git -c core.quotepath=false diff --name-status 24b4509 HEAD -- 400_Atlas/Library/wiki/藥物本草/)"
+      "Bash(git -c core.quotepath=false diff --name-status 24b4509 HEAD -- 400_Atlas/Library/wiki/藥物本草/)",
+      "Bash(ls \"C:/Users/user/Documents/GitHub/\" 2>&1 | head -30)",
+      "Bash(python -m pip --version)",
+      "Bash(python -m pip show streamlit)"
     ]
   }
 }
