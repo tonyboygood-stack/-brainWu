@@ -36,21 +36,35 @@
             }
           },
           {
-            "id": "0b1b777214be0e8b",
+            "id": "d9c01a952db1135f",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "400_Atlas/Sources/疼痛科學與徒手治療工作坊第一天課程.md",
+                "file": "400_Atlas/Library/raw/幽門(KI-21).md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "疼痛科學與徒手治療工作坊第一天課程"
+              "title": "幽門(KI-21)"
+            }
+          },
+          {
+            "id": "c1eb32fa02fbea99",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "500_Inbox/未命名.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "未命名"
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -221,28 +235,37 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "0b1b777214be0e8b",
+  "active": "c1eb32fa02fbea99",
   "lastOpenFiles": [
+    "500_Inbox/未命名.base",
+    "400_Atlas/Library/raw/橫骨(KI-11).md",
+    "500_Inbox/300_Journal.md",
+    "500_Inbox/2026-04-29.md",
+    "500_Inbox/2026-04-26.md",
+    "400_Atlas/Library/raw/大赫(KI-12).md",
+    "400_Atlas/Library/raw/屈髖肌群.md",
+    "400_Atlas/Library/raw/陰都(KI-19）.md",
+    "400_Atlas/Library/raw/幽門(KI-21).md",
+    "400_Atlas/Library/raw/通谷（KI-20）.md",
+    "400_Atlas/Library/raw/奇經八脈管理基因層面，也處理影響基因層面的因子(環境病因).md",
+    "400_Atlas/Library/raw/奇經八脈的適應症.md",
+    "400_Atlas/Library/raw/地標穴.md",
+    "400_Atlas/Library/raw/石關(KI-18).md",
+    "500_Inbox/未命名 1.md",
+    "500_Inbox/未命名.md",
+    "500_Inbox/未命名 5.base",
+    "500_Inbox/未命名 3.base",
+    "400_Atlas/Sources/疼痛科學與徒手治療工作坊第一天課程.md",
     "400_Atlas/Sources/鄭欽安_醫法圓通_膝腫痛.md",
     "400_Atlas/Sources/The Sinew Channels 古典針灸筋經治療.md",
     "400_Atlas/Sources/PathologyOutlines.md",
-    "500_Inbox/屈髖肌群.md",
     "400_Atlas/Assets/Pasted image 20260730152542.png",
-    "400_Atlas/Sources/疼痛科學與徒手治療工作坊第一天課程.md",
     "400_Atlas/Sources/2026_傅士豪_疼痛科學徒手工作坊.md",
     "400_Atlas/Library/wiki/方劑/腰痛五法_填補下元滋陰降火.md",
     "400_Atlas/Library/wiki/藥物本草/女貞子.md",
     "400_Atlas/Library/wiki/方劑/胃脘痛六法_甘溫養中調血緩痛.md",
     "400_Atlas/Library/wiki/方劑/虛勞四法_滋補腎陰壯水制火.md",
     "400_Atlas/Library/wiki/藥物本草/山藥.md",
-    "400_Atlas/Library/wiki/方劑/腹痛四法_和中消導理氣止痛.md",
-    "400_Atlas/Library/wiki/藥物本草/山楂.md",
-    "400_Atlas/Library/wiki/藥物本草/丁香.md",
-    "400_Atlas/Notes/2026-05-19_沉濡弱：陽虛收斂無力與骨節痛（痛風）.md",
-    "000_Agent/memory/daily/2026-07-27.md",
-    "400_Atlas/Notes/2026-05-19_沉脈辨證思路：先分虛實.md",
-    "500_Inbox/學長病案分享---皮膚疾病.md",
-    "000_Agent/memory/daily/2026-07-23.md",
     "400_Atlas/Library/wiki/藥物本草/佩蘭.md.tmp.8532.123ab0220b31",
     "400_Atlas/Library/wiki/藥物本草/地榆.md.tmp.8532.32e59a5b99f2",
     "400_Atlas/Library/wiki/藥物本草/枳實.md.tmp.8532.9b458442de03",
@@ -251,15 +274,6 @@
     "400_Atlas/Library/wiki/藥物本草/牛膝.md.tmp.8532.b3811609bf49",
     "400_Atlas/Library/wiki/藥物本草/小薊.md.tmp.8532.5c0203eb0fd6",
     "400_Atlas/Library/wiki/藥物本草/僵蠶.md.tmp.8532.4dca5b6451c1",
-    "400_Atlas/Library/wiki/藥物本草/蠐螬.md.tmp.8532.ff4306f7a445",
-    "400_Atlas/Library/wiki/藥物本草/天花粉.md.tmp.8532.3102e3a1d949",
-    "400_Atlas/Library/wiki/藥物本草/酸棗仁.md",
-    "400_Atlas/Library/wiki/藥物本草/龍齒.md",
-    "400_Atlas/Library/wiki/藥物本草/茯神.md",
-    "400_Atlas/Library/wiki/藥物本草/磁石.md",
-    "400_Atlas/Library/wiki/藥物本草/穿山甲.md",
-    "400_Atlas/Library/wiki/藥物本草/麻黃根.md",
-    "400_Atlas/Library/wiki/藥物本草/秫米.md",
     "400_Atlas/Assets/Pasted image 20260722223838.png",
     "400_Atlas/Assets/Pasted image 20260722223824.png",
     "400_Atlas/Assets/Pasted image 20260722220705.png",
