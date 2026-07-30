@@ -34,9 +34,23 @@
               "icon": "lucide-file",
               "title": "疼痛科學與徒手治療工作坊第一天課程"
             }
+          },
+          {
+            "id": "0b1b777214be0e8b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "400_Atlas/Sources/疼痛科學與徒手治療工作坊第一天課程.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "疼痛科學與徒手治療工作坊第一天課程"
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -207,10 +221,15 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "e1ba78209e7c8db0",
+  "active": "0b1b777214be0e8b",
   "lastOpenFiles": [
-    "400_Atlas/Sources/2026_傅士豪_疼痛科學徒手工作坊.md",
+    "400_Atlas/Sources/鄭欽安_醫法圓通_膝腫痛.md",
+    "400_Atlas/Sources/The Sinew Channels 古典針灸筋經治療.md",
+    "400_Atlas/Sources/PathologyOutlines.md",
+    "500_Inbox/屈髖肌群.md",
+    "400_Atlas/Assets/Pasted image 20260730152542.png",
     "400_Atlas/Sources/疼痛科學與徒手治療工作坊第一天課程.md",
+    "400_Atlas/Sources/2026_傅士豪_疼痛科學徒手工作坊.md",
     "400_Atlas/Library/wiki/方劑/腰痛五法_填補下元滋陰降火.md",
     "400_Atlas/Library/wiki/藥物本草/女貞子.md",
     "400_Atlas/Library/wiki/方劑/胃脘痛六法_甘溫養中調血緩痛.md",
@@ -241,10 +260,6 @@
     "400_Atlas/Library/wiki/藥物本草/穿山甲.md",
     "400_Atlas/Library/wiki/藥物本草/麻黃根.md",
     "400_Atlas/Library/wiki/藥物本草/秫米.md",
-    "400_Atlas/Library/wiki/藥物本草/雞子黃.md",
-    "400_Atlas/Library/wiki/藥物本草/首烏藤.md",
-    "400_Atlas/Library/wiki/藥物本草/黑大豆.md",
-    "400_Atlas/Library/wiki/藥物本草/北五加皮.md",
     "400_Atlas/Assets/Pasted image 20260722223838.png",
     "400_Atlas/Assets/Pasted image 20260722223824.png",
     "400_Atlas/Assets/Pasted image 20260722220705.png",
@@ -254,7 +269,6 @@
     "400_Atlas/Assets/Pasted image 20260616143740.png",
     "400_Atlas/Assets/Pasted image 20260609104654.png",
     "400_Atlas/Assets/Pasted image 20260609104405.png",
-    "400_Atlas/Assets/Pasted image 20260604165834.png",
     "未命名 1.canvas",
     "未命名.canvas"
   ]
