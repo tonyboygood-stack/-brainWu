@@ -103,7 +103,8 @@
       "Bash(python3 -)",
       "Bash(git -C \"C:\\\\Users\\\\user\\\\Documents\\\\GitHub\\\\-\" add \"100_Todo/2026-W32_本週代辦.md\")",
       "Bash(git -C \"C:\\\\Users\\\\user\\\\Documents\\\\GitHub\\\\-\" commit -m \"建立 2026-W32 本週代辦，承接過期未完成項目\")",
-      "Bash(git -C \"C:\\\\Users\\\\user\\\\Documents\\\\GitHub\\\\-\" status)"
+      "Bash(git -C \"C:\\\\Users\\\\user\\\\Documents\\\\GitHub\\\\-\" status)",
+      "Bash(echo \"exit code: $?\")"
     ]
   }
 }
