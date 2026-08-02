@@ -99,7 +99,11 @@
       "Bash(git -c core.quotepath=false diff --name-status 24b4509 HEAD -- 400_Atlas/Library/wiki/藥物本草/)",
       "Bash(ls \"C:/Users/user/Documents/GitHub/\" 2>&1 | head -30)",
       "Bash(python -m pip --version)",
-      "Bash(python -m pip show streamlit)"
+      "Bash(python -m pip show streamlit)",
+      "Bash(python3 -)",
+      "Bash(git -C \"C:\\\\Users\\\\user\\\\Documents\\\\GitHub\\\\-\" add \"100_Todo/2026-W32_本週代辦.md\")",
+      "Bash(git -C \"C:\\\\Users\\\\user\\\\Documents\\\\GitHub\\\\-\" commit -m \"建立 2026-W32 本週代辦，承接過期未完成項目\")",
+      "Bash(git -C \"C:\\\\Users\\\\user\\\\Documents\\\\GitHub\\\\-\" status)"
     ]
   }
 }
