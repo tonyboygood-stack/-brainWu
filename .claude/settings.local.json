@@ -105,7 +105,8 @@
       "Bash(git -C \"C:\\\\Users\\\\user\\\\Documents\\\\GitHub\\\\-\" commit -m \"建立 2026-W32 本週代辦，承接過期未完成項目\")",
       "Bash(git -C \"C:\\\\Users\\\\user\\\\Documents\\\\GitHub\\\\-\" status)",
       "Bash(echo \"exit code: $?\")",
-      "Bash(ls -la \"C:\\\\Users\\\\user\\\\.claude\\\\skills\\\\good-morning\\\\\" 2>&1)"
+      "Bash(ls -la \"C:\\\\Users\\\\user\\\\.claude\\\\skills\\\\good-morning\\\\\" 2>&1)",
+      "mcp__scheduled-tasks__list_scheduled_tasks"
     ]
   }
 }
