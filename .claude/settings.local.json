@@ -107,7 +107,9 @@
       "Bash(echo \"exit code: $?\")",
       "Bash(ls -la \"C:\\\\Users\\\\user\\\\.claude\\\\skills\\\\good-morning\\\\\" 2>&1)",
       "mcp__scheduled-tasks__list_scheduled_tasks",
-      "mcp__claude-in-chrome__list_connected_browsers"
+      "mcp__claude-in-chrome__list_connected_browsers",
+      "Bash(grep -oE 'generic \\\\\\\\\"[^\\\\\\\\]*鈕[^\\\\\\\\]*\\\\\\\\\" \\\\[ref_[0-9]+\\\\]' \"C:\\\\Users\\\\user\\\\.claude\\\\projects\\\\C--Users-user-Documents-GitHub--\\\\450c1057-f3c3-4577-bbc2-1d3c20ffa7f1\\\\tool-results\\\\mcp-Claude_Browser-read_page-1785948973684.txt\")",
+      "Bash(grep -oE 'generic \\\\\\\\\"[^\\\\\\\\]*[Bb]utton[^\\\\\\\\]*\\\\\\\\\" \\\\[ref_[0-9]+\\\\]' \"C:\\\\Users\\\\user\\\\.claude\\\\projects\\\\C--Users-user-Documents-GitHub--\\\\450c1057-f3c3-4577-bbc2-1d3c20ffa7f1\\\\tool-results\\\\mcp-Claude_Browser-read_page-1785948973684.txt\")"
     ]
   }
 }
