@@ -39,12 +39,14 @@
             "id": "56b295a86d78a258",
             "type": "leaf",
             "state": {
-              "type": "release-notes",
+              "type": "markdown",
               "state": {
-                "currentVersion": "1.13.4"
+                "file": "400_Atlas/Sources/2026-06-08_邵禹豪_蕁麻疹溫清飲透邪案.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-book-up",
-              "title": "發行記錄 1.13.4"
+              "icon": "lucide-file",
+              "title": "2026-06-08_邵禹豪_蕁麻疹溫清飲透邪案"
             }
           },
           {
