@@ -36,6 +36,18 @@
             }
           },
           {
+            "id": "56b295a86d78a258",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.13.4"
+              },
+              "icon": "lucide-book-up",
+              "title": "發行記錄 1.13.4"
+            }
+          },
+          {
             "id": "c1eb32fa02fbea99",
             "type": "leaf",
             "state": {
@@ -50,7 +62,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -70,7 +82,9 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": false
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-folder-closed",
               "title": "檔案瀏覽器"
@@ -221,7 +235,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "e1ba78209e7c8db0",
+  "active": "56b295a86d78a258",
   "lastOpenFiles": [
     "600_Projects/東湖診所開業計畫/LOGO/2047199_600x600.jpg",
     "600_Projects/東湖診所開業計畫/LOGO/尚未確認的 101975.crdownload",
