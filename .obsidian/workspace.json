@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "500_Inbox/inbox.md",
+                "file": "400_Atlas/Case/2026-05-01_廖秋華_疫苗後遺症下肢痠麻痛.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "inbox"
+              "title": "2026-05-01_廖秋華_疫苗後遺症下肢痠麻痛"
             }
           },
           {
@@ -239,6 +239,12 @@
   },
   "active": "56b295a86d78a258",
   "lastOpenFiles": [
+    "400_Atlas/Library/wiki/舌診判讀參考/測試_正中縱裂紋參考.png",
+    "400_Atlas/Library/wiki/舌診判讀參考/測試_正中縱裂紋參考.md",
+    "400_Atlas/Library/wiki/舌診判讀參考",
+    "600_Projects/東湖診所開業計畫/LOGO/Gemini_Generated_Image_szd6alszd6alszd6.png",
+    "600_Projects/東湖診所開業計畫/LOGO/尚未確認的 177349.crdownload",
+    "500_Inbox/inbox.md",
     "600_Projects/病歷紀錄/111/index.md",
     "600_Projects/病歷紀錄/111/attachments/2026-08-12_舌象_2.jpg",
     "600_Projects/病歷紀錄/111/attachments/2026-08-12_舌象_1.jpg",
@@ -252,8 +258,6 @@
     "600_Projects/病歷紀錄/測試統一病人/index.md",
     "600_Projects/病歷紀錄/測試統一病人",
     "600_Projects/舌診紀錄/測試同步病人/attachments",
-    "600_Projects/舌診紀錄/測試同步病人",
-    "600_Projects/舌診紀錄",
     "600_Projects/舌診紀錄/測試新病人（#99999）/attachments/2026-08-12_舌象.png",
     "600_Projects/舌診紀錄/測試新病人（#99999）/index.md",
     "400_Atlas/Case/attachments/2026-08-12_測試病人_舌象.png",
@@ -266,7 +270,6 @@
     "600_Projects/東湖診所開業計畫/人員招募/職缺說明書_PT週六助理.md",
     "600_Projects/東湖診所開業計畫/LOGO/2047199_600x600.jpg",
     "600_Projects/東湖診所開業計畫/LOGO/67235_011.jpg",
-    "600_Projects/東湖診所開業計畫/LOGO/C20240701204124801.webp",
     "400_Atlas/Library/wiki/診斷評估/髖關節伸直檢測.md",
     "400_Atlas/Sources/診所提示慈.md",
     "300_Journal/2026-08/2026-08-03.md",
@@ -282,9 +285,6 @@
     "400_Atlas/Library/wiki/解剖生理/姿勢動態中立與最佳肌張力.md",
     "400_Atlas/Library/wiki/診斷評估/本體感覺評估.md",
     "400_Atlas/Library/wiki/診斷評估/伏地挺身動作模式測試.md",
-    "400_Atlas/Library/wiki/診斷評估/頸部屈曲動作模式測試.md",
-    "400_Atlas/Library/wiki/診斷評估/髖關節外展檢測.md",
-    "400_Atlas/Library/wiki/診斷評估/軀幹屈曲檢測.md",
     "未命名 1.canvas",
     "未命名.canvas"
   ]
