@@ -117,7 +117,8 @@
       "Bash(powershell -Command \"Remove-Item 'C:\\\\Users\\\\user\\\\.claude\\\\skills\\\\case-image-sort' -Force\")",
       "Bash(rmdir \"/c/Users/user/.claude/skills/case-image-sort\")",
       "Bash(cmd //c \"rmdir C:\\\\Users\\\\user\\\\.claude\\\\skills\\\\case-image-sort\")",
-      "Bash(ls \"/c/Users/user/.claude/skills/\" 2>&1)"
+      "Bash(ls \"/c/Users/user/.claude/skills/\" 2>&1)",
+      "Bash(git commit -q -m ' *)"
     ]
   }
 }
