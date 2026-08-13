@@ -50,6 +50,18 @@
             }
           },
           {
+            "id": "d3f45406063be0cb",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.13.7"
+              },
+              "icon": "lucide-book-up",
+              "title": "發行記錄 1.13.7"
+            }
+          },
+          {
             "id": "c1eb32fa02fbea99",
             "type": "leaf",
             "state": {
@@ -64,7 +76,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -237,7 +249,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "56b295a86d78a258",
+  "active": "d3f45406063be0cb",
   "lastOpenFiles": [
     "400_Atlas/Library/wiki/舌診判讀參考/測試_正中縱裂紋參考.png",
     "400_Atlas/Library/wiki/舌診判讀參考/測試_正中縱裂紋參考.md",
