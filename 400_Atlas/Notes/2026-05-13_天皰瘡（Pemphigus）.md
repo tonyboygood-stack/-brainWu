@@ -3,6 +3,8 @@ up: "[[自體免疫疾病 MOC]]"
 collection: "[[Things這是什麼]]"
 related: 
 date: 2026-05-13
+framework: "框架外（西醫自體免疫皮膚病）｜—｜—"
+framework_gap: "純西醫免疫性皮膚病機轉與分型，框架無法解釋；中醫僅緩解期泛用清熱利濕/補腎健脾，非本框架核心病機"
 ---
 
 # 天皰瘡（Pemphigus）
