@@ -55,12 +55,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "400_Atlas/Maps/病生理診斷治療總框架 MOC.md",
+                "file": "500_Inbox/李辛老師 ---下焦資源評估.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "病生理診斷治療總框架 MOC"
+              "title": "李辛老師 ---下焦資源評估"
             }
           },
           {
@@ -69,16 +69,16 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "500_Inbox/髖關節伸直測試（Hip Extension Test）的評估與治療策略.md",
+                "file": "500_Inbox/李辛老師 ---中焦資源評估.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "髖關節伸直測試（Hip Extension Test）的評估與治療策略"
+              "title": "李辛老師 ---中焦資源評估"
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -251,8 +251,15 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "d3f45406063be0cb",
+  "active": "c1eb32fa02fbea99",
   "lastOpenFiles": [
+    "500_Inbox/未命名.md",
+    "500_Inbox/未命名 5.base",
+    "500_Inbox/李辛老師 ---下焦資源評估.md",
+    "500_Inbox/李辛老師 ---中焦資源評估.md",
+    "500_Inbox/正向觀點看待一個人.md",
+    "500_Inbox/髖關節伸直測試（Hip Extension Test）的評估與治療策略.md",
+    "400_Atlas/Maps/病生理診斷治療總框架 MOC.md",
     "400_Atlas/Maps/病生理診斷治療總框架 MOC.md.tmp.7476.cde6c79cceaa",
     "400_Atlas/Maps/病生理診斷治療總框架 MOC.md.tmp.7476.d2167b4068a5",
     "100_Todo/drafts/articles/2026-08-13_胡椒暖下焦_怕冷宮寒的人可以怎麼吃.md",
@@ -268,17 +275,14 @@
     "000_Agent/skills/note-capture/skill.md",
     "400_Atlas/Maps/病生理診斷治療總框架 MOC.md.tmp.7476.fa0778c3753f",
     "400_Atlas/Maps/病生理診斷治療總框架 MOC.md.tmp.7476.0e55661d9214",
-    "400_Atlas/Maps/病生理診斷治療總框架 MOC.md",
     "400_Atlas/Library/wiki/舌診判讀參考/測試_正中縱裂紋參考.png",
     "400_Atlas/Library/wiki/舌診判讀參考/測試_正中縱裂紋參考.md",
     "400_Atlas/Library/wiki/舌診判讀參考",
     "600_Projects/東湖診所開業計畫/LOGO/Gemini_Generated_Image_szd6alszd6alszd6.png",
-    "600_Projects/東湖診所開業計畫/LOGO/尚未確認的 177349.crdownload",
     "500_Inbox/inbox.md",
     "600_Projects/病歷紀錄/111/index.md",
     "600_Projects/病歷紀錄/111/attachments/2026-08-12_舌象_2.jpg",
     "600_Projects/病歷紀錄/111/attachments/2026-08-12_舌象_1.jpg",
-    "600_Projects/病歷紀錄/111/attachments",
     "600_Projects/病歷紀錄/測試統一病人/attachments/2026-08-12_舌象.png",
     "600_Projects/病歷紀錄/測試統一病人/index.md",
     "600_Projects/舌診紀錄/測試新病人（#99999）/attachments/2026-08-12_舌象.png",
@@ -295,10 +299,6 @@
     "400_Atlas/Library/wiki/診斷評估/髖關節伸直檢測.md",
     "400_Atlas/Sources/診所提示慈.md",
     "300_Journal/2026-08/2026-08-03.md",
-    "400_Atlas/Library/raw/髖關節外展檢測與臀中肌無力治療策略.md",
-    "500_Inbox/髖關節伸直測試（Hip Extension Test）的評估與治療策略.md",
-    "400_Atlas/Sources/疼痛科學與徒手治療工作坊第一天課程.md",
-    "100_Todo/2026-W32_本週代辦.md",
     "未命名 1.canvas",
     "未命名.canvas"
   ]
