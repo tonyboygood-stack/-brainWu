@@ -48,9 +48,23 @@
               "icon": "lucide-file",
               "title": "第三步 神與陰陽平衡"
             }
+          },
+          {
+            "id": "711ba6ee54c060ad",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "500_Inbox/未命名 1.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "未命名 1"
+            }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -223,10 +237,11 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "d3f45406063be0cb",
+  "active": "711ba6ee54c060ad",
   "lastOpenFiles": [
-    "400_Atlas/Maps/病生理診斷治療總框架 MOC.md",
     "500_Inbox/第三步 神與陰陽平衡.md",
+    "500_Inbox/未命名 1.md",
+    "400_Atlas/Maps/病生理診斷治療總框架 MOC.md",
     "400_Atlas/Notes/2026-08-15_緊脈的本質_資源保存反應vs真性寒凝停滯.md.tmp.7660.533034041cde",
     "400_Atlas/Sources/李辛_三焦氣機與通道評估.md",
     "500_Inbox/李辛老師診斷第二部--三焦氣機，通道評估.md",
@@ -261,7 +276,6 @@
     "400_Atlas/Notes/2026-07-16_以脈測症_脈證合參.md",
     "000_Agent/skills/note-capture/skill.md",
     "400_Atlas/Library/wiki/舌診判讀參考/測試_正中縱裂紋參考.png",
-    "400_Atlas/Library/wiki/舌診判讀參考/測試_正中縱裂紋參考.md",
     "600_Projects/東湖診所開業計畫/LOGO/Gemini_Generated_Image_szd6alszd6alszd6.png",
     "600_Projects/病歷紀錄/111/attachments/2026-08-12_舌象_2.jpg",
     "600_Projects/病歷紀錄/111/attachments/2026-08-12_舌象_1.jpg",
