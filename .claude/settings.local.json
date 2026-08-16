@@ -122,7 +122,14 @@
       "Bash(python \"C:/Users/user/AppData/Local/Temp/claude/C--Users-user-Documents-GitHub--/dbfb6b3a-a56e-4377-b906-36964b5411f7/scratchpad/backfill.py\")",
       "Bash(python \"C:/Users/user/AppData/Local/Temp/claude/C--Users-user-Documents-GitHub--/dbfb6b3a-a56e-4377-b906-36964b5411f7/scratchpad/link_up.py\")",
       "Bash(echo \"--- exit: $? ---\")",
-      "Bash(\".venv/Scripts/python.exe\" -c \"import pulse; print\\('import ok'\\)\")"
+      "Bash(\".venv/Scripts/python.exe\" -c \"import pulse; print\\('import ok'\\)\")",
+      "Bash(\".venv/Scripts/python.exe\" -m py_compile pulse.py app.py \"pages/4_脈診紀錄.py\")",
+      "Bash(powershell -Command 'Get-CimInstance Win32_Process -Filter \"CommandLine LIKE '\\\\''%streamlit%8501%'\\\\''\" | Select-Object -ExpandProperty ProcessId | ForEach-Object { Stop-Process -Id $_ -Force -ErrorAction SilentlyContinue }; '\\\\''stopped'\\\\''')",
+      "Bash(\".venv/Scripts/python.exe\" -m streamlit run app.py --server.headless true --server.port 8502)",
+      "Bash(disown)",
+      "Read(//tmp/**)",
+      "Bash(\".venv/Scripts/python.exe\" -m py_compile pulse.py)",
+      "Bash(powershell -Command 'Get-CimInstance Win32_Process -Filter \"CommandLine LIKE '\\\\''%streamlit%8502%'\\\\''\" | Select-Object -ExpandProperty ProcessId | ForEach-Object { Stop-Process -Id $_ -Force -ErrorAction SilentlyContinue }; '\\\\''stopped'\\\\''')"
     ]
   }
 }
