@@ -121,7 +121,8 @@
       "Bash(git commit -q -m ' *)",
       "Bash(python \"C:/Users/user/AppData/Local/Temp/claude/C--Users-user-Documents-GitHub--/dbfb6b3a-a56e-4377-b906-36964b5411f7/scratchpad/backfill.py\")",
       "Bash(python \"C:/Users/user/AppData/Local/Temp/claude/C--Users-user-Documents-GitHub--/dbfb6b3a-a56e-4377-b906-36964b5411f7/scratchpad/link_up.py\")",
-      "Bash(echo \"--- exit: $? ---\")"
+      "Bash(echo \"--- exit: $? ---\")",
+      "Bash(\".venv/Scripts/python.exe\" -c \"import pulse; print\\('import ok'\\)\")"
     ]
   }
 }
