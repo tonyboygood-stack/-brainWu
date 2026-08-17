@@ -129,7 +129,8 @@
       "Bash(disown)",
       "Read(//tmp/**)",
       "Bash(\".venv/Scripts/python.exe\" -m py_compile pulse.py)",
-      "Bash(powershell -Command 'Get-CimInstance Win32_Process -Filter \"CommandLine LIKE '\\\\''%streamlit%8502%'\\\\''\" | Select-Object -ExpandProperty ProcessId | ForEach-Object { Stop-Process -Id $_ -Force -ErrorAction SilentlyContinue }; '\\\\''stopped'\\\\''')"
+      "Bash(powershell -Command 'Get-CimInstance Win32_Process -Filter \"CommandLine LIKE '\\\\''%streamlit%8502%'\\\\''\" | Select-Object -ExpandProperty ProcessId | ForEach-Object { Stop-Process -Id $_ -Force -ErrorAction SilentlyContinue }; '\\\\''stopped'\\\\''')",
+      "Bash(\".venv/Scripts/python.exe\" -m py_compile patient_log.py)"
     ]
   }
 }
