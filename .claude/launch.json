@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "clinic-ai-assistant",
+      "runtimeExecutable": "C:/Users/user/Documents/GitHub/clinic-ai-assistant/.venv/Scripts/streamlit.exe",
+      "runtimeArgs": ["run", "C:/Users/user/Documents/GitHub/clinic-ai-assistant/app.py", "--server.headless", "true"],
+      "port": 8501,
+      "autoPort": true
+    }
+  ]
+}
