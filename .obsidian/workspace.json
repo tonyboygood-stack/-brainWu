@@ -55,12 +55,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "500_Inbox/舌診.md",
+                "file": "500_Inbox/舌苔.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "舌診"
+              "title": "舌苔"
             }
           }
         ],
@@ -239,6 +239,14 @@
   },
   "active": "711ba6ee54c060ad",
   "lastOpenFiles": [
+    "chroma_db/chroma.sqlite3-journal",
+    "chroma_db/chroma.sqlite3",
+    "chroma_db",
+    "600_Projects/病歷紀錄/測試病人A/index.md",
+    "600_Projects/病歷紀錄/測試病人A/attachments",
+    "600_Projects/病歷紀錄/測試病人A",
+    "500_Inbox/舌診.md",
+    "500_Inbox/舌苔.md",
     "600_Projects/病歷紀錄/測試病人_藥物2/index.md",
     "600_Projects/病歷紀錄/測試病人_藥物2/attachments",
     "600_Projects/病歷紀錄/測試病人_藥物2",
@@ -248,14 +256,10 @@
     "600_Projects/病歷紀錄/測試病人_檢查報告/index.md",
     "600_Projects/病歷紀錄/測試病人_檢查報告/attachments",
     "600_Projects/病歷紀錄/測試病人_檢查報告",
-    "600_Projects/病歷紀錄/1111/attachments",
-    "600_Projects/病歷紀錄/1111",
     "600_Projects/病歷紀錄/瀏覽器修正測試/attachments/照片二.png",
     "600_Projects/病歷紀錄/瀏覽器修正測試/attachments/資源回收/照片二.png",
-    "600_Projects/病歷紀錄/瀏覽器修正測試/attachments/資源回收",
     "600_Projects/病歷紀錄/瀏覽器修正測試/attachments/照片一.png",
     "600_Projects/病歷紀錄/瀏覽器修正測試/index.md",
-    "600_Projects/病歷紀錄/瀏覽器修正測試/attachments",
     "600_Projects/病歷紀錄/測試修正病人/attachments/測試照片.png",
     "600_Projects/病歷紀錄/測試修正病人/index.md",
     "600_Projects/病歷紀錄/測試修正病人/attachments/資源回收/改名之後.png",
@@ -267,7 +271,6 @@
     "600_Projects/病歷紀錄/外候測試病人/index.md",
     "600_Projects/病歷紀錄/測試外候病人/index.md",
     "500_Inbox/頸椎胸椎結構與.md",
-    "500_Inbox/舌診.md",
     "600_Projects/病歷紀錄/疊圖測試病人/index.md",
     "600_Projects/病歷紀錄/測試檔名病人（#99999）/index.md",
     "600_Projects/病歷紀錄/0000/index.md",
@@ -282,9 +285,6 @@
     "500_Inbox/李辛老師診斷第二部--三焦氣機，通道評估.md",
     "500_Inbox/開上焦血分的思路.md",
     "400_Atlas/Sources/診所提示慈.md",
-    "500_Inbox/緊脈.md",
-    "400_Atlas/Notes/2026-08-15_緊脈的本質_資源保存反應vs真性寒凝停滯.md",
-    "400_Atlas/Sources/緊脈的本質與辨識.md",
     "未命名 1.canvas",
     "未命名.canvas"
   ]
