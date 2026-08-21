@@ -2,6 +2,10 @@
 title: 神經學派 vs 生物力學派
 source_type: 辨析
 discipline: 跨學科
+醫家:
+  - 揚達（Janda）
+source: [[疼痛科學與徒手治療工作坊第一天課程]]
+attribution: 原創
 tags: []
 related:
   - "[[揚達（Janda）]]"

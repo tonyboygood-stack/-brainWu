@@ -2,6 +2,10 @@
 title: Ida Rolf
 source_type: 醫家
 discipline: 結構治療
+醫家:
+  - Ida Rolf
+source: [[疼痛科學與徒手治療工作坊第一天課程]]
+attribution: 原創
 tags: []
 related:
   - "[[結構整合筋膜線處理順序]]"

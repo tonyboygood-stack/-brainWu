@@ -2,6 +2,10 @@
 title: 全域適應性代償模式（CCP）
 source_type: 病機病理
 discipline: 疼痛科學
+醫家:
+  - Ida Rolf
+source: [[疼痛科學與徒手治療工作坊第一天課程]]
+attribution: 原創
 tags: []
 related:
   - "[[層狀症候群]]"

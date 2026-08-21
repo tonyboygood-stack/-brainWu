@@ -2,6 +2,10 @@
 title: 揚達（Vladimir Janda）
 source_type: 醫家
 discipline: 疼痛科學
+醫家:
+  - 揚達（Janda）
+source: [[疼痛科學與徒手治療工作坊第一天課程]]
+attribution: 原創
 tags: []
 related:
   - "[[上交叉症候群]]"
