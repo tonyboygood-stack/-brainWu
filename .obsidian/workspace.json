@@ -55,12 +55,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "500_Inbox/舌苔.md",
+                "file": "400_Atlas/Library/wiki/醫家/趙紹琴.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "舌苔"
+              "title": "趙紹琴"
             }
           }
         ],
@@ -237,30 +237,35 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "711ba6ee54c060ad",
+  "active": "c6643e0934e82954",
   "lastOpenFiles": [
+    "400_Atlas/Library/wiki/辨析/sedVk3wQI",
+    "400_Atlas/Library/wiki/辨析/揚達vsIdaRolf_姿勢代償的處理順序.md",
+    "400_Atlas/Library/wiki/sedtvgKXA",
+    "500_Inbox/舌苔.md",
+    "400_Atlas/Library/wiki/醫家/指紋/趙紹琴_用藥指紋.md",
+    "400_Atlas/Library/wiki/醫家/指紋",
+    "000_Agent/skills/library-ingest/scripts/herb_fingerprint.py",
+    "600_Projects/書籍掃描/回到本源/~$回到本源.docx",
+    "600_Projects/書籍掃描/回到本源/回到本源.docx",
+    "600_Projects/書籍掃描/回到本源/回到本源.md",
+    "600_Projects/書籍掃描/回到本源/回到本源_original.md",
+    "600_Projects/書籍掃描/回到本源",
+    "000_Agent/skills/library-ingest/scripts/backfill_attribution.py",
+    "000_Agent/skills/library-ingest/scripts",
     "600_Projects/書籍掃描/未命名/未命名.md",
     "600_Projects/書籍掃描/未命名/未命名_original.md",
     "600_Projects/書籍掃描/未命名",
     "600_Projects/書籍掃描/11/~$11.docx",
-    "600_Projects/書籍掃描/11/11.docx",
     "600_Projects/書籍掃描/11/11_original.md",
     "600_Projects/書籍掃描/11/11.md",
-    "600_Projects/書籍掃描/11",
-    "600_Projects/書籍掃描",
     "600_Projects/病歷紀錄/0000/attachments/0000_2026-08-18_1552_藥物.png",
     "600_Projects/病歷紀錄/0000/attachments/0000_2026-08-18_1548_藥物_3.png",
     "600_Projects/病歷紀錄/0000/attachments/0000_2026-08-18_1548_藥物_2.png",
     "600_Projects/病歷紀錄/0000/attachments/0000_2026-08-18_1548_藥物_1.png",
     "600_Projects/病歷紀錄/0000/attachments/0000_2026-08-18_1545_檢查報告.JPG",
-    "chroma_db/chroma.sqlite3-journal",
-    "chroma_db/chroma.sqlite3",
-    "chroma_db",
     "600_Projects/病歷紀錄/測試病人A/index.md",
-    "600_Projects/病歷紀錄/測試病人A/attachments",
-    "600_Projects/病歷紀錄/測試病人A",
     "500_Inbox/舌診.md",
-    "500_Inbox/舌苔.md",
     "600_Projects/病歷紀錄/測試病人_藥物2/index.md",
     "600_Projects/病歷紀錄/測試病人_檢查報告2/index.md",
     "600_Projects/病歷紀錄/測試病人_檢查報告/index.md",
@@ -280,11 +285,6 @@
     "600_Projects/病歷紀錄/1552/index.md",
     "600_Projects/病歷紀錄/最終驗證病人2/index.md",
     "600_Projects/病歷紀錄/最終驗證病人/index.md",
-    "600_Projects/病歷紀錄/測試脈診瀏覽器/index.md",
-    "600_Projects/病歷紀錄/測試脈診病人/index.md",
-    "500_Inbox/第三步 神與陰陽平衡.md",
-    "400_Atlas/Maps/病生理診斷治療總框架 MOC.md",
-    "400_Atlas/Sources/李辛_三焦氣機與通道評估.md",
     "未命名 1.canvas",
     "未命名.canvas"
   ]

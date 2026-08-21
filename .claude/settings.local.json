@@ -130,7 +130,10 @@
       "Read(//tmp/**)",
       "Bash(\".venv/Scripts/python.exe\" -m py_compile pulse.py)",
       "Bash(powershell -Command 'Get-CimInstance Win32_Process -Filter \"CommandLine LIKE '\\\\''%streamlit%8502%'\\\\''\" | Select-Object -ExpandProperty ProcessId | ForEach-Object { Stop-Process -Id $_ -Force -ErrorAction SilentlyContinue }; '\\\\''stopped'\\\\''')",
-      "Bash(\".venv/Scripts/python.exe\" -m py_compile patient_log.py)"
+      "Bash(\".venv/Scripts/python.exe\" -m py_compile patient_log.py)",
+      "Bash(PYTHONIOENCODING=utf-8 python -c ' *)",
+      "Bash(cd \"C:/Users/user/Documents/GitHub/-\" && mkdir -p 000_Agent/skills/library-ingest/scripts && echo created)",
+      "Bash(PYTHONIOENCODING=utf-8 python 000_Agent/skills/library-ingest/scripts/backfill_attribution.py)"
     ]
   }
 }
