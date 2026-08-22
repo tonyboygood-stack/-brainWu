@@ -55,12 +55,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "400_Atlas/Maps/病生理診斷治療總框架 MOC.md",
+                "file": "400_Atlas/Library/raw/傷寒雜病論 桂林古本/《傷寒雜病論》桂林古本_線上閱讀_大公雞｜經方醫案本草查詢 1.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "病生理診斷治療總框架 MOC"
+              "title": "《傷寒雜病論》桂林古本_線上閱讀_大公雞｜經方醫案本草查詢 1"
             }
           }
         ],
@@ -237,12 +237,16 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "711ba6ee54c060ad",
+  "active": "c6643e0934e82954",
   "lastOpenFiles": [
+    "400_Atlas/Library/raw/傷寒雜病論 桂林古本",
+    "400_Atlas/Library/raw/《傷寒雜病論》桂林古本_線上閱讀_大公雞｜經方醫案本草查詢.md",
+    "400_Atlas/Library/raw/傷寒雜病論 桂林古本/《傷寒雜病論》桂林古本_線上閱讀_大公雞｜經方醫案本草查詢 1.md",
+    "400_Atlas/Library/raw/傷寒論 桂林古本.md",
+    "400_Atlas/Maps/病生理診斷治療總框架 MOC.md",
     "600_Projects/書籍掃描/回到本源/回到本源_original_舊版含缺字_2026-08-22.md",
     "600_Projects/書籍掃描/回到本源/回到本源_舊版含缺字_2026-08-22.md",
     "400_Atlas/Maps/氣血津液病理 MOC.md",
-    "400_Atlas/Maps/病生理診斷治療總框架 MOC.md",
     "400_Atlas/Library/wiki/醫家/趙紹琴.md",
     "400_Atlas/Library/wiki/醫家/李辛.md",
     "400_Atlas/Library/wiki/醫案/醫案_A先生_口腔潰瘍四年（李辛）.md",
@@ -264,17 +268,13 @@
     "400_Atlas/Library/wiki/醫家/指紋/趙紹琴_用藥指紋.md",
     "600_Projects/書籍掃描/回到本源/回到本源.md",
     "400_Atlas/Library/wiki/辨析/sedVk3wQI",
-    "400_Atlas/Library/wiki/辨析/揚達vsIdaRolf_姿勢代償的處理順序.md",
     "400_Atlas/Library/wiki/sedtvgKXA",
-    "500_Inbox/舌苔.md",
     "400_Atlas/Library/wiki/醫家/指紋",
     "000_Agent/skills/library-ingest/scripts/herb_fingerprint.py",
     "600_Projects/書籍掃描/回到本源/~$回到本源.docx",
     "600_Projects/書籍掃描/回到本源/回到本源.docx",
-    "600_Projects/書籍掃描/回到本源/回到本源_original.md",
     "600_Projects/書籍掃描/回到本源",
     "000_Agent/skills/library-ingest/scripts/backfill_attribution.py",
-    "600_Projects/書籍掃描/未命名/未命名.md",
     "600_Projects/病歷紀錄/0000/attachments/0000_2026-08-18_1552_藥物.png",
     "600_Projects/病歷紀錄/0000/attachments/0000_2026-08-18_1548_藥物_3.png",
     "600_Projects/病歷紀錄/0000/attachments/0000_2026-08-18_1548_藥物_2.png",
