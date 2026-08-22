@@ -237,18 +237,21 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "c6643e0934e82954",
+  "active": "711ba6ee54c060ad",
   "lastOpenFiles": [
+    "400_Atlas/Library/wiki/藥物本草/川椒.md",
+    "400_Atlas/Library/wiki/醫家/Ida Rolf.md",
+    "400_Atlas/Library/wiki/醫家/趙紹琴.md",
+    "400_Atlas/Library/wiki/醫家/指紋/趙紹琴_用藥指紋.md",
+    "600_Projects/書籍掃描/回到本源/回到本源.md",
     "400_Atlas/Library/wiki/辨析/sedVk3wQI",
     "400_Atlas/Library/wiki/辨析/揚達vsIdaRolf_姿勢代償的處理順序.md",
     "400_Atlas/Library/wiki/sedtvgKXA",
     "500_Inbox/舌苔.md",
-    "400_Atlas/Library/wiki/醫家/指紋/趙紹琴_用藥指紋.md",
     "400_Atlas/Library/wiki/醫家/指紋",
     "000_Agent/skills/library-ingest/scripts/herb_fingerprint.py",
     "600_Projects/書籍掃描/回到本源/~$回到本源.docx",
     "600_Projects/書籍掃描/回到本源/回到本源.docx",
-    "600_Projects/書籍掃描/回到本源/回到本源.md",
     "600_Projects/書籍掃描/回到本源/回到本源_original.md",
     "600_Projects/書籍掃描/回到本源",
     "000_Agent/skills/library-ingest/scripts/backfill_attribution.py",
@@ -256,7 +259,6 @@
     "600_Projects/書籍掃描/未命名/未命名.md",
     "600_Projects/書籍掃描/未命名/未命名_original.md",
     "600_Projects/書籍掃描/未命名",
-    "600_Projects/書籍掃描/11/~$11.docx",
     "600_Projects/書籍掃描/11/11_original.md",
     "600_Projects/書籍掃描/11/11.md",
     "600_Projects/病歷紀錄/0000/attachments/0000_2026-08-18_1552_藥物.png",
@@ -283,8 +285,6 @@
     "600_Projects/病歷紀錄/測試檔名病人（#99999）/index.md",
     "600_Projects/病歷紀錄/0000/index.md",
     "600_Projects/病歷紀錄/1552/index.md",
-    "600_Projects/病歷紀錄/最終驗證病人2/index.md",
-    "600_Projects/病歷紀錄/最終驗證病人/index.md",
     "未命名 1.canvas",
     "未命名.canvas"
   ]
