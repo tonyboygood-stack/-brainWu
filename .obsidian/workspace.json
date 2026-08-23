@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "400_Atlas/Library/wiki/典籍/傷寒雜病論.md",
+                "file": "400_Atlas/Library/wiki/病機病理/厥陰病提綱.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "傷寒雜病論"
+              "title": "厥陰病提綱"
             }
           }
         ],
@@ -223,8 +223,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "d3f45406063be0cb",
+  "active": "c6643e0934e82954",
   "lastOpenFiles": [
+    "400_Atlas/Library/wiki/方劑/烏梅丸.md",
+    "400_Atlas/Library/wiki/典籍/傷寒雜病論.md",
     "400_Atlas/Library/wiki/方劑/文蛤湯.md",
     "400_Atlas/Library/wiki/方劑/茯苓澤瀉湯.md",
     "400_Atlas/Library/wiki/方劑/腎氣丸.md",
@@ -250,8 +252,6 @@
     "400_Atlas/Library/wiki/方劑/吳茱萸湯.md",
     "400_Atlas/Library/wiki/方劑/豬苓湯.md",
     "400_Atlas/Library/wiki/方劑/四逆散.md",
-    "400_Atlas/Library/wiki/方劑/白通湯.md",
-    "400_Atlas/Library/wiki/方劑/半夏散.md",
     "400_Atlas/Library/wiki/方劑/文蛤散.md.tmp.28168.bf2bce83621c",
     "400_Atlas/Library/wiki/方劑/厚朴生薑半夏甘草人參湯.md.tmp.28168.07baaaba3a59",
     "400_Atlas/Library/wiki/病機病理/少陽病提綱.md.tmp.28168.bbb84d21d877",
