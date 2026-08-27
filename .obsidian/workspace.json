@@ -41,16 +41,30 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "500_Inbox/傅士豪教授第二堂--MET技術.md",
+                "file": "400_Atlas/Library/wiki/病機病理/上焦濕熱證治.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "傅士豪教授第二堂--MET技術"
+              "title": "上焦濕熱證治"
+            }
+          },
+          {
+            "id": "e1a0d9014a50574a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "400_Atlas/Library/wiki/方劑/小兒急性上呼吸道感染二法_辛涼清解苦甘泄熱.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "小兒急性上呼吸道感染二法_辛涼清解苦甘泄熱"
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -223,8 +237,13 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "d3f45406063be0cb",
+  "active": "e1a0d9014a50574a",
   "lastOpenFiles": [
+    "400_Atlas/Library/wiki/病機病理/急性上呼吸道感染（兒科）.md",
+    "400_Atlas/Library/wiki/典籍/趙紹琴臨證400法.md",
+    "400_Atlas/Library/wiki/方劑/上焦濕熱一法_辛宣芳化以疏表邪苦溫淡滲兼暢中下.md",
+    "400_Atlas/Library/wiki/病機病理/上焦濕熱證治.md",
+    "500_Inbox/傅士豪教授第二堂--MET技術.md",
     "400_Atlas/Library/wiki/藥物本草/鶴虱.md",
     "400_Atlas/Library/wiki/藥物本草/雷丸.md",
     "400_Atlas/Library/wiki/藥物本草/益母草.md",
@@ -246,11 +265,6 @@
     "400_Atlas/Library/wiki/方劑/小兒肺炎一法_宣風寒以開其閉泄肺熱兼以化痰.md",
     "400_Atlas/Library/wiki/病機病理/肺炎（兒科）.md",
     "400_Atlas/Library/wiki/方劑/小兒急性上呼吸道感染二法_辛涼清解苦甘泄熱.md",
-    "400_Atlas/Library/wiki/方劑/小兒急性上呼吸道感染一法_辛微溫以疏表苦甘寒泄其熱.md",
-    "400_Atlas/Library/wiki/病機病理/急性上呼吸道感染（兒科）.md",
-    "400_Atlas/Library/wiki/藥物本草/劉寄奴.md",
-    "400_Atlas/Library/wiki/方劑/經行吐衄一法_清肝熱兼以調鬱涼血分求其衄止.md",
-    "400_Atlas/Library/wiki/病機病理/經行吐衄.md",
     "400_Atlas/Library/wiki/藥物本草/海風藤.md.tmp.8312.ac21962613e8",
     "400_Atlas/Library/wiki/藥物本草/威靈仙.md.tmp.8312.24f63931b588",
     "600_Projects/病歷紀錄/測試病人R/attachments/測試病人R_2026-08-27_0035_舌象.jpg",
