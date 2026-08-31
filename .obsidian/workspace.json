@@ -62,9 +62,23 @@
               "icon": "lucide-file",
               "title": "醫案_周某_風溫1_上呼吸道感染（趙紹琴）"
             }
+          },
+          {
+            "id": "f8f2a5d956b76151",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "500_Inbox/溫病的脈象.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "溫病的脈象"
+            }
           }
         ],
-        "currentTab": 3
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -237,11 +251,12 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "b9f6051e2fc5dd32",
+  "active": "f8f2a5d956b76151",
   "lastOpenFiles": [
+    "500_Inbox/溫病的脈象.md",
+    "400_Atlas/Library/wiki/醫案/醫案_周某_風溫1_上呼吸道感染（趙紹琴）.md",
     "400_Atlas/Library/wiki/方劑/導赤承氣湯.md",
     "400_Atlas/Library/wiki/病機病理/春溫.md",
-    "400_Atlas/Library/wiki/醫案/醫案_周某_風溫1_上呼吸道感染（趙紹琴）.md",
     "400_Atlas/Library/wiki/典籍/溫病淺談--舌診--趙紹琴.md",
     "400_Atlas/Sources/診所提示慈.md",
     "400_Atlas/Library/wiki/典籍/《溫病淺談》--四時溫病--趙紹琴.md",
@@ -265,7 +280,6 @@
     "400_Atlas/Library/wiki/藥物本草/鹿角霜.md",
     "400_Atlas/Library/wiki/醫案/醫案_程某_喘逆_慢性腎功能衰竭合並胸腔積液（趙紹琴）.md",
     "400_Atlas/Library/wiki/醫案/醫案_陳某_皮膚瘙癢_尿毒症（趙紹琴）.md",
-    "400_Atlas/Library/wiki/醫案/醫案_臧某_尿濁_運動性蛋白尿（趙紹琴）.md",
     "400_Atlas/Library/wiki/醫案/醫案_張某_水腫5_急性腎小球腎炎（趙紹琴）.md.tmp.1600.aa2bbaf13caa",
     "400_Atlas/Library/wiki/醫案/醫案_房某_水腫2_腎病綜合徵（趙紹琴）.md.tmp.1600.100935126a1e",
     "400_Atlas/Library/log.md.tmp.1600.91734f578af0",
