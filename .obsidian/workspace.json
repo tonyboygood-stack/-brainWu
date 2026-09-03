@@ -8,77 +8,35 @@
         "type": "tabs",
         "children": [
           {
-            "id": "e1a0d9014a50574a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "400_Atlas/Library/wiki/病機病理/春溫.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "春溫"
-            }
-          },
-          {
-            "id": "d95b18cff0f1d23e",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "400_Atlas/Library/wiki/方劑/導赤承氣湯.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "導赤承氣湯"
-            }
-          },
-          {
-            "id": "cb09b4d3c2e0b6cc",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "400_Atlas/Library/wiki/典籍/溫病淺談--舌診--趙紹琴.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "溫病淺談--舌診--趙紹琴"
-            }
-          },
-          {
-            "id": "b9f6051e2fc5dd32",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "400_Atlas/Library/wiki/醫案/醫案_張某_風溫2_化膿性扁桃體炎（趙紹琴）.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "醫案_張某_風溫2_化膿性扁桃體炎（趙紹琴）"
-            }
-          },
-          {
             "id": "370302c2f666e48e",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "400_Atlas/Maps/病生理診斷治療總框架 MOC.md",
+                "file": "400_Atlas/Library/wiki/醫案/醫案_李某_風溫3_上呼吸道感染（趙紹琴）.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "病生理診斷治療總框架 MOC"
+              "title": "醫案_李某_風溫3_上呼吸道感染（趙紹琴）"
+            }
+          },
+          {
+            "id": "73a783a03eeb7b14",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "400_Atlas/Library/wiki/醫案/醫案_陸某_便秘_習慣性便秘（趙紹琴）.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "醫案_陸某_便秘_習慣性便秘（趙紹琴）"
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -251,17 +209,20 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "b9f6051e2fc5dd32",
+  "active": "73a783a03eeb7b14",
   "lastOpenFiles": [
     "400_Atlas/Library/wiki/典籍/趙紹琴臨證驗案精選.md",
-    "400_Atlas/Library/wiki/醫案/醫案_周某_風溫1_上呼吸道感染（趙紹琴）.md",
-    "200_Reference/templates/dictation-vocab.md",
+    "400_Atlas/Library/wiki/醫案/醫案_李某_風溫3_上呼吸道感染（趙紹琴）.md",
     "400_Atlas/Maps/病生理診斷治療總框架 MOC.md",
+    "400_Atlas/Library/wiki/方劑/導赤承氣湯.md",
+    "400_Atlas/Library/wiki/醫案/醫案_張某_風溫2_化膿性扁桃體炎（趙紹琴）.md",
+    "400_Atlas/Library/wiki/醫案/醫案_周某_風溫1_上呼吸道感染（趙紹琴）.md",
+    "400_Atlas/Library/wiki/典籍/趙紹琴臨證400法.md",
+    "400_Atlas/Library/wiki/典籍/溫病淺談--舌診--趙紹琴.md",
+    "200_Reference/templates/dictation-vocab.md",
     "400_Atlas/Library/wiki/典籍/文魁脈學.md",
     "500_Inbox/溫病的脈象.md",
-    "400_Atlas/Library/wiki/方劑/導赤承氣湯.md",
     "400_Atlas/Library/wiki/病機病理/春溫.md",
-    "400_Atlas/Library/wiki/典籍/溫病淺談--舌診--趙紹琴.md",
     "400_Atlas/Sources/診所提示慈.md",
     "400_Atlas/Library/wiki/典籍/《溫病淺談》--四時溫病--趙紹琴.md",
     "600_Projects/東湖診所開業計畫/人員招募/到職準備清單.md",
@@ -277,9 +238,6 @@
     "400_Atlas/Library/wiki/醫案/醫案_喬某_頭汗_更年期綜合徵（趙紹琴）.md",
     "400_Atlas/Library/wiki/醫案/醫案_袁某_閉經（趙紹琴）.md",
     "400_Atlas/Library/wiki/醫案/醫案_王某_崩漏_功能性子宮出血（趙紹琴）.md",
-    "400_Atlas/Library/wiki/醫案/醫案_於某_經期發熱_周期性發熱（趙紹琴）.md",
-    "400_Atlas/Library/wiki/藥物本草/苧麻根.md",
-    "400_Atlas/Library/wiki/藥物本草/珍珠母.md",
     "400_Atlas/Library/wiki/醫案/醫案_張某_水腫5_急性腎小球腎炎（趙紹琴）.md.tmp.1600.aa2bbaf13caa",
     "400_Atlas/Library/wiki/醫案/醫案_房某_水腫2_腎病綜合徵（趙紹琴）.md.tmp.1600.100935126a1e",
     "400_Atlas/Library/log.md.tmp.1600.91734f578af0",
