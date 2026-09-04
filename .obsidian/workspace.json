@@ -13,29 +13,38 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "400_Atlas/Library/wiki/醫案/醫案_李某_風溫3_上呼吸道感染（趙紹琴）.md",
+                "file": "400_Atlas/Library/wiki/醫案/醫案_孫某_失眠3_神經衰弱（趙紹琴）.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "醫案_李某_風溫3_上呼吸道感染（趙紹琴）"
+              "title": "醫案_孫某_失眠3_神經衰弱（趙紹琴）"
             }
           },
           {
-            "id": "73a783a03eeb7b14",
+            "id": "a4bbbb8426a39021",
             "type": "leaf",
             "state": {
               "type": "bases",
               "state": {
-                "file": "600_Projects/東湖診所開業計畫/診所進度儀表板.base",
-                "viewName": "總覽"
+                "file": "未命名 7.base",
+                "viewName": "檢視 2"
               },
-              "icon": "lucide-table",
-              "title": "診所進度儀表板"
+              "icon": "lucide-layout-list",
+              "title": "未命名 7"
+            }
+          },
+          {
+            "id": "e7f46194a294e36a",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "新分頁"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -208,44 +217,44 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "73a783a03eeb7b14",
+  "active": "370302c2f666e48e",
   "lastOpenFiles": [
-    "400_Atlas/Library/wiki/醫案/醫案_趙某_痹證2_幹燥綜合徵（趙紹琴）.md",
-    "600_Projects/東湖診所開業計畫/tasks/時程與交接_01_跟成舍設計師挑選診所植栽.md",
+    "400_Atlas/Library/wiki/典籍/趙紹琴臨證驗案精選.md",
+    "400_Atlas/Library/wiki/醫案/醫案_徐某_失眠2_神經衰弱（趙紹琴）.md",
+    "400_Atlas/Library/wiki/醫案/醫案_佟某_失眠1_神經衰弱（趙紹琴）.md",
+    "400_Atlas/Library/wiki/醫案/醫案_李某_風溫3_上呼吸道感染（趙紹琴）.md",
+    "未命名 7.base",
     "600_Projects/東湖診所開業計畫/診所進度儀表板.base",
-    "600_Projects/東湖診所開業計畫/tasks/時程與交接_01_83.md",
-    "600_Projects/東湖診所開業計畫/tasks/法規與行政_09_裝修執照核發.md",
-    "600_Projects/東湖診所開業計畫/tasks/法規與行政_08_稅務扣繳方式確認.md",
-    "600_Projects/東湖診所開業計畫/tasks/法規與行政_07_勞健保雇主戶設立.md",
-    "600_Projects/東湖診所開業計畫/tasks/法規與行政_06_生物醫療廢棄物清運合約.md",
-    "600_Projects/東湖診所開業計畫/tasks/法規與行政_05_醫療責任保險＋公共意外保險.md",
-    "600_Projects/東湖診所開業計畫/tasks/法規與行政_04_招牌製作與招牌執照申請.md",
-    "600_Projects/東湖診所開業計畫/tasks/法規與行政_03_消防／公安查驗.md",
-    "600_Projects/東湖診所開業計畫/tasks/法規與行政_02_中醫診所開業執照正式申請.md",
-    "600_Projects/東湖診所開業計畫/tasks/法規與行政_01_診所統一編號申請.md",
-    "600_Projects/東湖診所開業計畫/tasks/品牌與行銷／醫療服務_09_clinic-ai-assistant 持續升級.md",
-    "600_Projects/東湖診所開業計畫/tasks/品牌與行銷／醫療服務_07_線上預約掛號系統.md",
-    "600_Projects/東湖診所開業計畫/tasks/品牌與行銷／醫療服務_08_專屬衛教影片製作.md",
-    "600_Projects/東湖診所開業計畫/tasks/品牌與行銷／醫療服務_06_社群平台建立.md",
-    "600_Projects/東湖診所開業計畫/tasks/品牌與行銷／醫療服務_05_官網建立.md",
-    "600_Projects/東湖診所開業計畫/tasks/品牌與行銷／醫療服務_04_醫療服務內容逐步完善並放上網站.md",
-    "600_Projects/東湖診所開業計畫/tasks/品牌與行銷／醫療服務_03_自費定價結構.md",
-    "600_Projects/東湖診所開業計畫/tasks/品牌與行銷／醫療服務_02_評估健保是否保留.md",
-    "600_Projects/東湖診所開業計畫/tasks/品牌與行銷／醫療服務_01_研究同類型自費中醫診所的定價參考.md",
-    "600_Projects/東湖診所開業計畫/tasks/人員招募_15_檢視現有PT履歷，篩選適合人選.md",
-    "600_Projects/東湖診所開業計畫/tasks/人員招募_14_面試問題清單／評分紀錄留存 — 見 人員招募面試.md",
-    "600_Projects/東湖診所開業計畫/tasks/人員招募_13_簽約完成.md",
-    "600_Projects/東湖診所開業計畫/tasks/人員招募_12_第一位FT候選人面試.md",
-    "600_Projects/東湖診所開業計畫/tasks/人員招募_11_面試地點與流程已解決.md",
+    "600_Projects/東湖診所開業計畫/診所進度儀表板.base.tmp.20984.825399da89c6",
+    "600_Projects/東湖診所開業計畫/tasks/人員招募_27_營運風險.md",
+    "600_Projects/東湖診所開業計畫/tasks/電費_04_跟成舍＋水電師傅確認電費調整事宜.md",
+    "600_Projects/東湖診所開業計畫/tasks/電費_03_跟房東確認.md",
+    "600_Projects/東湖診所開業計畫/tasks/電費_02_計算診所最大同時用電量.md",
+    "600_Projects/東湖診所開業計畫/tasks/電費_01_跟隔壁收取 6 月電費款項.md",
+    "600_Projects/東湖診所開業計畫/tasks/開業後每年例行_03_保留所有藥材耗材進貨發票.md",
+    "600_Projects/東湖診所開業計畫/tasks/開業後每年例行_02_每年報稅前.md",
+    "600_Projects/東湖診所開業計畫/tasks/開業後每年例行_01_每年 4 月 20 日後.md",
+    "600_Projects/東湖診所開業計畫/tasks/裝修期間_07_水電工程開工.md",
+    "600_Projects/東湖診所開業計畫/tasks/裝修期間_06_人員招募規劃.md",
+    "600_Projects/東湖診所開業計畫/tasks/裝修期間_05_申請中醫診所開業執照.md",
+    "600_Projects/東湖診所開業計畫/tasks/裝修期間_04_確認衛生局開業流程與所需文件清單.md",
+    "600_Projects/東湖診所開業計畫/tasks/裝修期間_03_建立診所帳戶，自費現金收入存入時備注清楚.md",
+    "600_Projects/東湖診所開業計畫/tasks/裝修期間_02_與設計師確認 3D 建模示意圖.md",
+    "600_Projects/東湖診所開業計畫/tasks/裝修期間_01_所有費用發票統一開立至診所.md",
+    "600_Projects/東湖診所開業計畫/tasks/裝修前必辦_15_519 與設計師簽約，資料移交設計師轉建築師.md",
+    "600_Projects/東湖診所開業計畫/tasks/裝修前必辦_14_518 顧問公司謝先生簽約.md",
+    "600_Projects/東湖診所開業計畫/tasks/裝修前必辦_13_跟房東取得.md",
+    "600_Projects/東湖診所開業計畫/tasks/裝修前必辦_12_隔壁開門確認.md",
+    "600_Projects/東湖診所開業計畫/tasks/時程與交接_02_決定 927 或 1011 請南京東路同仁吃飯.md",
+    "600_Projects/東湖診所開業計畫/tasks/人員招募_29_待確認.md",
+    "600_Projects/東湖診所開業計畫/tasks/人員招募_28_中國信託信貸額度.md",
+    "Hans Kanban 範例/範例看板 Demo.base",
+    "Hans Kanban 範例",
+    "500_Inbox/未命名 6.base",
     "600_Projects/東湖診所開業計畫/tasks",
     "000_Agent/skills/obsidian-markdown/references",
     "000_Agent/skills/obsidian-markdown",
     "000_Agent/skills/obsidian-cli",
-    "000_Agent/skills/obsidian-bases/references",
-    "000_Agent/skills/obsidian-bases",
-    "000_Agent/skills/json-canvas/references",
-    "000_Agent/skills/json-canvas",
-    "000_Agent/skills/defuddle",
     "600_Projects/病歷紀錄/測試病人R/attachments/測試病人R_2026-08-27_0035_舌象.jpg",
     "600_Projects/病歷紀錄/0000/attachments/0000_2026-08-26_2248_舌象_2.jpg",
     "600_Projects/病歷紀錄/0000/attachments/0000_2026-08-26_2248_舌象_1.jpg",

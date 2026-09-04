@@ -1,0 +1,98 @@
+filters:
+  and:
+    - note.hans_kanban_demo == true
+properties:
+  note.area:
+    displayName: 分類 Area
+  note.status:
+    displayName: 狀態 Status
+  note.stars:
+    displayName: 重要度 Stars
+  note.outline:
+    displayName: 重點 Key points
+views:
+  - type: hans-kanban-view
+    name: 範例看板 Demo
+    order:
+      - status
+      - outline
+    sort:
+      - property: 優先度
+        direction: DESC
+    groupByProperty: note.時間
+    cardColorProperty: note.狀態
+    cardColorOrder:
+      - 🟤 未開始
+      - 🔴 進行中
+      - 🟡 25%
+      - 🔵 50%
+      - 🟣 75%
+      - 🩵 90%
+      - 🩷 99%
+      - 🟢 100%
+      - ⚪ 已交付
+      - 🟤 可以封存
+    wrapPropertyValues: true
+    minimalMode: true
+    columnOrders:
+      note.時間:
+        - 專案列表
+        - 今天必達
+        - 本週目標
+        - 本月目標
+        - 本季目標
+        - 未分類
+    columnColors:
+      note.area:
+        規劃 Plan: red
+        製作 Build: orange
+        上線 Launch: blue
+      note.狀態: {}
+      note.時間: {}
+    quickAddFolder: B1_個人策略/5-主線看板
+    cardTitleProperty: note.目標
+    cardColors:
+      note.狀態:
+        🟤 未開始: brown
+        🔴 進行中: red
+        🟡 25%: yellow
+        🔵 50%: blue
+        🟣 75%: purple
+        🩵 90%: cyan
+        🩷 99%: pink
+        🟢 100%: green
+        ⚪ 已交付: gray
+        🟤 可以封存: brown
+    cardSelectOptions:
+      note.優先度:
+        - ⭐⭐⭐⭐⭐
+        - ⭐⭐⭐⭐
+        - ⭐⭐⭐
+        - ⭐⭐
+        - ⭐
+    hideEmptyColumns: false
+    columnWidth: 260
+    masonryMode: false
+    inheritedFrom: template:每日工作台
+    cardOrders:
+      note.狀態: {}
+      note.時間: {}
+    columnWidths:
+      note.狀態: {}
+      note.時間: {}
+  - type: hans-kanban-view
+    name: 瀑布 Flow
+    order:
+      - stars
+      - outline
+    groupByProperty: note.area
+    cardColorProperty: note.status
+    cardColorOrder:
+      - 🔴 待辦 To Do
+      - 🟡 進行中 In Progress
+      - 🟢 完成 Done
+    wrapPropertyValues: true
+    minimalMode: true
+    masonryMode: true
+    masonryColumns: 3
+    masonrySortProperty: note.stars

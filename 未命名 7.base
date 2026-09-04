@@ -1,0 +1,69 @@
+views:
+  - type: table
+    name: 表格
+  - type: table
+    name: 檢視
+  - type: hans-kanban-view
+    name: 檢視 2
+    groupByProperty: note.時間
+    quickAddFolder: B1_個人策略/5-主線看板
+    cardTitleProperty: note.目標
+    cardColorProperty: note.狀態
+    cardColorOrder:
+      - 🟤 未開始
+      - 🔴 進行中
+      - 🟡 25%
+      - 🔵 50%
+      - 🟣 75%
+      - 🩵 90%
+      - 🩷 99%
+      - 🟢 100%
+      - ⚪ 已交付
+      - 🟤 可以封存
+    cardColors:
+      note.狀態:
+        🟤 未開始: brown
+        🔴 進行中: red
+        🟡 25%: yellow
+        🔵 50%: blue
+        🟣 75%: purple
+        🩵 90%: cyan
+        🩷 99%: pink
+        🟢 100%: green
+        ⚪ 已交付: gray
+        🟤 可以封存: brown
+    cardSelectOptions:
+      note.優先度:
+        - ⭐⭐⭐⭐⭐
+        - ⭐⭐⭐⭐
+        - ⭐⭐⭐
+        - ⭐⭐
+        - ⭐
+    wrapPropertyValues: true
+    hideEmptyColumns: false
+    columnWidth: 260
+    columnOrders:
+      note.時間:
+        - 專案列表
+        - 今天必達
+        - 本週目標
+        - 本月目標
+        - 本季目標
+        - 未分類
+        - 15:00–16:00
+    masonryMode: false
+    minimalMode: true
+    order:
+      - 優先度
+      - 狀態
+      - 下一步
+    sort:
+      - property: 優先度
+        direction: DESC
+    inheritedFrom: template:每日工作台
+    cardOrders:
+      note.時間: {}
+    columnColors:
+      note.時間: {}
+    columnWidths:
+      note.時間: {}

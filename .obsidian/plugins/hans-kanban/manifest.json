@@ -1,0 +1,10 @@
+{
+	"id": "hans-kanban",
+	"name": "Hans Kanban",
+	"version": "1.5.5",
+	"minAppVersion": "1.10.2",
+	"description": "Kanban and masonry card views for Bases: whole-card coloring by property, on-card status switching, adjustable column widths, swimlanes, and a minimal mode. UI in English and Traditional Chinese. Fork of Kanban Bases View.",
+	"author": "Hans Lin",
+	"authorUrl": "https://github.com/hansai-art",
+	"isDesktopOnly": false
+}
