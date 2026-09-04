@@ -10,26 +10,37 @@ properties:
     displayName: "方面"
   status:
     displayName: "狀態"
-  priority:
-    displayName: "優先"
   note.area:
     displayName: "方面"
   note.status:
     displayName: "狀態"
-  note.priority:
-    displayName: "優先"
+  note.目標:
+    displayName: "目標"
+  note.時間:
+    displayName: "時間"
+  note.優先度:
+    displayName: "優先度"
 
 views:
   - type: hans-kanban-view
     name: "看板總覽"
     order:
-      - priority
+      - 時間
+      - 優先度
     groupByProperty: note.area
     cardColorProperty: note.status
     cardColorOrder:
       - 🔴 待辦
       - 🟡 進行中
       - 🟢 完成
+    cardTitleProperty: note.目標
+    cardSelectOptions:
+      note.優先度:
+        - ⭐⭐⭐⭐⭐
+        - ⭐⭐⭐⭐
+        - ⭐⭐⭐
+        - ⭐⭐
+        - ⭐
     wrapPropertyValues: true
     minimalMode: true
     columnOrders:
@@ -50,8 +61,10 @@ views:
       direction: ASC
     order:
       - file.name
+      - 目標
       - status
-      - priority
+      - 時間
+      - 優先度
     summaries:
       formula.is_done: Average
 
@@ -65,8 +78,10 @@ views:
       direction: ASC
     order:
       - file.name
+      - 目標
       - status
-      - priority
+      - 時間
+      - 優先度
 
   - type: table
     name: "已完成紀錄"
@@ -78,4 +93,5 @@ views:
       direction: ASC
     order:
       - file.name
+      - 目標
       - status
