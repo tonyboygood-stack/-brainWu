@@ -1,29 +1,26 @@
 filters:
   and:
     - file.inFolder("600_Projects/東湖診所開業計畫/tasks")
-
 formulas:
-  is_done: 'if(status == "🟢 完成", 1, 0)'
-
+  is_done: if(status == "🟢 完成", 1, 0)
 properties:
   area:
-    displayName: "方面"
+    displayName: 方面
   status:
-    displayName: "狀態"
+    displayName: 狀態
   note.area:
-    displayName: "方面"
+    displayName: 方面
   note.status:
-    displayName: "狀態"
+    displayName: 狀態
   note.目標:
-    displayName: "目標"
+    displayName: 目標
   note.時間:
-    displayName: "時間"
+    displayName: 時間
   note.優先度:
-    displayName: "優先度"
-
+    displayName: 優先度
 views:
   - type: hans-kanban-view
-    name: "看板總覽"
+    name: 看板總覽
     order:
       - 時間
       - 優先度
@@ -41,6 +38,12 @@ views:
         - ⭐⭐⭐
         - ⭐⭐
         - ⭐
+      note.時間:
+        - 今天必達
+        - 本週目標
+        - 本月目標
+        - 本季目標
+        - 未分類
     wrapPropertyValues: true
     minimalMode: true
     columnOrders:
@@ -53,9 +56,42 @@ views:
         - 裝修前必辦
         - 裝修期間
         - 開業後每年例行
-
+  - type: hans-kanban-view
+    name: 每日工作台
+    order:
+      - area
+      - 優先度
+    groupByProperty: note.時間
+    cardColorProperty: note.status
+    cardColorOrder:
+      - 🔴 待辦
+      - 🟡 進行中
+      - 🟢 完成
+    cardTitleProperty: note.目標
+    cardSelectOptions:
+      note.時間:
+        - 今天必達
+        - 本週目標
+        - 本月目標
+        - 本季目標
+        - 未分類
+      note.優先度:
+        - ⭐⭐⭐⭐⭐
+        - ⭐⭐⭐⭐
+        - ⭐⭐⭐
+        - ⭐⭐
+        - ⭐
+    wrapPropertyValues: true
+    minimalMode: true
+    columnOrders:
+      note.時間:
+        - 今天必達
+        - 本週目標
+        - 本月目標
+        - 本季目標
+        - 未分類
   - type: table
-    name: "總覽"
+    name: 總覽
     groupBy:
       property: area
       direction: ASC
@@ -67,12 +103,11 @@ views:
       - 優先度
     summaries:
       formula.is_done: Average
-
   - type: table
-    name: "代辦看板"
+    name: 代辦看板
     filters:
       and:
-        - 'status != "🟢 完成"'
+        - status != "🟢 完成"
     groupBy:
       property: area
       direction: ASC
@@ -82,12 +117,11 @@ views:
       - status
       - 時間
       - 優先度
-
   - type: table
-    name: "已完成紀錄"
+    name: 已完成紀錄
     filters:
       and:
-        - 'status == "🟢 完成"'
+        - status == "🟢 完成"
     groupBy:
       property: area
       direction: ASC
