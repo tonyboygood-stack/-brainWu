@@ -1,10 +1,9 @@
 filters:
   and:
-    - 'file.inFolder("600_Projects/東湖診所開業計畫/tasks")'
+    - file.inFolder("600_Projects/東湖診所開業計畫/tasks")
 
 formulas:
-  is_done: 'if(status == "done", 1, 0)'
-  status_icon: 'if(status == "done", "✅", if(status == "doing", "🟡", "⬜"))'
+  is_done: 'if(status == "🟢 完成", 1, 0)'
 
 properties:
   area:
@@ -13,17 +12,43 @@ properties:
     displayName: "狀態"
   priority:
     displayName: "優先"
-  formula.status_icon:
-    displayName: ""
+  note.area:
+    displayName: "方面"
+  note.status:
+    displayName: "狀態"
+  note.priority:
+    displayName: "優先"
 
 views:
+  - type: hans-kanban-view
+    name: "看板總覽"
+    order:
+      - priority
+    groupByProperty: note.area
+    cardColorProperty: note.status
+    cardColorOrder:
+      - 🔴 待辦
+      - 🟡 進行中
+      - 🟢 完成
+    wrapPropertyValues: true
+    minimalMode: true
+    columnOrders:
+      note.area:
+        - 法規與行政
+        - 人員招募
+        - 品牌與行銷／醫療服務
+        - 時程與交接
+        - 電費
+        - 裝修前必辦
+        - 裝修期間
+        - 開業後每年例行
+
   - type: table
     name: "總覽"
     groupBy:
       property: area
       direction: ASC
     order:
-      - formula.status_icon
       - file.name
       - status
       - priority
@@ -34,12 +59,11 @@ views:
     name: "代辦看板"
     filters:
       and:
-        - 'status != "done"'
+        - 'status != "🟢 完成"'
     groupBy:
       property: area
       direction: ASC
     order:
-      - formula.status_icon
       - file.name
       - status
       - priority
@@ -48,7 +72,7 @@ views:
     name: "已完成紀錄"
     filters:
       and:
-        - 'status == "done"'
+        - 'status == "🟢 完成"'
     groupBy:
       property: area
       direction: ASC
