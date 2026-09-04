@@ -133,7 +133,9 @@
       "Bash(\".venv/Scripts/python.exe\" -m py_compile patient_log.py)",
       "Bash(PYTHONIOENCODING=utf-8 python -c ' *)",
       "Bash(cd \"C:/Users/user/Documents/GitHub/-\" && mkdir -p 000_Agent/skills/library-ingest/scripts && echo created)",
-      "Bash(PYTHONIOENCODING=utf-8 python 000_Agent/skills/library-ingest/scripts/backfill_attribution.py)"
+      "Bash(PYTHONIOENCODING=utf-8 python 000_Agent/skills/library-ingest/scripts/backfill_attribution.py)",
+      "Bash(gh api *)",
+      "Bash(git clone *)"
     ]
   }
 }
