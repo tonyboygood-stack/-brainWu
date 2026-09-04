@@ -1,0 +1,57 @@
+filters:
+  and:
+    - 'file.inFolder("600_Projects/東湖診所開業計畫/tasks")'
+
+formulas:
+  is_done: 'if(status == "done", 1, 0)'
+  status_icon: 'if(status == "done", "✅", if(status == "doing", "🟡", "⬜"))'
+
+properties:
+  area:
+    displayName: "方面"
+  status:
+    displayName: "狀態"
+  priority:
+    displayName: "優先"
+  formula.status_icon:
+    displayName: ""
+
+views:
+  - type: table
+    name: "總覽"
+    groupBy:
+      property: area
+      direction: ASC
+    order:
+      - formula.status_icon
+      - file.name
+      - status
+      - priority
+    summaries:
+      formula.is_done: Average
+
+  - type: table
+    name: "代辦看板"
+    filters:
+      and:
+        - 'status != "done"'
+    groupBy:
+      property: area
+      direction: ASC
+    order:
+      - formula.status_icon
+      - file.name
+      - status
+      - priority
+
+  - type: table
+    name: "已完成紀錄"
+    filters:
+      and:
+        - 'status == "done"'
+    groupBy:
+      property: area
+      direction: ASC
+    order:
+      - file.name
+      - status
