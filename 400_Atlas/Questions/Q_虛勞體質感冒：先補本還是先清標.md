@@ -1,5 +1,6 @@
 ---
-up: []
+up:
+  - "[[臨床新思路 MOC]]"
 collection:
   - "[[Questions我好奇什麼]]"
 related:
