@@ -80,6 +80,43 @@ views:
         - 🟢 已用於臨床
     wrapPropertyValues: true
     minimalMode: true
+  - type: hans-kanban-view
+    name: 依素材類型
+    filters:
+      and:
+        - file.hasProperty("學習狀態")
+    order:
+      - 學習狀態
+      - 醫家
+    groupByProperty: note.source_type
+    cardColorProperty: note.學習狀態
+    cardColorOrder:
+      - 🔴 想讀
+      - 🟠 讀了待補筆記
+      - 🟡 待整理成卡
+      - 🩵 已成卡
+      - 🟢 已用於臨床
+    cardSelectOptions:
+      note.學習狀態:
+        - 🔴 想讀
+        - 🟠 讀了待補筆記
+        - 🟡 待整理成卡
+        - 🩵 已成卡
+        - 🟢 已用於臨床
+    wrapPropertyValues: true
+    minimalMode: true
+    columnOrders:
+      note.source_type:
+        - 醫案
+        - 病機病理
+        - 治法技法
+        - 方劑
+        - 藥物本草
+        - 典籍
+        - 診斷評估
+        - 解剖生理
+        - 辨析
+        - 醫家
   - type: table
     name: 積壓區
     filters:
