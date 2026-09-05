@@ -67,3 +67,5 @@ views:
       note.時間: {}
     columnWidths:
       note.時間: {}
+  - type: table
+    name: 檢視 3
