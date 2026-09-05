@@ -1,0 +1,59 @@
+filters:
+  and:
+    - file.inFolder("400_Atlas/Questions")
+formulas:
+  靜置天數: (now() - file.mtime).days
+  已結果: if(階段 == "🟢 結果", 1, 0)
+properties:
+  階段:
+    displayName: 階段
+  says:
+    displayName: 這則問題在問什麼
+  note.階段:
+    displayName: 階段
+  note.says:
+    displayName: 這則問題在問什麼
+  formula.靜置天數:
+    displayName: 靜置天數
+  formula.已結果:
+    displayName: 已結果
+views:
+  - type: hans-kanban-view
+    name: 花園
+    order:
+      - says
+      - 靜置天數
+    groupByProperty: note.階段
+    cardColorProperty: note.階段
+    cardColorOrder:
+      - 🟤 種子
+      - 🔵 澆水中
+      - 🌸 開花
+      - 🟢 結果
+    cardSelectOptions:
+      note.階段:
+        - 🟤 種子
+        - 🔵 澆水中
+        - 🌸 開花
+        - 🟢 結果
+    wrapPropertyValues: true
+    minimalMode: true
+    columnOrders:
+      note.階段:
+        - 🟤 種子
+        - 🔵 澆水中
+        - 🌸 開花
+        - 🟢 結果
+  - type: table
+    name: 表格
+    groupBy:
+      property: 階段
+      direction: ASC
+    order:
+      - file.name
+      - 階段
+      - says
+      - formula.靜置天數
+      - created
+    summaries:
+      formula.已結果: Average
