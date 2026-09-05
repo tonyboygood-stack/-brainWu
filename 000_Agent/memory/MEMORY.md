@@ -86,6 +86,9 @@
 - **分支不同步**：Obsidian Git 推到 `main`，Claude session 預設建 `claude/xxx` 分支 → 已透過 `.claude/settings.json` SessionStart hook 解決，session 開始自動切回 `main`
 - **製作知識卡前必須先 fetch origin/main**：避免用舊版本覆蓋最新內容
 - **讀書方法**：老吳有效的方式是「讀一條 → 當天用一次 → 記一筆回饋」，不需要提醒，他記臨床筆記時自然會觸發
+- **⚠️ Base 看板的「模板」按鈕會靜默覆蓋設定**：hans-kanban 看板工具列右上角的「模板」點下去會直接套用內建範本（例如「每日工作台」），把當前 view 的 groupByProperty／cardColorProperty 全部改掉且不跳確認。2026-09-05 這天發生兩次，都導致看板變空白並報錯「分欄欄位『時間』沒有任何值」。想套範本前先講一聲，被蓋掉的話 Claude 可以從 git 還原
+- **Obsidian 存檔會改寫 .base 的 YAML 風格**：Claude 寫的引號會被 Obsidian 拿掉（`name: "看板總覽"` → `name: 看板總覽`），兩種都合法。Claude 之後要編輯該檔前必須重讀，不能沿用自己上次寫的版本去做字串比對
+- **skill 檔名大小寫**：`note-capture` 在 git 裡是 `SKILL.md`（大寫），Windows 檔案系統不分大小寫但 git 分。用小寫路徑 `git add` 會靜默漏掉，改完要確認真的進了 commit
 
 ---
 
