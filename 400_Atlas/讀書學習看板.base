@@ -80,6 +80,18 @@ views:
         - 🟢 已用於臨床
     wrapPropertyValues: true
     minimalMode: true
+    columnOrders:
+      note.醫家:
+        - 趙紹琴
+    cardOrders:
+      note.醫家: {}
+    columnColors:
+      note.醫家: {}
+    columnWidths:
+      note.醫家:
+        趙紹琴: 223
+    cardColors:
+      note.學習狀態: {}
   - type: hans-kanban-view
     name: 依素材類型
     filters:
