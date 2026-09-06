@@ -48,16 +48,9 @@
               "icon": "lucide-file",
               "title": "枇杷葉"
             }
-          }
-        ],
-        "currentTab": 2
-      },
-      {
-        "id": "6ccaa68cc926c20f",
-        "type": "tabs",
-        "children": [
+          },
           {
-            "id": "9be5036bc23c9c19",
+            "id": "d35e88a9be39123a",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -69,8 +62,111 @@
               "icon": "lucide-file",
               "title": "溫病淺談---衛氣營血舌象及其用藥法則"
             }
+          },
+          {
+            "id": "d268d66f337fc0c0",
+            "type": "leaf",
+            "state": {
+              "type": "bases",
+              "state": {
+                "file": "600_Projects/東湖診所開業計畫/診所進度儀表板.base",
+                "viewName": "看板總覽"
+              },
+              "icon": "lucide-layout-list",
+              "title": "診所進度儀表板"
+            }
+          },
+          {
+            "id": "4dd26769984378af",
+            "type": "leaf",
+            "state": {
+              "type": "bases",
+              "state": {
+                "file": "600_Projects/東湖診所開業計畫/診所進度儀表板.base",
+                "viewName": "看板總覽"
+              },
+              "icon": "lucide-layout-list",
+              "title": "診所進度儀表板"
+            }
+          },
+          {
+            "id": "9fa9b5a355156841",
+            "type": "leaf",
+            "state": {
+              "type": "bases",
+              "state": {
+                "file": "400_Atlas/讀書學習看板.base",
+                "viewName": "依來源"
+              },
+              "icon": "lucide-layout-list",
+              "title": "讀書學習看板"
+            }
+          },
+          {
+            "id": "6f4841095aa9e8de",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "500_Inbox/我的診所藥單.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "我的診所藥單"
+            }
           }
-        ]
+        ],
+        "currentTab": 3
+      },
+      {
+        "id": "a2b182b0c446097f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "1e75b792cafd53d2",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "400_Atlas/Library/wiki/典籍/溫病淺談---衛氣營血舌象及其用藥法則.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "溫病淺談---衛氣營血舌象及其用藥法則"
+            }
+          },
+          {
+            "id": "d757dd0a9d1ef67f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "500_Inbox/2026-09-06.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2026-09-06"
+            }
+          },
+          {
+            "id": "af146bbaff5551cf",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "400_Atlas/Library/wiki/藥物本草/浙貝母.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "浙貝母"
+            }
+          }
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -129,7 +225,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "a65f4839c4f1ffdc",
@@ -243,8 +340,27 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "9be5036bc23c9c19",
+  "active": "d757dd0a9d1ef67f",
   "lastOpenFiles": [
+    "400_Atlas/Library/wiki/典籍/溫病淺談---衛氣營血舌象及其用藥法則.md",
+    "500_Inbox/2026-09-06.md",
+    "400_Atlas/Library/wiki/藥物本草/浙貝母.md",
+    "600_Projects/東湖診所開業計畫/診所進度儀表板.base",
+    "500_Inbox/我的診所藥單.md",
+    "400_Atlas/讀書學習看板.base",
+    "500_Inbox/未命名 2.md",
+    "400_Atlas/Library/wiki/醫案/醫案_周某_風溫1_上呼吸道感染（趙紹琴）.md",
+    "600_Projects/東湖診所開業計畫/tasks/人員招募_32_PT面試安排.md",
+    "600_Projects/東湖診所開業計畫/tasks/人員招募_31_PT勞動合約準備.md",
+    "600_Projects/東湖診所開業計畫/tasks/人員招募_30_陳畇安職災保險投保期限.md",
+    "600_Projects/東湖診所開業計畫/tasks/法規與行政_11_國稅局健保局會計師接洽.md",
+    "600_Projects/東湖診所開業計畫/tasks/法規與行政_10_二次施工等候區門面.md",
+    "600_Projects/東湖診所開業計畫/tasks/人員招募_14_面試問題清單留存備用.md",
+    "600_Projects/東湖診所開業計畫/tasks/財務_03_和潤代墊款項追蹤.md",
+    "600_Projects/東湖診所開業計畫/tasks/財務_02_信貸條款待確認問題.md",
+    "600_Projects/東湖診所開業計畫/tasks/財務_01_信貸額度比較.md",
+    "400_Atlas/Library/wiki/藥物本草/枇杷葉.md",
+    "500_Inbox/未命名 1.md",
     "000_Agent/skills/note-capture/SKILL.md",
     "400_Atlas/Library/wiki/方劑/葛根黃連黃芩甘草湯.md",
     "400_Atlas/Library/wiki/方劑/麻黃杏仁甘草石膏湯.md",
@@ -254,33 +370,14 @@
     "400_Atlas/Notes/2026-09-05_外感風熱辨識_無汗是熱鬱不是表閉.md",
     "400_Atlas/Maps/溫病 MOC.md",
     "400_Atlas/Library/wiki/醫案/醫案_李某_風溫3_上呼吸道感染（趙紹琴）.md",
-    "400_Atlas/Library/wiki/典籍/溫病淺談---衛氣營血舌象及其用藥法則.md",
-    "400_Atlas/Library/wiki/典籍/溫病淺談--舌診--趙紹琴.md",
-    "400_Atlas/Library/wiki/藥物本草/枇杷葉.md",
     "未命名 7.base",
-    "000_Agent/skills/handbook/SKILL.md",
-    "400_Atlas/臨床手冊_主題查詢.md",
-    "400_Atlas/臨床手冊_推理層次.md",
     "000_Agent/skills/handbook/scripts/build_handbook.py",
     "000_Agent/skills/handbook/scripts",
     "000_Agent/skills/handbook",
-    "400_Atlas/Library/wiki/典籍/趙紹琴臨證驗案精選.md",
-    "400_Atlas/Library/wiki/醫案/醫案_周某_風溫1_上呼吸道感染（趙紹琴）.md",
-    "400_Atlas/讀書學習看板.base",
-    "600_Projects/平衡木診所遊戲化系統/index.md",
     "600_Projects/平衡木診所遊戲化系統",
-    "400_Atlas/Library/wiki/病機病理/痹證.md",
-    "000_Agent/skills/question-garden/SKILL.md",
     "000_Agent/skills/question-garden/SKILL.md.tmp.20984.3e858ce78fdd",
     "000_Agent/skills/question-garden",
     "400_Atlas/問題花園.base",
-    "400_Atlas/讀書學習看板.base.tmp.20984.1b89a796df3c",
-    "400_Atlas/Library/wiki/方劑/五子滌痰湯.md",
-    "400_Atlas/Library/wiki/醫案/醫案_孫某_失眠3_神經衰弱（趙紹琴）.md",
-    "400_Atlas/Library/wiki/藥物本草/茜草.md",
-    "400_Atlas/Library/wiki/方劑/肺癰四期方_甘寒育陰活血通絡.md",
-    "400_Atlas/Library/wiki/醫案/醫案_徐某_失眠2_神經衰弱（趙紹琴）.md",
-    "400_Atlas/Library/wiki/醫案/醫案_佟某_失眠1_神經衰弱（趙紹琴）.md",
     "600_Projects/病歷紀錄/測試病人R/attachments/測試病人R_2026-08-27_0035_舌象.jpg",
     "600_Projects/病歷紀錄/0000/attachments/0000_2026-08-26_2248_舌象_2.jpg",
     "600_Projects/病歷紀錄/0000/attachments/0000_2026-08-26_2248_舌象_1.jpg",

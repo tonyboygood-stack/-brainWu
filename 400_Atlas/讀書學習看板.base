@@ -83,6 +83,7 @@ views:
     columnOrders:
       note.醫家:
         - 趙紹琴
+        - 未分類
     cardOrders:
       note.醫家: {}
     columnColors:
@@ -156,3 +157,5 @@ views:
       - formula.躺了幾天
     summaries:
       formula.已收成: Average
+  - type: hans-kanban-view
+    name: 我的臨床系統完善
