@@ -412,11 +412,22 @@ def whisper_transcribe(audio_path, args):
 
 # ---------------------------------------------------------------- 輸出
 
+PUNCT_END = ("。", "！", "？", "，", "、", "；", "：", ".", "!", "?", ",")
+
+
 def build_paragraphs(lines, max_chars=180):
-    """把零碎字幕句子併成好讀的段落。"""
+    """把零碎字幕句子併成好讀的段落。
+
+    YouTube 自動字幕與 Whisper 的中文輸出通常都沒有標點。這裡刻意不替
+    講者補標點——那等於捏造他的斷句——改用空格分隔原本的語句群，讓段落
+    讀得下去又不更動內容。來源本身就有標點的則不再加空格。
+    """
     paras, buf = [], ""
     for _, _, text in lines:
-        sep = "" if (buf.endswith(("。", "！", "？", "，")) or not buf) else ""
+        if not buf:
+            buf = text
+            continue
+        sep = "" if buf.endswith(PUNCT_END) else " "
         buf = f"{buf}{sep}{text}"
         if len(buf) >= max_chars:
             paras.append(buf)
