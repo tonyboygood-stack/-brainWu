@@ -596,7 +596,9 @@ def main():
         description="YouTube 批次逐字稿：有字幕就抓字幕，沒字幕才跑 Whisper"
     )
     p.add_argument("urls", nargs="+", help="影片／播放清單／頻道網址")
-    p.add_argument("--limit", type=int, help="只處理前 N 支")
+    p.add_argument("--limit", type=int, help="只處理前 N 支（在 --only 篩選之後才套用）")
+    p.add_argument("--only", choices=["member", "daily", "all"], default="all",
+                   help="只處理某一類：member 會員專題／daily 每日分析")
     p.add_argument("--force", action="store_true", help="忽略已完成紀錄，全部重做")
     p.add_argument("--dry-run", action="store_true", help="只列出待處理清單，不執行")
     p.add_argument("--skip-whisper", action="store_true",
@@ -612,10 +614,21 @@ def main():
     setup_env()
     state = {} if args.force else load_state()
 
-    targets = enumerate_targets(args.urls, args.limit)
+    # 先攤平清單，篩選過後才套 --limit，否則 --only 會被前 N 支截斷
+    targets = enumerate_targets(args.urls)
     if not targets:
         log("沒有找到任何影片")
         return 1
+
+    if args.only != "all":
+        want = "會員專題" if args.only == "member" else "每日分析"
+        before = len(targets)
+        # 清單階段只有標題可用，靠標題規則分類，不需要會員權限
+        targets = [t for t in targets if classify(t)[0] == want]
+        log(f"--only {args.only}：{before} 支篩成 {len(targets)} 支「{want}」")
+
+    if args.limit:
+        targets = targets[:args.limit]
 
     todo = [t for t in targets if t["id"] not in state]
     log(f"共 {len(targets)} 支，已完成 {len(targets) - len(todo)} 支，待處理 {len(todo)} 支")
