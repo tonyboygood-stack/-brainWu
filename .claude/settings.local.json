@@ -135,7 +135,23 @@
       "Bash(cd \"C:/Users/user/Documents/GitHub/-\" && mkdir -p 000_Agent/skills/library-ingest/scripts && echo created)",
       "Bash(PYTHONIOENCODING=utf-8 python 000_Agent/skills/library-ingest/scripts/backfill_attribution.py)",
       "Bash(gh api *)",
-      "Bash(git clone *)"
+      "Bash(git clone *)",
+      "Bash(yt-dlp --version)",
+      "Bash(pip --version)",
+      "Bash(nvidia-smi --query-gpu=name,memory.total --format=csv)",
+      "Bash(wmic cpu *)",
+      "Bash(grep -v '^$')",
+      "Bash(wmic computersystem *)",
+      "Bash(ffmpeg -version)",
+      "Bash(pip list *)",
+      "Bash(pip install *)",
+      "Bash(python -m yt_dlp --version)",
+      "Bash(python -m yt_dlp --cookies \"C:/Users/user/.config/yt-transcribe/cookies.txt\" --list-subs --skip-download \"https://www.youtube.com/watch?v=VtO9thgsubY\")",
+      "Bash(deno --version)",
+      "Bash(bun --version)",
+      "Bash(winget --version)",
+      "Bash(python -m yt_dlp --cookies \"C:/Users/user/.config/yt-transcribe/cookies.txt\" --extractor-args \"youtube:player_client=tv_simply,web_safari\" --list-subs --skip-download \"https://www.youtube.com/watch?v=VtO9thgsubY\")",
+      "WebFetch(domain:www.typeless.com)"
     ]
   }
 }

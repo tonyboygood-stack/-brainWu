@@ -62,6 +62,9 @@ views:
     order:
       - area
       - 優先度
+    sort:
+      - property: 優先度
+        direction: DESC
     groupByProperty: note.時間
     cardColorProperty: note.狀態
     cardColorOrder:
@@ -121,9 +124,6 @@ views:
     hideEmptyColumns: false
     columnWidth: 260
     masonryMode: false
-    sort:
-      - property: 優先度
-        direction: DESC
     inheritedFrom: template:每日工作台
   - type: table
     name: 總覽

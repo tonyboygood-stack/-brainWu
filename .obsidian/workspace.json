@@ -36,34 +36,6 @@
             }
           },
           {
-            "id": "9e526a47be839ceb",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "400_Atlas/Library/wiki/藥物本草/枇杷葉.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "枇杷葉"
-            }
-          },
-          {
-            "id": "d35e88a9be39123a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "400_Atlas/Library/wiki/典籍/溫病淺談---衛氣營血舌象及其用藥法則.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "溫病淺談---衛氣營血舌象及其用藥法則"
-            }
-          },
-          {
             "id": "d268d66f337fc0c0",
             "type": "leaf",
             "state": {
@@ -74,32 +46,6 @@
               },
               "icon": "lucide-layout-list",
               "title": "診所進度儀表板"
-            }
-          },
-          {
-            "id": "4dd26769984378af",
-            "type": "leaf",
-            "state": {
-              "type": "bases",
-              "state": {
-                "file": "600_Projects/東湖診所開業計畫/診所進度儀表板.base",
-                "viewName": "看板總覽"
-              },
-              "icon": "lucide-layout-list",
-              "title": "診所進度儀表板"
-            }
-          },
-          {
-            "id": "9fa9b5a355156841",
-            "type": "leaf",
-            "state": {
-              "type": "bases",
-              "state": {
-                "file": "400_Atlas/讀書學習看板.base",
-                "viewName": "依來源"
-              },
-              "icon": "lucide-layout-list",
-              "title": "讀書學習看板"
             }
           },
           {
@@ -115,14 +61,7 @@
               "icon": "lucide-file",
               "title": "我的診所藥單"
             }
-          }
-        ],
-        "currentTab": 3
-      },
-      {
-        "id": "a2b182b0c446097f",
-        "type": "tabs",
-        "children": [
+          },
           {
             "id": "1e75b792cafd53d2",
             "type": "leaf",
@@ -136,37 +75,29 @@
               "icon": "lucide-file",
               "title": "溫病淺談---衛氣營血舌象及其用藥法則"
             }
-          },
-          {
-            "id": "d757dd0a9d1ef67f",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "500_Inbox/2026-09-06.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "2026-09-06"
-            }
-          },
-          {
-            "id": "af146bbaff5551cf",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "400_Atlas/Library/wiki/藥物本草/浙貝母.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "浙貝母"
-            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 4
+      },
+      {
+        "id": "a2b182b0c446097f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d35e88a9be39123a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "600_Projects/投資/逐字稿/會員專題/022_2023-12-23_多空皆宜 個股期；122323 [海豚以上學員專屬(22)].md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "022_2023-12-23_多空皆宜 個股期；122323 [海豚以上學員專屬(22)]"
+            }
+          }
+        ]
       }
     ],
     "direction": "vertical"
@@ -225,8 +156,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "a65f4839c4f1ffdc",
@@ -340,44 +270,44 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "d757dd0a9d1ef67f",
+  "active": "d35e88a9be39123a",
   "lastOpenFiles": [
-    "400_Atlas/Library/wiki/典籍/溫病淺談---衛氣營血舌象及其用藥法則.md",
-    "500_Inbox/2026-09-06.md",
-    "400_Atlas/Library/wiki/藥物本草/浙貝母.md",
-    "600_Projects/東湖診所開業計畫/診所進度儀表板.base",
-    "500_Inbox/我的診所藥單.md",
-    "400_Atlas/讀書學習看板.base",
-    "500_Inbox/未命名 2.md",
-    "400_Atlas/Library/wiki/醫案/醫案_周某_風溫1_上呼吸道感染（趙紹琴）.md",
-    "600_Projects/東湖診所開業計畫/tasks/人員招募_32_PT面試安排.md",
-    "600_Projects/東湖診所開業計畫/tasks/人員招募_31_PT勞動合約準備.md",
-    "600_Projects/東湖診所開業計畫/tasks/人員招募_30_陳畇安職災保險投保期限.md",
-    "600_Projects/東湖診所開業計畫/tasks/法規與行政_11_國稅局健保局會計師接洽.md",
-    "600_Projects/東湖診所開業計畫/tasks/法規與行政_10_二次施工等候區門面.md",
-    "600_Projects/東湖診所開業計畫/tasks/人員招募_14_面試問題清單留存備用.md",
-    "600_Projects/東湖診所開業計畫/tasks/財務_03_和潤代墊款項追蹤.md",
-    "600_Projects/東湖診所開業計畫/tasks/財務_02_信貸條款待確認問題.md",
-    "600_Projects/東湖診所開業計畫/tasks/財務_01_信貸額度比較.md",
-    "400_Atlas/Library/wiki/藥物本草/枇杷葉.md",
-    "500_Inbox/未命名 1.md",
-    "000_Agent/skills/note-capture/SKILL.md",
-    "400_Atlas/Library/wiki/方劑/葛根黃連黃芩甘草湯.md",
-    "400_Atlas/Library/wiki/方劑/麻黃杏仁甘草石膏湯.md",
-    "400_Atlas/Notes/2026-09-05_風溫肺衛期用藥五層分工_此階段不用苦寒.md",
-    "400_Atlas/Notes/2026-09-05_辛涼無效先問病重藥輕_衛轉氣三種轉歸.md",
-    "400_Atlas/Notes/2026-09-05_外感四證鑑別_風熱風寒伏氣春溫濕溫.md",
-    "400_Atlas/Notes/2026-09-05_外感風熱辨識_無汗是熱鬱不是表閉.md",
-    "400_Atlas/Maps/溫病 MOC.md",
-    "400_Atlas/Library/wiki/醫案/醫案_李某_風溫3_上呼吸道感染（趙紹琴）.md",
-    "未命名 7.base",
-    "000_Agent/skills/handbook/scripts/build_handbook.py",
-    "000_Agent/skills/handbook/scripts",
-    "000_Agent/skills/handbook",
-    "600_Projects/平衡木診所遊戲化系統",
-    "000_Agent/skills/question-garden/SKILL.md.tmp.20984.3e858ce78fdd",
-    "000_Agent/skills/question-garden",
-    "400_Atlas/問題花園.base",
+    "600_Projects/平衡木診所遊戲化系統/企劃書/00_總企劃.md",
+    "600_Projects/平衡木診所遊戲化系統/企劃書/06_診所公佈欄與每日日誌.md.tmp.2092.024a91158f6d",
+    "600_Projects/平衡木診所遊戲化系統/企劃書/06_診所公佈欄與每日日誌.md.tmp.2092.19e8229b0bc8",
+    "600_Projects/投資/逐字稿/_srt/VtO9thgsubY.srt",
+    "600_Projects/投資/逐字稿/會員專題/011_2023-07-15_技術分析教學，大漲的訊號 價值連城課程 071523 [海豚以上學員專屬 (11) ].md",
+    "600_Projects/投資/逐字稿/_srt/fKorQVbBK1M.srt",
+    "600_Projects/投資/逐字稿/會員專題/010_2023-06-24_宏爺秘笈 技術分析(一)「形態學」062423 [海豚以上學員專屬 (10) ].md",
+    "600_Projects/投資/逐字稿/_srt/efmxay8bBCk.srt",
+    "600_Projects/投資/逐字稿/會員專題/008_2023-05-20_看懂「股票基期位階」提升市場判斷力！；052023 [海豚以上學員專屬 (8) ].md",
+    "600_Projects/投資/逐字稿/_srt/PFtYpZRz-Zg.srt",
+    "600_Projects/投資/逐字稿/會員專題/012_2023-07-29_避險與放空 風險與機會並存！ 072923 [海豚以上學員專屬 (12) ].md",
+    "600_Projects/投資/逐字稿/_srt/h1-V10-4_yg.srt",
+    "600_Projects/投資/逐字稿/會員專題/013_2023-08-12_強勢股的財報特點 魔鬼藏在細節裡，財務三大報表 081223 [海豚以上學員專屬 (13) ].md",
+    "600_Projects/投資/逐字稿/_srt/S9v80c_cChI.srt",
+    "600_Projects/投資/逐字稿/會員專題/016_2023-09-23_股市心理學 如何從錯誤交易中學習？ 092323 [海豚以上學員專屬 (16) ].md",
+    "600_Projects/投資/逐字稿/_srt/38m7vYd9uo4.srt",
+    "600_Projects/投資/逐字稿/會員專題/015_2023-09-09_投信買超的市場影響 投信選股法 090923 [海豚以上學員專屬 (15) ].md",
+    "600_Projects/平衡木診所遊戲化系統/企劃書/07_AI背景層.md",
+    "600_Projects/投資/逐字稿/_srt/o9go4Fb_844.srt",
+    "600_Projects/投資/逐字稿/會員專題/017_2023-10-14_翻轉人生的選股策略 做多、飆股、放空策略；101423 [海豚以上學員專屬 (17) ].md",
+    "600_Projects/平衡木診所遊戲化系統/企劃書/06_診所公佈欄與每日日誌.md",
+    "600_Projects/投資/逐字稿/會員專題/018_2023-10-28_經濟衰退期，債券ETF的優勢與風險；102823 [海豚以上學員專屬 (18) ].md",
+    "600_Projects/平衡木診所遊戲化系統/企劃書/05_平衡木編年史.md",
+    "600_Projects/投資/index.md",
+    "600_Projects/投資/逐字稿/會員專題/022_2023-12-23_多空皆宜 個股期；122323 [海豚以上學員專屬(22)].md",
+    "500_Inbox/2026-09-07.md",
+    "600_Projects/投資/逐字稿/會員專題/024_2024-01-27_看穿主力意圖「關鍵K線」；012724 [海豚以上學員專屬(24)].md",
+    "600_Projects/投資/逐字稿/會員專題/025_2024-02-24_跟著主力，豬能飛 (觀念篇)；022424 [海豚以上學員專屬(25)].md",
+    "600_Projects/投資/逐字稿/會員專題/027_2024-03-23_市場機遇如何掌握 032324 [海豚以上學員專屬(27)].md",
+    "600_Projects/投資/逐字稿/會員專題/029_2024-04-27_賣股的藝術；042724 [海豚以上學員專屬(29)].md",
+    "600_Projects/投資/逐字稿/會員專題/028_2024-04-13_股市高檔比飆股更重要的事 資產配置；041324 [海豚以上學員專屬(28)].md",
+    "600_Projects/投資/逐字稿/會員專題/032_2024-06-08_價值連城工具 宏爺壓箱寶；060824 [海豚以上學員專屬(32)].md",
+    "600_Projects/投資/逐字稿/會員專題/034_2024-07-12_看穿主力意圖「關鍵K線，多K定生死」071324 [海豚以上學員專屬(34)].md",
+    "600_Projects/投資/逐字稿/會員專題/036_2024-08-10_外資「先行指標」081024 [海豚以上學員專屬(36)].md",
+    "600_Projects/投資/逐字稿/會員專題/037_2024-08-24_「美股ETF」082424 [海豚以上學員專屬(37)].md",
+    "600_Projects/投資/逐字稿/會員專題/039_2024-09-28_中國經濟放緩，全球市場是否受衝擊？ 092824 [海豚以上學員專屬(39)].md",
     "600_Projects/病歷紀錄/測試病人R/attachments/測試病人R_2026-08-27_0035_舌象.jpg",
     "600_Projects/病歷紀錄/0000/attachments/0000_2026-08-26_2248_舌象_2.jpg",
     "600_Projects/病歷紀錄/0000/attachments/0000_2026-08-26_2248_舌象_1.jpg",
