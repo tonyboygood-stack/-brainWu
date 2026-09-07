@@ -34,6 +34,7 @@ import argparse
 import json
 import os
 import re
+import shutil
 import sys
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -44,11 +45,22 @@ from pathlib import Path
 
 VAULT = Path(r"C:\Users\user\Documents\GitHub\-")
 OUT_DIR = VAULT / "600_Projects" / "投資" / "逐字稿"
+DAILY_DIR = OUT_DIR / "每日分析"      # 時事與盤勢，標題帶日期，公開影片
+MEMBER_DIR = OUT_DIR / "會員專題"      # 觀念教學與專題，會員限定，自帶流水號
 SRT_DIR = OUT_DIR / "_srt"
+
+# 會員專題的標題長這樣：「...  08/22/26 [海豚以上學員專屬(85)]」
+# 括號裡的流水號是這個系列的期數，比日期更適合拿來排序。
+MEMBER_TITLE_RE = re.compile(r"專屬|學員專屬|海豚以上|會員專屬")
+MEMBER_SERIAL_RE = re.compile(r"專屬\s*[(（]\s*(\d+)\s*[)）]")
+
+# yt-dlp 撞到會員牆時的錯誤訊息，中英文各一種說法
+MEMBERS_ONLY_RE = re.compile(r"members[- ]only|available to this channel's members|僅供以下等級的頻道會員")
 
 # cookie、狀態檔、暫存音訊全部放 repo 外面，確保不會被 Obsidian Git 推上 GitHub
 CONF_DIR = Path(r"C:\Users\user\.config\yt-transcribe")
-COOKIES = CONF_DIR / "cookies.txt"
+COOKIES = CONF_DIR / "cookies.txt"          # 主檔：你匯出的原始 cookie，腳本永不寫入
+SESSION_COOKIES = CONF_DIR / "cache" / "session-cookies.txt"  # 每次執行用的拋棄式副本
 CACHE_DIR = CONF_DIR / "cache"
 AUDIO_DIR = CACHE_DIR / "audio"
 STATE_FILE = CACHE_DIR / "state.json"
@@ -108,14 +120,30 @@ def register_cuda_dlls():
     return found
 
 
+def prepare_cookies():
+    """把主 cookie 檔複製一份給 yt-dlp 用，主檔本身永不被寫入。
+
+    yt-dlp 每次跑完都會把 cookie jar 寫回 --cookies 指定的檔案。YouTube
+    在拒絕存取時會回傳清除性的 Set-Cookie，一旦寫回主檔，登入憑證就會
+    被一次次侵蝕，最後整組 SID / SAPISID / LOGIN_INFO 全部消失，得重新
+    匯出。所以這裡一律讓它去改拋棄式副本。
+    """
+    if not COOKIES.exists():
+        return None
+    SESSION_COOKIES.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(COOKIES, SESSION_COOKIES)
+    return SESSION_COOKIES
+
+
 def setup_env():
-    """把 Deno 掛上 PATH、註冊 CUDA DLL，並確保輸出是 UTF-8。"""
+    """把 Deno 掛上 PATH、註冊 CUDA DLL、備妥 cookie 副本，並確保輸出是 UTF-8。"""
     if DENO_DIR.is_dir():
         os.environ["PATH"] = os.environ["PATH"] + os.pathsep + str(DENO_DIR)
     os.environ.setdefault("PYTHONIOENCODING", "utf-8")
     register_cuda_dlls()
-    for d in (OUT_DIR, SRT_DIR, AUDIO_DIR):
+    for d in (OUT_DIR, DAILY_DIR, MEMBER_DIR, SRT_DIR, AUDIO_DIR):
         d.mkdir(parents=True, exist_ok=True)
+    prepare_cookies()
 
 
 def load_state():
@@ -210,8 +238,10 @@ def make_ydl(extra=None):
         "retries": 5,
         "socket_timeout": 30,
     }
-    if COOKIES.exists():
-        opts["cookiefile"] = str(COOKIES)
+    if SESSION_COOKIES.exists():
+        opts["cookiefile"] = str(SESSION_COOKIES)
+    elif COOKIES.exists():
+        opts["cookiefile"] = str(prepare_cookies())
     if extra:
         opts.update(extra)
     return YoutubeDL(opts)
@@ -444,6 +474,27 @@ def write_srt(lines, video_id):
     (SRT_DIR / f"{video_id}.srt").write_text("\n".join(out), encoding="utf-8")
 
 
+def classify(info):
+    """判斷是「會員專題」還是「每日分析」。
+
+    優先看 yt-dlp 的 availability 欄位（subscriber_only 就是會員限定），
+    這是 YouTube 給的權威答案。但那個欄位只有在真的取得影片資料時才有，
+    所以再用標題規則兜底——會員專題的標題一定帶「[海豚以上學員專屬(NN)]」，
+    光靠清單階段的標題就分得出來，不需要會員權限。
+    """
+    availability = (info.get("availability") or "").lower()
+    title = info.get("title") or ""
+
+    is_member = availability == "subscriber_only" or bool(MEMBER_TITLE_RE.search(title))
+
+    serial = None
+    m = MEMBER_SERIAL_RE.search(title)
+    if m:
+        serial = int(m.group(1))
+
+    return ("會員專題" if is_member else "每日分析"), serial
+
+
 def write_markdown(info, lines, method, convert=True):
     vid = info["id"]
     title = info.get("title") or vid
@@ -455,6 +506,8 @@ def write_markdown(info, lines, method, convert=True):
 
     body = to_traditional(build_paragraphs(lines), convert)
     title_tw = to_traditional(title, convert)
+    category, serial = classify(info)
+    is_member = category == "會員專題"
 
     fm = [
         "---",
@@ -462,6 +515,12 @@ def write_markdown(info, lines, method, convert=True):
         f"source: https://www.youtube.com/watch?v={vid}",
         f'channel: "{to_traditional(info.get("uploader") or "", convert).replace(chr(34), chr(39))}"',
         f"video_id: {vid}",
+        f"category: {category}",
+        f"access: {'會員限定' if is_member else '公開'}",
+    ]
+    if serial is not None:
+        fm.append(f"series_no: {serial}")
+    fm += [
         f"upload_date: {date_str}",
         f"duration: {fmt_duration(info.get('duration'))}",
         f"method: {method}",
@@ -469,18 +528,27 @@ def write_markdown(info, lines, method, convert=True):
         "tags:",
         "  - 投資",
         "  - 逐字稿",
+        f"  - {'會員專題' if is_member else '每日分析'}",
         "---",
         "",
         f"# {title_tw}",
         "",
         f"> [!info] 來源｜[YouTube 原片](https://www.youtube.com/watch?v={vid})"
-        f"｜{fmt_duration(info.get('duration'))}｜取得方式：{method}",
+        f"｜{fmt_duration(info.get('duration'))}｜{category}"
+        + (f"　第 {serial} 期" if serial is not None else "")
+        + f"｜取得方式：{method}",
         "",
         body,
         "",
     ]
 
-    path = OUT_DIR / f"{date_str}_{safe_filename(title_tw)}.md"
+    # 會員專題自帶流水號，用編號開頭排序比日期直覺；每日分析則維持日期開頭
+    if is_member and serial is not None:
+        name = f"{serial:03d}_{date_str}_{safe_filename(title_tw)}.md"
+    else:
+        name = f"{date_str}_{safe_filename(title_tw)}.md"
+
+    path = (MEMBER_DIR if is_member else DAILY_DIR) / name
     path.write_text("\n".join(fm), encoding="utf-8")
     return path
 
@@ -538,6 +606,7 @@ def main():
 
     # ---- 第一階段：並行探測 + 快車道直接寫檔
     whisper_queue = []
+    blocked = []          # 被會員牆擋下的，不是錯誤，是缺權限
     fast_done = 0
     t0 = time.time()
 
@@ -548,7 +617,11 @@ def main():
             try:
                 info, lines, method, convert = fut.result()
             except Exception as e:  # noqa: BLE001
-                log(f"✗ {t['id']} 探測失敗：{e}")
+                msg = str(e)
+                if MEMBERS_ONLY_RE.search(msg):
+                    blocked.append(t)
+                else:
+                    log(f"✗ {t['id']} 探測失敗：{e}")
                 continue
 
             if lines:
@@ -573,6 +646,19 @@ def main():
     save_state(state)
     log(f"快車道完成 {fast_done} 支，耗時 {time.time() - t0:.0f} 秒；"
         f"需要 Whisper 的有 {len(whisper_queue)} 支")
+
+    if blocked:
+        log("")
+        log(f"⚠ 有 {len(blocked)} 支被會員牆擋下，未處理。")
+        log("  cookie 沒有帶到會員身分。可能原因：")
+        log("  1) 匯出時 Chrome 停在非會員的那個 Google 帳號")
+        log("  2) cookie 已過期或被登出")
+        log(f"  重新匯出後覆蓋 {COOKIES} 再跑一次即可（已完成的不會重做）")
+        for t in blocked[:10]:
+            log(f"    {t['id']}  {t['title'][:50]}")
+        if len(blocked) > 10:
+            log(f"    …另有 {len(blocked) - 10} 支")
+        log("")
 
     if args.skip_whisper or not whisper_queue:
         if whisper_queue:
