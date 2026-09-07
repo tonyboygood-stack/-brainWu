@@ -36,6 +36,7 @@ import os
 import re
 import shutil
 import sys
+import threading
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime
@@ -120,19 +121,46 @@ def register_cuda_dlls():
     return found
 
 
-def prepare_cookies():
-    """把主 cookie 檔複製一份給 yt-dlp 用，主檔本身永不被寫入。
+_thread_local = threading.local()
 
-    yt-dlp 每次跑完都會把 cookie jar 寫回 --cookies 指定的檔案。YouTube
-    在拒絕存取時會回傳清除性的 Set-Cookie，一旦寫回主檔，登入憑證就會
-    被一次次侵蝕，最後整組 SID / SAPISID / LOGIN_INFO 全部消失，得重新
-    匯出。所以這裡一律讓它去改拋棄式副本。
+
+def prepare_cookies():
+    """給呼叫端的執行緒一份專屬的 cookie 副本，主檔永不被寫入。
+
+    兩個問題要一起解決：
+
+    1. yt-dlp 每次跑完都會把 cookie jar 寫回 --cookies 指定的檔案。
+       YouTube 在拒絕存取時會回傳清除性的 Set-Cookie，一旦寫回主檔，
+       登入憑證就會被一次次侵蝕，最後整組 SID / SAPISID / LOGIN_INFO
+       全部消失，得重新匯出。
+
+    2. 快車道是多執行緒的。若所有執行緒共用同一份副本，甲正在寫回時
+       乙剛好讀取，就會拿到寫到一半的檔案，噴
+       "does not look like a Netscape format cookie"。
+
+    所以每個執行緒各自持有一份，彼此不干擾。
     """
     if not COOKIES.exists():
         return None
+    path = getattr(_thread_local, "cookiefile", None)
+    if path is not None and path.exists():
+        return path
     SESSION_COOKIES.parent.mkdir(parents=True, exist_ok=True)
-    shutil.copy2(COOKIES, SESSION_COOKIES)
-    return SESSION_COOKIES
+    path = SESSION_COOKIES.parent / f"session-cookies-{threading.get_ident()}.txt"
+    shutil.copy2(COOKIES, path)
+    _thread_local.cookiefile = path
+    return path
+
+
+def clean_session_cookies():
+    """清掉上次執行殘留的每執行緒 cookie 副本。"""
+    if not SESSION_COOKIES.parent.is_dir():
+        return
+    for f in SESSION_COOKIES.parent.glob("session-cookies*.txt"):
+        try:
+            f.unlink()
+        except OSError:
+            pass
 
 
 def setup_env():
@@ -143,7 +171,7 @@ def setup_env():
     register_cuda_dlls()
     for d in (OUT_DIR, DAILY_DIR, MEMBER_DIR, SRT_DIR, AUDIO_DIR):
         d.mkdir(parents=True, exist_ok=True)
-    prepare_cookies()
+    clean_session_cookies()
 
 
 def load_state():
@@ -238,10 +266,9 @@ def make_ydl(extra=None):
         "retries": 5,
         "socket_timeout": 30,
     }
-    if SESSION_COOKIES.exists():
-        opts["cookiefile"] = str(SESSION_COOKIES)
-    elif COOKIES.exists():
-        opts["cookiefile"] = str(prepare_cookies())
+    cookiefile = prepare_cookies()
+    if cookiefile:
+        opts["cookiefile"] = str(cookiefile)
     if extra:
         opts.update(extra)
     return YoutubeDL(opts)
