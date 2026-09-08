@@ -201,6 +201,8 @@ def get_daily(code, market, months=14, use_cache=True):
     另外櫃買的量單位是「張」，這裡統一換算成股。
     """
     rows = []
+    fails = 0
+    throttled = False
     d = datetime.now().replace(day=1)
     for _ in range(months):
         try:
@@ -236,12 +238,25 @@ def get_daily(code, market, months=14, use_cache=True):
                     })
                 except (ValueError, IndexError):
                     pass
-        except Exception:  # noqa: BLE001
-            pass
+        except Exception as e:  # noqa: BLE001
+            fails += 1
+            # 證交所限流時回 307。靜默吞掉會讓資料默默殘缺，必須讓它可見。
+            if getattr(e, "code", None) in (307, 429, 503):
+                throttled = True
+                time.sleep(5)
         time.sleep(0.4)                      # 對官方站點客氣一點
         d = (d - timedelta(days=1)).replace(day=1)
     rows.sort(key=lambda x: x["date"])
-    log(f"  日成交: {len(rows)} 筆")
+
+    msg = f"  日成交: {len(rows)} 筆"
+    if fails:
+        msg += f"（{fails}/{months} 個月抓取失敗）"
+    log(msg)
+    if throttled:
+        log("  ⚠ 交易所回應 307/429，代表**請求被限流**。")
+        log("    資料會殘缺，均線與位階都不可信。請等 10–30 分鐘後重跑。")
+    elif fails > months * 0.2:
+        log(f"  ⚠ 失敗比例偏高（{fails}/{months}），本次資料可能不完整。")
     return rows
 
 
@@ -730,6 +745,14 @@ def build_report(code, api, daily, inst, tdcc, cmoney=None, conf=None,
             f"（資料涵蓋 {len(daily)} 個交易日／{t['all']['months']} 個月）",
             "",
         ]
+        if len(daily) < 100:
+            L += [
+                "> [!warning] 資料量不足，本節的均線與位階都不可信",
+                f"> 只取得 {len(daily)} 個交易日。20 週均線需要約 100 個交易日、"
+                "月線 12MA 需要 12 個月。",
+                "> 常見原因是**交易所限流**（回應 307／429）。請等 10–30 分鐘後重跑。",
+                "",
+            ]
 
         # 位階
         w = t.get("52w")
