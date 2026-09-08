@@ -203,6 +203,73 @@ def get_tdcc(code, use_cache=True):
         return []
 
 
+# ---------------------------------------------------------------- CMoney 籌碼
+
+def get_cmoney(code, days=60):
+    """CMoney 主力買賣超與買賣家數差。
+
+    不需要登入——實測匿名與登入結果完全相同。但 API 要一把 cmkey，
+    那把金鑰是短效的（幾分鐘就換），而且不會出現在 JS 檔裡，只嵌在
+    籌碼K線頁面的 HTML 中，一頁約 21 把、每個 action 各一把。
+
+    所以流程是：載入頁面 → 抽出所有候選金鑰 → 逐一試到通為止。
+    頁面載入時設下的 session cookie 也是必要的，故共用同一個 opener。
+    """
+    import http.cookiejar
+    import re
+
+    page = f"https://www.cmoney.tw/finance/{code}/stockmainkline"
+    cj = http.cookiejar.CookieJar()
+    op = urllib.request.build_opener(
+        urllib.request.HTTPSHandler(context=CTX),
+        urllib.request.HTTPCookieProcessor(cj),
+    )
+    op.addheaders = [("User-Agent", UA), ("Accept-Language", "zh-TW,zh;q=0.9")]
+
+    def api(action, key):
+        u = (f"https://www.cmoney.tw/finance/ashx/MainPage.ashx?action={action}"
+             f"&stockId={code}&days={days}&cmkey={urllib.parse.quote(key, safe='')}")
+        req = urllib.request.Request(u, headers={"Referer": page})
+        return op.open(req, timeout=30).read().decode("utf-8", "replace")
+
+    try:
+        html = op.open(page, timeout=45).read().decode("utf-8", "replace")
+    except Exception as e:  # noqa: BLE001
+        log(f"  CMoney: ✗ 頁面載入失敗 {e}")
+        return {}
+
+    keys = []
+    for m in re.findall(r"cmkey\s*[=:]\s*[\"']([^\"']+)", html):
+        if m not in keys:
+            keys.append(m)
+    if not keys:
+        log("  CMoney: ✗ 頁面中找不到金鑰（網站結構可能已改版）")
+        return {}
+
+    good = None
+    for k in keys:
+        try:
+            if api("tradersum", k).startswith("["):
+                good = k
+                break
+        except Exception:  # noqa: BLE001
+            continue
+    if not good:
+        log(f"  CMoney: ✗ {len(keys)} 把金鑰全部失敗")
+        return {}
+
+    out = {}
+    for action, label in [("tradersum", "買賣家數差"), ("mainforceoverbuy", "主力買賣超")]:
+        try:
+            body = api(action, good)
+            out[action] = json.loads(body) if body.startswith("[") else []
+            log(f"  CMoney {label}: {len(out[action])} 筆")
+        except Exception as e:  # noqa: BLE001
+            out[action] = []
+            log(f"  CMoney {label}: ✗ {e}")
+    return out
+
+
 # ---------------------------------------------------------------- 計算
 
 def ma_and_bias(daily, weeks=20):
@@ -262,7 +329,7 @@ def summarize_tdcc(rows):
 
 # ---------------------------------------------------------------- 輸出
 
-def build_report(code, api, daily, inst, tdcc):
+def build_report(code, api, daily, inst, tdcc, cmoney=None):
     base = api.get("基本資料") or {}
     name = base.get("公司簡稱", code)
     now = datetime.now()
@@ -370,6 +437,41 @@ def build_report(code, api, daily, inst, tdcc):
             "",
         ]
 
+    # CMoney 籌碼
+    cm = cmoney or {}
+    ts = cm.get("tradersum") or []
+    fb = cm.get("mainforceoverbuy") or []
+    if ts or fb:
+        force = {r["Date"]: r.get("OverBuy") for r in fb}
+        L += [
+            "## 主力買賣超與買賣家數差（CMoney）",
+            "",
+            "> [!important] 判讀依據",
+            "> 依 [[買賣家數差]]：**家數差為負 + 主力買超為正 ＝ 少數人吸收多數人的貨，"
+            "主力吃貨**。反之家數差為大正值，代表少數賣方把貨分散給很多買方，偏出貨。",
+            "",
+            "| 日期 | 主力買賣超(張) | 買方家數 | 賣方家數 | 買賣家數差 | 型態 |",
+            "| :--- | ---: | ---: | ---: | ---: | :--- |",
+        ]
+        for r in ts[-15:]:
+            d = r["Date"]
+            ob = force.get(d)
+            diff = r.get("TraderSum")
+            if ob is None or diff is None:
+                shape = "—"
+            elif ob > 0 and diff < 0:
+                shape = "**吃貨**"
+            elif ob < 0 and diff > 0:
+                shape = "偏出貨"
+            else:
+                shape = "—"
+            L.append(f"| {d} | {ob if ob is not None else '—'} | {r.get('BuyerCount')} "
+                     f"| {r.get('SellerCount')} | {diff:+} | {shape} |")
+        if fb:
+            tot = sum(r.get("OverBuy", 0) for r in fb)
+            L += ["", f"期間主力買賣超合計：**{tot:+,} 張**（{len(fb)} 個交易日）"]
+        L.append("")
+
     # 財報
     for key, title in [("月營收", "月營收"), ("營益分析", "營益分析"),
                        ("綜合損益", "綜合損益表"), ("資產負債", "資產負債表")]:
@@ -387,8 +489,9 @@ def build_report(code, api, daily, inst, tdcc):
         "",
         "- 分點進出明細（證交所買賣日報表，有圖形驗證碼）",
         "- 法說會簡報（MOPS 查詢參數為加密字串）",
-        "- 籌碼集中度／買賣家數差／外資成本線（CMoney 需登入）",
+        "- 籌碼集中度與外資成本線（CMoney 網頁上有，但未找到對應 API）",
         "- 董監持股明細",
+        "- 集保大戶的歷史趨勢（官方開放資料只有最新一週）",
         "",
         "→ 操作步驟見 [[資料蒐集SOP]]",
         "",
@@ -425,8 +528,10 @@ def main():
     inst = get_institutional(code, args.days, use_cache)
     log("集保股權分散…")
     tdcc = get_tdcc(code, use_cache)
+    log("CMoney 籌碼（免登入）…")
+    cmoney = get_cmoney(code, days=max(args.days * 3, 60))
 
-    report = build_report(code, api, daily, inst, tdcc)
+    report = build_report(code, api, daily, inst, tdcc, cmoney)
     out = OUT_DIR / f"{code}.md"
     out.write_text(report, encoding="utf-8")
     log(f"完成 → {out}")
