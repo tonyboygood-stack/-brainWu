@@ -74,27 +74,62 @@ def fetch_json(url, **kw):
     return json.loads(fetch(url, **kw).decode("utf-8", "replace"))
 
 
-# ---------------------------------------------------------------- TWSE OpenAPI
+# ---------------------------------------------------------------- 市場別
 
-OPENAPI = {
-    "基本資料": "t187ap03_L",
-    "月營收": "t187ap05_L",
-    "綜合損益": "t187ap06_L_ci",
-    "資產負債": "t187ap07_L_ci",
-    "營益分析": "t187ap17_L",
+# 上市走證交所，上櫃走櫃買中心。兩邊的端點與欄位名稱都不一樣。
+TWSE_API = {
+    "基本資料": "https://openapi.twse.com.tw/v1/opendata/t187ap03_L",
+    "月營收": "https://openapi.twse.com.tw/v1/opendata/t187ap05_L",
+    "綜合損益": "https://openapi.twse.com.tw/v1/opendata/t187ap06_L_ci",
+    "資產負債": "https://openapi.twse.com.tw/v1/opendata/t187ap07_L_ci",
+    "營益分析": "https://openapi.twse.com.tw/v1/opendata/t187ap17_L",
 }
+TPEX_API = {
+    "基本資料": "https://www.tpex.org.tw/openapi/v1/mopsfin_t187ap03_O",
+    "月營收": "https://www.tpex.org.tw/openapi/v1/mopsfin_t187ap05_O",
+    "綜合損益": "https://www.tpex.org.tw/openapi/v1/mopsfin_t187ap06_O_ci",
+    "資產負債": "https://www.tpex.org.tw/openapi/v1/mopsfin_t187ap07_O_ci",
+    # 櫃買沒有對應的營益分析端點
+}
+# 上櫃的資料表混用中英文欄位名當作代號欄
+CODE_FIELDS = ("公司代號", "SecuritiesCompanyCode", "證券代號")
 
 
-def get_openapi(code, use_cache=True):
-    """TWSE 開放資料：公司基本資料、月營收、財報。全市場檔案，抓下來過濾。"""
+def row_code(r):
+    for f in CODE_FIELDS:
+        if f in r:
+            return str(r[f]).strip()
+    return ""
+
+
+def detect_market(code, use_cache=True):
+    """判斷是上市還是上櫃。回傳 'sii' 或 'otc'，查不到回 None。"""
+    try:
+        rows = fetch_json(TWSE_API["基本資料"],
+                          cache_key="openapi_t187ap03_L.json", use_cache=use_cache)
+        if any(row_code(r) == code for r in rows):
+            return "sii"
+    except Exception:  # noqa: BLE001
+        pass
+    try:
+        rows = fetch_json(TPEX_API["基本資料"],
+                          cache_key="tpex_t187ap03_O.json", use_cache=use_cache)
+        if any(row_code(r) == code for r in rows):
+            return "otc"
+    except Exception:  # noqa: BLE001
+        pass
+    return None
+
+
+def get_openapi(code, market, use_cache=True):
+    """公司基本資料、月營收、財報。全市場檔案，抓下來過濾。"""
+    table = TWSE_API if market == "sii" else TPEX_API
+    prefix = "openapi" if market == "sii" else "tpex"
     out = {}
-    for name, ep in OPENAPI.items():
+    for name, url in table.items():
         try:
-            rows = fetch_json(
-                f"https://openapi.twse.com.tw/v1/opendata/{ep}",
-                cache_key=f"openapi_{ep}.json", use_cache=use_cache,
-            )
-            hit = [r for r in rows if str(r.get("公司代號", "")).strip() == code]
+            rows = fetch_json(url, cache_key=f"{prefix}_{name}.json", use_cache=use_cache)
+            hit = [r for r in rows if row_code(r) == code]
             out[name] = hit[0] if hit else None
             log(f"  {name}: {'✓' if hit else '無資料'}")
         except Exception as e:  # noqa: BLE001
@@ -103,33 +138,104 @@ def get_openapi(code, use_cache=True):
     return out
 
 
+# ---------------------------------------------------------------- 股利與 EPS
+
+def get_dividends(code):
+    """歷年 EPS 與現金股利。
+
+    來源是神秘金字塔的個股頁面——資料嵌在 Highcharts 的設定裡，
+    一次就能拿到十幾年的序列，上市上櫃通吃，比逐年查證交所有效率。
+
+    宏爺特別重視「歷年股息是否持續增加」，那是他不怕套牢的底氣，
+    所以這份資料的權重很高。
+    """
+    import re
+    url = f"https://norway.twsthr.info/StockHolders.aspx?stock={code}"
+    try:
+        html = fetch(url, timeout=60).decode("utf-8", "replace")
+    except Exception as e:  # noqa: BLE001
+        log(f"  股利歷史: ✗ {e}")
+        return []
+
+    def series(name):
+        m = re.search(r"data:\s*\[([^\]]*)\][^}]*?name:\s*'" + name + r"'", html)
+        if not m:
+            return []
+        return [float(x) for x in re.findall(r"-?\d+\.?\d*", m.group(1))]
+
+    # 頁面上有兩張 Highcharts：股權分散圖的 categories 是 '2021-09' 這種年月，
+    # 股利圖才是四位數年份。所以要掃過所有 categories，挑年份那一組。
+    years = []
+    for block in re.findall(r"categories:\s*\[([^\]]*)\]", html):
+        cand = re.findall(r"'(\d{4})'", block)
+        if len(cand) >= 5:
+            years = cand
+            break
+    eps = series("EPS\\(元\\)")
+    cash = series("現金股利\\(元\\)")
+    stock_div = series("盈餘配股\\(元\\)")
+    if not years or not eps:
+        log("  股利歷史: 找不到資料（網站結構可能已改版）")
+        return []
+
+    out = []
+    for i, y in enumerate(years):
+        out.append({
+            "year": y,
+            "eps": eps[i] if i < len(eps) else None,
+            "cash": cash[i] if i < len(cash) else None,
+            "stock": stock_div[i] if i < len(stock_div) else None,
+        })
+    log(f"  股利歷史: {len(out)} 個年度")
+    return out
+
+
 # ---------------------------------------------------------------- 股價
 
-def get_daily(code, months=14, use_cache=True):
-    """個股日成交。逐月抓，回傳 [(日期, 開, 高, 低, 收, 量), ...]。"""
+def get_daily(code, market, months=14, use_cache=True):
+    """個股日成交，逐月抓。上市走證交所，上櫃走櫃買中心。
+
+    兩邊的欄位順序不同：
+      證交所 STOCK_DAY  → [日期, 成交股數, 成交金額, 開, 高, 低, 收, 漲跌, 筆數]
+      櫃買 tradingStock → [日期, 成交張數, 成交仟元, 開, 高, 低, 收, 漲跌, 筆數]
+    另外櫃買的量單位是「張」，這裡統一換算成股。
+    """
     rows = []
     d = datetime.now().replace(day=1)
     for _ in range(months):
-        ds = f"{d:%Y%m01}"
         try:
-            j = fetch_json(
-                f"https://www.twse.com.tw/rwd/zh/afterTrading/STOCK_DAY"
-                f"?date={ds}&stockNo={code}&response=json",
-                cache_key=f"day_{code}_{ds}.json", use_cache=use_cache, timeout=40,
-            )
-            if j.get("stat") == "OK":
-                for r in j.get("data", []):
-                    try:
-                        rows.append({
-                            "date": r[0],
-                            "open": float(r[3].replace(",", "")),
-                            "high": float(r[4].replace(",", "")),
-                            "low": float(r[5].replace(",", "")),
-                            "close": float(r[6].replace(",", "")),
-                            "volume": int(r[1].replace(",", "")),
-                        })
-                    except (ValueError, IndexError):
-                        pass
+            if market == "sii":
+                ds = f"{d:%Y%m01}"
+                j = fetch_json(
+                    f"https://www.twse.com.tw/rwd/zh/afterTrading/STOCK_DAY"
+                    f"?date={ds}&stockNo={code}&response=json",
+                    cache_key=f"day_{code}_{ds}.json", use_cache=use_cache, timeout=40,
+                )
+                data = j.get("data", []) if j.get("stat") == "OK" else []
+                vol_mult = 1
+            else:
+                ds = f"{d:%Y/%m/01}"
+                j = fetch_json(
+                    f"https://www.tpex.org.tw/www/zh-tw/afterTrading/tradingStock"
+                    f"?code={code}&date={ds}&id=&response=json",
+                    cache_key=f"day_{code}_{d:%Y%m}.json", use_cache=use_cache, timeout=40,
+                )
+                tables = j.get("tables") or [{}]
+                data = tables[0].get("data", [])
+                vol_mult = 1000                 # 張 → 股
+
+            for r in data:
+                try:
+                    rows.append({
+                        "date": r[0].strip(),
+                        "open": float(str(r[3]).replace(",", "")),
+                        "high": float(str(r[4]).replace(",", "")),
+                        "low": float(str(r[5]).replace(",", "")),
+                        "close": float(str(r[6]).replace(",", "")),
+                        "volume": int(float(str(r[1]).replace(",", "")) * vol_mult),
+                    })
+                except (ValueError, IndexError):
+                    pass
         except Exception:  # noqa: BLE001
             pass
         time.sleep(0.4)                      # 對官方站點客氣一點
@@ -223,10 +329,17 @@ def get_conferences(code, market="sii"):
         "Content-Type": "application/x-www-form-urlencoded",
         "Referer": "https://mopsov.twse.com.tw/mops/web/t100sb02_1",
     })
-    try:
-        html = urllib.request.urlopen(req, timeout=45, context=CTX).read().decode("utf-8", "replace")
-    except Exception as e:  # noqa: BLE001
-        log(f"  法說會: ✗ {e}")
+    html = None
+    for attempt in range(3):                 # 舊版 MOPS 偶爾很慢，重試幾次
+        try:
+            html = urllib.request.urlopen(req, timeout=90, context=CTX).read().decode("utf-8", "replace")
+            break
+        except Exception as e:  # noqa: BLE001
+            if attempt == 2:
+                log(f"  法說會: ✗ {e}")
+                return []
+            time.sleep(2)
+    if html is None:
         return []
 
     import re
@@ -394,7 +507,8 @@ def summarize_tdcc(rows):
 
 # ---------------------------------------------------------------- 輸出
 
-def build_report(code, api, daily, inst, tdcc, cmoney=None, conf=None):
+def build_report(code, api, daily, inst, tdcc, cmoney=None, conf=None,
+                 divs=None, market="sii"):
     base = api.get("基本資料") or {}
     name = base.get("公司簡稱", code)
     now = datetime.now()
@@ -585,6 +699,48 @@ def build_report(code, api, daily, inst, tdcc, cmoney=None, conf=None):
             L += ["", f"期間主力買賣超合計：**{tot:+,} 張**（{len(fb)} 個交易日）"]
         L.append("")
 
+    # 歷年股利與 EPS
+    dv = [d for d in (divs or []) if d.get("eps") is not None]
+    if dv:
+        last_price = daily[-1]["close"] if daily else None
+        L += [
+            "## 歷年 EPS 與股利",
+            "",
+            "> [!important] 宏爺很看重這一段",
+            "> 「歷年股息是否**持續增加**」是他不怕套牢的底氣。配息穩定與配息成長"
+            "是兩件事——[[為什麼他幾乎不停損]] 的前提是後者。",
+            "",
+            "| 年度 | EPS | 現金股利 | 盈餘配股 | 🔴 配息率 |",
+            "| ---: | ---: | ---: | ---: | ---: |",
+        ]
+        for d in dv[-12:]:
+            eps, cash = d["eps"], d.get("cash") or 0
+            ratio = f"{cash / eps * 100:.0f}%" if eps and eps > 0 and cash else "—"
+            L.append(f"| {d['year']} | {eps} | {cash or '—'} "
+                     f"| {d.get('stock') or '—'} | {ratio} |")
+        L.append("")
+
+        paid = [d for d in dv if (d.get("cash") or 0) > 0]
+        if paid:
+            streak = 0
+            for d in reversed(dv):
+                if (d.get("cash") or 0) > 0:
+                    streak += 1
+                else:
+                    break
+            latest = dv[-1]
+            L.append(f"**連續配息 {streak} 年**（{dv[-streak]['year']}–{latest['year']}）")
+            if last_price and (latest.get("cash") or 0):
+                y = latest["cash"] / last_price * 100
+                L.append(f"　🔴 以 {latest['year']} 年股利 {latest['cash']} 元、"
+                         f"現價 {last_price} 計，現金殖利率約 **{y:.2f}%**")
+            if len(dv) >= 2:
+                prev, cur = dv[-2].get("cash") or 0, latest.get("cash") or 0
+                if prev and cur < prev:
+                    L.append(f"　⚠️ **配息成長中斷**：{dv[-2]['year']} 年 {prev} 元 → "
+                             f"{latest['year']} 年 {cur} 元（{(cur - prev) / prev * 100:+.0f}%）")
+            L.append("")
+
     # 財報
     for key, title in [("月營收", "月營收"), ("營益分析", "營益分析"),
                        ("綜合損益", "綜合損益表"), ("資產負債", "資產負債表")]:
@@ -629,23 +785,35 @@ def main():
     OUT_DIR.mkdir(parents=True, exist_ok=True)
 
     log(f"開始蒐集 {code}")
-    log("TWSE 開放資料…")
-    api = get_openapi(code, use_cache)
-    if not api.get("基本資料"):
-        log("⚠ 查無此代號的上市公司基本資料。若為上櫃股票，本腳本目前只支援上市。")
+    market = detect_market(code, use_cache)
+    if market is None:
+        log("✗ 上市與上櫃都查不到這個代號，請確認是否為興櫃或已下市。")
+        return 1
+    log(f"市場別：{'上市（證交所）' if market == 'sii' else '上櫃（櫃買中心）'}")
+
+    log("公開資料…")
+    api = get_openapi(code, market, use_cache)
 
     log("股價…")
-    daily = get_daily(code, args.months, use_cache)
-    log("三大法人…")
-    inst = get_institutional(code, args.days, use_cache)
+    daily = get_daily(code, market, args.months, use_cache)
+
+    if market == "sii":
+        log("三大法人…")
+        inst = get_institutional(code, args.days, use_cache)
+    else:
+        inst = []
+        log("三大法人：上櫃的歷史逐日資料尚未支援，跳過")
+
     log("集保股權分散…")
     tdcc = get_tdcc(code, use_cache)
     log("CMoney 籌碼（免登入）…")
     cmoney = get_cmoney(code, days=max(args.days * 3, 60))
     log("法說會…")
-    conf = get_conferences(code)
+    conf = get_conferences(code, market)
+    log("歷年股利與 EPS…")
+    divs = get_dividends(code)
 
-    report = build_report(code, api, daily, inst, tdcc, cmoney, conf)
+    report = build_report(code, api, daily, inst, tdcc, cmoney, conf, divs, market)
     out = OUT_DIR / f"{code}.md"
     out.write_text(report, encoding="utf-8")
     log(f"完成 → {out}")
