@@ -203,6 +203,71 @@ def get_tdcc(code, use_cache=True):
         return []
 
 
+# ---------------------------------------------------------------- 法說會
+
+def get_conferences(code, market="sii"):
+    """歷年法人說明會清單。
+
+    公開資訊觀測站新版會把這個查詢轉導到舊系統，網址帶加密參數，
+    看起來像是沒辦法自動化。但**舊版的查詢表單可以直接 POST**，
+    繞過整個新版前端即可拿到完整歷年清單。
+
+    簡報檔名是有規律的：<代號><西元年月日><M中文|E英文>001.pdf
+    """
+    url = "https://mopsov.twse.com.tw/mops/web/ajax_t100sb02_1"
+    body = urllib.parse.urlencode({
+        "step": "0", "firstin": "true", "TYPEK": market, "co_id": code,
+    }).encode()
+    req = urllib.request.Request(url, data=body, headers={
+        "User-Agent": UA,
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Referer": "https://mopsov.twse.com.tw/mops/web/t100sb02_1",
+    })
+    try:
+        html = urllib.request.urlopen(req, timeout=45, context=CTX).read().decode("utf-8", "replace")
+    except Exception as e:  # noqa: BLE001
+        log(f"  法說會: ✗ {e}")
+        return []
+
+    import re
+    seen, out = set(), []
+    for fn in sorted(set(re.findall(rf"({code}\d{{8}}M\d{{3}}\.pdf)", html))):
+        ymd = fn[len(code):len(code) + 8]
+        if ymd in seen:
+            continue
+        seen.add(ymd)
+        out.append({
+            "date": f"{ymd[:4]}-{ymd[4:6]}-{ymd[6:8]}",
+            "pdf_zh": fn,
+            "pdf_en": fn.replace("M", "E", 1) if "M" in fn else "",
+        })
+    out.sort(key=lambda x: x["date"], reverse=True)
+    # 影音連結（法說會若有錄影，可用 yt-transcribe.py 轉逐字稿）
+    videos = sorted(set(re.findall(r"https://www\.youtube\.com/watch\?v=[\w\-]+", html)))
+    log(f"  法說會: {len(out)} 場" + (f"，{len(videos)} 個影音連結" if videos else ""))
+    return {"list": out, "videos": videos}
+
+
+def download_conference_pdf(filename, dest_dir):
+    """下載法說會簡報 PDF。"""
+    body = urllib.parse.urlencode({
+        "step": "9", "filePath": "/home/html/nas/STR/",
+        "fileName": filename, "functionName": "t100sb02_1",
+    }).encode()
+    req = urllib.request.Request(
+        "https://mopsov.twse.com.tw/server-java/FileDownLoad", data=body,
+        headers={"User-Agent": UA, "Content-Type": "application/x-www-form-urlencoded"},
+    )
+    data = urllib.request.urlopen(req, timeout=90, context=CTX).read()
+    if not data.startswith(b"%PDF"):
+        raise RuntimeError("回傳的不是 PDF，可能是錯誤頁")
+    dest_dir = Path(dest_dir)
+    dest_dir.mkdir(parents=True, exist_ok=True)
+    out = dest_dir / filename
+    out.write_bytes(data)
+    return out
+
+
 # ---------------------------------------------------------------- CMoney 籌碼
 
 def get_cmoney(code, days=60):
@@ -329,7 +394,7 @@ def summarize_tdcc(rows):
 
 # ---------------------------------------------------------------- 輸出
 
-def build_report(code, api, daily, inst, tdcc, cmoney=None):
+def build_report(code, api, daily, inst, tdcc, cmoney=None, conf=None):
     base = api.get("基本資料") or {}
     name = base.get("公司簡稱", code)
     now = datetime.now()
@@ -437,6 +502,54 @@ def build_report(code, api, daily, inst, tdcc, cmoney=None):
             "",
         ]
 
+    # 法說會
+    cf = conf or {}
+    clist = cf.get("list") or []
+    if clist:
+        by_year = {}
+        for c in clist:
+            by_year.setdefault(c["date"][:4], 0)
+            by_year[c["date"][:4]] += 1
+        L += [
+            "## 法人說明會",
+            "",
+            f"歷年共 **{len(clist)} 場**，最近一場 **{clist[0]['date']}**",
+            "",
+            "| 年度 | 場次 |",
+            "| :--- | ---: |",
+        ]
+        for y in sorted(by_year, reverse=True):
+            L.append(f"| {y} | {by_year[y]} |")
+        L += [
+            "",
+            "> [!tip] 頻率本身是訊號",
+            "> 法說會開得勤不勤、是否中斷，反映公司與市場溝通的意願。",
+            "",
+            "### 最近 5 場",
+            "",
+            "| 日期 | 中文簡報 | 英文簡報 |",
+            "| :--- | :--- | :--- |",
+        ]
+        for c in clist[:5]:
+            L.append(f"| {c['date']} | `{c['pdf_zh']}` | `{c['pdf_en']}` |")
+        L += [
+            "",
+            "下載指令（在 Python 中呼叫）：",
+            "",
+            "```bash",
+            f"python -c \"import sys; sys.path.insert(0,'000_Agent/scripts'); "
+            f"import importlib.util as u; s=u.spec_from_file_location('sf','000_Agent/scripts/stock-fetch.py'); "
+            f"m=u.module_from_spec(s); s.loader.exec_module(m); "
+            f"print(m.download_conference_pdf('{clist[0]['pdf_zh']}','.'))\"",
+            "```",
+            "",
+        ]
+        if cf.get("videos"):
+            L += ["**法說會影音**（可用 `yt-transcribe.py` 轉逐字稿）：", ""]
+            for v in cf["videos"][:5]:
+                L.append(f"- {v}")
+            L.append("")
+
     # CMoney 籌碼
     cm = cmoney or {}
     ts = cm.get("tradersum") or []
@@ -488,7 +601,6 @@ def build_report(code, api, daily, inst, tdcc, cmoney=None):
         "## 本腳本抓不到的（需人工）",
         "",
         "- 分點進出明細（證交所買賣日報表，有圖形驗證碼）",
-        "- 法說會簡報（MOPS 查詢參數為加密字串）",
         "- 籌碼集中度與外資成本線（CMoney 網頁上有，但未找到對應 API）",
         "- 董監持股明細",
         "- 集保大戶的歷史趨勢（官方開放資料只有最新一週）",
@@ -530,8 +642,10 @@ def main():
     tdcc = get_tdcc(code, use_cache)
     log("CMoney 籌碼（免登入）…")
     cmoney = get_cmoney(code, days=max(args.days * 3, 60))
+    log("法說會…")
+    conf = get_conferences(code)
 
-    report = build_report(code, api, daily, inst, tdcc, cmoney)
+    report = build_report(code, api, daily, inst, tdcc, cmoney, conf)
     out = OUT_DIR / f"{code}.md"
     out.write_text(report, encoding="utf-8")
     log(f"完成 → {out}")
