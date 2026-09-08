@@ -332,6 +332,61 @@ def chip_score(inst_rows, avg_vol):
             "buy_days": buy_days, "ratio": ratio}
 
 
+# ---------------------------------------------------------------- 第二階段驗證
+
+_FETCHER = None
+
+
+def load_fetcher():
+    """載入同目錄的 stock-fetch.py（檔名有連字號，不能直接 import）。"""
+    global _FETCHER
+    if _FETCHER is None:
+        import importlib.util as iu
+        p = Path(__file__).parent / "stock-fetch.py"
+        spec = iu.spec_from_file_location("stock_fetch", p)
+        _FETCHER = iu.module_from_spec(spec)
+        spec.loader.exec_module(_FETCHER)
+    return _FETCHER
+
+
+def verify_chips(code, rows, days=60):
+    """用 CMoney 的主力買賣超算真正的籌碼集中度。
+
+    第一階段的「大戶加碼」是拿外資連續買超代理的，那只是近似。
+    宏爺要的是「**持續**加碼」，而籌碼集中度才是他給了明確門檻的指標：
+    60 日 > 5%（強者 10%）、120 日 > 3%，**負值代表主力在倒貨**。
+
+    全市場逐檔抓太慢，但對已篩出的數十檔做複驗完全可行——
+    這正是把粗篩與精驗分開的價值。
+    """
+    sf = load_fetcher()
+    try:
+        cm = sf.get_cmoney(code, days=days + 20)
+    except Exception:  # noqa: BLE001
+        return None
+    fb = (cm or {}).get("mainforceoverbuy") or []
+    ts = (cm or {}).get("tradersum") or []
+    if not fb:
+        return None
+
+    vol = {r["date"]: r["volume"] / 1000 for r in rows}     # 股 → 張
+    out = {}
+    for w in (20, 60):
+        recent = fb[-w:]
+        if len(recent) < w:
+            continue
+        net = sum(x.get("OverBuy", 0) for x in recent)
+        v = sum(vol.get(x["Date"], 0) for x in recent)
+        if v > 0:
+            out[f"conc{w}"] = net / v * 100
+            out[f"net{w}"] = net
+    # 買賣家數差：負值＋主力買超為正＝吃貨
+    if ts:
+        recent = ts[-20:]
+        out["trader_diff"] = sum(x.get("TraderSum", 0) for x in recent) / len(recent)
+    return out or None
+
+
 # ---------------------------------------------------------------- 篩選
 
 def screen(hist, names, inst, val, rev, tdcc, tdcc_hist, cfg):
@@ -427,7 +482,7 @@ def screen(hist, names, inst, val, rev, tdcc, tdcc_hist, cfg):
     return results, stats
 
 
-def build_report(results, stats, cfg, tdcc_date, snapshots, top):
+def build_report(results, stats, cfg, tdcc_date, snapshots, top, rejected=None):
     now = datetime.now()
     L = [
         "---",
@@ -483,19 +538,48 @@ def build_report(results, stats, cfg, tdcc_date, snapshots, top):
         L += [
             f"## 入選 {len(results)} 檔（依分數排序，列出前 {min(top, len(results))} 檔）",
             "",
-            "| # | 代號 | 名稱 | 收盤 | 均線糾結 | 20週乖離 | 量縮比 | 52週位階 | 外資10日 | 連買 | 營收YoY | 殖利率 |",
-            "| ---: | :--- | :--- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |",
+            "| # | 代號 | 名稱 | 收盤 | 均線糾結 | 量縮比 | 52週位階 "
+            "| **60日集中度** | 20日集中度 | 家數差 | 外資10日 | 營收YoY | 殖利率 |",
+            "| ---: | :--- | :--- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |",
         ]
         for i, r in enumerate(results[:top], 1):
             a, c, v = r["a"], r["c"], r["val"]
             yoy = r["rev"].get("yoy")
+            vf = r.get("verify") or {}
+            c60 = vf.get("conc60")
+            c20 = vf.get("conc20")
+            td = vf.get("trader_diff")
+            c60s = f"**{c60:+.2f}%**" if c60 is not None else "—"
+            c20s = f"{c20:+.2f}%" if c20 is not None else "—"
+            tds = f"{td:+.0f}" if td is not None else "—"
             L.append(
                 f"| {i} | **{r['code']}** | {r['name']} | {a['close']:.2f} "
-                f"| {a['converge']:.1f}% | {a['bias20w']:+.1f}% "
-                f"| {a['vol_ratio']:.2f} | {a['pos52']:.0f}% "
-                f"| {c['f_net'] / 1000:+,.0f}張 | {c['streak']}天 "
-                f"| {yoy:+.1f}% | {v.get('yield') or 0:.2f}% |"
+                f"| {a['converge']:.1f}% | {a['vol_ratio']:.2f} | {a['pos52']:.0f}% "
+                f"| {c60s} | {c20s} | {tds} "
+                f"| {c['f_net'] / 1000:+,.0f}張 | {yoy:+.1f}% | {v.get('yield') or 0:.2f}% |"
             )
+        if rejected:
+            L += [
+                "",
+                f"### 複驗剔除 {len(rejected)} 檔（60 日集中度為負＝主力倒貨）",
+                "",
+                "第一階段的「外資連續買超」只是近似。這些標的技術面條件都成立，"
+                "但拉長到 60 日看，主力其實是在**倒貨**——不符合「持續加碼」。",
+                "",
+                "| 代號 | 名稱 | 60日集中度 | 20日集中度 | 外資10日 |",
+                "| :--- | :--- | ---: | ---: | ---: |",
+            ]
+            for r in sorted(rejected,
+                            key=lambda x: (x.get("verify") or {}).get("conc60") or 0):
+                vf = r.get("verify") or {}
+                c60 = vf.get("conc60")
+                c20 = vf.get("conc20")
+                c60s = f"{c60:+.2f}%" if c60 is not None else "—"
+                c20s = f"{c20:+.2f}%" if c20 is not None else "—"
+                L.append(f"| {r['code']} | {r['name']} | {c60s} | {c20s} "
+                         f"| {r['c']['f_net'] / 1000:+,.0f}張 |")
+            L.append("")
+
         L += ["", "### 產業分布", "", "| 產業 | 檔數 |", "| :--- | ---: |"]
         ind = defaultdict(int)
         for r in results:
@@ -544,16 +628,20 @@ def main():
     p.add_argument("--inst-days", type=int, default=20, help="法人資料天數")
     p.add_argument("--top", type=int, default=40, help="報表列出前幾名")
     p.add_argument("--loose", action="store_true", help="放寬條件")
+    p.add_argument("--no-verify", action="store_true",
+                   help="跳過第二階段的籌碼集中度複驗")
+    p.add_argument("--verify-top", type=int, default=40,
+                   help="複驗前幾檔（每檔約 2 秒）")
     p.add_argument("--no-cache", action="store_true")
     args = p.parse_args()
 
     cfg = dict(converge=3.5, amplitude=35.0, bias=10.0, vol_ratio=1.0,
                above_20w=True, max_pos=45.0, buy_days=5,
-               need_revenue=True, need_yield=True)
+               need_revenue=True, need_yield=True, conc60_min=0.0)
     if args.loose:
         cfg.update(converge=9.0, amplitude=50.0, bias=15.0, vol_ratio=1.25,
                    above_20w=False, max_pos=75.0, buy_days=3,
-                   need_revenue=False, need_yield=False)
+                   need_revenue=False, need_yield=False, conc60_min=-3.0)
 
     use_cache = not args.no_cache
     OUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -574,11 +662,52 @@ def main():
 
     log("開始篩選…")
     results, stats = screen(hist, names, inst, val, rev, tdcc, snaps, cfg)
-    log(f"入選 {len(results)} 檔")
+    log(f"第一階段入選 {len(results)} 檔")
+
+    # ── 第二階段：籌碼集中度複驗 ──────────────────────────
+    if not args.no_verify and results:
+        n = min(len(results), args.verify_top)
+        log(f"第二階段：對前 {n} 檔做籌碼集中度複驗（CMoney，每檔約 2 秒）…")
+        passed, rejected = [], []
+        for i, r in enumerate(results[:n], 1):
+            v = verify_chips(r["code"], hist[r["code"]])
+            r["verify"] = v
+            if v is None:
+                r["verdict"] = "無資料"
+                passed.append(r)                    # 抓不到不當作失格
+            elif v.get("conc60") is None:
+                r["verdict"] = "資料不足"
+                passed.append(r)
+            elif v["conc60"] < cfg["conc60_min"]:
+                r["verdict"] = f"60日集中度 {v['conc60']:+.2f}%（主力倒貨）"
+                rejected.append(r)
+            else:
+                r["verdict"] = "通過"
+                # 集中度高的加分
+                r["score"] += min(v["conc60"], 15) * 2
+                if v.get("trader_diff", 0) < 0:
+                    r["score"] += 8                 # 家數差為負＝吃貨型態
+                passed.append(r)
+            if i % 10 == 0:
+                log(f"    已驗 {i}/{n}")
+            time.sleep(0.6)
+        for r in results[n:]:
+            r["verdict"] = "未驗"
+            passed.append(r)
+        passed.sort(key=lambda x: -x["score"])
+        stats["複驗剔除"] = len(rejected)
+        log(f"複驗：通過 {len(passed) - (len(results) - n)} 檔，"
+            f"剔除 {len(rejected)} 檔（主力倒貨）")
+        results = passed
+        rejected_list = rejected
+    else:
+        rejected_list = []
+    log(f"最終入選 {len(results)} 檔")
 
     out = OUT_DIR / f"潛龍名單_{datetime.now():%Y-%m-%d}.md"
-    out.write_text(build_report(results, stats, cfg, tdcc_date, len(snaps), args.top),
-                   encoding="utf-8")
+    out.write_text(
+        build_report(results, stats, cfg, tdcc_date, len(snaps), args.top, rejected_list),
+        encoding="utf-8")
     log(f"完成 → {out}")
     for r in results[:10]:
         a = r["a"]
