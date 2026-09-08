@@ -450,30 +450,108 @@ def get_cmoney(code, days=60):
 
 # ---------------------------------------------------------------- 計算
 
-def ma_and_bias(daily, weeks=20):
-    """用週收盤算 N 週均價與乖離率。這是自行計算，非官方數據。"""
-    if len(daily) < weeks * 5:
-        return None, None, None
-    weekly = []
-    cur_week = None
-    for r in daily:                          # 民國 115/09/07 格式
-        try:
-            y, m, dd = r["date"].split("/")
-            dt = datetime(int(y) + 1911, int(m), int(dd))
-        except ValueError:
+def roc_date(s):
+    """民國 115/09/07 → datetime。兩個交易所都用這個格式。"""
+    try:
+        y, m, d = s.strip().split("/")
+        return datetime(int(y) + 1911, int(m), int(d))
+    except (ValueError, AttributeError):
+        return None
+
+
+def aggregate(daily, period):
+    """日線聚合成週線或月線 OHLCV。
+
+    宏爺的週期分工：月K看戰略、週K看戰術、日K看戰技。
+    月K 的形態要花好幾年才走得出來，所以資料抓得夠久才有意義。
+    """
+    buckets = {}
+    order = []
+    for r in daily:
+        dt = roc_date(r["date"])
+        if not dt:
             continue
-        wk = dt.isocalendar()[:2]
-        if wk != cur_week:
-            weekly.append(r["close"])
-            cur_week = wk
+        if period == "W":
+            iso = dt.isocalendar()
+            key = f"{iso[0]}-W{iso[1]:02d}"
         else:
-            weekly[-1] = r["close"]          # 取該週最後一個交易日
-    if len(weekly) < weeks:
-        return None, None, None
-    window = weekly[-weeks:]
-    ma = sum(window) / weeks
-    last = daily[-1]["close"]
-    return ma, (last - ma) / ma * 100, len(weekly)
+            key = f"{dt.year}-{dt.month:02d}"
+        if key not in buckets:
+            buckets[key] = {"key": key, "open": r["open"], "high": r["high"],
+                            "low": r["low"], "close": r["close"],
+                            "volume": r["volume"], "n": 1}
+            order.append(key)
+        else:
+            b = buckets[key]
+            b["high"] = max(b["high"], r["high"])
+            b["low"] = min(b["low"], r["low"])
+            b["close"] = r["close"]          # 期間最後一個交易日
+            b["volume"] += r["volume"]
+            b["n"] += 1
+    return [buckets[k] for k in order]
+
+
+def sma(series, n):
+    """簡單移動平均，資料不足回 None。"""
+    if len(series) < n:
+        return None
+    return sum(series[-n:]) / n
+
+
+def bias(price, ma):
+    return None if not ma else (price - ma) / ma * 100
+
+
+def technicals(daily):
+    """算出宏爺框架實際會用到的均線與位階。
+
+    - 日線：月線 20MA、季線 60MA、半年線 120MA、年線 240MA
+    - 週線：20 週均線（他判斷大盤多空、放空條件的關鍵門檻）
+    - 月線：6MA、12MA、60MA（第 67 期的月K三工具之一）
+    """
+    if not daily:
+        return {}
+    weekly = aggregate(daily, "W")
+    monthly = aggregate(daily, "M")
+    dc = [r["close"] for r in daily]
+    wc = [r["close"] for r in weekly]
+    mc = [r["close"] for r in monthly]
+    last = dc[-1]
+
+    out = {
+        "last": last,
+        "weekly": weekly,
+        "monthly": monthly,
+        "ma": {
+            "日線 月線(20MA)": sma(dc, 20),
+            "日線 季線(60MA)": sma(dc, 60),
+            "日線 半年線(120MA)": sma(dc, 120),
+            "日線 年線(240MA)": sma(dc, 240),
+            "週線 20週均線": sma(wc, 20),
+            "月線 6MA(半年)": sma(mc, 6),
+            "月線 12MA(一年)": sma(mc, 12),
+            "月線 60MA(五年)": sma(mc, 60),
+        },
+    }
+    out["bias"] = {k: bias(last, v) for k, v in out["ma"].items()}
+
+    # 位階：52 週與全期間的高低區間位置
+    span52 = [r for r in daily[-250:]]
+    if span52:
+        hi = max(r["high"] for r in span52)
+        lo = min(r["low"] for r in span52)
+        out["52w"] = {
+            "high": hi, "low": lo,
+            "pct": (last - lo) / (hi - lo) * 100 if hi > lo else None,
+        }
+    hi_all = max(r["high"] for r in daily)
+    lo_all = min(r["low"] for r in daily)
+    out["all"] = {
+        "high": hi_all, "low": lo_all,
+        "pct": (last - lo_all) / (hi_all - lo_all) * 100 if hi_all > lo_all else None,
+        "months": len(monthly),
+    }
+    return out
 
 
 def summarize_tdcc(rows):
@@ -544,32 +622,97 @@ def build_report(code, api, daily, inst, tdcc, cmoney=None, conf=None,
                 L.append(f"| {k} | {base[k]} |")
         L.append("")
 
-    # 股價
+    # 股價：日線、週線、月線與均線
     if daily:
         last = daily[-1]
-        ma, bias, nweeks = ma_and_bias(daily)
-        closes = [r["close"] for r in daily]
+        t = technicals(daily)
         L += [
-            "## 股價",
+            "## 股價與技術面",
             "",
             f"**最新交易日 {last['date']}**：收 **{last['close']}**，"
             f"量 {last['volume']:,} 股",
+            f"（資料涵蓋 {len(daily)} 個交易日／{t['all']['months']} 個月）",
             "",
-            "| 指標 | 數值 |",
-            "| :--- | ---: |",
-            f"| 期間最高 | {max(closes)} |",
-            f"| 期間最低 | {min(closes)} |",
-            f"| 資料筆數 | {len(daily)} 個交易日 |",
         ]
-        if ma:
-            L += [
-                f"| 🔴 {nweeks and 20} 週均價（腳本計算） | {ma:.2f} |",
-                f"| 🔴 乖離率（腳本計算） | {bias:+.1f}% |",
-            ]
-        L += ["", "### 近 10 個交易日", "",
+
+        # 位階
+        w = t.get("52w")
+        a = t.get("all")
+        L += ["### 位階", "", "| 區間 | 最高 | 最低 | 🔴 現價位置 |",
+              "| :--- | ---: | ---: | ---: |"]
+        if w:
+            pct = f"{w['pct']:.0f}%" if w["pct"] is not None else "—"
+            L.append(f"| 近 52 週 | {w['high']} | {w['low']} | {pct} |")
+        if a:
+            pct = f"{a['pct']:.0f}%" if a["pct"] is not None else "—"
+            L.append(f"| 全期間 | {a['high']} | {a['low']} | {pct} |")
+        L += [
+            "",
+            "> [!tip] 依 [[基期位階判斷五法]]",
+            "> 位置接近 0% 是相對低基期、接近 100% 是相對高基期。但**低基期不等於買點**"
+            "——還要看趨勢是否為「高不過高、低破前低」的空頭排列。",
+            "",
+        ]
+
+        # 均線與乖離
+        L += [
+            "### 均線與乖離（🔴 皆為腳本計算）",
+            "",
+            "| 均線 | 數值 | 乖離率 | 價格位置 |",
+            "| :--- | ---: | ---: | :---: |",
+        ]
+        for name, val in t["ma"].items():
+            if val is None:
+                L.append(f"| {name} | 資料不足 | — | — |")
+                continue
+            b = t["bias"][name]
+            pos = "⬆ 之上" if last["close"] >= val else "⬇ 之下"
+            L.append(f"| {name} | {val:.2f} | {b:+.1f}% | {pos} |")
+        L += [
+            "",
+            "> [!important] 兩條關鍵線",
+            "> [[雙均線控盤]]：同時站上**月線**與 **20 週均線**＝做多；跌破任一＝空手；"
+            "同時跌破＝做空。",
+            "> [[乖離率]]：大盤長線乖離常在 ±15%、達 ±20% 要提高警覺；"
+            "**個股區間更寬**，中小型股常超過 ±15%。",
+            "",
+        ]
+
+        # 月線
+        mo = t["monthly"]
+        if mo:
+            L += ["### 月K（近 24 個月）", "",
+                  "| 月份 | 開 | 高 | 低 | 收 | 成交股數 |",
+                  "| :--- | ---: | ---: | ---: | ---: | ---: |"]
+            for r in mo[-24:]:
+                L.append(f"| {r['key']} | {r['open']} | {r['high']} | {r['low']} "
+                         f"| {r['close']} | {r['volume']:,} |")
+            L += ["",
+                  "> [!tip] 依 [[月K線大局判讀]]",
+                  "> 月K看的是未來幾年處於多頭的夏天還是空頭的冬天。三大工具是"
+                  "**切線**（連接數年關鍵高低點）、**長期均線**（6MA/12MA/60MA）、**量能**。",
+                  ""]
+
+        # 週線
+        wk = t["weekly"]
+        if wk:
+            L += ["### 週K（近 16 週）", "",
+                  "| 週次 | 開 | 高 | 低 | 收 | 成交股數 |",
+                  "| :--- | ---: | ---: | ---: | ---: | ---: |"]
+            for r in wk[-16:]:
+                L.append(f"| {r['key']} | {r['open']} | {r['high']} | {r['low']} "
+                         f"| {r['close']} | {r['volume']:,} |")
+            L += ["",
+                  "> [!tip] 依 [[週K線判讀]]",
+                  "> 有效突破要求：站穩 20 週均線、**週量比前一週增長至少 30%**、"
+                  "突破後連續 2–3 週維持高檔不快速回落。",
+                  ""]
+
+        # 日線
+        L += ["### 日K（近 20 個交易日）", "",
               "| 日期 | 開 | 高 | 低 | 收 | 成交股數 |",
               "| :--- | ---: | ---: | ---: | ---: | ---: |"]
-        for r in daily[-10:]:
+        for r in daily[-20:]:
             L.append(f"| {r['date']} | {r['open']} | {r['high']} | {r['low']} "
                      f"| {r['close']} | {r['volume']:,} |")
         L.append("")
@@ -776,7 +919,9 @@ def main():
     p = argparse.ArgumentParser(description="個股公開資料蒐集器")
     p.add_argument("code", help="股票代號，例如 1786")
     p.add_argument("--days", type=int, default=20, help="三大法人抓幾個交易日（預設 20）")
-    p.add_argument("--months", type=int, default=14, help="股價抓幾個月（預設 14）")
+    p.add_argument("--months", type=int, default=36,
+                   help="股價抓幾個月（預設 36。20週均線需約 6 個月、"
+                        "月線 12MA 需 12 個月、月線 60MA 需 60 個月）")
     p.add_argument("--no-cache", action="store_true", help="強制重新下載")
     args = p.parse_args()
 
