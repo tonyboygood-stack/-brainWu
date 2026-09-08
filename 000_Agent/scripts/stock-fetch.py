@@ -450,6 +450,102 @@ def get_cmoney(code, days=60):
 
 # ---------------------------------------------------------------- 計算
 
+def get_margin(code, days=20, use_cache=True):
+    """融資融券餘額。
+
+    第 67 期把融資當**散戶熱度**指標：長期打底後融資緩步增加相對健康；
+    但在高檔融資持續暴增、跟著指數噴出，是非常危險的訊號。
+    """
+    out = []
+    d = datetime.now()
+    tries = 0
+    while len(out) < days and tries < days * 2:
+        tries += 1
+        ds = f"{d:%Y%m%d}"
+        d -= timedelta(days=1)
+        if datetime.strptime(ds, "%Y%m%d").weekday() >= 5:
+            continue
+        try:
+            j = fetch_json(
+                f"https://www.twse.com.tw/rwd/zh/marginTrading/MI_MARGN"
+                f"?date={ds}&selectType=STOCK&response=json",
+                cache_key=f"margin_{ds}.json", use_cache=use_cache, timeout=40,
+            )
+            if j.get("stat") != "OK":
+                continue
+            for t in j.get("tables", []):
+                f = t.get("fields", [])
+                if not f or "代號" not in str(f[0]):
+                    continue
+                row = next((r for r in t.get("data", []) if r[0].strip() == code), None)
+                if row:
+                    # 欄位：代號 名稱 融資買進 賣出 現金償還 前日餘額 今日餘額 …
+                    out.append({
+                        "date": ds,
+                        "balance": int(str(row[6]).replace(",", "")),
+                        "prev": int(str(row[5]).replace(",", "")),
+                    })
+                break
+        except Exception:  # noqa: BLE001
+            pass
+        time.sleep(0.4)
+    out.sort(key=lambda x: x["date"])
+    log(f"  融資餘額: {len(out)} 個交易日")
+    return out
+
+
+def monthly_kd(monthly, n=9):
+    """月 KD。
+
+    第 67 期：日 KD 雜訊太多他不參考，但**月 KD 相對具參考價值**，
+    特別留意超過 80 或低於 20。
+    """
+    if len(monthly) < n:
+        return None
+    k = d = 50.0
+    series = []
+    for i in range(n - 1, len(monthly)):
+        window = monthly[i - n + 1: i + 1]
+        hi = max(x["high"] for x in window)
+        lo = min(x["low"] for x in window)
+        c = monthly[i]["close"]
+        rsv = 50.0 if hi == lo else (c - lo) / (hi - lo) * 100
+        k = k * 2 / 3 + rsv / 3
+        d = d * 2 / 3 + k / 3
+        series.append({"key": monthly[i]["key"], "k": k, "d": d})
+    return series
+
+
+def concentration(cmoney, daily, windows=(20, 60)):
+    """籌碼集中度（🔴 自行計算）。
+
+    宏爺的公式是 (前15大買超張數 − 前15大賣超張數) ÷ 區間總成交量。
+    CMoney 的「主力買賣超」正是那個分子，成交量則來自交易所，
+    所以這個指標其實可以自己算出來，不必依賴付費工具。
+
+    判準（第 70 期）：60 日 > 5%（強者 10%）、120 日 > 3%；
+    **負值代表主力正在倒貨**。
+    """
+    fb = (cmoney or {}).get("mainforceoverbuy") or []
+    if not fb or not daily:
+        return {}
+    vol_by_date = {}
+    for r in daily:
+        dt = roc_date(r["date"])
+        if dt:
+            vol_by_date[f"{dt:%Y%m%d}"] = r["volume"] / 1000    # 股 → 張
+    out = {}
+    for w in windows:
+        recent = fb[-w:]
+        if len(recent) < w:
+            continue
+        net = sum(x.get("OverBuy", 0) for x in recent)
+        vol = sum(vol_by_date.get(x["Date"], 0) for x in recent)
+        if vol > 0:
+            out[w] = {"net_lots": net, "volume_lots": vol, "pct": net / vol * 100}
+    return out
+
+
 def roc_date(s):
     """民國 115/09/07 → datetime。兩個交易所都用這個格式。"""
     try:
@@ -586,7 +682,7 @@ def summarize_tdcc(rows):
 # ---------------------------------------------------------------- 輸出
 
 def build_report(code, api, daily, inst, tdcc, cmoney=None, conf=None,
-                 divs=None, market="sii"):
+                 divs=None, market="sii", margin=None):
     base = api.get("基本資料") or {}
     name = base.get("公司簡稱", code)
     now = datetime.now()
@@ -691,7 +787,31 @@ def build_report(code, api, daily, inst, tdcc, cmoney=None, conf=None,
                   "> [!tip] 依 [[月K線大局判讀]]",
                   "> 月K看的是未來幾年處於多頭的夏天還是空頭的冬天。三大工具是"
                   "**切線**（連接數年關鍵高低點）、**長期均線**（6MA/12MA/60MA）、**量能**。",
+                  "> 切線需要人工在圖上畫，腳本給不了——但上面的月K數列就是畫線的原料。",
                   ""]
+
+            kd = monthly_kd(mo)
+            if kd:
+                cur = kd[-1]
+                zone = ("🔴 超買區（>80）" if cur["k"] > 80
+                        else "🟢 超賣區（<20）" if cur["k"] < 20 else "⚪ 中性")
+                L += [
+                    "#### 月 KD",
+                    "",
+                    f"最新（{cur['key']}）：**K {cur['k']:.1f} / D {cur['d']:.1f}**　{zone}",
+                    "",
+                    "| 月份 | K | D |",
+                    "| :--- | ---: | ---: |",
+                ]
+                for r in kd[-8:]:
+                    L.append(f"| {r['key']} | {r['k']:.1f} | {r['d']:.1f} |")
+                L += [
+                    "",
+                    "> [!note] 🔴 腳本計算（9 期 RSV，K/D 各取 1/3 平滑）",
+                    "> 宏爺日 KD 不參考——短期雜訊太多；但**月 KD 相對具參考價值**，"
+                    "特別留意超過 80 或低於 20。",
+                    "",
+                ]
 
         # 週線
         wk = t["weekly"]
@@ -839,8 +959,63 @@ def build_report(code, api, daily, inst, tdcc, cmoney=None, conf=None,
                      f"| {r.get('SellerCount')} | {diff:+} | {shape} |")
         if fb:
             tot = sum(r.get("OverBuy", 0) for r in fb)
-            L += ["", f"期間主力買賣超合計：**{tot:+,} 張**（{len(fb)} 個交易日）"]
-        L.append("")
+            L += ["", f"期間主力買賣超合計：**{tot:+,} 張**（{len(fb)} 個交易日）", ""]
+
+        conc = concentration(cmoney, daily)
+        if conc:
+            L += [
+                "### 🔴 籌碼集中度（腳本計算）",
+                "",
+                "公式：主力買賣超累計 ÷ 區間總成交量。宏爺的定義是"
+                "「(前15大買超張數 − 前15大賣超張數) ÷ 區間總成交量」，"
+                "而 CMoney 的主力買賣超正是那個分子，所以這個數字不必依賴付費工具。",
+                "",
+                "| 區間 | 主力買賣超累計 | 區間總成交量 | 集中度 | 判定 |",
+                "| :--- | ---: | ---: | ---: | :--- |",
+            ]
+            for w in sorted(conc):
+                c = conc[w]
+                p = c["pct"]
+                if w >= 60:
+                    verdict = ("**高度集中**" if p > 10 else "集中" if p > 5
+                               else "**主力倒貨**" if p < 0 else "中性")
+                else:
+                    verdict = "**主力倒貨**" if p < 0 else "偏集中" if p > 5 else "中性"
+                L.append(f"| {w} 日 | {c['net_lots']:+,.0f} 張 "
+                         f"| {c['volume_lots']:,.0f} 張 | **{p:+.2f}%** | {verdict} |")
+            L += [
+                "",
+                "> [!tip] 判準（第 70 期）",
+                "> 高度集中：60 日 > 5%，強者達 10%；120 日 > 3%。"
+                "**負值代表主力正在倒貨，上方壓力重重。**",
+                "> 要搭配 [[買賣家數差]] 一起看，才能區分「集中」與「主力真的在吃貨」。",
+                "",
+            ]
+
+    # 融資餘額
+    mg = margin or []
+    if mg:
+        first, last_m = mg[0], mg[-1]
+        chg = last_m["balance"] - first["balance"]
+        pct = chg / first["balance"] * 100 if first["balance"] else 0
+        L += [
+            "## 融資餘額（散戶熱度）",
+            "",
+            f"最新 {last_m['date']}：**{last_m['balance']:,} 張**"
+            f"（{len(mg)} 個交易日變化 {chg:+,} 張，{pct:+.1f}%）",
+            "",
+            "| 日期 | 融資餘額(張) | 日增減 |",
+            "| :--- | ---: | ---: |",
+        ]
+        for r in mg[-10:]:
+            L.append(f"| {r['date']} | {r['balance']:,} | {r['balance'] - r['prev']:+,} |")
+        L += [
+            "",
+            "> [!important] 依 [[月K線大局判讀]]",
+            "> 融資代表散戶熱度。長期打底後融資**緩步增加**相對健康；"
+            "但在**高檔融資持續暴增、跟著指數噴出**，代表散戶陷入瘋狂，是非常危險的訊號。",
+            "",
+        ]
 
     # 歷年股利與 EPS
     dv = [d for d in (divs or []) if d.get("eps") is not None]
@@ -945,9 +1120,11 @@ def main():
     if market == "sii":
         log("三大法人…")
         inst = get_institutional(code, args.days, use_cache)
+        log("融資餘額…")
+        margin = get_margin(code, args.days, use_cache)
     else:
-        inst = []
-        log("三大法人：上櫃的歷史逐日資料尚未支援，跳過")
+        inst, margin = [], []
+        log("三大法人與融資：上櫃的歷史逐日資料尚未支援，跳過")
 
     log("集保股權分散…")
     tdcc = get_tdcc(code, use_cache)
@@ -958,7 +1135,8 @@ def main():
     log("歷年股利與 EPS…")
     divs = get_dividends(code)
 
-    report = build_report(code, api, daily, inst, tdcc, cmoney, conf, divs, market)
+    report = build_report(code, api, daily, inst, tdcc, cmoney, conf, divs,
+                          market, margin)
     out = OUT_DIR / f"{code}.md"
     out.write_text(report, encoding="utf-8")
     log(f"完成 → {out}")
