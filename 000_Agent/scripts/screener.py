@@ -41,15 +41,29 @@ from collections import defaultdict
 from datetime import datetime, timedelta
 from pathlib import Path
 
-VAULT = Path(r"C:\Users\user\Documents\GitHub\-")
+sys.path.insert(0, str(Path(__file__).parent))
+from stock_quality import aligned_flow, full_year
+
+VAULT = Path(__file__).resolve().parents[2]
 OUT_DIR = VAULT / "600_Projects" / "投資" / "選股"
-CACHE = Path(r"C:\Users\user\.config\stock-data\market")
-TDCC_HIST = Path(r"C:\Users\user\.config\stock-data\tdcc_history")
+CACHE = VAULT / "600_Projects/投資/個股/_data/.cache/market"
+TDCC_HIST = VAULT / "600_Projects/投資/個股/_data/.cache/tdcc_history"
 
 UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/131.0.0.0 Safari/537.36"
-CTX = ssl.create_default_context()
-CTX.check_hostname = False
-CTX.verify_mode = ssl.CERT_NONE
+def _ssl_context():
+    """保留憑證驗證，但用 certifi 的 CA bundle。
+
+    證交所憑證缺 Subject Key Identifier，新版 OpenSSL 預設信任庫會拒絕。
+    certifi 驗得過，所以不必停用驗證。
+    """
+    try:
+        import certifi
+        return ssl.create_default_context(cafile=certifi.where())
+    except Exception:  # noqa: BLE001
+        return ssl.create_default_context()
+
+
+CTX = _ssl_context()
 
 # 排除非普通股：ETF、受益證券、存託憑證、特別股等
 EXCLUDE_PREFIX = ("00", "01", "02", "03", "91")
@@ -60,9 +74,11 @@ def log(m):
 
 
 def fetch(url, cache_key=None, use_cache=True, timeout=90):
+    if cache_key in ("bwibbu.json", "rev.json", "tdcc.csv"):
+        cache_key = f"{datetime.now():%Y%m%d}_{cache_key}"
     if cache_key and use_cache:
         f = CACHE / cache_key
-        if f.exists() and f.stat().st_size > 0:
+        if f.exists() and f.stat().st_size > 0 and time.time() - f.stat().st_mtime < 3600:
             return f.read_bytes()
     req = urllib.request.Request(url, headers={"User-Agent": UA})
     data = urllib.request.urlopen(req, timeout=timeout, context=CTX).read()
@@ -273,7 +289,7 @@ def weekly_closes(rows):
 
 def analyse(rows):
     """算出十字口訣需要的指標。"""
-    if len(rows) < 100:
+    if len(rows) < 200 or not full_year(rows):
         return None
     closes = [r["close"] for r in rows]
     vols = [r["volume"] for r in rows]
@@ -317,6 +333,8 @@ def chip_score(inst_rows, avg_vol):
     """大戶加碼的代理指標：法人連續與淨買超。"""
     if not inst_rows:
         return None
+    if len(inst_rows) < 10:
+        return None
     recent = inst_rows[-10:]
     f_net = sum(x["foreign"] for x in recent)
     t_net = sum(x["trust"] for x in recent)
@@ -350,15 +368,7 @@ def load_fetcher():
 
 
 def verify_chips(code, rows, days=60):
-    """用 CMoney 的主力買賣超算真正的籌碼集中度。
-
-    第一階段的「大戶加碼」是拿外資連續買超代理的，那只是近似。
-    宏爺要的是「**持續**加碼」，而籌碼集中度才是他給了明確門檻的指標：
-    60 日 > 5%（強者 10%）、120 日 > 3%，**負值代表主力在倒貨**。
-
-    全市場逐檔抓太慢，但對已篩出的數十檔做複驗完全可行——
-    這正是把粗篩與精驗分開的價值。
-    """
+    """取得主力占量代理值；不得當成真實集中度或完整大戶驗證。"""
     sf = load_fetcher()
     try:
         cm = sf.get_cmoney(code, days=days + 20)
@@ -369,17 +379,11 @@ def verify_chips(code, rows, days=60):
     if not fb:
         return None
 
-    vol = {r["date"]: r["volume"] / 1000 for r in rows}     # 股 → 張
     out = {}
-    for w in (20, 60):
-        recent = fb[-w:]
-        if len(recent) < w:
-            continue
-        net = sum(x.get("OverBuy", 0) for x in recent)
-        v = sum(vol.get(x["Date"], 0) for x in recent)
-        if v > 0:
-            out[f"conc{w}"] = net / v * 100
-            out[f"net{w}"] = net
+    for w, value in aligned_flow(cm, rows).items():
+        out[f"conc{w}"] = value["pct"]
+        out[f"net{w}"] = value["net_lots"]
+    out["proxy"] = True
     # 買賣家數差：負值＋主力買超為正＝吃貨
     if ts:
         recent = ts[-20:]
@@ -407,6 +411,10 @@ def screen(hist, names, inst, val, rev, tdcc, tdcc_hist, cfg):
             stats["資料不足"] += 1
             continue
 
+        if (datetime.now() - datetime.strptime(rows[-1]['date'], '%Y%m%d')).days > 7:
+            stats['資料不足'] += 1
+            continue
+
         # ── 第一關：價平量平 ──────────────────────────
         if a["converge"] > cfg["converge"]:
             stats["均線未糾結"] += 1
@@ -431,6 +439,11 @@ def screen(hist, names, inst, val, rev, tdcc, tdcc_hist, cfg):
 
         # ── 第二關：大戶加碼 ──────────────────────────
         c = chip_score(inst.get(code, []), a["avg_vol20"])
+        inst_dates = [r['date'] for r in inst.get(code, [])[-10:]]
+        price_dates = [r['date'] for r in rows[-10:]]
+        if inst_dates != price_dates:
+            stats['資料不足'] += 1
+            continue
         if not c or c["f_net"] <= 0 or c["buy_days"] < cfg["buy_days"]:
             stats["法人未加碼"] += 1
             continue
@@ -438,7 +451,7 @@ def screen(hist, names, inst, val, rev, tdcc, tdcc_hist, cfg):
         # 集保大戶流向（累積兩週以上才有）
         big_now = (tdcc.get(code) or {}).get("big_pct")
         big_prev = (prev_tdcc.get(code) or {}).get("big_pct")
-        big_chg = (big_now - big_prev) if (big_now and big_prev) else None
+        big_chg = (big_now - big_prev) if big_now is not None and big_prev is not None else None
         holders_now = (tdcc.get(code) or {}).get("holders")
         holders_prev = (prev_tdcc.get(code) or {}).get("holders")
         holders_chg = (holders_now - holders_prev) if (holders_now and holders_prev) else None
@@ -461,7 +474,7 @@ def screen(hist, names, inst, val, rev, tdcc, tdcc_hist, cfg):
         score += max(0, (cfg["converge"] - a["converge"])) * 3   # 越糾結越好
         score += min(c["streak"], 5) * 4                          # 連續買超天數
         score += min(c["ratio"], 10) * 2                          # 買超佔量比重
-        score += max(0, 100 - (a["pos52"] or 100)) * 0.15        # 位階越低越好
+        score += max(0, 100 - (a["pos52"] if a["pos52"] is not None else 100)) * 0.15        # 位階越低越好
         if a["vol_ratio"]:
             score += max(0, (1 - a["vol_ratio"])) * 15            # 量縮程度
         if big_chg:
@@ -536,15 +549,17 @@ def build_report(results, stats, cfg, tdcc_date, snapshots, top, rejected=None):
               "可以用 `--loose` 放寬後再跑一次看看邊緣標的。", ""]
     else:
         L += [
-            f"## 入選 {len(results)} 檔（依分數排序，列出前 {min(top, len(results))} 檔）",
+            f"## 初步候選 {len(results)} 檔（尚未完整評估）（依分數排序，列出前 {min(top, len(results))} 檔）",
             "",
             "| # | 代號 | 名稱 | 收盤 | 均線糾結 | 量縮比 | 52週位階 "
-            "| **60日集中度** | 20日集中度 | 家數差 | 外資10日 | 營收YoY | 殖利率 |",
-            "| ---: | :--- | :--- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |",
+            "| **60日主力占量比** | 20日主力占量比 | 家數差 | 外資10日 | 營收YoY | 殖利率 | 驗證狀態 |",
+            "| ---: | :--- | :--- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | :--- |",
         ]
         for i, r in enumerate(results[:top], 1):
             a, c, v = r["a"], r["c"], r["val"]
             yoy = r["rev"].get("yoy")
+            yoys = f"{yoy:+.1f}%" if yoy is not None else "未取得"
+            yields = f"{v['yield']:.2f}%" if v.get('yield') is not None else '未取得'
             vf = r.get("verify") or {}
             c60 = vf.get("conc60")
             c20 = vf.get("conc20")
@@ -556,7 +571,7 @@ def build_report(results, stats, cfg, tdcc_date, snapshots, top, rejected=None):
                 f"| {i} | **{r['code']}** | {r['name']} | {a['close']:.2f} "
                 f"| {a['converge']:.1f}% | {a['vol_ratio']:.2f} | {a['pos52']:.0f}% "
                 f"| {c60s} | {c20s} | {tds} "
-                f"| {c['f_net'] / 1000:+,.0f}張 | {yoy:+.1f}% | {v.get('yield') or 0:.2f}% |"
+                f"| {c['f_net'] / 1000:+,.0f}張 | {yoys} | {yields} | {r.get('verdict', '未驗證')} |"
             )
         if rejected:
             L += [
@@ -600,7 +615,7 @@ def build_report(results, stats, cfg, tdcc_date, snapshots, top, rejected=None):
         "| 外資10日／連買 | 大戶加碼的代理指標 | [[大戶籌碼選股術]] |",
         "",
         "> [!important] 下一步該做什麼",
-        "> 這份名單只完成了「價平量平＋大戶加碼」。接著要：",
+        "> 這份名單是初步候選，法人買超與主力占量代理值不等於大戶持續加碼。接著要：",
         "> 1. 逐檔跑 `stock-fetch.py <代號>` 看完整資料",
         "> 2. 檢查產業是不是「過去很少、現在開始、未來很多」——**這關要你判斷**",
         "> 3. 等**利空不跌**驗證籌碼強度",
@@ -624,12 +639,12 @@ def build_report(results, stats, cfg, tdcc_date, snapshots, top, rejected=None):
 
 def main():
     p = argparse.ArgumentParser(description="潛龍股篩選器（十字口訣核心版）")
-    p.add_argument("--days", type=int, default=130, help="行情天數（20週均線需約 100 天）")
+    p.add_argument("--days", type=int, default=260, help="行情天數（52週位階需至少完整一年）")
     p.add_argument("--inst-days", type=int, default=20, help="法人資料天數")
     p.add_argument("--top", type=int, default=40, help="報表列出前幾名")
     p.add_argument("--loose", action="store_true", help="放寬條件")
     p.add_argument("--no-verify", action="store_true",
-                   help="跳過第二階段的籌碼集中度複驗")
+                   help="跳過第二階段的主力占量代理資料檢查")
     p.add_argument("--verify-top", type=int, default=40,
                    help="複驗前幾檔（每檔約 2 秒）")
     p.add_argument("--no-cache", action="store_true")
@@ -667,27 +682,13 @@ def main():
     # ── 第二階段：籌碼集中度複驗 ──────────────────────────
     if not args.no_verify and results:
         n = min(len(results), args.verify_top)
-        log(f"第二階段：對前 {n} 檔做籌碼集中度複驗（CMoney，每檔約 2 秒）…")
+        log(f"第二階段：對前 {n} 檔取得主力占量代理資料（非完整籌碼驗證）…")
         passed, rejected = [], []
         for i, r in enumerate(results[:n], 1):
             v = verify_chips(r["code"], hist[r["code"]])
             r["verify"] = v
-            if v is None:
-                r["verdict"] = "無資料"
-                passed.append(r)                    # 抓不到不當作失格
-            elif v.get("conc60") is None:
-                r["verdict"] = "資料不足"
-                passed.append(r)
-            elif v["conc60"] < cfg["conc60_min"]:
-                r["verdict"] = f"60日集中度 {v['conc60']:+.2f}%（主力倒貨）"
-                rejected.append(r)
-            else:
-                r["verdict"] = "通過"
-                # 集中度高的加分
-                r["score"] += min(v["conc60"], 15) * 2
-                if v.get("trader_diff", 0) < 0:
-                    r["score"] += 8                 # 家數差為負＝吃貨型態
-                passed.append(r)
+            r["verdict"] = "待確認（代理指標）" if v and v.get("conc60") is not None else "資料不足；未通過驗證"
+            passed.append(r)  # 保留候選但明列待確認，不依未驗證代理值加分或剔除
             if i % 10 == 0:
                 log(f"    已驗 {i}/{n}")
             time.sleep(0.6)
@@ -696,8 +697,8 @@ def main():
             passed.append(r)
         passed.sort(key=lambda x: -x["score"])
         stats["複驗剔除"] = len(rejected)
-        log(f"複驗：通過 {len(passed) - (len(results) - n)} 檔，"
-            f"剔除 {len(rejected)} 檔（主力倒貨）")
+        log(f"代理資料檢查：候選 {len(passed)} 檔，尚非完整驗證；"
+            f"不依代理值判定主力倒貨。")
         results = passed
         rejected_list = rejected
     else:

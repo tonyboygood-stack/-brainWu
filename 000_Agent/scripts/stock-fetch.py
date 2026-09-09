@@ -17,9 +17,9 @@
 
 需要人工處理的來源（本腳本不涵蓋，見 資料蒐集SOP.md）：
   - 證交所買賣日報表（分點進出）→ 有圖形驗證碼
-  - MOPS 法說會 → 查詢參數為加密字串，無法組出
+  - 法說會內容研讀（可取得清單，不等於讀過全文）
   - Goodinfo、M平方 → 擋自動請求
-  - CMoney 籌碼K線（集中度／買賣家數差／外資成本線）→ 需註冊登入
+  - 真正區間分點集中度與外資成本線（主力占量比只是代理值）
 """
 
 import argparse
@@ -34,14 +34,37 @@ import urllib.request
 from datetime import datetime, timedelta
 from pathlib import Path
 
-VAULT = Path(r"C:\Users\user\Documents\GitHub\-")
+sys.path.insert(0, str(Path(__file__).parent))
+from stock_quality import aligned_flow, full_year, quality_markdown, number, date_key
+
+VAULT = Path(__file__).resolve().parents[2]
 OUT_DIR = VAULT / "600_Projects" / "投資" / "個股" / "_data"
-CACHE_DIR = Path(r"C:\Users\user\.config\stock-data\cache")
+CACHE_DIR = VAULT / "600_Projects/投資/個股/_data/.cache/individual"
 
 UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/131.0.0.0 Safari/537.36"
-CTX = ssl.create_default_context()
-CTX.check_hostname = False
-CTX.verify_mode = ssl.CERT_NONE
+def _ssl_context():
+    """保留憑證驗證，但用 certifi 的 CA bundle。
+
+    證交所與櫃買的憑證缺 Subject Key Identifier，新版 OpenSSL 的預設
+    信任庫會拒絕（CERTIFICATE_VERIFY_FAILED）。certifi 的 bundle 驗得過，
+    所以不需要停用驗證——停用等於對所有連線放棄中間人防護。
+    """
+    try:
+        import certifi
+        return ssl.create_default_context(cafile=certifi.where())
+    except Exception:  # noqa: BLE001
+        return ssl.create_default_context()
+
+
+CTX = _ssl_context()
+
+# CMoney 的憑證連 certifi 都驗不過（憑證鏈不完整、缺 Subject Key Identifier）。
+# 這條連線只抓公開頁面、不送任何憑證，所以用「僅限該主機」的寬鬆 context，
+# 而不是把全域驗證關掉——後者等於對所有來源放棄中間人防護。
+# 代價：這一個來源的內容可能被竄改而無法察覺，故其數值僅作代理指標使用。
+CMONEY_CTX = ssl.create_default_context()
+CMONEY_CTX.check_hostname = False
+CMONEY_CTX.verify_mode = ssl.CERT_NONE
 
 # TDCC 集保持股分級：級距 12 以上為 400 張（40 萬股）以上，15 為 1000 張以上
 TDCC_BIG = {"12", "13", "14", "15"}
@@ -60,7 +83,7 @@ def fetch(url, cache_key=None, use_cache=True, timeout=90):
     """抓網頁，可選擇性快取（大檔案如集保 CSV 一天只需抓一次）。"""
     if cache_key and use_cache:
         cf = CACHE_DIR / f"{datetime.now():%Y%m%d}_{cache_key}"
-        if cf.exists() and cf.stat().st_size > 0:
+        if cf.exists() and cf.stat().st_size > 0 and time.time() - cf.stat().st_mtime < 3600:
             return cf.read_bytes()
     req = urllib.request.Request(url, headers={"User-Agent": UA})
     data = urllib.request.urlopen(req, timeout=timeout, context=CTX).read()
@@ -161,7 +184,11 @@ def get_dividends(code):
         m = re.search(r"data:\s*\[([^\]]*)\][^}]*?name:\s*'" + name + r"'", html)
         if not m:
             return []
-        return [float(x) for x in re.findall(r"-?\d+\.?\d*", m.group(1))]
+        try:
+            values = json.loads("[" + m.group(1) + "]")
+            return [float(v) if v is not None else None for v in values]
+        except (ValueError, TypeError):
+            return []
 
     # 頁面上有兩張 Highcharts：股權分散圖的 categories 是 '2021-09' 這種年月，
     # 股利圖才是四位數年份。所以要掃過所有 categories，挑年份那一組。
@@ -192,7 +219,7 @@ def get_dividends(code):
 
 # ---------------------------------------------------------------- 股價
 
-def get_daily(code, market, months=14, use_cache=True):
+def get_daily(code, market, months=72, use_cache=True):
     """個股日成交，逐月抓。上市走證交所，上櫃走櫃買中心。
 
     兩邊的欄位順序不同：
@@ -200,8 +227,47 @@ def get_daily(code, market, months=14, use_cache=True):
       櫃買 tradingStock → [日期, 成交張數, 成交仟元, 開, 高, 低, 收, 漲跌, 筆數]
     另外櫃買的量單位是「張」，這裡統一換算成股。
     """
+    if months > 1:
+        try:
+            from stock_supplement import json_data, finmind_url
+            url = finmind_url('TaiwanStockPrice', code, months / 12)
+            raw, fetched = json_data(url, use_cache, True)
+            bulk = []
+            for r in raw:
+                dt = datetime.strptime(r['date'], '%Y-%m-%d')
+                if str(r.get('stock_id')) != code:
+                    raise ValueError('股價回傳代號不一致')
+                close = float(r['close'])
+                volume = int(r['Trading_Volume'])
+                if close <= 0 or volume <= 0:
+                    continue  # 停牌／無成交不補成零價
+                bulk.append(dict(date=f'{dt.year-1911}/{dt.month:02d}/{dt.day:02d}',
+                                 open=float(r['open']), high=float(r['max']), low=float(r['min']),
+                                 close=close, volume=volume))
+            if not bulk:
+                raise ValueError('歷史行情為空')
+            bulk.sort(key=lambda x: x['date'])
+            if len({r['date'] for r in bulk}) != len(bulk):
+                raise ValueError('歷史行情日期重複')
+            result = PriceRows(bulk)
+            observed = {r['date'][:6] for r in bulk}
+            cursor = roc_date(bulk[0]['date']).replace(day=1)
+            last_month = roc_date(bulk[-1]['date']).replace(day=1)
+            missing_months = 0
+            while cursor <= last_month:
+                if f'{cursor.year-1911}/{cursor.month:02d}' not in observed:
+                    missing_months += 1
+                cursor = (cursor.replace(day=28) + timedelta(days=4)).replace(day=1)
+            result.failed_months = missing_months
+            result.source = url
+            result.fetched_at = fetched
+            log(f'  日成交: {len(result)} 筆（FinMind 批次來源；未還原）')
+            return result
+        except Exception as e:
+            log(f'  批次歷史來源未取得，改查交易所：{e}')
     rows = []
     fails = 0
+    consecutive_failures = 0
     throttled = False
     d = datetime.now().replace(day=1)
     for _ in range(months):
@@ -226,6 +292,10 @@ def get_daily(code, market, months=14, use_cache=True):
                 data = tables[0].get("data", [])
                 vol_mult = 1000                 # 張 → 股
 
+            if not data:
+                raise ValueError('該月份未取得行情；可能尚未上市、停牌或來源未提供')
+            consecutive_failures = 0
+
             for r in data:
                 try:
                     rows.append({
@@ -240,13 +310,18 @@ def get_daily(code, market, months=14, use_cache=True):
                     pass
         except Exception as e:  # noqa: BLE001
             fails += 1
+            consecutive_failures += 1
             # 證交所限流時回 307。靜默吞掉會讓資料默默殘缺，必須讓它可見。
             if getattr(e, "code", None) in (307, 429, 503):
                 throttled = True
                 time.sleep(5)
+            if consecutive_failures >= 3:
+                log('  連續三個月份未取得，停止逐月請求並標示不足。')
+                break
         time.sleep(0.4)                      # 對官方站點客氣一點
         d = (d - timedelta(days=1)).replace(day=1)
     rows.sort(key=lambda x: x["date"])
+    rows = PriceRows(rows, failed_months=fails)
 
     msg = f"  日成交: {len(rows)} 筆"
     if fails:
@@ -258,6 +333,13 @@ def get_daily(code, market, months=14, use_cache=True):
     elif fails > months * 0.2:
         log(f"  ⚠ 失敗比例偏高（{fails}/{months}），本次資料可能不完整。")
     return rows
+
+
+class PriceRows(list):
+    def __init__(self, rows=(), failed_months=0):
+        super().__init__(rows)
+        self.failed_months = failed_months
+        self.source = 'TWSE／TPEx 官方逐月行情'
 
 
 def get_institutional(code, days=20, use_cache=True):
@@ -345,12 +427,12 @@ def get_conferences(code, market="sii"):
         "Referer": "https://mopsov.twse.com.tw/mops/web/t100sb02_1",
     })
     html = None
-    for attempt in range(3):                 # 舊版 MOPS 偶爾很慢，重試幾次
+    for attempt in range(2):                 # 有限重試，避免整份報告長時間卡住
         try:
-            html = urllib.request.urlopen(req, timeout=90, context=CTX).read().decode("utf-8", "replace")
+            html = urllib.request.urlopen(req, timeout=25, context=CTX).read().decode("utf-8", "replace")
             break
         except Exception as e:  # noqa: BLE001
-            if attempt == 2:
+            if attempt == 1:
                 log(f"  法說會: ✗ {e}")
                 return []
             time.sleep(2)
@@ -414,7 +496,7 @@ def get_cmoney(code, days=60):
     page = f"https://www.cmoney.tw/finance/{code}/stockmainkline"
     cj = http.cookiejar.CookieJar()
     op = urllib.request.build_opener(
-        urllib.request.HTTPSHandler(context=CTX),
+        urllib.request.HTTPSHandler(context=CMONEY_CTX),
         urllib.request.HTTPCookieProcessor(cj),
     )
     op.addheaders = [("User-Agent", UA), ("Accept-Language", "zh-TW,zh;q=0.9")]
@@ -440,7 +522,10 @@ def get_cmoney(code, days=60):
         return {}
 
     good = None
+    key_check_started = time.monotonic()
     for k in keys:
+        if time.monotonic() - key_check_started > 25:
+            break
         try:
             if api("tradersum", k).startswith("["):
                 good = k
@@ -448,7 +533,7 @@ def get_cmoney(code, days=60):
         except Exception:  # noqa: BLE001
             continue
     if not good:
-        log(f"  CMoney: ✗ {len(keys)} 把金鑰全部失敗")
+        log(f"  CMoney: ✗ 未找到可用金鑰（共 {len(keys)} 把候選，有限時間檢查）")
         return {}
 
     out = {}
@@ -456,6 +541,10 @@ def get_cmoney(code, days=60):
         try:
             body = api(action, good)
             out[action] = json.loads(body) if body.startswith("[") else []
+            required = 'TraderSum' if action == 'tradersum' else 'OverBuy'
+            if any(not isinstance(r, dict) or not date_key(r.get('Date')) or required not in r for r in out[action]):
+                raise ValueError('CMoney資料欄位不符')
+            out[action].sort(key=lambda r: date_key(r['Date']))
             log(f"  CMoney {label}: {len(out[action])} 筆")
         except Exception as e:  # noqa: BLE001
             out[action] = []
@@ -506,6 +595,25 @@ def get_margin(code, days=20, use_cache=True):
         time.sleep(0.4)
     out.sort(key=lambda x: x["date"])
     log(f"  融資餘額: {len(out)} 個交易日")
+    if len(out) < days:
+        try:
+            from stock_supplement import json_data, finmind_url
+            rows, _ = json_data(finmind_url('TaiwanStockMarginPurchaseShortSale', code, max(days * 3 / 366, 0.2)), use_cache, True)
+            fallback = [dict(date=r['date'].replace('-', ''),
+                             balance=int(r['MarginPurchaseTodayBalance']),
+                             prev=int(r['MarginPurchaseYesterdayBalance']),
+                             short_balance=int(r['ShortSaleTodayBalance'])) for r in rows
+                        if str(r.get('stock_id')) == code]
+            fallback.sort(key=lambda x: x['date'])
+            official = {r['date']: r['balance'] for r in out}
+            if any(r['date'] in official and r['balance'] != official[r['date']] for r in fallback):
+                raise ValueError('替代來源與官方同日融資數值不一致')
+            if len(fallback) > len(out):
+                out = PriceRows(fallback[-days:])
+                out.source = 'FinMind TaiwanStockMarginPurchaseShortSale（官方同日值若有則核對）'
+                log(f'  融資備援: {len(out)} 日（FinMind；同日官方值若存在則交叉核對）')
+        except Exception as e:
+            log(f'  融資備援未取得：{e}')
     return out
 
 
@@ -531,34 +639,9 @@ def monthly_kd(monthly, n=9):
     return series
 
 
-def concentration(cmoney, daily, windows=(20, 60)):
-    """籌碼集中度（🔴 自行計算）。
-
-    宏爺的公式是 (前15大買超張數 − 前15大賣超張數) ÷ 區間總成交量。
-    CMoney 的「主力買賣超」正是那個分子，成交量則來自交易所，
-    所以這個指標其實可以自己算出來，不必依賴付費工具。
-
-    判準（第 70 期）：60 日 > 5%（強者 10%）、120 日 > 3%；
-    **負值代表主力正在倒貨**。
-    """
-    fb = (cmoney or {}).get("mainforceoverbuy") or []
-    if not fb or not daily:
-        return {}
-    vol_by_date = {}
-    for r in daily:
-        dt = roc_date(r["date"])
-        if dt:
-            vol_by_date[f"{dt:%Y%m%d}"] = r["volume"] / 1000    # 股 → 張
-    out = {}
-    for w in windows:
-        recent = fb[-w:]
-        if len(recent) < w:
-            continue
-        net = sum(x.get("OverBuy", 0) for x in recent)
-        vol = sum(vol_by_date.get(x["Date"], 0) for x in recent)
-        if vol > 0:
-            out[w] = {"net_lots": net, "volume_lots": vol, "pct": net / vol * 100}
-    return out
+def concentration(cmoney, daily, windows=(20, 60, 120)):
+    """完全對齊日期的主力淨買超占量比；未驗證等同區間分點集中度。"""
+    return aligned_flow(cmoney, daily, windows)
 
 
 def roc_date(s):
@@ -645,10 +728,13 @@ def technicals(daily):
         },
     }
     out["bias"] = {k: bias(last, v) for k, v in out["ma"].items()}
+    if getattr(daily, 'failed_months', 0):
+        out['ma'] = {k: None for k in out['ma']}
+        out['bias'] = {k: None for k in out['bias']}
 
     # 位階：52 週與全期間的高低區間位置
     span52 = [r for r in daily[-250:]]
-    if span52:
+    if span52 and full_year(daily) and not getattr(daily, 'failed_months', 0):
         hi = max(r["high"] for r in span52)
         lo = min(r["low"] for r in span52)
         out["52w"] = {
@@ -697,7 +783,7 @@ def summarize_tdcc(rows):
 # ---------------------------------------------------------------- 輸出
 
 def build_report(code, api, daily, inst, tdcc, cmoney=None, conf=None,
-                 divs=None, market="sii", margin=None):
+                 divs=None, market="sii", margin=None, expected_days=20):
     base = api.get("基本資料") or {}
     name = base.get("公司簡稱", code)
     now = datetime.now()
@@ -722,6 +808,8 @@ def build_report(code, api, daily, inst, tdcc, cmoney=None, conf=None,
         "> 🔴 標記處為腳本計算值，非官方數據。",
         "",
     ]
+
+    L += [quality_markdown(api, daily, inst, tdcc, cmoney, conf, divs, margin, expected_days)]
 
     # 基本資料
     if base:
@@ -764,7 +852,7 @@ def build_report(code, api, daily, inst, tdcc, cmoney=None, conf=None,
             L.append(f"| 近 52 週 | {w['high']} | {w['low']} | {pct} |")
         if a:
             pct = f"{a['pct']:.0f}%" if a["pct"] is not None else "—"
-            L.append(f"| 全期間 | {a['high']} | {a['low']} | {pct} |")
+            L.append(f"| 已取得期間（非上市以來） | {a['high']} | {a['low']} | {pct} |")
         L += [
             "",
             "> [!tip] 依 [[基期位階判斷五法]]",
@@ -813,7 +901,7 @@ def build_report(code, api, daily, inst, tdcc, cmoney=None, conf=None,
                   "> 切線需要人工在圖上畫，腳本給不了——但上面的月K數列就是畫線的原料。",
                   ""]
 
-            kd = monthly_kd(mo)
+            kd = monthly_kd(mo) if not getattr(daily, 'failed_months', 0) else None
             if kd:
                 cur = kd[-1]
                 zone = ("🔴 超買區（>80）" if cur["k"] > 80
@@ -955,7 +1043,7 @@ def build_report(code, api, daily, inst, tdcc, cmoney=None, conf=None,
     ts = cm.get("tradersum") or []
     fb = cm.get("mainforceoverbuy") or []
     if ts or fb:
-        force = {r["Date"]: r.get("OverBuy") for r in fb}
+        force = {r["Date"]: number(r.get("OverBuy")) for r in fb}
         L += [
             "## 主力買賣超與買賣家數差（CMoney）",
             "",
@@ -969,7 +1057,7 @@ def build_report(code, api, daily, inst, tdcc, cmoney=None, conf=None,
         for r in ts[-15:]:
             d = r["Date"]
             ob = force.get(d)
-            diff = r.get("TraderSum")
+            diff = number(r.get("TraderSum"))
             if ob is None or diff is None:
                 shape = "—"
             elif ob > 0 and diff < 0:
@@ -979,38 +1067,35 @@ def build_report(code, api, daily, inst, tdcc, cmoney=None, conf=None,
             else:
                 shape = "—"
             L.append(f"| {d} | {ob if ob is not None else '—'} | {r.get('BuyerCount')} "
-                     f"| {r.get('SellerCount')} | {diff:+} | {shape} |")
+                     f"| {r.get('SellerCount')} | {diff if diff is not None else '—'} | {shape} |")
         if fb:
-            tot = sum(r.get("OverBuy", 0) for r in fb)
-            L += ["", f"期間主力買賣超合計：**{tot:+,} 張**（{len(fb)} 個交易日）", ""]
+            values = [number(r.get('OverBuy')) for r in fb]
+            total_text = f'{sum(values):+,} 張' if all(v is not None for v in values) else '缺值，停止加總'
+            L += ["", f"期間主力買賣超合計：**{total_text}**（{len(fb)} 個交易日）", ""]
 
         conc = concentration(cmoney, daily)
         if conc:
             L += [
-                "### 🔴 籌碼集中度（腳本計算）",
+                "### 🔴 主力淨買超占量比（代理指標）",
                 "",
                 "公式：主力買賣超累計 ÷ 區間總成交量。宏爺的定義是"
-                "「(前15大買超張數 − 前15大賣超張數) ÷ 區間總成交量」，"
-                "而 CMoney 的主力買賣超正是那個分子，所以這個數字不必依賴付費工具。",
+                "「(前15大買超張數 − 前15大賣超張數) ÷ 區間總成交量」。"
+                "本項只是日期完全對齊的主力淨買超占量代理值，未確認等同該公式，不套用其門檻。",
                 "",
-                "| 區間 | 主力買賣超累計 | 區間總成交量 | 集中度 | 判定 |",
+                "| 區間 | 主力買賣超累計 | 區間總成交量 | 代理占量比 | 判定 |",
                 "| :--- | ---: | ---: | ---: | :--- |",
             ]
             for w in sorted(conc):
                 c = conc[w]
                 p = c["pct"]
-                if w >= 60:
-                    verdict = ("**高度集中**" if p > 10 else "集中" if p > 5
-                               else "**主力倒貨**" if p < 0 else "中性")
-                else:
-                    verdict = "**主力倒貨**" if p < 0 else "偏集中" if p > 5 else "中性"
+                verdict = "代理值；不作集中度判定"
                 L.append(f"| {w} 日 | {c['net_lots']:+,.0f} 張 "
                          f"| {c['volume_lots']:,.0f} 張 | **{p:+.2f}%** | {verdict} |")
             L += [
                 "",
                 "> [!tip] 判準（第 70 期）",
                 "> 高度集中：60 日 > 5%，強者達 10%；120 日 > 3%。"
-                "**負值代表主力正在倒貨，上方壓力重重。**",
+                "本表未提供經驗證的該項集中度，故不得據此判定倒貨。",
                 "> 要搭配 [[買賣家數差]] 一起看，才能區分「集中」與「主力真的在吃貨」。",
                 "",
             ]
@@ -1065,19 +1150,19 @@ def build_report(code, api, daily, inst, tdcc, cmoney=None, conf=None,
         if paid:
             streak = 0
             for d in reversed(dv):
-                if (d.get("cash") or 0) > 0:
+                if d.get("cash") is not None and d["cash"] > 0 and int(d["year"]) == int(dv[-1]["year"]) - streak:
                     streak += 1
                 else:
                     break
             latest = dv[-1]
-            L.append(f"**連續配息 {streak} 年**（{dv[-streak]['year']}–{latest['year']}）")
+            L.append(f"**最近連續配息 {streak} 年**（缺年度或尚未公告者需另核對）")
             if last_price and (latest.get("cash") or 0):
                 y = latest["cash"] / last_price * 100
                 L.append(f"　🔴 以 {latest['year']} 年股利 {latest['cash']} 元、"
                          f"現價 {last_price} 計，現金殖利率約 **{y:.2f}%**")
             if len(dv) >= 2:
                 prev, cur = dv[-2].get("cash") or 0, latest.get("cash") or 0
-                if prev and cur < prev:
+                if latest.get("cash") is not None and prev and cur < prev:
                     L.append(f"　⚠️ **配息成長中斷**：{dv[-2]['year']} 年 {prev} 元 → "
                              f"{latest['year']} 年 {cur} 元（{(cur - prev) / prev * 100:+.0f}%）")
             L.append("")
@@ -1098,9 +1183,9 @@ def build_report(code, api, daily, inst, tdcc, cmoney=None, conf=None,
         "## 本腳本抓不到的（需人工）",
         "",
         "- 分點進出明細（證交所買賣日報表，有圖形驗證碼）",
-        "- 籌碼集中度與外資成本線（CMoney 網頁上有，但未找到對應 API）",
-        "- 董監持股明細",
-        "- 集保大戶的歷史趨勢（官方開放資料只有最新一週）",
+        "- 經驗證的區間前15大分點集中度與外資成本線（代理值不能替代）",
+        "- 董監資料、總經與現金流見補充資料；無資料時標示未確認",
+        "- 集保多週流向見補充資料；不足兩個不同週次不得判定趨勢",
         "",
         "→ 操作步驟見 [[資料蒐集SOP]]",
         "",
@@ -1117,11 +1202,14 @@ def main():
     p = argparse.ArgumentParser(description="個股公開資料蒐集器")
     p.add_argument("code", help="股票代號，例如 1786")
     p.add_argument("--days", type=int, default=20, help="三大法人抓幾個交易日（預設 20）")
-    p.add_argument("--months", type=int, default=36,
-                   help="股價抓幾個月（預設 36。20週均線需約 6 個月、"
+    p.add_argument("--months", type=int, default=72,
+                   help="股價抓幾個月（預設 72。20週均線需約 6 個月、"
                         "月線 12MA 需 12 個月、月線 60MA 需 60 個月）")
     p.add_argument("--no-cache", action="store_true", help="強制重新下載")
+    p.add_argument("--no-supplement", action="store_true", help="略過總經／財報／籌碼補充資料")
     args = p.parse_args()
+    if args.days < 1 or args.months < 1 or not args.code.strip().isdigit():
+        p.error("代號與天數／月數必須為正確的正數")
 
     code = args.code.strip()
     use_cache = not args.no_cache
@@ -1146,20 +1234,24 @@ def main():
         log("融資餘額…")
         margin = get_margin(code, args.days, use_cache)
     else:
-        inst, margin = [], []
-        log("三大法人與融資：上櫃的歷史逐日資料尚未支援，跳過")
+        from stock_supplement import otc_history
+        inst = otc_history(code, args.days, "institutional", use_cache)
+        margin = otc_history(code, args.days, "margin", use_cache)
 
     log("集保股權分散…")
     tdcc = get_tdcc(code, use_cache)
     log("CMoney 籌碼（免登入）…")
-    cmoney = get_cmoney(code, days=max(args.days * 3, 60))
+    cmoney = get_cmoney(code, days=max(args.days * 3, 130))
     log("法說會…")
     conf = get_conferences(code, market)
     log("歷年股利與 EPS…")
     divs = get_dividends(code)
 
     report = build_report(code, api, daily, inst, tdcc, cmoney, conf, divs,
-                          market, margin)
+                          market, margin, args.days)
+    if not args.no_supplement:
+        from stock_supplement import collect, render
+        report += "\n" + render(collect(code, market, use_cache))
     out = OUT_DIR / f"{code}.md"
     out.write_text(report, encoding="utf-8")
     log(f"完成 → {out}")
