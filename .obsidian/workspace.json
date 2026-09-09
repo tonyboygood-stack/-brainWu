@@ -13,12 +13,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "400_Atlas/Library/wiki/醫案/醫案_蒙某某_腺病毒肺炎（蒲輔周）.md",
+                "file": "400_Atlas/Library/wiki/方證/梔子豉湯方證（張文選）.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "醫案_蒙某某_腺病毒肺炎（蒲輔周）"
+              "title": "梔子豉湯方證（張文選）"
+            }
+          },
+          {
+            "id": "6b5c1e8b73858142",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "400_Atlas/Library/wiki/醫案/醫案_曹某某_心煩懊憹_神經官能症（劉渡舟）.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "醫案_曹某某_心煩懊憹_神經官能症（劉渡舟）"
             }
           },
           {
@@ -35,7 +49,8 @@
               "title": "我的診所藥單"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -208,44 +223,44 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "370302c2f666e48e",
+  "active": "6b5c1e8b73858142",
   "lastOpenFiles": [
-    "400_Atlas/Library/wiki/醫案/醫案_韓某某_風熱感冒（蒲輔周）.md",
-    "400_Atlas/Library/wiki/方證/桑菊飲方證（張文選）.md",
+    "400_Atlas/Library/wiki/醫案/醫案_李某某_顏面斑丘疹（張文選）.md",
+    "400_Atlas/Library/wiki/醫案/醫案_劉某某_火癤（張文選）.md",
+    "400_Atlas/Library/wiki/醫案/醫案_黃某某_前列腺炎（張文選）.md",
+    "400_Atlas/Library/wiki/醫案/醫案_張某某_泌尿系感染（張文選）.md",
+    "400_Atlas/Library/wiki/醫案/醫案_寧某某_鬱火便秘（王建紅治驗）.md",
+    "400_Atlas/Library/wiki/醫案/醫案_何某某_痔瘡便血（張文選）.md",
+    "400_Atlas/Library/wiki/醫案/醫案_王某某_痤瘡（張文選）.md",
+    "400_Atlas/Library/wiki/醫案/醫案_孫某某_頭面掣痛（劉渡舟）.md",
+    "600_Projects/投資/個股/_data/2428_supplement.md",
+    "600_Projects/投資/個股/_data/2428_supplement.json",
+    "400_Atlas/Library/wiki/醫案/醫案_靖某某_中風語言障礙（劉渡舟）.md",
+    "400_Atlas/Library/wiki/醫案/醫案_曹某某_精神分裂症（劉渡舟）.md",
+    "400_Atlas/Library/wiki/方證/楊氏解毒承氣湯方證（張文選）.md",
+    "400_Atlas/Library/wiki/方證/導赤承氣湯方證（張文選）.md",
+    "400_Atlas/Library/wiki/方證/增液承氣湯方證（張文選）.md",
+    "400_Atlas/Library/wiki/治法技法/苦寒通下法（張文選）.md",
+    "000_Agent/scripts/__pycache__/test_stock_data.cpython-313.pyc",
+    "000_Agent/scripts/stock-fetch.py.tmp.13752.ca275bf0c0eb",
+    "600_Projects/投資/個股/_data/3044_supplement.json",
+    "000_Agent/scripts/__pycache__/stock_supplement.cpython-313.pyc",
+    "000_Agent/scripts/__pycache__/stock_quality.cpython-313.pyc",
+    "600_Projects/投資/個股/_data/6488_supplement.md",
+    "600_Projects/投資/個股/_data/1786_supplement.md",
+    "600_Projects/投資/資料源/系統補強紀錄_2026-09-09.md",
+    "600_Projects/投資/個股/_data/6488.md",
+    "600_Projects/投資/個股/_data/6488_supplement.json",
+    "600_Projects/投資/更新投資資料.ps1",
+    "000_Agent/scripts/update_stock_docs.py",
+    "600_Projects/投資/個股/_data/1786_supplement.json",
+    "600_Projects/投資/個股/_data/2330_supplement.md",
+    "400_Atlas/Library/wiki/方證/梔子豉湯方證（張文選）.md",
     "400_Atlas/Library/wiki/典籍/溫病方證與雜病辨治.md",
     "600_Projects/書籍掃描/溫病方證與雜病辨治/溫病方證與雜病辨治.md",
-    "600_Projects/投資/個股/_data/2428.md",
-    "600_Projects/投資/個股/_data/1513.md",
-    "600_Projects/投資/個股/_data/6625.md",
-    "600_Projects/平衡木診所遊戲化系統/企劃書/11_風險與退場.md",
-    "400_Atlas/Library/wiki/醫案/醫案_王某某_情志致不飢不食（張文選）.md",
-    "400_Atlas/Library/wiki/醫案/醫案_齊某某_乾咳月餘（張文選）.md",
-    "000_Agent/scripts/screener.py.tmp.13752.2a10de5f5c49",
-    "400_Atlas/Library/wiki/醫案/醫案_厚某某_燥咳與辨時令用方（張文選）.md",
-    "400_Atlas/Library/wiki/醫案/醫案_厚某某_燥咳與辨時令用方（張文選）.md.tmp.25340.f7a0e883222b",
-    "400_Atlas/Library/wiki/醫案/醫案_張某某_火鬱咳嗽半年（張文選）.md",
-    "400_Atlas/Library/wiki/醫案/醫案_陳某_目赤癢痛（江爾遜）.md",
-    "400_Atlas/Library/wiki/醫案/醫案_劉某某_鬱火煩躁便秘（王建紅治驗）.md",
-    "400_Atlas/Library/wiki/醫案/醫案_王某某_鬱火腹脹便秘（王建紅治驗）.md",
-    "400_Atlas/Library/wiki/醫案/醫案_孫某某_鬱火胃痛（張文選）.md",
-    "400_Atlas/Library/wiki/醫案/醫案_牛某_考試前緊張綜合徵（張文選）.md",
-    "400_Atlas/Library/wiki/醫案/醫案_鄭某_胃痛煩嘔（俞長榮）.md",
-    "400_Atlas/Library/wiki/醫案/醫案_耿某某_長期低熱（朱進忠）.md",
-    "400_Atlas/Library/wiki/醫案/醫案_單某某_產後胸腹滿悶（劉渡舟）.md",
-    "400_Atlas/Library/wiki/醫案/醫案_曹某某_心煩懊憹_神經官能症（劉渡舟）.md",
-    "400_Atlas/Library/wiki/方證/三香湯方證（張文選）.md",
-    "400_Atlas/Library/wiki/方證/三香湯方證（張文選）.md.tmp.25340.09bf3561ab2d",
-    "600_Projects/平衡木診所遊戲化系統/企劃書/10_導入計畫.md.tmp.2092.ba4093413bd4",
-    "600_Projects/投資/個股/_data/8422.md",
-    "400_Atlas/Library/wiki/方證/桑杏湯方證（張文選）.md",
-    "600_Projects/投資/個股/_data/9931.md",
-    "400_Atlas/Library/wiki/方證/翹荷湯方證（張文選）.md",
-    "400_Atlas/Library/sedqnakeZ",
-    "600_Projects/投資/選股",
-    "000_Agent/scripts/__pycache__/screener.cpython-313.pyc",
-    "000_Agent/scripts/screener.py",
-    "400_Atlas/Library/wiki/典籍/溫病方證與雜病辨治.md.tmp.25340.8e7a2cba3ea2",
-    "400_Atlas/Library/wiki/典籍/溫病方證與雜病辨治.md.tmp.25340.67d52f185e51",
+    "400_Atlas/Library/wiki/醫案/醫案_蒙某某_腺病毒肺炎（蒲輔周）.md",
+    "400_Atlas/Library/wiki/醫案/醫案_陳某某_食道胃中灼熱疼痛（張文選）.md",
+    "400_Atlas/Library/wiki/醫案/醫案_金某某_老年性陰道炎（張文選）.md",
     "600_Projects/病歷紀錄/測試病人R/attachments/測試病人R_2026-08-27_0035_舌象.jpg",
     "600_Projects/病歷紀錄/0000/attachments/0000_2026-08-26_2248_舌象_2.jpg",
     "600_Projects/病歷紀錄/0000/attachments/0000_2026-08-26_2248_舌象_1.jpg",
