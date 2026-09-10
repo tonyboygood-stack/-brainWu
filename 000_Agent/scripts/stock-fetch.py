@@ -563,6 +563,7 @@ def get_margin(code, days=20, use_cache=True):
     out = []
     d = datetime.now()
     tries = 0
+    consecutive_failures = 0
     while len(out) < days and tries < days * 2:
         tries += 1
         ds = f"{d:%Y%m%d}"
@@ -576,6 +577,10 @@ def get_margin(code, days=20, use_cache=True):
                 cache_key=f"margin_{ds}.json", use_cache=use_cache, timeout=40,
             )
             if j.get("stat") != "OK":
+                consecutive_failures += 1
+                if consecutive_failures >= 3:
+                    log("  融資官方來源連續無有效回應，改用替代來源補資料。")
+                    break
                 continue
             for t in j.get("tables", []):
                 f = t.get("fields", [])
@@ -590,8 +595,12 @@ def get_margin(code, days=20, use_cache=True):
                         "prev": int(str(row[5]).replace(",", "")),
                     })
                 break
+            consecutive_failures = 0
         except Exception:  # noqa: BLE001
-            pass
+            consecutive_failures += 1
+            if consecutive_failures >= 3:
+                log("  融資官方來源連續失敗，改用替代來源補資料。")
+                break
         time.sleep(0.4)
     out.sort(key=lambda x: x["date"])
     log(f"  融資餘額: {len(out)} 個交易日")

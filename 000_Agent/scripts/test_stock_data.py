@@ -133,6 +133,39 @@ class QualityTests(unittest.TestCase):
             result = sup.otc_history('6488', 1)
         self.assertEqual(result[0]['total'], 60)
 
+    def test_chip_stage_needs_more_than_a_positive_proxy(self):
+        row = {'verify': {'conc60': 2, 'conc20': 1, 'trader_diff': -3},
+               'big_chg': None, 'holders_chg': None}
+        self.assertEqual(sc.chip_signal(row, 1)[0], '研究優先')
+        self.assertEqual(sc.chip_signal(row, 2)[0], '籌碼待驗證')
+
+    def test_chip_stage_waits_for_aligned_tdcc(self):
+        row = {'verify': {'conc60': 2, 'conc20': 1, 'trader_diff': -3},
+               'big_chg': 0.2, 'holders_chg': -20}
+        self.assertEqual(sc.chip_signal(row, 2)[0], '等待突破')
+
+    def test_chip_stage_rejects_conflicting_proxy(self):
+        row = {'verify': {'conc60': -2, 'conc20': 1, 'trader_diff': -3},
+               'big_chg': 0.2, 'holders_chg': -20}
+        self.assertEqual(sc.chip_signal(row, 2)[0], '籌碼待驗證')
+
+    def test_screen_uses_latest_completed_shared_dates(self):
+        # Institutional data may contain today's provisional row while the daily
+        # price feed still ends yesterday. Shared dates must be sufficient.
+        end = datetime.now() - timedelta(days=1)
+        dates = [(end - timedelta(days=369-i)).strftime('%Y%m%d') for i in range(370)]
+        rows = [dict(date=d, open=10, high=10.4, low=9.4, close=10, volume=100000) for d in dates]
+        rows[-1]['close'] = 9.8
+        inst = [dict(date=d, foreign=1000, trust=0) for d in dates[-10:]]
+        inst.append(dict(date='20270101', foreign=1000, trust=0))
+        cfg = dict(converge=3.5, amplitude=35, bias=10, vol_ratio=1,
+                   above_20w=True, max_pos=45, buy_days=5,
+                   need_revenue=True, need_yield=True)
+        results, stats = sc.screen({'1234': rows}, {'1234': '測試'}, {'1234': inst},
+                                   {'1234': {'yield': 1}},
+                                   {'1234': {'yoy': 1, 'industry': '測試'}}, {}, [], cfg)
+        self.assertEqual(len(results), 1)
+
 
 if __name__ == '__main__':
     unittest.main()

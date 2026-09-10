@@ -80,7 +80,12 @@ def fetch(url, cache_key=None, use_cache=True, timeout=90):
         f = CACHE / cache_key
         if f.exists() and f.stat().st_size > 0 and time.time() - f.stat().st_mtime < 3600:
             return f.read_bytes()
-    req = urllib.request.Request(url, headers={"User-Agent": UA})
+    headers = {"User-Agent": UA}
+    if 'twse.com.tw' in url:
+        # The public endpoint occasionally returns a redirect loop unless the
+        # request looks like it came from the exchange's own site.
+        headers["Referer"] = "https://www.twse.com.tw/"
+    req = urllib.request.Request(url, headers=headers)
     data = urllib.request.urlopen(req, timeout=timeout, context=CTX).read()
     if cache_key:
         CACHE.mkdir(parents=True, exist_ok=True)
@@ -204,7 +209,7 @@ def market_valuation(use_cache=True):
     """本益比、殖利率、股價淨值比（全市場）。"""
     try:
         j = json.loads(fetch(
-            "https://www.twse.com.tw/exchangeReport/BWIBBU_ALL?response=json",
+            "https://www.twse.com.tw/rwd/zh/afterTrading/BWIBBU_ALL?response=json",
             cache_key="bwibbu.json", use_cache=use_cache, timeout=60))
         out = {}
         for r in j.get("data", []):
@@ -400,6 +405,45 @@ def verify_chips(code, rows, days=60):
     return out or None
 
 
+def chip_signal(r, snapshots):
+    """Classify evidence without promoting a proxy into a verified main-force signal."""
+    verified = r.get("verify") or {}
+    c60, c20, diff = (verified.get("conc60"), verified.get("conc20"),
+                      verified.get("trader_diff"))
+    proxy_ready = all(v is not None for v in (c60, c20, diff))
+    proxy_aligned = proxy_ready and c60 > 0 and c20 > 0 and diff <= 0
+
+    # A single TDCC snapshot is a stock level, not a direction. Two snapshots are
+    # still only a first comparison, so call this "multi-source aligned", never
+    # "main force confirmed".
+    tdcc_ready = snapshots >= 2 and r.get("big_chg") is not None and r.get("holders_chg") is not None
+    tdcc_aligned = tdcc_ready and r["big_chg"] >= 0 and r["holders_chg"] <= 0
+
+    if not proxy_ready:
+        return "籌碼待驗證", "主力占量或家數差資料不足"
+    if not proxy_aligned:
+        return "籌碼待驗證", "代理籌碼未同向"
+    if snapshots < 2:
+        return "研究優先", "代理籌碼同向；等待集保第二週確認"
+    if not tdcc_ready:
+        return "籌碼待驗證", "集保歷史資料不完整"
+    if not tdcc_aligned:
+        return "籌碼待驗證", "集保流向未同向"
+    return "等待突破", "代理籌碼與兩週集保流向同向"
+
+
+def classify_results(results, snapshots):
+    """Mutually exclusive workflow states; all remain research, never buy signals."""
+    groups = defaultdict(list)
+    for r in results:
+        stage, reason = chip_signal(r, snapshots)
+        r["stage"], r["stage_reason"] = stage, reason
+        groups[stage].append(r)
+    for group in groups.values():
+        group.sort(key=lambda x: -x["score"])
+    return groups
+
+
 # ---------------------------------------------------------------- 篩選
 
 def screen(hist, names, inst, val, rev, tdcc, tdcc_hist, cfg):
@@ -447,12 +491,17 @@ def screen(hist, names, inst, val, rev, tdcc, tdcc_hist, cfg):
             continue
 
         # ── 第二關：大戶加碼 ──────────────────────────
-        c = chip_score(inst.get(code, []), a["avg_vol20"])
-        inst_dates = [r['date'] for r in inst.get(code, [])[-10:]]
-        price_dates = [r['date'] for r in rows[-10:]]
-        if inst_dates != price_dates:
+        # The two official feeds may publish at different times on a trading day.
+        # Use only the latest ten *completed, shared* dates; never compare a
+        # provisional intraday institutional row with yesterday's close.
+        inst_by_date = {r['date']: r for r in inst.get(code, [])}
+        price_dates = {r['date'] for r in rows}
+        shared_dates = sorted(set(inst_by_date) & price_dates)[-10:]
+        if len(shared_dates) < 10:
             stats['資料不足'] += 1
             continue
+        shared_inst = [inst_by_date[d] for d in shared_dates]
+        c = chip_score(shared_inst, a["avg_vol20"])
         if not c or c["f_net"] <= 0 or c["buy_days"] < cfg["buy_days"]:
             stats["法人未加碼"] += 1
             continue
@@ -512,18 +561,16 @@ def build_report(results, stats, cfg, tdcc_date, snapshots, top, rejected=None):
         "type: 選股結果",
         f"generated: {now:%Y-%m-%d %H:%M}",
         "generator: 000_Agent/scripts/screener.py",
-        "strategy: 十字口訣（價平量平，大戶持續加碼）",
+        "strategy: 十字口訣初篩（價平、量平；籌碼另分級）",
         "tags:",
         "  - 投資",
         "  - 選股",
         "---",
         "",
-        f"# 潛龍名單｜{now:%Y-%m-%d}",
+        f"# 潛龍研究流程｜{now:%Y-%m-%d}",
         "",
-        "> [!warning] 這是口袋名單，不是買進清單",
-        "> 依 [[大戶籌碼選股術]]，篩出來只是第一步。宏爺的流程是：",
-        "> **口袋名單 → 等利空不跌驗證 → 長紅突破才進場**。",
-        "> 我不是持牌投資顧問，這裡不提供買賣建議。",
+        "> [!warning] 所有名單都是研究狀態，不是買進訊號。",
+        "> 初篩只回答「值得研究嗎」；籌碼、集保與突破條件另列，缺資料不晉級。",
         "",
         "## 這次用的條件",
         "",
@@ -560,6 +607,21 @@ def build_report(results, stats, cfg, tdcc_date, snapshots, top, rejected=None):
             L.append(f"| {k} | {stats[k]} |")
     L.append("")
 
+    groups = classify_results(results, snapshots)
+    L += [
+        "## 四階段狀態",
+        "",
+        "| 階段 | 檔數 | 可採取的動作 |",
+        "| :--- | ---: | :--- |",
+        f"| 初篩候選 | {len(results)} | 技術、外資與基本條件通過；尚不代表大戶加碼 |",
+        f"| 籌碼待驗證 | {len(groups['籌碼待驗證'])} | 主力代理值／家數差／集保流向至少一項未同向 |",
+        f"| 研究優先 | {len(groups['研究優先'])} | 代理籌碼同向；先完成個股基本面與集保第二週確認 |",
+        f"| 等待突破 | {len(groups['等待突破'])} | 代理籌碼與集保流向同向；仍需利空不跌、帶量突破與收週確認 |",
+        "",
+        "> 「研究優先」只使用代理籌碼，不等於主力已確認。集保資料不足兩週時，「等待突破」應為零。",
+        "",
+    ]
+
     if not results:
         L += ["## 結果", "", "**本次沒有標的通過全部條件。**", "",
               "這不一定是壞事——[[大戶籌碼選股術]] 的條件本來就嚴苛，"
@@ -567,10 +629,10 @@ def build_report(results, stats, cfg, tdcc_date, snapshots, top, rejected=None):
               "可以用 `--loose` 放寬後再跑一次看看邊緣標的。", ""]
     else:
         L += [
-            f"## 初步候選 {len(results)} 檔（尚未完整評估）（依分數排序，列出前 {min(top, len(results))} 檔）",
+            f"## 初篩候選 {len(results)} 檔（依技術與法人初篩排序，列出前 {min(top, len(results))} 檔）",
             "",
             "| # | 代號 | 名稱 | 收盤 | 均線糾結 | 量縮比 | 52週位階 "
-            "| **60日主力占量比** | 20日主力占量比 | 家數差 | 外資10日 | 營收YoY | 殖利率 | 驗證狀態 |",
+            "| **60日主力占量比** | 20日主力占量比 | 家數差 | 外資10日 | 營收YoY | 殖利率 | 目前階段 |",
             "| ---: | :--- | :--- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | :--- |",
         ]
         for i, r in enumerate(results[:top], 1):
@@ -589,28 +651,27 @@ def build_report(results, stats, cfg, tdcc_date, snapshots, top, rejected=None):
                 f"| {i} | **{r['code']}** | {r['name']} | {a['close']:.2f} "
                 f"| {a['converge']:.1f}% | {a['vol_ratio']:.2f} | {a['pos52']:.0f}% "
                 f"| {c60s} | {c20s} | {tds} "
-                f"| {c['f_net'] / 1000:+,.0f}張 | {yoys} | {yields} | {r.get('verdict', '未驗證')} |"
+                f"| {c['f_net'] / 1000:+,.0f}張 | {yoys} | {yields} | {r.get('stage', '未分級')} |"
             )
-        if rejected:
-            L += [
-                "",
-                f"### 複驗剔除 {len(rejected)} 檔（60 日集中度為負＝主力倒貨）",
-                "",
-                "第一階段的「外資連續買超」只是近似。這些標的技術面條件都成立，"
-                "但拉長到 60 日看，主力其實是在**倒貨**——不符合「持續加碼」。",
-                "",
-                "| 代號 | 名稱 | 60日集中度 | 20日集中度 | 外資10日 |",
-                "| :--- | :--- | ---: | ---: | ---: |",
-            ]
-            for r in sorted(rejected,
-                            key=lambda x: (x.get("verify") or {}).get("conc60") or 0):
+
+        if groups["研究優先"]:
+            L += ["", "### 研究優先", "",
+                  "代理籌碼三項皆同向：60日與20日主力占量比為正、20日平均家數差不大於零。"
+                  "這是縮小研究範圍的條件，不是經驗證的集中度。", "",
+                  "| 代號 | 名稱 | 60日代理占量比 | 20日代理占量比 | 平均家數差 | 下一個必查項目 |",
+                  "| :--- | :--- | ---: | ---: | ---: | :--- |"]
+            for r in groups["研究優先"]:
                 vf = r.get("verify") or {}
-                c60 = vf.get("conc60")
-                c20 = vf.get("conc20")
-                c60s = f"{c60:+.2f}%" if c60 is not None else "—"
-                c20s = f"{c20:+.2f}%" if c20 is not None else "—"
-                L.append(f"| {r['code']} | {r['name']} | {c60s} | {c20s} "
-                         f"| {r['c']['f_net'] / 1000:+,.0f}張 |")
+                L.append(f"| {r['code']} | {r['name']} | {vf['conc60']:+.2f}% | {vf['conc20']:+.2f}% "
+                         f"| {vf['trader_diff']:+.0f} | 集保第二週、法說與現金流 |")
+            L.append("")
+
+        if groups["等待突破"]:
+            L += ["", "### 等待突破", "",
+                  "以下標的僅完成籌碼資料的初步交叉確認，尚需利空不跌與有效突破；不可追當日急漲。", "",
+                  "| 代號 | 名稱 | 下一個價格條件 |", "| :--- | :--- | :--- |"]
+            for r in groups["等待突破"]:
+                L.append(f"| {r['code']} | {r['name']} | 收週後確認帶量突破與高檔維持 |")
             L.append("")
 
         L += ["", "### 產業分布", "", "| 產業 | 檔數 |", "| :--- | ---: |"]
@@ -633,11 +694,9 @@ def build_report(results, stats, cfg, tdcc_date, snapshots, top, rejected=None):
         "| 外資10日／連買 | 大戶加碼的代理指標 | [[大戶籌碼選股術]] |",
         "",
         "> [!important] 下一步該做什麼",
-        "> 這份名單是初步候選，法人買超與主力占量代理值不等於大戶持續加碼。接著要：",
-        "> 1. 逐檔跑 `stock-fetch.py <代號>` 看完整資料",
-        "> 2. 檢查產業是不是「過去很少、現在開始、未來很多」——**這關要你判斷**",
-        "> 3. 等**利空不跌**驗證籌碼強度",
-        "> 4. 等**長紅突破**才是進場訊號（[[大漲的訊號]]）",
+        "> 先研究「研究優先」組：逐檔跑 `stock-fetch.py <代號>`，檢查現金流、董監持股、法說與產業。",
+        "> 集保累積第二個不同週次後，再看大戶持有率與股東人數方向。",
+        "> 完成籌碼交叉確認後，才等待**利空不跌**與收週後的**帶量突破**；兩者不是同一天的追價理由。",
         "",
     ]
 
@@ -645,8 +704,8 @@ def build_report(results, stats, cfg, tdcc_date, snapshots, top, rejected=None):
         L += [
             "> [!note] 大戶流向尚未啟用",
             f"> 集保開放資料只有最新一週（資料日 {tdcc_date}），目前累積 {snapshots} 週快照。",
-            "> 本次的「大戶加碼」是用**三大法人連續買超**代理。"
-            "每週跑一次，累積兩週以上之後就會自動改用真正的大戶持股率變化。",
+            "> 本次只可做代理籌碼分級，不能判定大戶持續加碼。每週跑一次；"
+            "累積兩個不同週次後才開始納入集保流向交叉確認。",
             "",
         ]
 
@@ -663,8 +722,8 @@ def main():
     p.add_argument("--loose", action="store_true", help="放寬條件")
     p.add_argument("--no-verify", action="store_true",
                    help="跳過第二階段的主力占量代理資料檢查")
-    p.add_argument("--verify-top", type=int, default=40,
-                   help="複驗前幾檔（每檔約 2 秒）")
+    p.add_argument("--verify-top", type=int, default=100,
+                   help="複驗前幾檔（預設涵蓋所有初篩候選）")
     p.add_argument("--no-cache", action="store_true")
     args = p.parse_args()
 
@@ -709,24 +768,21 @@ def main():
     if not args.no_verify and results:
         n = min(len(results), args.verify_top)
         log(f"第二階段：對前 {n} 檔取得主力占量代理資料（非完整籌碼驗證）…")
-        passed, rejected = [], []
+        checked = []
         for i, r in enumerate(results[:n], 1):
             v = verify_chips(r["code"], hist[r["code"]])
             r["verify"] = v
-            r["verdict"] = "待確認（代理指標）" if v and v.get("conc60") is not None else "資料不足；未通過驗證"
-            passed.append(r)  # 保留候選但明列待確認，不依未驗證代理值加分或剔除
+            checked.append(r)
             if i % 10 == 0:
                 log(f"    已驗 {i}/{n}")
             time.sleep(0.6)
         for r in results[n:]:
             r["verdict"] = "未驗"
-            passed.append(r)
-        passed.sort(key=lambda x: -x["score"])
-        stats["複驗剔除"] = len(rejected)
-        log(f"代理資料檢查：候選 {len(passed)} 檔，尚非完整驗證；"
-            f"不依代理值判定主力倒貨。")
-        results = passed
-        rejected_list = rejected
+            checked.append(r)
+        checked.sort(key=lambda x: -x["score"])
+        log(f"代理資料檢查：已檢查 {n} 檔；不以代理值判定主力倒貨。")
+        results = checked
+        rejected_list = []
     else:
         rejected_list = []
     log(f"最終入選 {len(results)} 檔")
