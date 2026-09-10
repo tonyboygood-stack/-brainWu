@@ -42,7 +42,7 @@ from datetime import datetime, timedelta
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-from stock_quality import aligned_flow, full_year
+from stock_quality import aligned_flow, full_year, date_key
 
 VAULT = Path(__file__).resolve().parents[2]
 OUT_DIR = VAULT / "600_Projects" / "投資" / "選股"
@@ -204,7 +204,7 @@ def market_valuation(use_cache=True):
     """本益比、殖利率、股價淨值比（全市場）。"""
     try:
         j = json.loads(fetch(
-            "https://www.twse.com.tw/rwd/zh/afterTrading/BWIBBU_ALL?response=json",
+            "https://www.twse.com.tw/exchangeReport/BWIBBU_ALL?response=json",
             cache_key="bwibbu.json", use_cache=use_cache, timeout=60))
         out = {}
         for r in j.get("data", []):
@@ -379,6 +379,15 @@ def verify_chips(code, rows, days=60):
     if not fb:
         return None
 
+    # 股價來源（FinMind）可能比 CMoney 的主力資料更新更快（同日盤中已有
+    # 股價，但 CMoney 尚未產出當日主力數字）。aligned_flow 要求逐日完全
+    # 對齊，若不裁掉股價中「CMoney 還沒有」的最新幾天，會讓原本重疊的
+    # 一大段歷史也因為尾端多一天而整批比對失敗。裁到雙方實際重疊的
+    # 區間，逐日對齊仍然嚴格執行，只是不讓資料源的更新時差拖累整段驗證。
+    cm_max = max((date_key(r.get("Date")) for r in fb if date_key(r.get("Date"))), default=None)
+    if cm_max:
+        rows = [r for r in rows if (date_key(r.get("date")) or "") <= cm_max]
+
     out = {}
     for w, value in aligned_flow(cm, rows).items():
         out[f"conc{w}"] = value["pct"]
@@ -528,8 +537,17 @@ def build_report(results, stats, cfg, tdcc_date, snapshots, top, rejected=None):
         f"| 位階 | 52 週區間位置 ≤ | {cfg['max_pos']}% |",
         f"| 大戶 | 近 10 日外資買超天數 ≥ | {cfg['buy_days']} 天 |",
         f"| 體質 | 月營收 YoY > 0 | {'是' if cfg['need_revenue'] else '不限'} |",
-        f"| 體質 | 有配息 | {'是' if cfg['need_yield'] else '不限'} |",
+        f"| 體質 | 有配息 | {'是' if cfg['need_yield'] else '不限（見下方警告）'} |",
         "",
+    ]
+    if cfg.get("valuation_degraded"):
+        L += [
+            "> [!warning] 評價指標來源本次失效",
+            "> TWSE 的殖利率／本益比端點本次未取得正常筆數，已自動停用「有配息」關卡以避免",
+            "> 缺資料被誤判為零。這代表本次結果**沒有經過配息篩選**，比正常條件寬鬆。",
+            "",
+        ]
+    L += [
         "## 漏斗",
         "",
         "| 階段 | 檔數 |",
@@ -670,6 +688,14 @@ def main():
     inst = market_institutional(args.inst_days, use_cache)
     log("抓取評價指標…")
     val = market_valuation(use_cache)
+    if len(val) < 500:
+        # 評價指標來源掛掉時，每檔股票的殖利率都會是 None，若 need_yield
+        # 仍然照跑，會把全部候選都刷掉、卻只顯示「0 檔」——看起來像沒標的，
+        # 實際是資料源失效。缺資料要停用該關卡並明講，不能當零處理。
+        log(f"  ⚠ 評價指標僅 {len(val)} 檔（正常應逾千檔），來源可能失效。"
+            f"本次停用「有配息」關卡，避免缺資料被誤判為零。")
+        cfg["need_yield"] = False
+        cfg["valuation_degraded"] = True
     log("抓取月營收…")
     rev = market_revenue(use_cache)
     log("抓取集保…")
