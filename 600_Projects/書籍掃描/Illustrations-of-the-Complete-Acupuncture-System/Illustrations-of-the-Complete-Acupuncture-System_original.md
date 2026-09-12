@@ -2,7 +2,7 @@
 title: Illustrations-of-the-Complete-Acupuncture-System
 type: 書籍掃描
 source_lang: en
-translated: 2026-09-12
+translated: 2026-09-13
 pages: 114
 translate_model: gemini-3.5-flash
 ---
