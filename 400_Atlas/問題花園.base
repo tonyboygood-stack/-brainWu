@@ -44,6 +44,15 @@ views:
         - 🔵 澆水中
         - 🌸 開花
         - 🟢 結果
+        - 未分類
+    cardOrders:
+      note.階段: {}
+    columnColors:
+      note.階段: {}
+    columnWidths:
+      note.階段: {}
+    cardColors:
+      note.階段: {}
   - type: table
     name: 表格
     groupBy:

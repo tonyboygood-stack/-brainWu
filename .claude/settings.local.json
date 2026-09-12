@@ -151,7 +151,9 @@
       "Bash(bun --version)",
       "Bash(winget --version)",
       "Bash(python -m yt_dlp --cookies \"C:/Users/user/.config/yt-transcribe/cookies.txt\" --extractor-args \"youtube:player_client=tv_simply,web_safari\" --list-subs --skip-download \"https://www.youtube.com/watch?v=VtO9thgsubY\")",
-      "WebFetch(domain:www.typeless.com)"
+      "WebFetch(domain:www.typeless.com)",
+      "Bash(ls -la \"C:\\\\Users\\\\user\\\\Documents\\\\GitHub\\\\book-scanner\\\\output\\\\pdf\" 2>&1)",
+      "Bash(cd \"C:\\\\Users\\\\user\\\\Documents\\\\GitHub\\\\book-scanner\" && ls -la && echo \"---scripts---\" && find . -maxdepth 2 -iname \"*.py\" -o -iname \"*.md\" | grep -v node_modules | head -50)"
     ]
   }
 }

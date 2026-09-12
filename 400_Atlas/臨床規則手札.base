@@ -1,0 +1,71 @@
+filters:
+  and:
+    - file.inFolder("400_Atlas/Notes/Rules")
+    - file.ext == "md"
+properties:
+  rule_id:
+    displayName: 規則 ID
+  outline:
+    displayName: 目前編排
+  status:
+    displayName: 狀態
+  rule_type:
+    displayName: 類型
+  primary_layer:
+    displayName: 主要層次
+  secondary_layers:
+    displayName: 次要層次
+  trajectory:
+    displayName: 病程／傳變
+  confidence:
+    displayName: 信心
+  says:
+    displayName: 目前條文
+  updated:
+    displayName: 更新日期
+views:
+  - type: table
+    name: 全部規則
+    order:
+      - file.name
+      - status
+      - rule_id
+      - outline
+      - rule_type
+      - primary_layer
+      - trajectory
+      - confidence
+      - updated
+  - type: table
+    name: 待覆核
+    filters:
+      and:
+        - status == "🟡 待覆核"
+    order:
+      - file.name
+      - says
+      - primary_layer
+      - trajectory
+      - updated
+  - type: table
+    name: 準規則網絡
+    filters:
+      and:
+        - status == "🟠 準規則"
+    order:
+      - file.name
+      - says
+      - outline
+      - primary_layer
+      - confidence
+      - updated
+  - type: table
+    name: 臨床觀察中
+    filters:
+      and:
+        - status == "🟢 臨床觀察中"
+    order:
+      - file.name
+      - says
+      - outline
+      - updated
