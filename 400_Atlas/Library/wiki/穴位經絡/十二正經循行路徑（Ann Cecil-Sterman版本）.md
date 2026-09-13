@@ -6,6 +6,12 @@ discipline: 中醫
   - Ann Cecil-Sterman
 attribution: 收錄
 經絡層次: [正經]
+系統角色: [通道循行證據]
+支持病勢: [排邪中, 維持伏邪]
+相關媒介: [衛氣, 元氣]
+可支持的通道: [正經]
+治療意圖: [助排, 維持伏邪]
+證據類型: [循行]
 related:
   - "[[絡脈的形成與診斷（Ann Cecil-Sterman）]]"
   - "[[橫絡的形成與診斷（Ann Cecil-Sterman）]]"

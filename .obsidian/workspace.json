@@ -13,12 +13,40 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "400_Atlas/Library/wiki/典籍/溫病方證與雜病辨治.md",
+                "file": "400_Atlas/Library/wiki/養生調攝/胃脾肝膽與中焦食療（Andrew Sterman）.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "溫病方證與雜病辨治"
+              "title": "胃脾肝膽與中焦食療（Andrew Sterman）"
+            }
+          },
+          {
+            "id": "81449a4fde95f1f4",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "400_Atlas/Library/wiki/養生調攝/肺腎、衛氣與深層資源食療（Andrew Sterman）.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "肺腎、衛氣與深層資源食療（Andrew Sterman）"
+            }
+          },
+          {
+            "id": "b403ddf5fc3188ea",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "400_Atlas/Library/wiki/藥物本草/白茅根.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "白茅根"
             }
           },
           {
@@ -34,9 +62,36 @@
               "icon": "lucide-file",
               "title": "蘆根與白茅根在趙紹琴溫病中的分工與進退"
             }
+          },
+          {
+            "id": "6a7a7d949915efd1",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "400_Atlas/Library/wiki/穴位經絡/經別/三焦經別.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "三焦經別"
+            }
+          },
+          {
+            "id": "e0266a98b6b9af6c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "400_Atlas/Library/wiki/方劑/衛分四法_滋陰液兼以疏表清溫邪而退其熱.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "衛分四法_滋陰液兼以疏表清溫邪而退其熱"
+            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -209,54 +264,54 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "9f5c099df53e778b",
+  "active": "d7029cb9532fd3d3",
   "lastOpenFiles": [
-    "600_Projects/書籍掃描/Maximise-Your-Fertility/Maximise-Your-Fertility_original.md",
-    "600_Projects/書籍掃描/Maximise-Your-Fertility/Maximise-Your-Fertility.md",
-    "400_Atlas/Library/wiki/典籍/趙紹琴溫病講座.md",
-    "600_Projects/書籍掃描/Maximise-Your-Fertility/images/page_002.png",
-    "600_Projects/書籍掃描/Maximise-Your-Fertility/images/page_001.png",
+    "400_Atlas/Library/wiki/典籍/食物所說的語言 第一冊（Andrew Sterman）.md",
+    "400_Atlas/Library/wiki/養生調攝/食療食材群索引（Andrew Sterman）.md",
+    "400_Atlas/Maps/古典針灸舌脈針食衛整合 MOC.md",
+    "400_Atlas/Maps/古典針灸病生理系統總圖 MOC.md",
+    "400_Atlas/Library/wiki/養生調攝/肺腎、衛氣與深層資源食療（Andrew Sterman）.md",
+    "400_Atlas/Library/wiki/養生調攝/胃脾肝膽與中焦食療（Andrew Sterman）.md",
+    "400_Atlas/Library/wiki/養生調攝/食物所說的語言圖像與原書索引（Andrew Sterman）.md",
+    "400_Atlas/Library/wiki/養生調攝/食物氣化與食療決策語言（Andrew Sterman）.md",
+    "400_Atlas/Library/wiki/養生調攝/食譜模板、餐盤建構與烹調方向（Andrew Sterman）.md",
+    "400_Atlas/Library/wiki/養生調攝/食療衛教建議單模板（Andrew Sterman）.md",
+    "400_Atlas/Maps/衛教資訊 MOC.md",
+    "400_Atlas/Library/wiki/養生調攝/季節、睡眠與腎陽保護（Ann Cecil-Sterman）.md",
+    "400_Atlas/Library/wiki/養生調攝/病勢—媒介—食物與烹調矩陣（Andrew Sterman）.md",
+    "400_Atlas/Library/wiki/養生調攝/古典健康衛教 MOC（Ann Cecil-Sterman）.md",
+    "400_Atlas/Library/wiki/養生調攝/古典食療 MOC（Andrew Sterman）.md",
+    "400_Atlas/Library/wiki/養生調攝/大腸、下焦與排泄食療（Andrew Sterman）.md",
+    "400_Atlas/Library/wiki/養生調攝/消化節律、飲食覺察與暴露減量（Ann Cecil-Sterman）.md",
+    "400_Atlas/Library/wiki/養生調攝/家庭廚房實作與食療追蹤（Andrew Sterman）.md",
+    "400_Atlas/Library/wiki/養生調攝/小腸、迴腸與腸道生態食療（Andrew Sterman）.md",
+    "400_Atlas/Library/wiki/典籍/食物所說的語言 第二冊（Andrew Sterman）.md",
+    "400_Atlas/Library/wiki/醫家/Andrew Sterman.md",
+    "400_Atlas/Library/wiki/養生調攝/健康衛教圖像與短章索引（Ann Cecil-Sterman）.md",
+    "600_Projects/書籍掃描/Becoming-Healthy-Staying-Healthy/images/page_106.png",
+    "600_Projects/書籍掃描/Becoming-Healthy-Staying-Healthy/images/page_120.png",
+    "600_Projects/書籍掃描/Becoming-Healthy-Staying-Healthy/images/page_065.png",
+    "600_Projects/書籍掃描/Becoming-Healthy-Staying-Healthy/images/page_028.png",
+    "600_Projects/書籍掃描/Becoming-Healthy-Staying-Healthy/images/page_020.png",
+    "400_Atlas/Library/wiki/養生調攝/情志整合與身心衛教（Ann Cecil-Sterman）.md",
+    "400_Atlas/Library/wiki/養生調攝/溫養、津液與排邪條件（Ann Cecil-Sterman）.md",
+    "400_Atlas/Library/wiki/診斷評估/舌脈合參與治療追蹤（Ann Cecil-Sterman）.md",
+    "400_Atlas/Library/wiki/診斷評估/舌苔、衛氣與津液（Ann Cecil-Sterman）.md",
+    "600_Projects/書籍掃描/Tongue-Diagnosis-Ann-Cecil-Sterman/images/page_172.png",
+    "600_Projects/書籍掃描/Tongue-Diagnosis-Ann-Cecil-Sterman/images/page_168.png",
+    "600_Projects/書籍掃描/Tongue-Diagnosis-Ann-Cecil-Sterman/images/page_165.png",
+    "600_Projects/書籍掃描/Tongue-Diagnosis-Ann-Cecil-Sterman/images/page_164.png",
+    "600_Projects/書籍掃描/Tongue-Diagnosis-Ann-Cecil-Sterman/images/page_162.png",
+    "400_Atlas/Library/wiki/典籍/高階針灸臨床手冊.md.tmp.37948.127a1ebd059e",
+    "400_Atlas/Library/wiki/穴位經絡/奇經八脈/督脈.md.tmp.37948.b0f978ce1a8e",
+    "400_Atlas/Library/wiki/穴位經絡/奇經八脈",
+    "400_Atlas/Library/wiki/病機病理/橫絡的形成與診斷（Ann Cecil-Sterman）.md.tmp.37948.a19312dd1ada",
+    "400_Atlas/Library/wiki/病機病理/橫絡的形成與診斷（Ann Cecil-Sterman）.md.tmp.37948.5086f8a899f7",
+    "400_Atlas/問題花園.base",
+    "400_Atlas/Library/wiki/index.md.tmp.37948.4066c13e7eac",
+    "400_Atlas/Library/wiki/穴位經絡/經別",
     "600_Projects/書籍掃描/Maximise-Your-Fertility/images",
     "600_Projects/書籍掃描/Maximise-Your-Fertility",
-    "600_Projects/書籍掃描/Becoming-Healthy-Staying-Healthy/Becoming-Healthy-Staying-Healthy_original.md",
-    "600_Projects/書籍掃描/Becoming-Healthy-Staying-Healthy/Becoming-Healthy-Staying-Healthy.md",
-    "600_Projects/書籍掃描/Becoming-Healthy-Staying-Healthy/images/page_150.png",
-    "400_Atlas/Library/wiki/治法技法/透熱轉氣（趙紹琴）.md",
-    "400_Atlas/Library/wiki/典籍/名篇選按（趙紹琴）.md",
-    "600_Projects/書籍掃描/Becoming-Healthy-Staying-Healthy/images/page_123.png",
-    "600_Projects/書籍掃描/Becoming-Healthy-Staying-Healthy/images/page_120.png",
-    "600_Projects/書籍掃描/Becoming-Healthy-Staying-Healthy/images/page_113.png",
-    "400_Atlas/Library/wiki/典籍/溫病縱橫--總論.md",
-    "600_Projects/書籍掃描/Becoming-Healthy-Staying-Healthy/images/page_106.png",
-    "600_Projects/書籍掃描/Becoming-Healthy-Staying-Healthy/images/page_101.png",
-    "200_Reference/templates/準規則卡模板.md",
-    "600_Projects/書籍掃描/Becoming-Healthy-Staying-Healthy/images/page_094.png",
-    "600_Projects/書籍掃描/Becoming-Healthy-Staying-Healthy/images/page_091.png",
-    "400_Atlas/Library/wiki/典籍/溫病方證與雜病辨治.md",
-    "400_Atlas/Questions/蘆根與白茅根在趙紹琴溫病中的分工與進退.md",
-    "500_Inbox/氣分二十五法.md",
-    "400_Atlas/Library/wiki/典籍/趙紹琴臨證400法.md",
-    "400_Atlas/Library/wiki/病機病理/氣分證治.md",
-    "400_Atlas/Library/wiki/方劑/氣分二十五法_滋潤肺胃兼以益氣退其低熱.md",
-    "600_Projects/書籍掃描/Becoming-Healthy-Staying-Healthy/images",
-    "600_Projects/書籍掃描/Becoming-Healthy-Staying-Healthy",
-    "600_Projects/書籍掃描/Welcoming-Food-Book2/Welcoming-Food-Book2_original.md",
-    "600_Projects/書籍掃描/Welcoming-Food-Book2/Welcoming-Food-Book2.md",
-    "400_Atlas/Library/wiki/方劑/衛分四法_滋陰液兼以疏表清溫邪而退其熱.md",
-    "400_Atlas/問題花園.base",
-    "400_Atlas/Library/raw/趙紹琴溫病講座.md",
-    "400_Atlas/Library/raw/溫病縱橫---附篇  趙紹琴溫病論文選.md",
-    "400_Atlas/Library/raw/溫病縱橫-名篇選按.md",
-    "400_Atlas/Library/raw/《溫病淺談》_第五章四時溫病_趙紹琴.md",
-    "400_Atlas/Library/raw/溫病縱橫--濕熱病篇.md",
-    "400_Atlas/Notes/Rules/R-003_外感已解後的陰虛善後_滋陰須兼通運和胃.md",
-    "400_Atlas/Notes/Rules/R-002_陰虛感溫_滋陰與輕疏衛並行.md",
-    "400_Atlas/Library/raw/溫病縱橫--溫熱病篇.md",
-    "600_Projects/書籍掃描/Welcoming-Food-Book2/images",
-    "600_Projects/書籍掃描/Welcoming-Food-Book2",
-    "600_Projects/書籍掃描/Welcoming-Food-Book1/images",
-    "600_Projects/書籍掃描/Welcoming-Food-Book1",
-    "600_Projects/書籍掃描/Tongue-Diagnosis-Ann-Cecil-Sterman/images",
     "未命名 1.canvas",
     "未命名.canvas"
   ]
