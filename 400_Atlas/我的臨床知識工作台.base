@@ -47,7 +47,14 @@ views:
         - 🔵 待我理解
         - 🌸 延伸中
         - 🟢 已整合
-        - 未分類
+    cardOrders:
+      note.knowledge_stage: {}
+    columnColors:
+      note.knowledge_stage: {}
+    columnWidths:
+      note.knowledge_stage: {}
+    cardColors:
+      note.knowledge_stage: {}
   - type: table
     name: 待我理解
     filters:
