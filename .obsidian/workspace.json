@@ -11,13 +11,32 @@
             "id": "e7a7b303c61786dc",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "400_Atlas/閱讀停靠站.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "新分頁"
+              "title": "閱讀停靠站"
+            }
+          },
+          {
+            "id": "856968d2d371e24b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "400_Atlas/Library/wiki/醫案/醫案_孔某_風溫5_大葉性肺炎（趙紹琴）.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "醫案_孔某_風溫5_大葉性肺炎（趙紹琴）"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -76,7 +95,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "a65f4839c4f1ffdc",
@@ -192,44 +212,45 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "e7a7b303c61786dc",
+  "active": "856968d2d371e24b",
   "lastOpenFiles": [
-    "400_Atlas/閱讀停靠站.md",
-    "400_Atlas/Library/wiki/方證/術附湯方證（張文選）.md",
-    "400_Atlas/臨床閱讀工作台.canvas",
-    "400_Atlas/Library/wiki/治法技法/溫陽逐溼法（張文選）.md",
-    "400_Atlas/Library/wiki/方證/小陷胸加枳實湯方證（張文選）.md",
+    "400_Atlas/Library/wiki/index.md.tmp.16376.abd3e7b9f906",
+    "400_Atlas/Library/wiki/典籍/古典針灸原書重拆/高階針灸臨床手冊—第一合膀胱與腎經別：腎精、帶脈與關節伏邪.md",
+    "400_Atlas/Library/wiki/典籍/古典針灸原書重拆/高階針灸臨床手冊—經別診斷與處方：脈位、環路、排邪與疑難排解.md",
+    "400_Atlas/Library/wiki/典籍/古典針灸原書重拆/高階針灸臨床手冊—經別總論：關節伏邪、六合與兩種針法.md",
+    "400_Atlas/Library/wiki/典籍/古典針灸原書重拆/高階針灸臨床手冊—損傷絡脈：兩日方案與作者問答.md",
+    "400_Atlas/Library/wiki/治法技法/開達膜原法（張文選）.md",
+    "400_Atlas/Library/wiki/方證/草果知母湯方證（張文選）.md",
+    "400_Atlas/Library/wiki/方證/達原飲方證（張文選）.md",
+    "400_Atlas/Library/wiki/醫案/醫案_程某某_乙肝早期肝硬化（劉渡舟）.md",
+    "400_Atlas/Library/wiki/醫案/醫案_李某某_類風溼性關節炎（張文選）.md",
+    "400_Atlas/Library/wiki/醫案/醫案_唐某某_嗜酸性肉芽腫（朱進忠）.md",
+    "400_Atlas/Library/wiki/醫案/醫案_於某某_溼熱動風（劉渡舟）.md",
+    "400_Atlas/Library/wiki/醫案/醫案_李某某_肝氣竄退休適應障礙（張文選）.md",
+    "400_Atlas/Library/wiki/醫案/醫案_成某某_疲勞綜合徵胃腸失調前醫補脾腎反重（張文選）.md",
+    "400_Atlas/Library/wiki/醫案/醫案_王某某_類風溼性關節炎腫痛定時惡寒（張文選）.md",
+    "400_Atlas/Library/wiki/方證/薛氏加減三甲散方證（張文選）.md",
+    "400_Atlas/Library/wiki/醫案/醫案_朱某某_成人斯蒂爾病定時發熱（張文選）.md",
+    "400_Atlas/Library/wiki/方證/薛氏地龍二藤湯方證（張文選）.md",
+    "400_Atlas/Library/wiki/醫案/醫案_蔡某_發熱五個月（張文選）.md",
+    "400_Atlas/Library/wiki/醫案/醫案_胡某某_內傷發熱長期不退（張文選）.md",
+    "400_Atlas/Library/wiki/醫案/醫案_王某_寒溼為痺多階段治驗（吳鞠通）.md",
+    "400_Atlas/Library/wiki/醫案/醫案_於某某_結核性胸膜炎反覆（朱進忠）.md",
+    "400_Atlas/Library/wiki/醫案/醫案_張某某_多發性神經炎（朱進忠）.md",
+    "400_Atlas/Library/wiki/醫案/醫案_高某某_結核性胸膜炎持續高熱（朱進忠）.md",
+    "400_Atlas/Library/wiki/典籍/趙紹琴臨證驗案精選.md",
+    "400_Atlas/Library/wiki/醫案/醫案_孔某_風溫5_大葉性肺炎（趙紹琴）.md",
     "400_Atlas/我的臨床知識工作台.base",
-    "400_Atlas/Library/wiki/方證/中焦宣痺湯方證（張文選）.md",
-    "CLAUDE.md",
-    "400_Atlas/Library/wiki/方證/參茸湯與加減參茸湯方證（張文選）.md",
-    "400_Atlas/Library/wiki/方證/三仁湯方證（張文選）.md",
-    "400_Atlas/Library/wiki/醫案/醫案_何某某_附睪炎陰囊潮溼（張文選）.md",
-    "400_Atlas/Library/wiki/方證/加減木防己湯方證（張文選）.md",
-    "400_Atlas/Library/wiki/醫案/醫案_陸某某_冠心病胸痛氣衝（劉渡舟）.md",
-    "400_Atlas/Library/wiki/醫案/醫案_姜某_月經不調頭眩（張文選）.md",
-    "400_Atlas/Library/wiki/方證/苓姜術桂湯方證（張文選）.md",
-    "400_Atlas/Library/wiki/方證/鹿附湯方證（張文選）.md",
-    "400_Atlas/Library/wiki/醫案/醫案_劉某某_口腔扁平苔蘚後閉經（張文選）.md",
-    "400_Atlas/Library/wiki/醫案/醫案_趙某_口臭手掌脫皮（張文選）.md",
-    "400_Atlas/Library/wiki/醫案/醫案_佚名_久痢便黏如敗醬（郭謙亨）.md",
-    "400_Atlas/Library/wiki/方證/二金湯方證（張文選）.md",
-    "400_Atlas/Library/wiki/方證/安腎湯方證（張文選）.md",
-    "400_Atlas/Library/wiki/醫案/醫案_王某某_慢性咽炎（張文選）.md",
-    "400_Atlas/Library/wiki/醫案/醫案_張某_慢性肝炎轉氨酶不降（劉渡舟）.md",
-    "400_Atlas/Library/wiki/醫案/醫案_蔡某某_口腔潰瘍多汗口渴（張文選）.md",
-    "400_Atlas/Library/wiki/醫案/醫案_張某某_慢性肥厚性咽炎前醫誤治（姚梅齡）.md",
-    "400_Atlas/Library/wiki/醫案/醫案_陳某某_慢性肥厚性咽炎術後（姚梅齡）.md",
-    "400_Atlas/Library/wiki/醫案/醫案_王某某_腸鳴腹痛轉胸痛（張文選）.md",
-    "400_Atlas/Library/wiki/方證/雙補湯方證（張文選）.md",
+    "400_Atlas/Library/wiki/醫案/醫案_許某某_不明原因發熱近一年（劉渡舟）.md.tmp.16376.060193a289f4",
+    "400_Atlas/Library/wiki/醫案/醫案_郭某某_大便艱難腹脹便秘（張文選）.md.tmp.16376.de256b90f239",
+    "400_Atlas/Library/wiki/醫案/醫案_李某某_腸梗阻樣腹痛（朱進忠）.md.tmp.16376.57fccb68b53f",
+    "400_Atlas/臨床閱讀工作台.canvas",
     "400_Atlas/Library/wiki/醫案/醫案_田某某_腹瀉結腸炎（張文選）.md.tmp.16376.345c1addacbf",
     "400_Atlas/Library/wiki/典籍/趙紹琴溫病學",
     "400_Atlas/Library/wiki/典籍/古典針灸原書重拆",
     "400_Atlas/Library/wiki/典籍/邁向健康 保持健康",
     "400_Atlas/Library/wiki/典籍/高級針灸技術手冊",
     "400_Atlas/Library/wiki/典籍/脈診的藝術",
-    "400_Atlas/Library/wiki/典籍/食物所說的語言",
-    "400_Atlas/Library/wiki/典籍/舌診",
     "600_Projects/書籍掃描/下背痛光銀式手法/images/page_133.jpg",
     "600_Projects/書籍掃描/下背痛光銀式手法/images/page_132.jpg",
     "600_Projects/書籍掃描/下背痛光銀式手法/images/page_127.jpg",
@@ -240,7 +261,6 @@
     "600_Projects/書籍掃描/下背痛光銀式手法/images/page_110.jpg",
     "600_Projects/書籍掃描/下背痛光銀式手法/images/page_109.jpg",
     "600_Projects/書籍掃描/下背痛光銀式手法/images/page_108.jpg",
-    "600_Projects/書籍掃描/下背痛光銀式手法/images",
     "未命名 1.canvas",
     "未命名.canvas"
   ]

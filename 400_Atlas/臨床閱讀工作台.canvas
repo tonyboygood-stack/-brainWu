@@ -1,22 +1,26 @@
 {
-  "nodes": [
-    {"id":"a0f13d7bc9e24501","type":"group","x":-80,"y":-80,"width":950,"height":680,"label":"1｜閱讀與捕捉","color":"4"},
-    {"id":"b1e24c8da0f35612","type":"text","x":0,"y":0,"width":380,"height":220,"color":"4","text":"# 閱讀時只做兩件事\n\n- 我學到／認同的：`#我的收穫`\n- 我不確定的：`#我的疑問`\n\n不要當下分類、建卡或找 MOC。讀完一段或暫停時，對 AI 說：**收成這一篇**。"},
-    {"id":"c2d35e9fb1a46723","type":"text","x":440,"y":0,"width":350,"height":180,"color":"4","text":"## 暫停時\n\n說：**停靠：這篇先到這裡**\n\n[[閱讀停靠站|開啟閱讀停靠站]]"},
-    {"id":"d3e46fa0c2b57834","type":"text","x":0,"y":300,"width":790,"height":130,"color":"4","text":"## 回來時\n\n先開 [[閱讀停靠站]]，從「下次第一步」繼續；不必回想上次讀到哪裡。"},
-    {"id":"e4f57ab1d3c68945","type":"group","x":960,"y":-80,"width":950,"height":680,"label":"2｜澆水與我的理解","color":"5"},
-    {"id":"f5068bc2e4d79a56","type":"text","x":1040,"y":0,"width":360,"height":210,"color":"5","text":"# 收成後\n\n我補：來源、不同觀點、反例與缺口。\n\n你只需在卡內寫：\n\n**我的理解：……**"},
-    {"id":"07179cd3f5e8ab67","type":"text","x":1460,"y":0,"width":360,"height":210,"color":"5","text":"## 查看待處理內容\n\n[[我的臨床知識工作台.base|開啟知識成長看板]]\n\n[[問題花園.base|開啟問題花園]]\n\n這兩個面板會在獨立分頁開啟，不嵌在 Canvas。"},
-    {"id":"1828ade406f9bc78","type":"text","x":1040,"y":300,"width":780,"height":130,"color":"5","text":"## 卡內有新問題\n\n直接寫在「延伸問題」下方並加 `#延伸問題`；再對 AI 說：**更新這張知識卡**。"},
-    {"id":"2939bef5170acd89","type":"group","x":2000,"y":-80,"width":800,"height":680,"label":"3｜形成我的知識網","color":"6"},
-    {"id":"3a4ac0f6281bde90","type":"text","x":2080,"y":0,"width":640,"height":250,"color":"6","text":"# 我的臨床知識箱\n\n所有經過澆水、再寫入「我的理解」的卡，都會進入這裡並連到各主題 MOC。\n\n[[Maps/我的臨床知識箱 MOC|開啟我的臨床知識箱 MOC]]"},
-    {"id":"4b5bd107392cef01","type":"text","x":2080,"y":340,"width":640,"height":130,"color":"6","text":"## 規則只是其中一種成熟形態\n\n真正長成可操作的「若…則…」判斷時，才額外進 [[Maps/臨床規則手札 MOC|臨床規則手札]]。"}
-  ],
-  "edges": [
-    {"id":"6d7df3295b4e0123","fromNode":"b1e24c8da0f35612","fromSide":"right","toNode":"f5068bc2e4d79a56","toSide":"left","toEnd":"arrow","label":"收成這一篇"},
-    {"id":"7e8ef43a6c5f1234","fromNode":"c2d35e9fb1a46723","fromSide":"right","toNode":"f5068bc2e4d79a56","toSide":"left","toEnd":"arrow","label":"回來繼續"},
-    {"id":"8f9f054b7d602345","fromNode":"f5068bc2e4d79a56","fromSide":"right","toNode":"3a4ac0f6281bde90","toSide":"left","toEnd":"arrow","label":"寫下我的理解"},
-    {"id":"90a0165c8e713456","fromNode":"07179cd3f5e8ab67","fromSide":"right","toNode":"3a4ac0f6281bde90","toSide":"left","toEnd":"arrow","label":"整合進知識網"}
-  ],
-  "metadata": {"version":"1.0-1.0","frontmatter":{}}
+	"nodes":[
+		{"id":"a0f13d7bc9e24501","type":"group","x":-80,"y":-80,"width":950,"height":680,"color":"4","label":"1｜閱讀與捕捉"},
+		{"id":"e4f57ab1d3c68945","type":"group","x":960,"y":-80,"width":950,"height":680,"color":"5","label":"2｜澆水與我的理解"},
+		{"id":"2939bef5170acd89","type":"group","x":2000,"y":-80,"width":800,"height":680,"color":"6","label":"3｜形成我的知識網"},
+		{"id":"3a4ac0f6281bde90","type":"text","text":"# 我的臨床知識箱\n\n所有經過澆水、再寫入「我的理解」的卡，都會進入這裡並連到各主題 MOC。\n\n[[Maps/我的臨床知識箱 MOC|開啟我的臨床知識箱 MOC]]","x":2080,"y":0,"width":640,"height":250,"color":"6"},
+		{"id":"4b5bd107392cef01","type":"text","text":"## 規則只是其中一種成熟形態\n\n真正長成可操作的「若…則…」判斷時，才額外進 [[Maps/臨床規則手札 MOC|臨床規則手札]]。","x":2080,"y":340,"width":640,"height":130,"color":"6"},
+		{"id":"b1e24c8da0f35612","type":"text","text":"# 閱讀時只做兩件事\n\n- 我學到／認同的：`#我的收穫`\n- 我不確定的：`#我的疑問`\n\n不要當下分類、建卡或找 MOC。讀完一段或暫停時，對 AI 說：**收成這一篇**。","x":0,"y":0,"width":380,"height":220,"color":"4"},
+		{"id":"c2d35e9fb1a46723","type":"text","text":"## 暫停時\n\n說：**停靠：這篇先到這裡**\n\n[[閱讀停靠站|開啟閱讀停靠站]]","x":440,"y":0,"width":350,"height":180,"color":"4"},
+		{"id":"d3e46fa0c2b57834","type":"text","text":"## 回來時\n\n先開 [[閱讀停靠站]]，從「下次第一步」繼續；不必回想上次讀到哪裡。","x":0,"y":300,"width":790,"height":130,"color":"4"},
+		{"id":"f5068bc2e4d79a56","type":"text","text":"# 收成後\n\n我補：來源、不同觀點、反例與缺口。\n\n你只需在卡內寫：\n\n**我的理解：……**","x":1040,"y":0,"width":360,"height":210,"color":"5"},
+		{"id":"07179cd3f5e8ab67","type":"text","text":"## 查看待處理內容\n\n[[我的臨床知識工作台.base|開啟知識成長看板]]\n\n[[問題花園.base|開啟問題花園]]\n\n這兩個面板會在獨立分頁開啟，不嵌在 Canvas。","x":1460,"y":0,"width":360,"height":210,"color":"5"},
+		{"id":"1828ade406f9bc78","type":"text","text":"## 卡內有新問題\n\n直接寫在「延伸問題」下方並加 `#延伸問題`；再對 AI 說：**更新這張知識卡**。","x":1040,"y":300,"width":780,"height":130,"color":"5"},
+		{"id":"c7babf2478b92743","type":"file","file":"400_Atlas/Library/wiki/醫案/醫案_孔某_風溫5_大葉性肺炎（趙紹琴）.md","x":-360,"y":660,"width":600,"height":360}
+	],
+	"edges":[
+		{"id":"6d7df3295b4e0123","fromNode":"b1e24c8da0f35612","fromSide":"right","toNode":"f5068bc2e4d79a56","toSide":"left","label":"收成這一篇"},
+		{"id":"7e8ef43a6c5f1234","fromNode":"c2d35e9fb1a46723","fromSide":"right","toNode":"f5068bc2e4d79a56","toSide":"left","label":"回來繼續"},
+		{"id":"8f9f054b7d602345","fromNode":"f5068bc2e4d79a56","fromSide":"right","toNode":"3a4ac0f6281bde90","toSide":"left","label":"寫下我的理解"},
+		{"id":"90a0165c8e713456","fromNode":"07179cd3f5e8ab67","fromSide":"right","toNode":"3a4ac0f6281bde90","toSide":"left","label":"整合進知識網"}
+	],
+	"metadata":{
+		"version":"1.0-1.0",
+		"frontmatter":{}
+	}
 }
