@@ -1,0 +1,34 @@
+---
+title: 古典針灸原書重拆 MOC
+type: moc
+status: 🟠 in_progress
+created: 2026-09-14
+---
+
+# 古典針灸原書重拆
+
+這是七套掃描書的**新版閱讀入口**。它的工作不是替作者建立另一套簡化理論，而是把每本書的論述、案例、操作、圖像與章節脈絡，整理成可以一路讀下去、又能回到原書核對的中文知識庫。
+
+## 本次編輯原則
+
+- 以作者的論述順序為主；可合併連續的小節、補上閱讀用標題，但不把作者的語氣改成系統結論。
+- 保留作者用來推進觀點的故事、病例、食材、處置步驟、穴位／手法、提問與圖像用途；不只留下名詞或對照表。
+- 每張卡都標出原書章節與掃描檔連結。原書是完整細節與圖片的依據；卡片是保留脈絡的濃縮閱讀版。
+- 不在正文夾入編者的反駁、醫療警語或跨書整合。日後若需要比較或實際衛教，另建「編者註記／整合」頁面，和原書內容分開。
+- 完成七書的原書閱讀層後，才建立第二層跨書索引；索引只連結，不覆寫各作者的話。
+
+## 七書進度
+
+| 書籍 | 原書掃描 | 新版閱讀卡 | 進度 |
+| --- | --- | --- | --- |
+| 《高階針灸臨床手冊》 | [原書](../../600_Projects/書籍掃描/Advanced-Acupuncture/Advanced-Acupuncture.md) | [[高階針灸臨床手冊—導言、命名法與第二版序言]] → [[高階針灸臨床手冊—第一部分：九針、得氣與補充經絡手法]] | 進行中 |
+| 《脈診的藝術》 | [原書](../../600_Projects/書籍掃描/Art-of-Pulse-Diagnosis/Art-of-Pulse-Diagnosis.md) | 待重拆 | 未開始 |
+| 《舌診》 | [原書](../../600_Projects/書籍掃描/Tongue-Diagnosis-Ann-Cecil-Sterman/Tongue-Diagnosis-Ann-Cecil-Sterman.md) | 待重拆 | 未開始 |
+| 《邁向健康，保持健康》 | [原書](../../600_Projects/書籍掃描/Becoming-Healthy-Staying-Healthy/Becoming-Healthy-Staying-Healthy.md) | 待重拆 | 未開始 |
+| 《食物所說的語言》第一冊 | [原書](../../600_Projects/書籍掃描/Welcoming-Food-Book1/Welcoming-Food-Book1.md) | 待重拆 | 未開始 |
+| 《食物所說的語言》第二冊 | [原書](../../600_Projects/書籍掃描/Welcoming-Food-Book2/Welcoming-Food-Book2.md) | 待重拆 | 未開始 |
+| 《完整針灸系統圖解》 | [原書](../../600_Projects/書籍掃描/Illustrations-of-the-Complete-Acupuncture-System/Illustrations-of-the-Complete-Acupuncture-System.md) | 待重拆 | 未開始 |
+
+## 舊稿處理
+
+先前的概念卡與整合頁不在此閱讀動線內，保留為可回看素材。新版卡完成並驗讀後，再依這份 MOC 的書目逐一取代或移除舊稿，避免在重拆過程中失去可比對的版本。

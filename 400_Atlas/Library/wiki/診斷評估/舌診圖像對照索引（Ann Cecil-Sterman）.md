@@ -8,7 +8,7 @@ source: "[[舌診（Ann Cecil-Sterman）]]"
 可支持的通道: [經筋, 絡脈, 經別, 奇經八脈]
 治療意圖: [重建媒介, 保護資源]
 證據類型: [舌, 視診, 追蹤]
-source_anchor: "全書內嵌圖像（掃描頁 1、2、3、6、7、41、52、58、69、90、102、103、107、207、223）"
+source_anchor: "全書內嵌圖像（掃描頁 1、2、3、6、7、41、52、58、69、75–81、90、102、103、107、207、223）"
 ---
 
 # 舌診圖像對照索引
@@ -25,9 +25,9 @@ source_anchor: "全書內嵌圖像（掃描頁 1、2、3、6、7、41、52、58�
 | 52 | 強硬、偏斜、捲曲／縮短、痿軟、吐弄等舌態 | [[舌體、營氣與媒介（Ann Cecil-Sterman）]] |
 | 58 | 胖大、齒痕、尖細、凹陷等基本舌形 | [[舌體、營氣與媒介（Ann Cecil-Sterman）]] |
 | 69 | 舌體顏色與其組合 | [[舌體、營氣與媒介（Ann Cecil-Sterman）]] |
-| 90 | 心／心包反射區的緊縮、帶狀與色澤 | [[舌位圖、三焦與病理聚焦（Ann Cecil-Sterman）]] |
-| 102–103 | 反射區的色、裂、腫、緊縮與局部組合 | [[舌位圖、三焦與病理聚焦（Ann Cecil-Sterman）]] |
-| 107 | 舌根／腎、膀胱、小腸、大腸區的判讀表 | [[舌下靜脈、元氣與伏邪風險（Ann Cecil-Sterman）]] |
+| 75–81 | 舌下三焦、靜脈色澤／怒張、緊縮與作者的深層病勢示例 | [[舌診—第七章：舌下靜脈把表面改善和深層風險分開]] |
+| 88–107 | 心心包、肺、脾胃、肝膽與舌根的反射區示例；必連同圖旁論證閱讀 | [[舌診—第九章：反射圖是第三步的聚焦工具]] |
+| 126、128 | 凸出物、涎沫與條索的示例；先描述，並優先辨識需轉介的口腔異常 | [[舌診—第十一章：斑點、凸出物與涎沫，先區分看見的東西]] |
 | 207 | 臨床展示舌象與拍照的附錄頁 | [[舌診的三層讀取與觀察條件（Ann Cecil-Sterman）]] |
 | 223 | 索引末頁 | [[舌診（Ann Cecil-Sterman）]] |
 
@@ -39,6 +39,12 @@ source_anchor: "全書內嵌圖像（掃描頁 1、2、3、6、7、41、52、58�
 - [[600_Projects/書籍掃描/Tongue-Diagnosis-Ann-Cecil-Sterman/images/page_052.png|舌態圖]]
 - [[600_Projects/書籍掃描/Tongue-Diagnosis-Ann-Cecil-Sterman/images/page_058.png|舌形圖]]
 - [[600_Projects/書籍掃描/Tongue-Diagnosis-Ann-Cecil-Sterman/images/page_069.png|舌色圖]]
+- [[600_Projects/書籍掃描/Tongue-Diagnosis-Ann-Cecil-Sterman/images/page_075.png|舌下三焦與靜脈圖]]
+- [[600_Projects/書籍掃描/Tongue-Diagnosis-Ann-Cecil-Sterman/images/page_076.png|舌下色澤與怒張圖]]
+- [[600_Projects/書籍掃描/Tongue-Diagnosis-Ann-Cecil-Sterman/images/page_090.png|心／心包圖]]
+- [[600_Projects/書籍掃描/Tongue-Diagnosis-Ann-Cecil-Sterman/images/page_095.png|脾胃區圖]]
+- [[600_Projects/書籍掃描/Tongue-Diagnosis-Ann-Cecil-Sterman/images/page_126.png|凸出物圖]]
+- [[600_Projects/書籍掃描/Tongue-Diagnosis-Ann-Cecil-Sterman/images/page_128.png|涎沫與條索圖]]
 - [[600_Projects/書籍掃描/Tongue-Diagnosis-Ann-Cecil-Sterman/images/page_102.png|反射區圖（一）]]
 - [[600_Projects/書籍掃描/Tongue-Diagnosis-Ann-Cecil-Sterman/images/page_103.png|反射區圖（二）]]
 - [[600_Projects/書籍掃描/Tongue-Diagnosis-Ann-Cecil-Sterman/images/page_107.png|下焦／舌根圖]]

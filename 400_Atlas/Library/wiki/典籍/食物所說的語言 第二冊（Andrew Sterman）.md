@@ -8,7 +8,7 @@ discipline: 中醫食療
 source: Andrew Sterman《Welcoming Food, Book Two: Recipes and Kitchen Practices》，中譯《食物所說的語言》第二冊，257 頁
 attribution: 原創
 掃描狀態: 全書已由 book-scanner 譯完（600_Projects/書籍掃描/Welcoming-Food-Book2/）
-整理狀態: ✅ 食譜模板、餐盤結構、烹調手法、調味與常備廚房接口已拆解；全部逐道食譜保留為原書可回查索引
+整理狀態: 第一輪：✅ 食譜模板、餐盤結構、烹調手法、調味與常備廚房接口已拆解；第二輪：🟡 將以可讀廚房章節保留食譜、變化與使用情境，進度見 [[古典針灸書籍重整 MOC]]
 經絡層次: [正經, 經筋, 絡脈, 經別, 奇經八脈]
 系統角色: [治療支持, 媒介判讀, 追蹤指標]
 related:

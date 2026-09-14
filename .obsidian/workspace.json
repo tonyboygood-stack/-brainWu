@@ -1,94 +1,20 @@
 {
   "main": {
-    "id": "6d759269216e707d",
+    "id": "5324373015726ba8",
     "type": "split",
     "children": [
       {
-        "id": "b3565c6725d3f64c",
+        "id": "4509724f8bf84da7",
         "type": "tabs",
         "children": [
           {
-            "id": "d7029cb9532fd3d3",
+            "id": "e7a7b303c61786dc",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "400_Atlas/Library/wiki/養生調攝/胃脾肝膽與中焦食療（Andrew Sterman）.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "胃脾肝膽與中焦食療（Andrew Sterman）"
-            }
-          },
-          {
-            "id": "81449a4fde95f1f4",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "400_Atlas/Library/wiki/養生調攝/肺腎、衛氣與深層資源食療（Andrew Sterman）.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "肺腎、衛氣與深層資源食療（Andrew Sterman）"
-            }
-          },
-          {
-            "id": "b403ddf5fc3188ea",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "400_Atlas/Library/wiki/藥物本草/白茅根.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "白茅根"
-            }
-          },
-          {
-            "id": "9f5c099df53e778b",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "400_Atlas/Questions/蘆根與白茅根在趙紹琴溫病中的分工與進退.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "蘆根與白茅根在趙紹琴溫病中的分工與進退"
-            }
-          },
-          {
-            "id": "6a7a7d949915efd1",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "400_Atlas/Library/wiki/穴位經絡/經別/三焦經別.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "三焦經別"
-            }
-          },
-          {
-            "id": "e0266a98b6b9af6c",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "400_Atlas/Library/wiki/方劑/衛分四法_滋陰液兼以疏表清溫邪而退其熱.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "衛分四法_滋陰液兼以疏表清溫邪而退其熱"
+              "title": "新分頁"
             }
           }
         ]
@@ -254,6 +180,8 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "workspaces:管理工作區配置": false,
+      "homepage:Open homepage": false,
       "switcher:開啟快速切換": false,
       "graph:查看關聯圖": false,
       "canvas:建立新畫布": false,
@@ -264,54 +192,53 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "d7029cb9532fd3d3",
+  "active": "e7a7b303c61786dc",
   "lastOpenFiles": [
-    "400_Atlas/Library/wiki/典籍/食物所說的語言 第一冊（Andrew Sterman）.md",
-    "400_Atlas/Library/wiki/養生調攝/食療食材群索引（Andrew Sterman）.md",
-    "400_Atlas/Maps/古典針灸舌脈針食衛整合 MOC.md",
-    "400_Atlas/Maps/古典針灸病生理系統總圖 MOC.md",
-    "400_Atlas/Library/wiki/養生調攝/肺腎、衛氣與深層資源食療（Andrew Sterman）.md",
-    "400_Atlas/Library/wiki/養生調攝/胃脾肝膽與中焦食療（Andrew Sterman）.md",
-    "400_Atlas/Library/wiki/養生調攝/食物所說的語言圖像與原書索引（Andrew Sterman）.md",
-    "400_Atlas/Library/wiki/養生調攝/食物氣化與食療決策語言（Andrew Sterman）.md",
-    "400_Atlas/Library/wiki/養生調攝/食譜模板、餐盤建構與烹調方向（Andrew Sterman）.md",
-    "400_Atlas/Library/wiki/養生調攝/食療衛教建議單模板（Andrew Sterman）.md",
-    "400_Atlas/Maps/衛教資訊 MOC.md",
-    "400_Atlas/Library/wiki/養生調攝/季節、睡眠與腎陽保護（Ann Cecil-Sterman）.md",
-    "400_Atlas/Library/wiki/養生調攝/病勢—媒介—食物與烹調矩陣（Andrew Sterman）.md",
-    "400_Atlas/Library/wiki/養生調攝/古典健康衛教 MOC（Ann Cecil-Sterman）.md",
-    "400_Atlas/Library/wiki/養生調攝/古典食療 MOC（Andrew Sterman）.md",
-    "400_Atlas/Library/wiki/養生調攝/大腸、下焦與排泄食療（Andrew Sterman）.md",
-    "400_Atlas/Library/wiki/養生調攝/消化節律、飲食覺察與暴露減量（Ann Cecil-Sterman）.md",
-    "400_Atlas/Library/wiki/養生調攝/家庭廚房實作與食療追蹤（Andrew Sterman）.md",
-    "400_Atlas/Library/wiki/養生調攝/小腸、迴腸與腸道生態食療（Andrew Sterman）.md",
-    "400_Atlas/Library/wiki/典籍/食物所說的語言 第二冊（Andrew Sterman）.md",
-    "400_Atlas/Library/wiki/醫家/Andrew Sterman.md",
-    "400_Atlas/Library/wiki/養生調攝/健康衛教圖像與短章索引（Ann Cecil-Sterman）.md",
-    "600_Projects/書籍掃描/Becoming-Healthy-Staying-Healthy/images/page_106.png",
-    "600_Projects/書籍掃描/Becoming-Healthy-Staying-Healthy/images/page_120.png",
-    "600_Projects/書籍掃描/Becoming-Healthy-Staying-Healthy/images/page_065.png",
-    "600_Projects/書籍掃描/Becoming-Healthy-Staying-Healthy/images/page_028.png",
-    "600_Projects/書籍掃描/Becoming-Healthy-Staying-Healthy/images/page_020.png",
-    "400_Atlas/Library/wiki/養生調攝/情志整合與身心衛教（Ann Cecil-Sterman）.md",
-    "400_Atlas/Library/wiki/養生調攝/溫養、津液與排邪條件（Ann Cecil-Sterman）.md",
-    "400_Atlas/Library/wiki/診斷評估/舌脈合參與治療追蹤（Ann Cecil-Sterman）.md",
-    "400_Atlas/Library/wiki/診斷評估/舌苔、衛氣與津液（Ann Cecil-Sterman）.md",
-    "600_Projects/書籍掃描/Tongue-Diagnosis-Ann-Cecil-Sterman/images/page_172.png",
-    "600_Projects/書籍掃描/Tongue-Diagnosis-Ann-Cecil-Sterman/images/page_168.png",
-    "600_Projects/書籍掃描/Tongue-Diagnosis-Ann-Cecil-Sterman/images/page_165.png",
-    "600_Projects/書籍掃描/Tongue-Diagnosis-Ann-Cecil-Sterman/images/page_164.png",
-    "600_Projects/書籍掃描/Tongue-Diagnosis-Ann-Cecil-Sterman/images/page_162.png",
+    "400_Atlas/Library/wiki/典籍/下背痛光銀式手法.md",
+    "400_Atlas/Library/wiki/典籍/趙紹琴溫病學",
+    "400_Atlas/Library/wiki/病機病理/肌筋膜疼痛機制與激發點（張光銀）.md",
+    "400_Atlas/Maps/古典針灸書籍重整 MOC.md",
+    "400_Atlas/Library/wiki/典籍/脈診的藝術/脈診的藝術—第十章：小兒觀察、發育節奏與證據邊界.md",
+    "400_Atlas/Library/wiki/典籍/古典針灸原書重拆/高階針灸臨床手冊—第一部分：九針、得氣與補充經絡手法.md",
+    "400_Atlas/Library/wiki/典籍/古典針灸原書重拆/高階針灸臨床手冊—導言、命名法與第二版序言.md",
+    "400_Atlas/Library/wiki/典籍/古典針灸原書重拆",
+    "400_Atlas/Maps/古典針灸原書重拆 MOC.md",
+    "400_Atlas/Library/wiki/典籍/脈診的藝術/脈診的藝術—第十一章：治療前中後都要回來看脈.md",
+    "400_Atlas/Library/wiki/典籍/脈診的藝術/脈診的藝術—第八章：把食物放進脈的資源與方向，而非食物處方.md",
+    "400_Atlas/Library/wiki/典籍/脈診的藝術/脈診的藝術—第二章：九個空間與五個參數，先看脈在做什麼.md",
+    "400_Atlas/Library/wiki/典籍/食物所說的語言 第一冊—第九至十章：清淡飲食是觀察工具，不是腸道自療承諾.md",
+    "400_Atlas/Library/wiki/典籍/趙紹琴臨證驗案精選.md",
+    "400_Atlas/Library/wiki/醫案/醫案_李某_胸痛2_冠心病（趙紹琴）.md",
+    "400_Atlas/Library/wiki/醫案/醫案_蔣某_胸痛1_冠心病（趙紹琴）.md",
+    "400_Atlas/Library/wiki/醫案/醫案_仝某_脅痛2_慢性肝炎（趙紹琴）.md",
+    "400_Atlas/Library/wiki/典籍/趙紹琴臨證400法.md",
+    "400_Atlas/Library/wiki/病機病理/營分證治.md",
+    "400_Atlas/Library/wiki/病機病理/鬱證.md",
+    "400_Atlas/Library/wiki/病機病理/胸脅痛.md",
+    "400_Atlas/Library/wiki/方劑/胸脅痛二法_活血通絡以緩胸痛.md",
+    "400_Atlas/Library/wiki/解剖生理/恥骨聯合與鼠蹊韌帶解剖（張光銀）.md",
+    "400_Atlas/Library/wiki/典籍/高級針灸技術手冊/高階針灸臨床手冊—十二正經：水道、內行支與補充經絡的邊界.md",
+    "400_Atlas/Library/wiki/典籍/高級針灸技術手冊/高階針灸臨床手冊—奇經八脈如何保存先天層的故事.md",
+    "400_Atlas/Library/wiki/典籍/邁向健康 保持健康/邁向健康，保持健康—第一至十一則：讓一天有足夠的起步空間.md",
+    "400_Atlas/Library/wiki/典籍/邁向健康 保持健康/邁向健康，保持健康—附錄：選擇針灸師、冷水浸泡與臟腑語言.md",
+    "400_Atlas/Library/wiki/典籍/邁向健康 保持健康",
+    "400_Atlas/Library/wiki/典籍/高級針灸技術手冊",
+    "400_Atlas/Library/wiki/典籍/脈診的藝術",
+    "400_Atlas/Library/wiki/典籍/食物所說的語言",
+    "400_Atlas/Library/wiki/典籍/舌診",
+    "600_Projects/書籍掃描/下背痛光銀式手法/images/page_133.jpg",
+    "600_Projects/書籍掃描/下背痛光銀式手法/images/page_132.jpg",
+    "600_Projects/書籍掃描/下背痛光銀式手法/images/page_127.jpg",
+    "600_Projects/書籍掃描/下背痛光銀式手法/images/page_126.jpg",
+    "600_Projects/書籍掃描/下背痛光銀式手法/images/page_122.jpg",
+    "600_Projects/書籍掃描/下背痛光銀式手法/images/page_121.jpg",
+    "600_Projects/書籍掃描/下背痛光銀式手法/images/page_112.jpg",
+    "600_Projects/書籍掃描/下背痛光銀式手法/images/page_110.jpg",
+    "600_Projects/書籍掃描/下背痛光銀式手法/images/page_109.jpg",
+    "600_Projects/書籍掃描/下背痛光銀式手法/images/page_108.jpg",
+    "600_Projects/書籍掃描/下背痛光銀式手法/images",
+    "600_Projects/書籍掃描/下背痛光銀式手法",
     "400_Atlas/Library/wiki/典籍/高階針灸臨床手冊.md.tmp.37948.127a1ebd059e",
-    "400_Atlas/Library/wiki/穴位經絡/奇經八脈/督脈.md.tmp.37948.b0f978ce1a8e",
-    "400_Atlas/Library/wiki/穴位經絡/奇經八脈",
-    "400_Atlas/Library/wiki/病機病理/橫絡的形成與診斷（Ann Cecil-Sterman）.md.tmp.37948.a19312dd1ada",
-    "400_Atlas/Library/wiki/病機病理/橫絡的形成與診斷（Ann Cecil-Sterman）.md.tmp.37948.5086f8a899f7",
-    "400_Atlas/問題花園.base",
-    "400_Atlas/Library/wiki/index.md.tmp.37948.4066c13e7eac",
-    "400_Atlas/Library/wiki/穴位經絡/經別",
-    "600_Projects/書籍掃描/Maximise-Your-Fertility/images",
-    "600_Projects/書籍掃描/Maximise-Your-Fertility",
     "未命名 1.canvas",
     "未命名.canvas"
   ]
