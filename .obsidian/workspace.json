@@ -11,10 +11,14 @@
             "id": "e7a7b303c61786dc",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "600_Projects/書籍掃描/中篇濕熱類溫病方證/中篇濕熱類溫病方證.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "新分頁"
+              "title": "中篇濕熱類溫病方證"
             }
           }
         ]
@@ -192,8 +196,19 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "e7a7b303c61786dc",
+  "active": "c6643e0934e82954",
   "lastOpenFiles": [
+    "200_Reference/templates/閱讀標記_我的疑問.md",
+    "200_Reference/templates/閱讀標記_我的觀點.md",
+    "400_Atlas/臨床閱讀工作台.canvas",
+    "000_Agent/workflows/clinical-knowledge-harvest.md",
+    "200_Reference/templates/臨床知識卡模板.md",
+    "400_Atlas/我的臨床知識工作台.base",
+    "400_Atlas/Maps/我的臨床知識箱 MOC.md",
+    "400_Atlas/閱讀停靠站.md",
+    "400_Atlas/Library/wiki/典籍/古典針灸原書重拆/高階針灸臨床手冊—第二部分起點：伏邪地圖與經筋理論.md",
+    "400_Atlas/Library/wiki/典籍/溫病方證與雜病辨治.md",
+    "400_Atlas/Library/wiki/典籍/古典針灸原書重拆/高階針灸臨床手冊—診斷、療程與疤痕處理.md",
     "400_Atlas/Library/wiki/典籍/下背痛光銀式手法.md",
     "400_Atlas/Library/wiki/典籍/趙紹琴溫病學",
     "400_Atlas/Library/wiki/病機病理/肌筋膜疼痛機制與激發點（張光銀）.md",
@@ -213,14 +228,6 @@
     "400_Atlas/Library/wiki/醫案/醫案_仝某_脅痛2_慢性肝炎（趙紹琴）.md",
     "400_Atlas/Library/wiki/典籍/趙紹琴臨證400法.md",
     "400_Atlas/Library/wiki/病機病理/營分證治.md",
-    "400_Atlas/Library/wiki/病機病理/鬱證.md",
-    "400_Atlas/Library/wiki/病機病理/胸脅痛.md",
-    "400_Atlas/Library/wiki/方劑/胸脅痛二法_活血通絡以緩胸痛.md",
-    "400_Atlas/Library/wiki/解剖生理/恥骨聯合與鼠蹊韌帶解剖（張光銀）.md",
-    "400_Atlas/Library/wiki/典籍/高級針灸技術手冊/高階針灸臨床手冊—十二正經：水道、內行支與補充經絡的邊界.md",
-    "400_Atlas/Library/wiki/典籍/高級針灸技術手冊/高階針灸臨床手冊—奇經八脈如何保存先天層的故事.md",
-    "400_Atlas/Library/wiki/典籍/邁向健康 保持健康/邁向健康，保持健康—第一至十一則：讓一天有足夠的起步空間.md",
-    "400_Atlas/Library/wiki/典籍/邁向健康 保持健康/邁向健康，保持健康—附錄：選擇針灸師、冷水浸泡與臟腑語言.md",
     "400_Atlas/Library/wiki/典籍/邁向健康 保持健康",
     "400_Atlas/Library/wiki/典籍/高級針灸技術手冊",
     "400_Atlas/Library/wiki/典籍/脈診的藝術",
@@ -238,7 +245,6 @@
     "600_Projects/書籍掃描/下背痛光銀式手法/images/page_108.jpg",
     "600_Projects/書籍掃描/下背痛光銀式手法/images",
     "600_Projects/書籍掃描/下背痛光銀式手法",
-    "400_Atlas/Library/wiki/典籍/高階針灸臨床手冊.md.tmp.37948.127a1ebd059e",
     "未命名 1.canvas",
     "未命名.canvas"
   ]

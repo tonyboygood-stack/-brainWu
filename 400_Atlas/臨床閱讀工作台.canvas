@@ -1,0 +1,171 @@
+{
+  "nodes": [
+    {
+      "id": "a0f13d7bc9e24501",
+      "type": "group",
+      "x": -80,
+      "y": -80,
+      "width": 1040,
+      "height": 760,
+      "label": "1｜閱讀與捕捉",
+      "color": "4"
+    },
+    {
+      "id": "b1e24c8da0f35612",
+      "type": "text",
+      "x": 0,
+      "y": 0,
+      "width": 380,
+      "height": 220,
+      "color": "4",
+      "text": "# 閱讀時只做兩件事\n\n- 我學到／認同的：`#我的觀點`\n- 我不確定的：`#我的疑問`\n\n不要當下分類、建卡或找 MOC。讀完一段或暫停時，對 AI 說：**收成這一篇**。"
+    },
+    {
+      "id": "c2d35e9fb1a46723",
+      "type": "file",
+      "x": 460,
+      "y": 0,
+      "width": 420,
+      "height": 310,
+      "file": "400_Atlas/閱讀停靠站.md",
+      "color": "4"
+    },
+    {
+      "id": "d3e46fa0c2b57834",
+      "type": "text",
+      "x": 0,
+      "y": 300,
+      "width": 380,
+      "height": 180,
+      "color": "4",
+      "text": "## 要暫停時\n\n說：**停靠：這篇先到這裡**\n\n我會把來源、停留位置、未完想法與下次第一步寫進停靠站。下次先從停靠站回來，不必重新找脈絡。"
+    },
+    {
+      "id": "e4f57ab1d3c68945",
+      "type": "group",
+      "x": 1020,
+      "y": -80,
+      "width": 1020,
+      "height": 760,
+      "label": "2｜AI 澆水與我的理解",
+      "color": "5"
+    },
+    {
+      "id": "f5068bc2e4d79a56",
+      "type": "file",
+      "x": 1100,
+      "y": 0,
+      "width": 400,
+      "height": 300,
+      "file": "400_Atlas/我的臨床知識工作台.base",
+      "color": "5"
+    },
+    {
+      "id": "07179cd3f5e8ab67",
+      "type": "text",
+      "x": 1560,
+      "y": 0,
+      "width": 400,
+      "height": 220,
+      "color": "5",
+      "text": "# 收成後\n\nAI 補：來源、不同觀點、反例與缺口。\n\n你只需在卡內寫：\n\n**我的理解：……**\n\n然後說：**更新這張知識卡**。"
+    },
+    {
+      "id": "1828ade406f9bc78",
+      "type": "file",
+      "x": 1560,
+      "y": 290,
+      "width": 400,
+      "height": 300,
+      "file": "400_Atlas/問題花園.base",
+      "color": "5"
+    },
+    {
+      "id": "2939bef5170acd89",
+      "type": "group",
+      "x": 2100,
+      "y": -80,
+      "width": 920,
+      "height": 760,
+      "label": "3｜形成我的知識網",
+      "color": "6"
+    },
+    {
+      "id": "3a4ac0f6281bde90",
+      "type": "file",
+      "x": 2180,
+      "y": 0,
+      "width": 380,
+      "height": 350,
+      "file": "400_Atlas/Maps/我的臨床知識箱 MOC.md",
+      "color": "6"
+    },
+    {
+      "id": "4b5bd107392cef01",
+      "type": "file",
+      "x": 2620,
+      "y": 0,
+      "width": 320,
+      "height": 270,
+      "file": "400_Atlas/Maps/臨床規則手札 MOC.md",
+      "color": "6"
+    },
+    {
+      "id": "5c6ce2184a3df012",
+      "type": "text",
+      "x": 2180,
+      "y": 420,
+      "width": 760,
+      "height": 150,
+      "color": "6",
+      "text": "## 原則\n\n每一張經過澆水與自己理解的卡，都進臨床知識箱並連到主題 MOC。\n\n只有真正長成可操作的 if–then 判斷，才額外進規則手札。"
+    }
+  ],
+  "edges": [
+    {
+      "id": "6d7df3295b4e0123",
+      "fromNode": "b1e24c8da0f35612",
+      "fromSide": "right",
+      "toNode": "f5068bc2e4d79a56",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "label": "收成這一篇"
+    },
+    {
+      "id": "7e8ef43a6c5f1234",
+      "fromNode": "c2d35e9fb1a46723",
+      "fromSide": "right",
+      "toNode": "f5068bc2e4d79a56",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "label": "回來繼續"
+    },
+    {
+      "id": "8f9f054b7d602345",
+      "fromNode": "f5068bc2e4d79a56",
+      "fromSide": "right",
+      "toNode": "3a4ac0f6281bde90",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "label": "寫下我的理解"
+    },
+    {
+      "id": "90a0165c8e713456",
+      "fromNode": "07179cd3f5e8ab67",
+      "fromSide": "bottom",
+      "toNode": "1828ade406f9bc78",
+      "toSide": "top",
+      "toEnd": "arrow",
+      "label": "延伸問題"
+    },
+    {
+      "id": "a1b1276d9f824567",
+      "fromNode": "3a4ac0f6281bde90",
+      "fromSide": "right",
+      "toNode": "4b5bd107392cef01",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "label": "成熟為規則時"
+    }
+  ]
+}

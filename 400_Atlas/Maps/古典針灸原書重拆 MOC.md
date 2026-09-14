@@ -21,7 +21,7 @@ created: 2026-09-14
 
 | 書籍 | 原書掃描 | 新版閱讀卡 | 進度 |
 | --- | --- | --- | --- |
-| 《高階針灸臨床手冊》 | [原書](../../600_Projects/書籍掃描/Advanced-Acupuncture/Advanced-Acupuncture.md) | [[高階針灸臨床手冊—導言、命名法與第二版序言]] → [[高階針灸臨床手冊—第一部分：九針、得氣與補充經絡手法]] | 進行中 |
+| 《高階針灸臨床手冊》 | [原書](../../600_Projects/書籍掃描/Advanced-Acupuncture/Advanced-Acupuncture.md) | [[高階針灸臨床手冊—導言、命名法與第二版序言]] → [[高階針灸臨床手冊—第一部分：九針、得氣與補充經絡手法]] → [[高階針灸臨床手冊—診斷、療程與疤痕處理]] → [[高階針灸臨床手冊—第二部分起點：伏邪地圖與經筋理論]] | 進行中 |
 | 《脈診的藝術》 | [原書](../../600_Projects/書籍掃描/Art-of-Pulse-Diagnosis/Art-of-Pulse-Diagnosis.md) | 待重拆 | 未開始 |
 | 《舌診》 | [原書](../../600_Projects/書籍掃描/Tongue-Diagnosis-Ann-Cecil-Sterman/Tongue-Diagnosis-Ann-Cecil-Sterman.md) | 待重拆 | 未開始 |
 | 《邁向健康，保持健康》 | [原書](../../600_Projects/書籍掃描/Becoming-Healthy-Staying-Healthy/Becoming-Healthy-Staying-Healthy.md) | 待重拆 | 未開始 |
