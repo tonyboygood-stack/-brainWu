@@ -34,6 +34,20 @@
               "icon": "lucide-file",
               "title": "醫案_孔某_風溫5_大葉性肺炎（趙紹琴）"
             }
+          },
+          {
+            "id": "22c044483930f4fd",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "400_Atlas/Library/wiki/典籍/趙紹琴臨證驗案精選.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "趙紹琴臨證驗案精選"
+            }
           }
         ],
         "currentTab": 1
@@ -95,8 +109,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "a65f4839c4f1ffdc",
@@ -214,6 +227,14 @@
   },
   "active": "856968d2d371e24b",
   "lastOpenFiles": [
+    "400_Atlas/Library/wiki/典籍/古典針灸原書重拆/高階針灸臨床手冊—奇經八脈工具箱：開穴、脈診、手法與療程.md",
+    "400_Atlas/Library/wiki/典籍/古典針灸原書重拆/高階針灸臨床手冊—奇經八脈總論：先天藍圖、三大祖系與臨床入口.md",
+    "400_Atlas/Library/wiki/典籍/古典針灸原書重拆/高階針灸臨床手冊—經別輔具：精油、區域配對與皮部.md",
+    "400_Atlas/Library/wiki/典籍/古典針灸原書重拆/高階針灸臨床手冊—第六合大腸與肺經別：陽氣將盡與末期路徑.md",
+    "400_Atlas/Library/wiki/典籍/古典針灸原書重拆/高階針灸臨床手冊—第五合三焦與心包經別：伏邪喪失、濕熱與結節.md",
+    "400_Atlas/Library/wiki/典籍/古典針灸原書重拆/高階針灸臨床手冊—第四合小腸與心經別：內分泌液、胸與腦.md",
+    "400_Atlas/Library/wiki/典籍/趙紹琴臨證驗案精選.md",
+    "400_Atlas/Library/wiki/醫案/醫案_孔某_風溫5_大葉性肺炎（趙紹琴）.md",
     "400_Atlas/Library/wiki/典籍/古典針灸原書重拆/高階針灸臨床手冊—第三合胃與脾經別：津液、宗筋與九竅.md",
     "400_Atlas/Library/wiki/典籍/古典針灸原書重拆/高階針灸臨床手冊—第二合膽與肝經別：血載氣與下焦伏邪.md",
     "400_Atlas/Library/wiki/index.md.tmp.16376.abd3e7b9f906",
@@ -233,14 +254,6 @@
     "400_Atlas/Library/wiki/醫案/醫案_王某某_類風溼性關節炎腫痛定時惡寒（張文選）.md",
     "400_Atlas/Library/wiki/方證/薛氏加減三甲散方證（張文選）.md",
     "400_Atlas/Library/wiki/醫案/醫案_朱某某_成人斯蒂爾病定時發熱（張文選）.md",
-    "400_Atlas/Library/wiki/方證/薛氏地龍二藤湯方證（張文選）.md",
-    "400_Atlas/Library/wiki/醫案/醫案_蔡某_發熱五個月（張文選）.md",
-    "400_Atlas/Library/wiki/醫案/醫案_胡某某_內傷發熱長期不退（張文選）.md",
-    "400_Atlas/Library/wiki/醫案/醫案_王某_寒溼為痺多階段治驗（吳鞠通）.md",
-    "400_Atlas/Library/wiki/醫案/醫案_於某某_結核性胸膜炎反覆（朱進忠）.md",
-    "400_Atlas/Library/wiki/醫案/醫案_張某某_多發性神經炎（朱進忠）.md",
-    "400_Atlas/Library/wiki/醫案/醫案_高某某_結核性胸膜炎持續高熱（朱進忠）.md",
-    "400_Atlas/Library/wiki/典籍/趙紹琴臨證驗案精選.md",
     "400_Atlas/我的臨床知識工作台.base",
     "400_Atlas/Library/wiki/醫案/醫案_許某某_不明原因發熱近一年（劉渡舟）.md.tmp.16376.060193a289f4",
     "400_Atlas/Library/wiki/醫案/醫案_郭某某_大便艱難腹脹便秘（張文選）.md.tmp.16376.de256b90f239",
