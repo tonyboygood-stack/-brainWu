@@ -38,7 +38,16 @@ class ClinicalHomeConsoleView extends ItemView {
   getIcon() { return "layout-dashboard"; }
 
   async onOpen() {
-    await this.render();
+    await this.renderSafely();
+  }
+
+  async renderSafely() {
+    try {
+      await this.render();
+    } catch (error) {
+      console.error("臨床主控台渲染失敗", error);
+      this.renderError(error);
+    }
   }
 
   async render() {
@@ -145,7 +154,7 @@ class ClinicalHomeConsoleView extends ItemView {
     words.createEl("h1", { text: "主控台" });
     words.createEl("p", { text: "今天只看已確認的重點；其他事情留在它們原本的位置。" });
     const tools = header.createDiv({ cls: "console-tools" });
-    this.button(tools, "↻ 重新整理", "subtle", () => this.render());
+    this.button(tools, "↻ 重新整理", "subtle", () => this.renderSafely());
     this.button(tools, "複製「早安」", "accent", () => this.copy("早安"));
 
     const metrics = root.createDiv({ cls: "console-metrics" });
@@ -338,6 +347,18 @@ class ClinicalHomeConsoleView extends ItemView {
     const empty = parent.createDiv({ cls: "console-empty" });
     empty.createEl("p", { text: message });
     if (hint) empty.createEl("span", { text: hint });
+  }
+
+  renderError(error) {
+    const root = this.contentEl;
+    root.empty();
+    root.addClass("clinical-console");
+    const card = root.createDiv({ cls: "console-error" });
+    card.createEl("span", { text: "主控台需要重新載入" });
+    card.createEl("h2", { text: "資料讀取時出現一個可修正的錯誤。" });
+    card.createEl("p", { text: "請按下方重新載入；若仍出現，將錯誤文字截圖傳給我即可。" });
+    card.createEl("code", { text: text(error?.message) || "未知的渲染錯誤" });
+    this.button(card, "↻ 重新載入主控台", "accent", () => this.renderSafely());
   }
 
   async open(file) {
