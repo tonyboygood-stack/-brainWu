@@ -1,5 +1,5 @@
 {
-  "folder": "300_Journal/每日筆記",
-  "format": "YYYY-MM-DD",
+  "folder": "300_Journal",
+  "format": "YYYY-MM/YYYY-MM-DD",
   "template": "200_Reference/templates/今日筆記模板.md"
 }
