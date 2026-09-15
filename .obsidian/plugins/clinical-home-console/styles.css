@@ -25,6 +25,7 @@
 .clinical-console *, .clinical-console *::before, .clinical-console *::after { box-sizing: border-box; }
 .clinical-console button { font-family: inherit; }
 .console-loading { padding: 28px; color: var(--cc-muted); font-size: 13px; }
+.console-bootstrap { padding: 28px; color: var(--cc-lime); font-size: 18px; }
 
 .console-header { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-bottom: 22px; }
 .console-title { display: flex; align-items: center; gap: 14px; }
