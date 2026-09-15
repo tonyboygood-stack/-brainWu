@@ -399,7 +399,7 @@ module.exports = class ClinicalHomeConsolePlugin extends Plugin {
   async activateView() {
     let leaf = this.app.workspace.getLeavesOfType(VIEW_TYPE)[0];
     if (!leaf) {
-      leaf = this.app.workspace.getLeaf("tab");
+      leaf = this.app.workspace.getRightLeaf(false) || this.app.workspace.getLeaf();
       await leaf.setViewState({ type: VIEW_TYPE, active: true });
     }
     const view = leaf.view;
