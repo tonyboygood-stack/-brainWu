@@ -8,7 +8,7 @@
   "searchPlaceholder": "搜尋筆記、標籤或指令",
   "showNewNoteButton": true,
   "newNoteButtonMode": "newNote",
-  "newNoteButtonLabel": "快速記下",
+  "newNoteButtonLabel": "快速收件",
   "newNoteTemplate": "",
   "newNoteFolder": "500_Inbox",
   "newNoteFilename": "",
@@ -88,9 +88,8 @@
       "name": "行動指南",
       "cards": [
         {
-          "kind": "embed",
-          "title": "今日要事｜早安後確認",
-          "target": "100_Todo/今日要事.md",
+          "kind": "daily",
+          "title": "今日筆記｜隨手寫，不必先整理",
           "x": 0,
           "y": 0,
           "w": 7,
@@ -102,24 +101,36 @@
           "fh": 740
         },
         {
-          "kind": "search",
-          "title": "早安候選｜今天必達",
-          "savedSearch": { "query": "時間:今天必達", "view": "list", "count": 8 },
+          "kind": "embed",
+          "title": "今日要事｜早安後確認",
+          "target": "100_Todo/今日要事.md",
           "x": 0,
           "y": 7,
           "w": 7,
           "h": 5,
-          "id": "action-task-tracking"
+          "id": "action-task-tracking",
+          "fx": 0,
+          "fw": 0.5791666666666667,
+          "fy": 756,
+          "fh": 524
         },
         {
           "kind": "search",
           "title": "行動與待辦",
-          "savedSearch": { "query": "#行動與待辦", "view": "list", "count": 8 },
+          "savedSearch": {
+            "query": "#行動與待辦",
+            "view": "list",
+            "count": 8
+          },
           "x": 7,
           "y": 0,
           "w": 5,
-          "h": 6,
-          "id": "action-inbox"
+          "h": 5,
+          "id": "action-inbox",
+          "fx": 0.5891666666666667,
+          "fw": 0.4108333333333334,
+          "fy": 0,
+          "fh": 524
         },
         {
           "kind": "links",
@@ -127,7 +138,7 @@
           "links": [
             {
               "id": "link-morning",
-              "label": "早安｜確認今日焦點",
+              "label": "早安後確認今日焦點",
               "icon": "sunrise",
               "target": "100_Todo/今日要事.md",
               "type": "note"
@@ -140,33 +151,41 @@
               "type": "note"
             },
             {
-              "id": "link-knowledge",
-              "label": "開啟臨床知識箱",
-              "icon": "brain",
-              "target": "400_Atlas/Maps/我的臨床知識箱 MOC.md",
+              "id": "link-learning-queue",
+              "label": "加入學習佇列",
+              "icon": "list-plus",
+              "target": "400_Atlas/Maps/學習佇列 MOC.md",
               "type": "note"
             }
           ],
           "tileSizing": "scale",
           "x": 7,
-          "y": 7,
+          "y": 5,
           "w": 5,
           "h": 3,
           "id": "action-launchpad",
           "fx": 0.5891666666666667,
           "fw": 0.4108333333333334,
-          "fy": 756,
+          "fy": 540,
           "fh": 308
         },
         {
           "kind": "search",
-          "title": "靈感發想",
-          "savedSearch": { "query": "#靈感發想", "view": "list", "count": 8 },
+          "title": "靈感發想｜暫不要求變任務",
+          "savedSearch": {
+            "query": "#靈感發想",
+            "view": "list",
+            "count": 8
+          },
           "x": 7,
-          "y": 6,
+          "y": 8,
           "w": 5,
-          "h": 6,
-          "id": "action-long-term"
+          "h": 4,
+          "id": "action-long-term",
+          "fx": 0.5891666666666667,
+          "fw": 0.4108333333333334,
+          "fy": 864,
+          "fh": 416
         }
       ],
       "fitToPage": false,
@@ -195,44 +214,108 @@
       "name": "閱讀學習",
       "cards": [
         {
-          "kind": "embed",
-          "title": "正在閱讀｜下次從哪裡繼續",
-          "target": "400_Atlas/閱讀停靠站.md",
+          "kind": "search",
+          "title": "正在閱讀｜從來源頁直接繼續",
+          "savedSearch": {
+            "query": "#閱讀中",
+            "view": "list",
+            "count": 5
+          },
           "x": 0,
           "y": 0,
           "w": 7,
           "h": 5,
-          "id": "reading-dock"
+          "id": "reading-dock",
+          "fx": 0,
+          "fw": 0.5791666666666667,
+          "fy": 0,
+          "fh": 524
         },
         {
-          "kind": "search",
-          "title": "讀過待補筆記",
-          "savedSearch": { "query": "學習狀態:🟠", "view": "list", "count": 10 },
+          "kind": "embed",
+          "title": "學習佇列｜先放連結，想讀再開始",
+          "target": "400_Atlas/Maps/學習佇列 MOC.md",
           "x": 0,
           "y": 5,
           "w": 7,
           "h": 11,
-          "id": "reading-pipeline"
+          "id": "reading-pipeline",
+          "fx": 0,
+          "fw": 0.5791666666666667,
+          "fy": 540,
+          "fh": 1172
         },
         {
           "kind": "search",
           "title": "待收成｜我的收穫",
-          "savedSearch": { "query": "#我的收穫", "view": "list", "count": 10 },
+          "savedSearch": {
+            "query": "#我的收穫",
+            "view": "list",
+            "count": 10
+          },
           "x": 7,
           "y": 0,
           "w": 5,
-          "h": 8,
-          "id": "reading-knowledge"
+          "h": 4,
+          "id": "reading-knowledge",
+          "fx": 0.5891666666666667,
+          "fw": 0.4108333333333334,
+          "fy": 0,
+          "fh": 416
         },
         {
           "kind": "search",
           "title": "待澆水｜我的疑問",
-          "savedSearch": { "query": "#我的疑問", "view": "list", "count": 10 },
+          "savedSearch": {
+            "query": "#我的疑問",
+            "view": "list",
+            "count": 10
+          },
+          "x": 7,
+          "y": 4,
+          "w": 5,
+          "h": 4,
+          "id": "reading-questions",
+          "fx": 0.5891666666666667,
+          "fw": 0.4108333333333334,
+          "fy": 432,
+          "fh": 416
+        },
+        {
+          "kind": "search",
+          "title": "AI 已收成｜待我理解",
+          "savedSearch": {
+            "query": "knowledge_stage:🔵",
+            "view": "list",
+            "count": 8
+          },
           "x": 7,
           "y": 8,
           "w": 5,
-          "h": 8,
-          "id": "reading-questions"
+          "h": 4,
+          "id": "reading-understanding",
+          "fx": 0.5891666666666667,
+          "fw": 0.4108333333333334,
+          "fy": 864,
+          "fh": 416
+        },
+        {
+          "kind": "search",
+          "title": "AI 已補資料｜澆水中",
+          "savedSearch": {
+            "query": "階段:🔵",
+            "view": "list",
+            "count": 8
+          },
+          "x": 7,
+          "y": 12,
+          "w": 5,
+          "h": 4,
+          "id": "reading-watered-questions",
+          "fx": 0.5891666666666667,
+          "fw": 0.4108333333333334,
+          "fy": 1296,
+          "fh": 416
         }
       ],
       "fitToPage": false,
@@ -262,43 +345,93 @@
       "cards": [
         {
           "kind": "search",
-          "title": "待我理解",
-          "savedSearch": { "query": "knowledge_stage:🔵", "view": "list", "count": 10 },
+          "title": "待接續｜我還想回來想",
+          "savedSearch": {
+            "query": "#待接續",
+            "view": "list",
+            "count": 10
+          },
           "x": 0,
           "y": 0,
           "w": 5,
           "h": 7,
-          "id": "knowledge-moc"
+          "id": "knowledge-moc",
+          "fx": 0,
+          "fw": 0.4108333333333334,
+          "fy": 0,
+          "fh": 740
         },
         {
           "kind": "search",
-          "title": "延伸中的知識",
-          "savedSearch": { "query": "knowledge_stage:🌸", "view": "list", "count": 10 },
+          "title": "待我理解｜剛收成的個人知識",
+          "savedSearch": {
+            "query": "knowledge_stage:🔵",
+            "view": "list",
+            "count": 10
+          },
           "x": 5,
           "y": 0,
           "w": 7,
           "h": 7,
-          "id": "knowledge-workbench"
+          "id": "knowledge-workbench",
+          "fx": 0.42083333333333345,
+          "fw": 0.5791666666666667,
+          "fy": 0,
+          "fh": 740
         },
         {
           "kind": "search",
           "title": "澆水中的問題",
-          "savedSearch": { "query": "階段:🔵", "view": "list", "count": 10 },
+          "savedSearch": {
+            "query": "階段:🔵",
+            "view": "list",
+            "count": 10
+          },
           "x": 0,
           "y": 7,
           "w": 5,
           "h": 7,
-          "id": "knowledge-questions"
+          "id": "knowledge-questions",
+          "fx": 0,
+          "fw": 0.4108333333333334,
+          "fy": 756,
+          "fh": 740
         },
         {
           "kind": "search",
-          "title": "已整合｜可帶進臨床",
-          "savedSearch": { "query": "knowledge_stage:🟢", "view": "list", "count": 10 },
+          "title": "延伸中｜正在修正與長出新觀點",
+          "savedSearch": {
+            "query": "knowledge_stage:🌸",
+            "view": "list",
+            "count": 10
+          },
           "x": 5,
           "y": 7,
           "w": 7,
           "h": 7,
-          "id": "knowledge-rules"
+          "id": "knowledge-rules",
+          "fx": 0.42083333333333345,
+          "fw": 0.5791666666666667,
+          "fy": 756,
+          "fh": 740
+        },
+        {
+          "kind": "search",
+          "title": "已整合｜可帶進臨床",
+          "savedSearch": {
+            "query": "knowledge_stage:🟢",
+            "view": "list",
+            "count": 8
+          },
+          "x": 0,
+          "y": 14,
+          "w": 12,
+          "h": 4,
+          "id": "knowledge-integrated",
+          "fx": 0,
+          "fw": 1,
+          "fy": 1512,
+          "fh": 416
         }
       ],
       "fitToPage": false,
@@ -328,23 +461,39 @@
       "cards": [
         {
           "kind": "search",
-          "title": "東湖診所｜任務追蹤",
-          "savedSearch": { "query": "project:東湖診所", "view": "list", "count": 12 },
+          "title": "東湖診所｜所有進行中的脈絡",
+          "savedSearch": {
+            "query": "project:東湖診所 status:🟡",
+            "view": "list",
+            "count": 12
+          },
           "x": 0,
           "y": 0,
           "w": 7,
           "h": 8,
-          "id": "clinic-dashboard"
+          "id": "clinic-dashboard",
+          "fx": 0,
+          "fw": 0.5791666666666667,
+          "fy": 0,
+          "fh": 848
         },
         {
           "kind": "search",
-          "title": "進行中的診所任務",
-          "savedSearch": { "query": "status:🟡", "view": "list", "count": 12 },
+          "title": "下一批要規劃的診所任務",
+          "savedSearch": {
+            "query": "project:東湖診所 status:🔴",
+            "view": "list",
+            "count": 12
+          },
           "x": 0,
           "y": 8,
           "w": 7,
           "h": 8,
-          "id": "clinic-index"
+          "id": "clinic-index",
+          "fx": 0,
+          "fw": 0.5791666666666667,
+          "fy": 864,
+          "fh": 848
         },
         {
           "kind": "links",
@@ -377,17 +526,29 @@
           "y": 10,
           "w": 4,
           "h": 4,
-          "id": "clinic-launchpad"
+          "id": "clinic-launchpad",
+          "fx": 0.6733333333333335,
+          "fw": 0.3266666666666667,
+          "fy": 1080,
+          "fh": 416
         },
         {
           "kind": "search",
           "title": "本週目標",
-          "savedSearch": { "query": "時間:本週目標", "view": "list", "count": 10 },
+          "savedSearch": {
+            "query": "project:東湖診所 時間:本週目標",
+            "view": "list",
+            "count": 10
+          },
           "x": 8,
           "y": 14,
           "w": 4,
           "h": 4,
-          "id": "clinic-today"
+          "id": "clinic-today",
+          "fx": 0.6733333333333335,
+          "fw": 0.3266666666666667,
+          "fy": 1512,
+          "fh": 416
         }
       ],
       "fitToPage": false,
@@ -412,7 +573,7 @@
       "backgroundLayout": "full"
     }
   ],
-  "activeDashboardId": "action-guide",
+  "activeDashboardId": "reading-learning",
   "pinnedCards": [],
   "gridColumns": 12,
   "rowHeight": 92,
