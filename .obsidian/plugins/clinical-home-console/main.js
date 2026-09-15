@@ -1,7 +1,7 @@
 const { ItemView, Notice, Plugin } = require("obsidian");
 
-const VIEW_TYPE = "clinical-home-console-minimal";
-const LEGACY_VIEW_TYPES = ["clinical-home-console", "clinical-home-console-v3"];
+const VIEW_TYPE = "clinical-home-console-v11";
+const LEGACY_VIEW_TYPES = ["clinical-home-console", "clinical-home-console-v3", "clinical-home-console-minimal"];
 const TODAY_PATH = "100_Todo/今日要事.md";
 const READING_DOCK_PATH = "400_Atlas/閱讀停靠站.md";
 const CLINIC_ROOT = "600_Projects/東湖診所開業計畫";
