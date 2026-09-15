@@ -31,9 +31,6 @@ class ClinicalHomeConsoleView extends ItemView {
     super(leaf);
     this.plugin = plugin;
     this.activeTab = "guide";
-    this.contentEl.empty();
-    this.contentEl.addClass("clinical-console");
-    this.contentEl.createEl("h2", { cls: "console-bootstrap", text: "臨床主控台正在啟動…" });
   }
 
   getViewType() { return VIEW_TYPE; }
@@ -54,7 +51,10 @@ class ClinicalHomeConsoleView extends ItemView {
   }
 
   async render() {
-    const root = this.contentEl;
+    // ItemView does not guarantee a contentEl. The standard Obsidian view
+    // container is its second child (the first is the view header).
+    const root = this.containerEl.children[1];
+    if (!root) throw new Error("找不到主控台內容容器。");
     root.empty();
     root.addClass("clinical-console");
     root.createEl("p", { cls: "console-loading", text: "正在整理今日焦點與知識脈絡…" });
@@ -355,7 +355,8 @@ class ClinicalHomeConsoleView extends ItemView {
   }
 
   renderError(error) {
-    const root = this.contentEl;
+    const root = this.containerEl.children[1];
+    if (!root) return;
     root.empty();
     root.addClass("clinical-console");
     const card = root.createDiv({ cls: "console-error" });
