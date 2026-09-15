@@ -1,7 +1,7 @@
 const { ItemView, Notice, Plugin } = require("obsidian");
 
-const VIEW_TYPE = "clinical-home-console-v11";
-const LEGACY_VIEW_TYPES = ["clinical-home-console", "clinical-home-console-v3", "clinical-home-console-minimal"];
+const VIEW_TYPE = "clinical-home-console-v112";
+const LEGACY_VIEW_TYPES = ["clinical-home-console", "clinical-home-console-v3", "clinical-home-console-minimal", "clinical-home-console-v11"];
 const TODAY_PATH = "100_Todo/今日要事.md";
 const READING_DOCK_PATH = "400_Atlas/閱讀停靠站.md";
 const CLINIC_ROOT = "600_Projects/東湖診所開業計畫";
@@ -47,20 +47,12 @@ class ClinicalHomeConsoleView extends ItemView {
     return tags.some((item) => item.tag === tag);
   }
 
-  async read(file) {
-    if (!file) return "";
-    try { return await this.app.vault.read(file); }
-    catch (error) { return ""; }
-  }
-
-  async collectData() {
+  collectData() {
     const files = this.app.vault.getMarkdownFiles();
     const byPath = (path) => files.find((file) => file.path === path) || null;
     const todayFile = byPath(TODAY_PATH);
     const dockFile = byPath(READING_DOCK_PATH);
     const clinicIndex = byPath(`${CLINIC_ROOT}/index.md`);
-    const todayText = await this.read(todayFile);
-    const dockText = await this.read(dockFile);
     const knowledge = files
       .filter((file) => isIn(file, "400_Atlas/Notes") && text(this.fm(file).type) === "personal-clinical-knowledge")
       .sort((a, b) => b.stat.mtime - a.stat.mtime);
@@ -80,7 +72,8 @@ class ClinicalHomeConsoleView extends ItemView {
     const actions = files.filter((file) => this.hasTag(file, "#行動與待辦")).sort((a, b) => b.stat.mtime - a.stat.mtime);
     const stage = (label) => knowledge.filter((file) => text(this.fm(file).knowledge_stage) === label);
     return {
-      todayFile, dockFile, clinicIndex, today: this.parseToday(todayText), dock: this.parseDock(dockText),
+      todayFile, dockFile, clinicIndex, today: [],
+      dock: { source: dockFile ? "閱讀停靠站" : "", location: "請在停靠站查看", clue: "", next: "" },
       todayStatus: todayFile ? text(this.fm(todayFile).status) : "未設定",
       knowledge, questions, clinicTasks, projects, harvests, questionsTagged, inspirations, actions,
       stages: { water: stage("🟤 待澆水"), review: stage("🔵 待我理解"), bloom: stage("🌸 延伸中"), integrated: stage("🟢 已整合") },
@@ -94,18 +87,8 @@ class ClinicalHomeConsoleView extends ItemView {
     return time + (text(fm.優先度).match(/⭐/g) || []).length;
   }
 
-  parseToday(content) {
-    const part = content.split("## 今日三件事")[1]?.split("## ")[0] || "";
-    return [...part.matchAll(/^- \[([ xX])\]\s+(.+)$/gm)].map((match) => ({ done: match[1].toLowerCase() === "x", label: match[2] }));
-  }
-
-  parseDock(content) {
-    const field = (name) => content.match(new RegExp(`- \\*\\*${name}\\*\\*：\\s*(.*)`))?.[1]?.trim() || "";
-    return { source: field("來源"), location: field("停在"), clue: field("剛抓到的線索"), next: field("下次第一步") };
-  }
-
   async render() {
-    const data = await this.collectData();
+    const data = this.collectData();
     const { contentEl } = this;
     contentEl.empty();
     contentEl.addClass("clinical-console");
