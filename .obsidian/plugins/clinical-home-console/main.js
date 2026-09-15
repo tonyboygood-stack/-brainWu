@@ -391,23 +391,19 @@ module.exports = class ClinicalHomeConsolePlugin extends Plugin {
     this.registerView(VIEW_TYPE, (leaf) => new ClinicalHomeConsoleView(leaf, this));
     this.addRibbonIcon("layout-dashboard", "開啟臨床主控台", () => this.activateView());
     this.addCommand({ id: "open-clinical-home-console", name: "開啟臨床主控台", callback: () => this.activateView() });
-    new Notice("臨床主控台 v0.3.2 已載入");
     this.app.workspace.onLayoutReady(() => {
-      setTimeout(() => void this.activateView(), 80);
+      // Do not reuse the old side-pane tab. It can survive a plugin reload as
+      // an empty placeholder, so start the console as a real central workspace.
+      setTimeout(() => void this.activateView(true), 80);
     });
   }
 
-  async activateView() {
-    let leaf = this.app.workspace.getLeavesOfType(VIEW_TYPE)[0];
-    // A view left behind while an earlier plugin version was unloaded is an
-    // UnknownView: it has the right type, but no ItemView instance to render.
-    // Remove only that stale tab and create a fresh instance.
-    if (leaf && !(leaf.view instanceof ClinicalHomeConsoleView)) {
-      leaf.detach();
-      leaf = null;
-    }
+  async activateView(startFresh = false) {
+    const existing = this.app.workspace.getLeavesOfType(VIEW_TYPE);
+    if (startFresh) existing.forEach((oldLeaf) => oldLeaf.detach());
+    let leaf = startFresh ? null : existing.find((item) => item.view instanceof ClinicalHomeConsoleView);
     if (!leaf) {
-      leaf = this.app.workspace.getRightLeaf(false) || this.app.workspace.getLeaf();
+      leaf = this.app.workspace.getLeaf("tab");
       await leaf.setViewState({ type: VIEW_TYPE, active: true });
     }
     const view = leaf.view;
