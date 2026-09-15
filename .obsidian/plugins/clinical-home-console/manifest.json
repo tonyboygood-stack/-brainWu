@@ -1,7 +1,7 @@
 {
   "id": "clinical-home-console",
   "name": "臨床主控台",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "minAppVersion": "1.5.0",
   "description": "以今日焦點、閱讀、知識與診所專案為核心的輕量主控台。",
   "author": "老吳",

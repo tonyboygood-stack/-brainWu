@@ -54,7 +54,9 @@ class ClinicalHomeConsoleView extends ItemView {
     const root = this.contentEl;
     root.empty();
     root.addClass("clinical-console");
+    root.createEl("p", { cls: "console-loading", text: "正在整理今日焦點與知識脈絡…" });
     const data = await this.collectData();
+    root.empty();
     this.renderHeader(root, data);
     this.renderTabs(root, data);
   }
@@ -386,12 +388,19 @@ module.exports = class ClinicalHomeConsolePlugin extends Plugin {
     this.registerView(VIEW_TYPE, (leaf) => new ClinicalHomeConsoleView(leaf, this));
     this.addRibbonIcon("layout-dashboard", "開啟臨床主控台", () => this.activateView());
     this.addCommand({ id: "open-clinical-home-console", name: "開啟臨床主控台", callback: () => this.activateView() });
+    this.app.workspace.onLayoutReady(() => {
+      const existing = this.app.workspace.getLeavesOfType(VIEW_TYPE)[0];
+      const view = existing?.view;
+      if (view && typeof view.renderSafely === "function") void view.renderSafely();
+    });
   }
 
   async activateView() {
     const existing = this.app.workspace.getLeavesOfType(VIEW_TYPE)[0];
     const leaf = existing || this.app.workspace.getLeaf("tab");
     if (!existing) await leaf.setViewState({ type: VIEW_TYPE, active: true });
+    const view = leaf.view;
+    if (view && typeof view.renderSafely === "function") await view.renderSafely();
     this.app.workspace.revealLeaf(leaf);
   }
 
