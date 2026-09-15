@@ -1,0 +1,175 @@
+{
+  "title": "臨床主控台",
+  "showTitle": true,
+  "titleIcon": "🩺",
+  "tabIcon": "layout-dashboard",
+  "themeColorTarget": "none",
+  "showSearch": true,
+  "searchPlaceholder": "搜尋筆記、標籤或指令",
+  "showNewNoteButton": true,
+  "newNoteButtonMode": "newNote",
+  "newNoteButtonLabel": "快速記下",
+  "newNoteTemplate": "",
+  "newNoteFolder": "500_Inbox",
+  "newNoteFilename": "",
+  "searchContents": true,
+  "searchEngine": "builtin",
+  "webSearchEngine": "duckduckgo",
+  "backgroundKind": "default",
+  "backgroundValue": "",
+  "backgroundOpacity": 0.22,
+  "backgroundBlur": 2,
+  "backgroundLayout": "full",
+  "bannerHeight": 220,
+  "bannerFade": true,
+  "bannerFullWidth": false,
+  "openOnStartup": true,
+  "replaceNewTabs": true,
+  "focusSearchOnOpen": false,
+  "liveRefresh": true,
+  "liveSettingsSync": true,
+  "mobileSearchOnly": false,
+  "showMobileActionBar": true,
+  "mobileActionButtons": [
+    {
+      "id": "action-new-note",
+      "label": "New note",
+      "icon": "plus",
+      "type": "command",
+      "target": "hearth:new-note"
+    },
+    {
+      "id": "action-new-drawing",
+      "label": "New drawing",
+      "icon": "pen-tool",
+      "type": "command",
+      "target": "hearth:new-drawing"
+    },
+    {
+      "id": "action-record-voice",
+      "label": "Record voice",
+      "icon": "mic",
+      "type": "command",
+      "target": "hearth:record-voice"
+    },
+    {
+      "id": "action-daily-note",
+      "label": "Daily note",
+      "icon": "calendar",
+      "type": "command",
+      "target": "hearth:open-daily-note"
+    }
+  ],
+  "stackOnNarrow": true,
+  "disableExternalCalls": false,
+  "openIn": "tab",
+  "openInOverrides": {
+    "link": "default",
+    "search": "default",
+    "card": "default",
+    "newNote": "default"
+  },
+  "openFromOutside": "same",
+  "performanceTier": "balanced",
+  "mobilePerformanceTier": "balanced",
+  "lowPowerBackgroundColor": "#1f2430",
+  "pauseWhenUnfocused": true,
+  "compact": false,
+  "arrangeButtonVisibility": "always",
+  "dashboardSwitcherVisibility": "always",
+  "cardOpacity": 0.82,
+  "cardBlur": 10,
+  "cardRadius": 16,
+  "cardBorderWidth": 1,
+  "hiddenFilters": [],
+  "dashboards": [
+    {
+      "id": "action-guide",
+      "name": "行動指南",
+      "cards": [
+        { "kind": "embed", "title": "今日要事｜早安後確認", "target": "100_Todo/今日要事.md", "x": 0, "y": 0, "w": 7, "h": 7, "id": "action-today" },
+        { "kind": "embed", "title": "任務追蹤", "target": "600_Projects/東湖診所開業計畫/診所進度儀表板.base", "x": 0, "y": 7, "w": 7, "h": 9, "id": "action-task-tracking" },
+        { "kind": "embed", "title": "靈感與行動｜不打斷閱讀", "target": "100_Todo/讀書旁路收件匣.md", "x": 7, "y": 0, "w": 5, "h": 7, "id": "action-inbox" },
+        { "kind": "links", "title": "常用入口", "links": [
+          { "id": "link-morning", "label": "早安｜確認今日焦點", "icon": "sunrise", "target": "100_Todo/今日要事.md", "type": "note" },
+          { "id": "link-reading", "label": "回到目前閱讀", "icon": "book-open", "target": "400_Atlas/閱讀停靠站.md", "type": "note" },
+          { "id": "link-knowledge", "label": "開啟臨床知識箱", "icon": "brain", "target": "400_Atlas/Maps/我的臨床知識箱 MOC.md", "type": "note" }
+        ], "tileSizing": "scale", "x": 7, "y": 7, "w": 5, "h": 3, "id": "action-launchpad" },
+        { "kind": "embed", "title": "中長期規劃｜東湖診所", "target": "600_Projects/東湖診所開業計畫/index.md", "x": 7, "y": 10, "w": 5, "h": 6, "id": "action-long-term" }
+      ],
+      "fitToPage": false,
+      "header": { "showTitle": true, "titleIcon": "🧭", "themeColorTarget": "none", "title": "行動指南" },
+      "showSearch": true, "cardOpacity": 0.82, "cardBlur": 10, "cardRadius": 16, "cardBorderWidth": 1, "compact": true,
+      "background": { "kind": "default", "value": "", "opacity": 0.22, "blur": 2 }, "backgroundLayout": "full"
+    },
+    {
+      "id": "reading-learning",
+      "name": "閱讀學習",
+      "cards": [
+        { "kind": "embed", "title": "正在閱讀｜下次從哪裡繼續", "target": "400_Atlas/閱讀停靠站.md", "x": 0, "y": 0, "w": 7, "h": 5, "id": "reading-dock" },
+        { "kind": "embed", "title": "閱讀學習看板", "target": "400_Atlas/讀書學習看板.base", "x": 0, "y": 5, "w": 7, "h": 11, "id": "reading-pipeline" },
+        { "kind": "embed", "title": "待澆水的收穫與知識卡", "target": "400_Atlas/我的臨床知識工作台.base", "x": 7, "y": 0, "w": 5, "h": 8, "id": "reading-knowledge" },
+        { "kind": "embed", "title": "問題花園｜待補資料與討論", "target": "400_Atlas/問題花園.base", "x": 7, "y": 8, "w": 5, "h": 8, "id": "reading-questions" }
+      ],
+      "fitToPage": false,
+      "header": { "showTitle": true, "titleIcon": "📚", "themeColorTarget": "none", "title": "閱讀學習" },
+      "showSearch": true, "cardOpacity": 0.82, "cardBlur": 10, "cardRadius": 16, "cardBorderWidth": 1, "compact": true,
+      "background": { "kind": "default", "value": "", "opacity": 0.22, "blur": 2 }, "backgroundLayout": "full"
+    },
+    {
+      "id": "knowledge-garden",
+      "name": "我的知識庫",
+      "cards": [
+        { "kind": "embed", "title": "知識箱 MOC｜我的臨床脈絡", "target": "400_Atlas/Maps/我的臨床知識箱 MOC.md", "x": 0, "y": 0, "w": 5, "h": 7, "id": "knowledge-moc" },
+        { "kind": "embed", "title": "我的臨床知識工作台", "target": "400_Atlas/我的臨床知識工作台.base", "x": 5, "y": 0, "w": 7, "h": 9, "id": "knowledge-workbench" },
+        { "kind": "embed", "title": "問題花園｜延伸中的問題", "target": "400_Atlas/問題花園.base", "x": 0, "y": 7, "w": 5, "h": 9, "id": "knowledge-questions" },
+        { "kind": "embed", "title": "臨床規則手札｜可操作的經驗", "target": "400_Atlas/臨床規則手札.base", "x": 5, "y": 9, "w": 7, "h": 7, "id": "knowledge-rules" }
+      ],
+      "fitToPage": false,
+      "header": { "showTitle": true, "titleIcon": "🧠", "themeColorTarget": "none", "title": "我的知識庫" },
+      "showSearch": true, "cardOpacity": 0.82, "cardBlur": 10, "cardRadius": 16, "cardBorderWidth": 1, "compact": true,
+      "background": { "kind": "default", "value": "", "opacity": 0.22, "blur": 2 }, "backgroundLayout": "full"
+    },
+    {
+      "id": "clinic-planning",
+      "name": "診所規劃",
+      "cards": [
+        { "kind": "embed", "title": "診所任務排程與進度", "target": "600_Projects/東湖診所開業計畫/診所進度儀表板.base", "x": 0, "y": 0, "w": 12, "h": 10, "id": "clinic-dashboard" },
+        { "kind": "embed", "title": "東湖診所開業計畫｜脈絡與決策", "target": "600_Projects/東湖診所開業計畫/index.md", "x": 0, "y": 10, "w": 8, "h": 8, "id": "clinic-index" },
+        { "kind": "links", "title": "診所常用入口", "links": [
+          { "id": "clinic-tasks", "label": "診所任務看板", "icon": "kanban-square", "target": "600_Projects/東湖診所開業計畫/診所進度儀表板.base", "type": "note" },
+          { "id": "clinic-plan", "label": "開業計畫總覽", "icon": "map", "target": "600_Projects/東湖診所開業計畫/index.md", "type": "note" },
+          { "id": "clinic-today", "label": "回到今日要事", "icon": "check-square", "target": "100_Todo/今日要事.md", "type": "note" }
+        ], "tileSizing": "scale", "x": 8, "y": 10, "w": 4, "h": 4, "id": "clinic-launchpad" },
+        { "kind": "embed", "title": "今日焦點", "target": "100_Todo/今日要事.md", "x": 8, "y": 14, "w": 4, "h": 4, "id": "clinic-today" }
+      ],
+      "fitToPage": false,
+      "header": { "showTitle": true, "titleIcon": "🏥", "themeColorTarget": "none", "title": "診所規劃" },
+      "showSearch": true, "cardOpacity": 0.82, "cardBlur": 10, "cardRadius": 16, "cardBorderWidth": 1, "compact": true,
+      "background": { "kind": "default", "value": "", "opacity": 0.22, "blur": 2 }, "backgroundLayout": "full"
+    }
+  ],
+  "activeDashboardId": "action-guide",
+  "pinnedCards": [],
+  "gridColumns": 12,
+  "rowHeight": 92,
+  "favorites": [],
+  "fitToPage": false,
+  "taskNotesStatusField": "status",
+  "taskNotesDueField": "due",
+  "taskNotesPriorityField": "priority",
+  "taskNotesDoneValue": "done",
+  "taskFieldsEnabled": false,
+  "taskFields": [],
+  "customFileIcons": true,
+  "iconizeIconProperty": "icon",
+  "operonIntegration": false,
+  "operonWrites": false,
+  "maxWidth": 1600,
+  "fullWidth": false,
+  "lastSeenVersion": "3.1.0",
+  "setupStatus": "done",
+  "authorKey": "",
+  "authorKeySaved": false,
+  "galleryUrl": "https://gallery.o-uhnavy.com"
+}
