@@ -389,16 +389,22 @@ module.exports = class ClinicalHomeConsolePlugin extends Plugin {
     this.addRibbonIcon("layout-dashboard", "開啟臨床主控台", () => this.activateView());
     this.addCommand({ id: "open-clinical-home-console", name: "開啟臨床主控台", callback: () => this.activateView() });
     this.app.workspace.onLayoutReady(() => {
-      const existing = this.app.workspace.getLeavesOfType(VIEW_TYPE)[0];
-      const view = existing?.view;
-      if (view && typeof view.renderSafely === "function") void view.renderSafely();
+      setTimeout(() => void this.rehydrateExistingView(), 50);
     });
+  }
+
+  async rehydrateExistingView() {
+    const leaf = this.app.workspace.getLeavesOfType(VIEW_TYPE)[0];
+    if (!leaf) return;
+    await leaf.setViewState({ type: "empty", active: false });
+    await leaf.setViewState({ type: VIEW_TYPE, active: false });
   }
 
   async activateView() {
     const existing = this.app.workspace.getLeavesOfType(VIEW_TYPE)[0];
     const leaf = existing || this.app.workspace.getLeaf("tab");
     if (!existing) await leaf.setViewState({ type: VIEW_TYPE, active: true });
+    if (existing) await this.rehydrateExistingView();
     const view = leaf.view;
     if (view && typeof view.renderSafely === "function") await view.renderSafely();
     this.app.workspace.revealLeaf(leaf);
