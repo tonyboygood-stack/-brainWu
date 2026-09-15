@@ -4,6 +4,7 @@ const VIEW_TYPE = "clinical-home-console";
 const TODAY_PATH = "100_Todo/今日要事.md";
 const READING_DOCK_PATH = "400_Atlas/閱讀停靠站.md";
 const CLINIC_ROOT = "600_Projects/東湖診所開業計畫";
+const DASHBOARD_PATH = "400_Atlas/主控台.md";
 
 function text(value) {
   return value == null ? "" : String(value).trim();
@@ -386,27 +387,24 @@ class ClinicalHomeConsoleView extends ItemView {
 module.exports = class ClinicalHomeConsolePlugin extends Plugin {
   async onload() {
     this.registerView(VIEW_TYPE, (leaf) => new ClinicalHomeConsoleView(leaf, this));
-    this.addRibbonIcon("layout-dashboard", "開啟臨床主控台", () => this.activateView());
-    this.addCommand({ id: "open-clinical-home-console", name: "開啟臨床主控台", callback: () => this.activateView() });
+    this.addRibbonIcon("layout-dashboard", "開啟臨床主控台", () => this.openDashboard());
+    this.addCommand({ id: "open-clinical-home-console", name: "開啟臨床主控台", callback: () => this.openDashboard() });
     this.app.workspace.onLayoutReady(() => {
-      setTimeout(() => void this.rehydrateExistingView(), 50);
+      setTimeout(() => void this.replaceLegacyView(), 50);
     });
   }
 
-  async rehydrateExistingView() {
+  async replaceLegacyView() {
     const leaf = this.app.workspace.getLeavesOfType(VIEW_TYPE)[0];
-    if (!leaf) return;
-    await leaf.setViewState({ type: "empty", active: false });
-    await leaf.setViewState({ type: VIEW_TYPE, active: false });
+    const file = this.app.vault.getAbstractFileByPath(DASHBOARD_PATH);
+    if (leaf && file) await leaf.openFile(file, { active: false });
   }
 
-  async activateView() {
-    const existing = this.app.workspace.getLeavesOfType(VIEW_TYPE)[0];
-    const leaf = existing || this.app.workspace.getLeaf("tab");
-    if (!existing) await leaf.setViewState({ type: VIEW_TYPE, active: true });
-    if (existing) await this.rehydrateExistingView();
-    const view = leaf.view;
-    if (view && typeof view.renderSafely === "function") await view.renderSafely();
+  async openDashboard() {
+    const file = this.app.vault.getAbstractFileByPath(DASHBOARD_PATH);
+    if (!file) return new Notice("找不到主控台筆記。");
+    const leaf = this.app.workspace.getLeavesOfType(VIEW_TYPE)[0] || this.app.workspace.getLeaf("tab");
+    await leaf.openFile(file, { active: true });
     this.app.workspace.revealLeaf(leaf);
   }
 
