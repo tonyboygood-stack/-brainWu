@@ -1,5 +1,26 @@
 {
-  "choices": [],
+  "choices": [
+    {
+      "id": "quickadd-send-to-ai-20260916",
+      "name": "交給 AI",
+      "type": "Macro",
+      "command": true,
+      "runOnStartup": false,
+      "macro": {
+        "id": "quickadd-send-to-ai-20260916",
+        "name": "交給 AI",
+        "commands": [
+          {
+            "id": "quickadd-send-to-ai-script-20260916",
+            "name": "交給 AI",
+            "type": "UserScript",
+            "path": "交給AI",
+            "settings": {}
+          }
+        ]
+      }
+    }
+  ],
   "inputPrompt": "single-line",
   "persistInputPromptDrafts": true,
   "useSelectionAsCaptureValue": true,
@@ -14,7 +35,7 @@
   "onePageInputEnabled": false,
   "disableOnlineFeatures": true,
   "enableUriCallbacks": false,
-  "enableRibbonIcon": false,
+  "enableRibbonIcon": true,
   "showCaptureNotification": true,
   "showInputCancellationNotification": false,
   "enableTemplatePropertyTypes": false,
