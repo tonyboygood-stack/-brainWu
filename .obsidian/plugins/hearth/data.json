@@ -24,7 +24,7 @@
   "bannerFade": true,
   "bannerFullWidth": false,
   "openOnStartup": true,
-  "replaceNewTabs": true,
+  "replaceNewTabs": false,
   "focusSearchOnOpen": false,
   "liveRefresh": false,
   "liveSettingsSync": true,
