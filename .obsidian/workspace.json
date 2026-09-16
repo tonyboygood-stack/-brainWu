@@ -14,7 +14,7 @@
               "type": "hearth-home-view",
               "state": {
                 "scroll": {
-                  "action-guide": 100
+                  "action-guide": 700
                 }
               },
               "icon": "lucide-layout-dashboard",
@@ -22,129 +22,55 @@
             }
           },
           {
-            "id": "498ff31f9682f915",
+            "id": "a539341d5c626812",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "300_Journal/2026-09/2026-09-15.md",
+                "file": "400_Atlas/Library/wiki/方證/沙參麥冬湯方證（張文選）.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026-09-15"
+              "title": "沙參麥冬湯方證（張文選）"
             }
           },
           {
-            "id": "ca614fb3e6f0721c",
+            "id": "8b96e6f8660e64e3",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "400_Atlas/Library/wiki/醫案/醫案_孔某_風溫5_大葉性肺炎（趙紹琴）.md",
+                "file": "400_Atlas/Library/wiki/醫案/醫案_周某某_萎縮性胃炎（孟澍江）.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "醫案_孔某_風溫5_大葉性肺炎（趙紹琴）"
-            }
-          },
-          {
-            "id": "844273db9375a928",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "400_Atlas/Library/wiki/病機病理/水腫.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "水腫"
-            }
-          },
-          {
-            "id": "90c220031e32e363",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "400_Atlas/Library/wiki/方劑/水腫三法_宣氣通腑峻下逐水.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "水腫三法_宣氣通腑峻下逐水"
-            }
-          },
-          {
-            "id": "14b16bb9005e6730",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "400_Atlas/Library/wiki/方劑/水腫二法_清熱涼血宣肺化濕退腫.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "水腫二法_清熱涼血宣肺化濕退腫"
-            }
-          },
-          {
-            "id": "a4a02fbe890a7343",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "400_Atlas/Library/wiki/方劑/水腫一法_宣肺化濕利三焦消腫.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "水腫一法_宣肺化濕利三焦消腫"
-            }
-          },
-          {
-            "id": "c7474bf3a9549953",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "400_Atlas/Library/wiki/典籍/趙紹琴臨證驗案精選.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "趙紹琴臨證驗案精選"
-            }
-          },
-          {
-            "id": "56191c942c28c00c",
-            "type": "leaf",
-            "state": {
-              "type": "hearth-home-view",
-              "state": {},
-              "icon": "lucide-layout-dashboard",
-              "title": "主页"
-            }
-          },
-          {
-            "id": "daae7d412712471d",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "400_Atlas/Maps/古典針灸系統整合 MOC.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "古典針灸系統整合 MOC"
+              "title": "醫案_周某某_萎縮性胃炎（孟澍江）"
             }
           }
         ],
-        "currentTab": 9
+        "currentTab": 1
+      },
+      {
+        "id": "a6c22de4eee8b711",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "053980856a85b6ec",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "300_Journal/2026-09/2026-09-16.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2026-09-16"
+            }
+          }
+        ]
       }
     ],
     "direction": "vertical"
@@ -206,7 +132,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "421fceae442a3430",
@@ -222,7 +149,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "400_Atlas/Maps/古典針灸系統整合 MOC.md",
+                "file": "300_Journal/2026-09/2026-09-16.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -241,7 +168,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "400_Atlas/Maps/古典針灸系統整合 MOC.md",
+                "file": "300_Journal/2026-09/2026-09-16.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
@@ -284,7 +211,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "400_Atlas/Maps/古典針灸系統整合 MOC.md",
+                "file": "300_Journal/2026-09/2026-09-16.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -302,6 +229,7 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "quickadd:QuickAdd": false,
       "switcher:開啟快速切換": false,
       "graph:查看關聯圖": false,
       "canvas:建立新畫布": false,
@@ -313,35 +241,42 @@
       "hearth:打开 Hearth 主页": false
     }
   },
-  "active": "daae7d412712471d",
+  "active": "053980856a85b6ec",
   "lastOpenFiles": [
+    "600_Projects/東湖診所開業計畫/LOGO/a7kp2-yx4or-001-Photoroom.png",
+    "600_Projects/東湖診所開業計畫/LOGO/尚未確認的 609316.crdownload",
+    "600_Projects/東湖診所開業計畫/LOGO/Gemini_Generated_Image_nu4xfknu4xfknu4x.jfif",
+    "600_Projects/東湖診所開業計畫/LOGO/尚未確認的 146568.crdownload",
+    "600_Projects/東湖診所開業計畫/LOGO/Gemini_Generated_Image_amckp5amckp5amck.jfif",
+    "600_Projects/東湖診所開業計畫/LOGO/尚未確認的 241484.crdownload",
+    "400_Atlas/Library/wiki/方證/沙參麥冬湯方證（張文選）.md",
+    "400_Atlas/Library/wiki/醫案/醫案_周某某_萎縮性胃炎（孟澍江）.md",
+    "400_Atlas/Library/wiki/醫案/醫案_連某某_乾燥綜合徵（張文選）.md",
+    "300_Journal/2026-09/2026-09-16.md",
+    "400_Atlas/Library/wiki/典籍/趙紹琴臨證驗案精選.md",
+    "400_Atlas/Library/wiki/方劑/水腫一法_宣肺化濕利三焦消腫.md",
+    "400_Atlas/Library/wiki/方劑/水腫二法_清熱涼血宣肺化濕退腫.md",
+    "400_Atlas/Library/wiki/方劑/水腫三法_宣氣通腑峻下逐水.md",
+    "400_Atlas/Library/wiki/病機病理/水腫.md",
+    "400_Atlas/Library/wiki/醫案/醫案_孔某_風溫5_大葉性肺炎（趙紹琴）.md",
+    "300_Journal/2026-09/2026-09-15.md",
+    "100_Todo/今日要事.md",
+    "000_Agent/quickadd/交給AI.js",
+    "000_Agent/quickadd",
+    "400_Atlas/Library/wiki/典籍/溫病方證與雜病辨治.md",
+    "400_Atlas/Library/wiki/方證/大黃附子湯方證（張文選）.md",
+    "400_Atlas/Library/wiki/典籍/古典針灸系統整合/古典針灸系統—從病人故事走進系統：一條由時間、資源、層次到支持的閱讀路徑.md",
+    "400_Atlas/Maps/古典針灸系統整合 MOC.md",
+    "400_Atlas/Library/wiki/典籍/古典針灸系統整合/古典針灸系統—生殖、胞宮與帶脈樞紐：建造、固攝、週期與生命的承接.md",
+    "400_Atlas/Library/wiki/典籍/古典針灸系統整合/古典針灸系統—腎膀胱與下焦樞紐：精、水道、骨腦與長期保存的根本.md",
+    "400_Atlas/Library/wiki/典籍/古典針灸系統整合/古典針灸系統—肺大腸與太陰陽明樞紐：呼吸、皮毛、排出與世界的入口.md",
     "400_Atlas/Library/wiki/典籍/古典針灸系統整合/古典針灸系統—心小腸與少陰樞紐：從血液、內在液到胸腦、睡眠與分別.md",
     "400_Atlas/Library/wiki/典籍/古典針灸系統整合/古典針灸系統—肝膽與少陽樞紐：從血載氣、側身與感官到方向與決斷.md",
     "400_Atlas/Library/wiki/典籍/古典針灸系統整合/古典針灸系統—脾胃與中焦樞紐：從食慾、津液到肌肉、宗筋與資源入口.md",
     "400_Atlas/Library/wiki/典籍/古典針灸系統整合/古典針灸系統—節律、人生階段與恢復條件：讓治療能持續發生的日常環境.md",
     "400_Atlas/Library/wiki/典籍/古典針灸系統整合/古典針灸系統—補益與清瀉：何時建造、何時騰出空間的動態判斷.md",
     "400_Atlas/Library/wiki/典籍/古典針灸系統整合/古典針灸系統—寒熱濕燥與食物方向：讓食材、烹調與病勢放在同一張圖.md",
-    "400_Atlas/Library/wiki/典籍/古典針灸系統整合/古典針灸系統—津液與血：介質、滋養、容納與恢復的物質基礎.md",
-    "400_Atlas/Library/wiki/典籍/古典針灸系統整合/古典針灸系統—消化與中焦：所有資源化生、餐食判讀與氣機升降的起點.md",
-    "400_Atlas/Library/wiki/典籍/古典針灸系統整合/古典針灸系統—絡脈、橫絡與大絡：營分如何容納、分配與留下痕跡.md",
-    "400_Atlas/Library/wiki/典籍/古典針灸系統整合/古典針灸系統—經筋與皮部：身體如何在表層感知、阻擋與修復.md",
-    "400_Atlas/Maps/古典針灸系統整合 MOC.md",
-    "400_Atlas/Library/wiki/典籍/古典針灸系統整合/古典針灸系統—總覽：以保護臟腑為中心的多層生命系統.md",
-    "300_Journal/2026-09/2026-09-15.md",
-    "400_Atlas/Library/wiki/典籍/古典針灸系統整合/古典針灸系統—正經與臟腑：所有補充經絡共同守住的日常生理核心.md",
-    "400_Atlas/Library/wiki/典籍/古典針灸系統整合/古典針灸系統—奇經八脈：當病勢觸及先天、生命軸線與深層容納.md",
-    "400_Atlas/Library/wiki/典籍/古典針灸系統整合/古典針灸系統—經別六合：身體如何以關節、資源媒介與時間保存病勢.md",
-    "400_Atlas/Library/wiki/典籍/古典針灸系統整合/古典針灸系統—診斷窗口：脈、舌、觸診、症狀與生活史如何讀同一個身體.md",
-    "400_Atlas/Library/wiki/典籍/古典針灸系統整合/古典針灸系統—資源動力：衛氣、津液、血、精、氣與陰陽如何決定病勢.md",
-    "400_Atlas/Library/wiki/典籍/古典針灸系統整合/古典針灸系統—病勢運作：相遇、容納、轉移、顯現與釋放.md",
     "400_Atlas/Library/wiki/典籍/古典針灸系統整合",
-    "400_Atlas/Library/wiki/典籍/古典針灸原書重拆/助您實現最大受孕力—預產期、分娩、誕生與回家的照護.md",
-    "400_Atlas/Library/wiki/典籍/古典針灸原書重拆/助您實現最大受孕力—天之協作、男性健康與孕期的作者指引.md",
-    "400_Atlas/Library/wiki/典籍/古典針灸原書重拆/助您實現最大受孕力—由內而外保暖：血、津液、腎陰與固攝之氣.md",
-    "400_Atlas/Library/wiki/典籍/古典針灸原書重拆/助您實現最大受孕力—踏上旅程：孕前的補益飲食與避免清瀉.md",
-    "400_Atlas/Library/wiki/醫案/醫案_孔某_風溫5_大葉性肺炎（趙紹琴）.md",
-    "400_Atlas/Library/wiki/典籍/古典針灸原書重拆/完整針灸系統圖解—穴位定位指南：作者的使用原則與完整原文.md",
-    "400_Atlas/Library/wiki/典籍/古典針灸原書重拆/完整針灸系統圖解—十二正經：正經與內部分支的全頁圖譜.md",
     "300_Journal/2026-09"
   ]
 }
