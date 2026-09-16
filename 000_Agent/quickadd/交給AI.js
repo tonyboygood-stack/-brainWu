@@ -13,7 +13,7 @@ module.exports = async (params) => {
         return;
     }
 
-    const noteLink = `[[${file.path.replace(/\\.md$/i, "")}]]`;
+    const noteLink = `[[${file.path.replace(/\.md$/i, "")}]]`;
     const prompt = `請處理我目前閱讀的這一篇筆記。
 
 來源檔案（Vault 相對路徑）：\`${file.path}\`

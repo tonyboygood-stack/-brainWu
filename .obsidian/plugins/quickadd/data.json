@@ -14,7 +14,7 @@
             "id": "quickadd-send-to-ai-script-20260916",
             "name": "交給 AI",
             "type": "UserScript",
-            "path": "交給AI",
+            "path": "000_Agent/quickadd/交給AI.js",
             "settings": {}
           }
         ]
