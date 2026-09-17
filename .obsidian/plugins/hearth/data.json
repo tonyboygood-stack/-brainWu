@@ -241,7 +241,7 @@
           "h": 11,
           "id": "reading-pipeline",
           "fx": 0,
-          "fw": 0.5791666666666667,
+          "fw": 0.5790363482671175,
           "fy": 540,
           "fh": 1172
         },
@@ -285,7 +285,7 @@
           "kind": "search",
           "title": "AI 已收成｜待我理解",
           "savedSearch": {
-            "query": "knowledge_stage:🔵",
+            "query": "hearth_lane:待我理解",
             "view": "list",
             "count": 8
           },
@@ -303,7 +303,7 @@
           "kind": "search",
           "title": "AI 已補資料｜澆水中",
           "savedSearch": {
-            "query": "階段:🔵",
+            "query": "hearth_lane:澆水中",
             "view": "list",
             "count": 8
           },
@@ -365,7 +365,7 @@
           "kind": "search",
           "title": "待我理解｜剛收成的個人知識",
           "savedSearch": {
-            "query": "knowledge_stage:🔵",
+            "query": "hearth_lane:待我理解",
             "view": "list",
             "count": 10
           },
@@ -383,7 +383,7 @@
           "kind": "search",
           "title": "澆水中的問題",
           "savedSearch": {
-            "query": "階段:🔵",
+            "query": "hearth_lane:澆水中",
             "view": "list",
             "count": 10
           },
@@ -401,7 +401,7 @@
           "kind": "search",
           "title": "延伸中｜正在修正與長出新觀點",
           "savedSearch": {
-            "query": "knowledge_stage:🌸",
+            "query": "hearth_lane:延伸中",
             "view": "list",
             "count": 10
           },
@@ -419,7 +419,7 @@
           "kind": "search",
           "title": "已整合｜可帶進臨床",
           "savedSearch": {
-            "query": "knowledge_stage:🟢",
+            "query": "hearth_lane:已整合",
             "view": "list",
             "count": 8
           },
@@ -573,7 +573,7 @@
       "backgroundLayout": "full"
     }
   ],
-  "activeDashboardId": "action-guide",
+  "activeDashboardId": "knowledge-garden",
   "pinnedCards": [],
   "gridColumns": 12,
   "rowHeight": 92,

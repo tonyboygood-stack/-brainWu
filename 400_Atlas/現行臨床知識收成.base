@@ -1,0 +1,52 @@
+filters:
+  and:
+    - file.inFolder("400_Atlas/Notes")
+    - knowledge_protocol == "clinical-harvest-v1"
+formulas:
+  停留天數: (now() - file.mtime).days
+properties:
+  knowledge_stage:
+    displayName: 成長階段
+  knowledge_type:
+    displayName: 知識類型
+  says:
+    displayName: 目前核心
+  source_page:
+    displayName: 起點來源
+  up:
+    displayName: 總臨床連結
+  updated:
+    displayName: 收成／更新日期
+  formula.停留天數:
+    displayName: 停留天數
+views:
+  - type: table
+    name: 待我理解
+    filters:
+      and:
+        - knowledge_stage == "🔵 待我理解"
+    order:
+      - file.name
+      - says
+      - knowledge_type
+      - source_page
+      - formula.停留天數
+  - type: table
+    name: 全部現行卡
+    order:
+      - file.name
+      - knowledge_stage
+      - knowledge_type
+      - says
+      - source_page
+      - updated
+  - type: table
+    name: 已整合
+    filters:
+      and:
+        - knowledge_stage == "🟢 已整合"
+    order:
+      - file.name
+      - says
+      - knowledge_type
+      - updated
