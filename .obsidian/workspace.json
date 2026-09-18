@@ -11,14 +11,14 @@
             "id": "de76e244c43f1e7d",
             "type": "leaf",
             "state": {
-              "type": "hearth-home-view",
+              "type": "markdown",
               "state": {
-                "scroll": {
-                  "knowledge-garden": 100
-                }
+                "file": "300_Journal/2026-09/2026-09-18.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-layout-dashboard",
-              "title": "主页"
+              "icon": "lucide-file",
+              "title": "2026-09-18"
             }
           },
           {
@@ -105,8 +105,7 @@
               "title": "痹證"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -277,43 +276,44 @@
       "hearth:打开 Hearth 主页": false
     }
   },
-  "active": "114284fc5c815530",
+  "active": "de76e244c43f1e7d",
   "lastOpenFiles": [
+    "000_Agent/skills/awareness-journal/references/02_聽見自己的聲音_引導手冊.md",
+    "000_Agent/skills/awareness-journal/references/03_回顧一段時間_引導手冊.md",
+    "000_Agent/skills/awareness-journal/references/01_換個位子看自己_引導手冊.md",
+    "000_Agent/skills/awareness-journal/references",
+    "000_Agent/skills/awareness-journal/SKILL.md",
+    "000_Agent/skills/awareness-journal",
+    "600_Projects/A-思考覺察日記/journal/2026-09-19_開業前的專業焦慮.md",
+    "600_Projects/A-思考覺察日記/journal/index.md",
+    "600_Projects/A-思考覺察日記/journal",
+    "600_Projects/A-思考覺察日記/awareness-journal/references/03_回顧一段時間_引導手冊.md",
+    "600_Projects/A-思考覺察日記/awareness-journal/references/02_聽見自己的聲音_引導手冊.md",
+    "600_Projects/A-思考覺察日記/awareness-journal/references/01_換個位子看自己_引導手冊.md",
+    "600_Projects/A-思考覺察日記/awareness-journal/references",
+    "600_Projects/A-思考覺察日記/awareness-journal/SKILL.md",
+    "600_Projects/A-思考覺察日記/awareness-journal",
+    "600_Projects/A-思考覺察日記/專案包版/聽見自己的聲音_引導手冊_v1.2.md",
+    "600_Projects/A-思考覺察日記/專案包版/換個位子看自己_引導手冊_v1.2.md",
+    "600_Projects/A-思考覺察日記/專案包版/回顧一段時間_引導手冊_v1.1.md",
+    "600_Projects/A-思考覺察日記/專案包版/Instructions_v1.3.md",
+    "600_Projects/A-思考覺察日記/專案包版",
+    "600_Projects/A-思考覺察日記/Skill 版/awareness-journal_v1.3.zip",
+    "600_Projects/A-思考覺察日記/Skill 版",
+    "600_Projects/A-思考覺察日記",
+    "300_Journal/2026-09/2026-09-18.md",
     "400_Atlas/Maps/我的臨床知識箱 MOC.md",
+    "400_Atlas/Notes/2026-09-05_外感四證鑑別_風熱風寒伏氣春溫濕溫.md",
     "400_Atlas/現行臨床知識收成.base",
     "400_Atlas/Notes/2026-09-17_沙參麥冬湯_肺胃陰虧的辨識與加減.md",
     "400_Atlas/Maps/溫病 MOC.md",
     "400_Atlas/Maps/吳醫師的百寶箱 MOC.md",
-    "400_Atlas/我的臨床知識工作台.base",
     "300_Journal/2026-09/2026-09-17.md",
     "400_Atlas/Library/wiki/方證/沙參麥冬湯方證（張文選）.md",
     "400_Atlas/Notes/2026-09-17_AI協作_知識庫是思考訓練場.md",
     "400_Atlas/Library/wiki/病機病理/痹證.md",
     "400_Atlas/Library/wiki/典籍/趙紹琴臨證400法.md",
     "400_Atlas/Library/wiki/醫案/醫案_周某某_萎縮性胃炎（孟澍江）.md",
-    "400_Atlas/Library/raw/趙紹琴臨證400法.md",
-    "400_Atlas/Library/wiki/治法技法/甘寒滋陰生津法（張文選）.md",
-    "400_Atlas/Case/2026-07-16_房東李澤蘭_肩頸背痛胃脹.md",
-    "400_Atlas/Library/wiki/方劑/中焦濕熱二之二法_清其鬱熱化其濕邪通利三焦而退潮熱.md",
-    "400_Atlas/Library/wiki/病機病理/中焦濕熱證治.md",
-    "400_Atlas/Library/wiki/方劑/中焦濕熱三之三法_清透少陽分消濕濁以利樞機.md",
-    "400_Atlas/Library/wiki/方劑/中焦濕熱三之一法_清胃熱以泄陽明燥脾濕兼解太陰.md",
-    "400_Atlas/Library/wiki/病機病理/氣分證治.md",
-    "400_Atlas/Library/wiki/方劑/呃逆一法_疏調氣機降逆止呃.md",
-    "400_Atlas/Library/wiki/方劑/氣分八法_清熱生津達熱出表.md",
-    "400_Atlas/Library/wiki/方劑/氣分五法_宣鬱折熱以暢胸陽.md",
-    "400_Atlas/Library/wiki/方劑/呃逆二法_辛開苦降理氣定呃.md",
-    "400_Atlas/Library/wiki/病機病理/鬱證.md",
-    "400_Atlas/Library/wiki/方劑/鬱證八法_清泄肝熱理氣緩痛.md",
-    "400_Atlas/Library/wiki/病機病理/呃逆.md",
-    "000_Agent/skills/daily-capture",
-    "600_Projects/東湖診所開業計畫/LOGO/a7kp2-yx4or-001-Photoroom.png",
-    "600_Projects/東湖診所開業計畫/LOGO/尚未確認的 609316.crdownload",
-    "600_Projects/東湖診所開業計畫/LOGO/Gemini_Generated_Image_nu4xfknu4xfknu4x.jfif",
-    "600_Projects/東湖診所開業計畫/LOGO/尚未確認的 146568.crdownload",
-    "600_Projects/東湖診所開業計畫/LOGO/Gemini_Generated_Image_amckp5amckp5amck.jfif",
-    "600_Projects/東湖診所開業計畫/LOGO/尚未確認的 241484.crdownload",
-    "000_Agent/quickadd/交給AI.js",
-    "000_Agent/quickadd"
+    "600_Projects/東湖診所開業計畫/LOGO/a7kp2-yx4or-001-Photoroom.png"
   ]
 }
